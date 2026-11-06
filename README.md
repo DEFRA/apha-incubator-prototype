@@ -5,6 +5,8 @@ the [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend).
 
 > Basically the `GOV.UK Prototype Kit` and `GOV.UK Frontend` wrapped up and provided on the Core Delivery Platform
 
+This service belongs to the APHA incubator. We are exploring animal diseases and risks. This is our prototype service.
+
 - [Requirements](#requirements)
   - [Node.js](#nodejs)
 - [GOV.UK Prototype Kit and GOV.UK Frontend](#govuk-prototype-kit-and-govuk-frontend)
