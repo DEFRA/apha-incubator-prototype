@@ -37,7 +37,7 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .app-toggle__label { font-weight: 700; margin-right: 15px; }
 .app-toggle__button { font-size: 1.1875rem; line-height: 1.25; padding: 8px 20px; margin: 0; cursor: pointer; background: #f3f2f1; color: #0b0c0c; border: 2px solid #0b0c0c; }
 .app-toggle__button + .app-toggle__button { margin-left: -2px; }
-.app-toggle__button[aria-pressed="true"] { background: var(--defra-link); border-color: var(--defra-link); color: #fff; font-weight: 700; position: relative; }
+.app-toggle__button[aria-pressed="true"] { background: var(--defra-link); border-color: var(--defra-link); color: #fff; font-weight: 700; position: relative; z-index: 1; outline: 4px solid #0b0c0c; outline-offset: 0; }
 .app-toggle__button:hover:not([aria-pressed="true"]) { background: #e5e6e7; }
 .app-toggle__button:focus { outline: 3px solid transparent; background: #ffdd00; color: #0b0c0c; border-color: #0b0c0c; box-shadow: 0 3px 0 #0b0c0c; position: relative; z-index: 1; }
 
