@@ -31,14 +31,13 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .app-focus { border-left: 10px solid var(--defra-brand); background: #f3f2f1; padding: 20px 25px; margin: 0 0 40px; }
 .app-focus p { margin: 0; max-width: 40em; }
 .app-focus p + p { margin-top: 15px; }
-/* View toggle: two buttons, one pressed. The pressed one has a tick as well as a fill, so colour is not the only cue. */
+/* View toggle: two buttons, one pressed. The pressed one has a dark fill, white bold text and aria-pressed, so it differs in lightness and weight, not just hue. */
 .app-toggle { display: flex; align-items: center; margin: 0 0 30px; }
 .app-toggle[hidden] { display: none; }
 .app-toggle__label { font-weight: 700; margin-right: 15px; }
 .app-toggle__button { font-size: 1.1875rem; line-height: 1.25; padding: 8px 20px; margin: 0; cursor: pointer; background: #f3f2f1; color: #0b0c0c; border: 2px solid #0b0c0c; }
 .app-toggle__button + .app-toggle__button { margin-left: -2px; }
 .app-toggle__button[aria-pressed="true"] { background: var(--defra-link); border-color: var(--defra-link); color: #fff; font-weight: 700; position: relative; }
-.app-toggle__button[aria-pressed="true"]::before { content: "\2713\00a0"; }
 .app-toggle__button:hover:not([aria-pressed="true"]) { background: #e5e6e7; }
 .app-toggle__button:focus { outline: 3px solid transparent; background: #ffdd00; color: #0b0c0c; border-color: #0b0c0c; box-shadow: 0 3px 0 #0b0c0c; position: relative; z-index: 1; }
 
