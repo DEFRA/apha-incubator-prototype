@@ -18,6 +18,7 @@ p.govuk-body > .uf-badge { margin-left: 0; }
 .uf-choice { list-style: none; margin: 0; padding: 0; display: flex; gap: 20px; outline: 2px dashed var(--line); outline-offset: 6px; }
 .uf-choice > li { width: 150px; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .uf-choice > li > .uf-number { min-height: 44px; }
+.uf-choice .uf-pill { min-height: 78px; }
 .uf-number { font-size: 14px; color: var(--mid); margin-bottom: 4px; }
 .uf-pill { display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 999px; padding: 6px 14px; font-weight: 700; font-size: 15px; line-height: 1.25; min-height: 52px; margin-bottom: 14px; width: 100%; }
 .uf-note { font-size: 14px; color: var(--mid); margin: 10px 0 0; }

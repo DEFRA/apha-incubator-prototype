@@ -19,7 +19,7 @@
 <body class="govuk-template__body">
 <div class="app-hub-bar"><a href="/">Back to the design resource home</a><span>Work in progress. Illustrative data, fictional disease names.</span></div>
 <style>.app-hub-bar{background:#0b0c0c;color:#b1b4b6;font:16px/1.3 Arial,sans-serif;padding:10px 20px}.app-hub-bar a{color:#fff;font-weight:700;margin-right:16px}.app-hub-bar a:focus{outline:3px solid #ffdd00;background:#ffdd00;color:#0b0c0c}@media print{.app-hub-bar{display:none}}</style>
-<div class="govuk-width-container">
+<div class="govuk-width-container app-wide">
   <main class="govuk-main-wrapper" id="main-content">
     <p class="govuk-body-s"><a class="govuk-link" href="/docs/priority-view-test-plan">Test plan</a> · For the design team, not for participants</p>
     <h1 class="govuk-heading-xl">Priority view: three design options</h1>
@@ -29,7 +29,7 @@
       <div>
         <h2 class="govuk-heading-l">Option A: ranked table</h2>
         <p class="govuk-body"><a class="govuk-link" href="index.html">Open option A</a></p>
-        <p class="govuk-body">One row per disease, in priority order. Priority comes first, then the four measures, grouped as Threat and Preparedness. Column headings sort.</p>
+        <p class="govuk-body">One row per disease, in priority order. Priority comes first, then the four measures: risk and impact (threat), then control measures and response options (preparedness). Rules separate the three groups. Column headings sort.</p>
         <h3 class="govuk-heading-s">Best for</h3>
         <ul class="govuk-list govuk-list--bullet">
           <li>Comparing diseases across a measure ("who is least prepared?")</li>
@@ -65,7 +65,7 @@
       <div>
         <h2 class="govuk-heading-l">Option C: table or cards, your choice</h2>
         <p class="govuk-body"><a class="govuk-link" href="option-c.html">Open option C</a></p>
-        <p class="govuk-body">One page with a "View as" switch: Table (option A) or Cards (option B). The summary, navigation and "Look in more detail" stay in place. The choice is kept in the address (<code>?view=cards</code>), and sorting is kept when you switch. On small screens it starts on cards. To print or save both views as a PDF, open <a class="govuk-link" href="option-c.html?view=both">option-c.html?view=both</a>. See <a class="govuk-link" href="#option-c-flow">how people move around</a> between priority, each measure and each disease.</p>
+        <p class="govuk-body">One page with a "View as" switch: Cards (option B) or Table (option A). The summary, navigation and "Look in more detail" stay in place. The choice is kept in the address (<code>?view=cards</code>), and sorting is kept when you switch. On small screens it starts on cards. To print or save both views as a PDF, open <a class="govuk-link" href="option-c.html?view=both">option-c.html?view=both</a>. See <a class="govuk-link" href="#option-c-flow">how people move around</a> between priority, each measure and each disease.</p>
         <h3 class="govuk-heading-s">Best for</h3>
         <ul class="govuk-list govuk-list--bullet">
           <li>Letting people choose how they work: compare across diseases, or read by action</li>
@@ -94,7 +94,7 @@
     <section class="flow" id="option-c-flow" aria-labelledby="flow-heading">
       <h2 class="govuk-heading-l" id="flow-heading">Option C: how people move around</h2>
       <p class="govuk-body">People arrive on Priority and then go one of three ways: stay and change the view, look at one measure across every disease, or look at one disease across every measure. They can cross between those two at any point and always get back to Priority.</p>
-      <p class="govuk-body"><span class="uf-badge">In design</span> The Priority page, with its table and cards views and its links.<br><span class="uf-badge uf-badge--idea">Early ideas</span> The disease page and the Risk page. These are very early thinking in the <a class="govuk-link" href="../risk-wireframes/index.html#compare">risk and impact wireframes</a>, not designs yet.<br><span class="uf-badge uf-badge--none">Not yet explored</span> The Impact and Preparedness pages. Dashed thumbnails mean the screen is not designed. Desktop only.</p>
+      <p class="govuk-body"><span class="uf-badge">In design</span> The Priority page, with its table and cards views and its links.<br><span class="uf-badge uf-badge--idea">Early ideas</span> The disease page and the Risk page. These are very early thinking in the <a class="govuk-link" href="../risk-wireframes/index.html#compare">risk and impact wireframes</a>, not designs yet.<br><span class="uf-badge uf-badge--none">Not yet explored</span> The Impact, Control measures and Response options pages. Dashed thumbnails mean the screen is not designed. Desktop only.</p>
 
       <div class="uf-journey">
         <h3>1. Look at the ranking</h3>
@@ -119,14 +119,16 @@
             <p class="uf-note">User selects a disease name</p></li>
           <li class="uf-step"><span class="uf-number">Step 2 <span class="uf-badge uf-badge--idea">Early ideas</span></span><span class="uf-pill">Disease page</span>
             <div class="desktop desktop--idea"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="disease"></div></div>
-            <p class="uf-note">Priority, then all four measures. Links: "See all diseases on risk, impact or preparedness"</p></li>
+            <p class="uf-note">Priority, then all four measures. Links: "See all diseases on risk, impact, control measures or response options"</p></li>
           <li class="uf-step uf-step--choice"><ul class="uf-choice">
             <li><span class="uf-number">Step 3: choose one <span class="uf-badge uf-badge--idea">Early ideas</span></span><span class="uf-pill">Risk: all diseases</span>
               <div class="desktop desktop--idea"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="measure" data-kind="risk"></div></div></li>
             <li><span class="uf-number">or <span class="uf-badge uf-badge--none">Not yet explored</span></span><span class="uf-pill">Impact: all diseases</span>
               <div class="desktop desktop--none"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="measure" data-kind="impact"></div></div></li>
-            <li><span class="uf-number">or <span class="uf-badge uf-badge--none">Not yet explored</span></span><span class="uf-pill">Preparedness: all diseases</span>
-              <div class="desktop desktop--none"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="measure" data-kind="prep"></div></div></li>
+            <li><span class="uf-number">or <span class="uf-badge uf-badge--none">Not yet explored</span></span><span class="uf-pill">Control measures: all diseases</span>
+              <div class="desktop desktop--none"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="measure" data-kind="control"></div></div></li>
+            <li><span class="uf-number">or <span class="uf-badge uf-badge--none">Not yet explored</span></span><span class="uf-pill">Response options: all diseases</span>
+              <div class="desktop desktop--none"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="measure" data-kind="response"></div></div></li>
           </ul></li>
         </ol>
         <p class="uf-end"><b>To get back to the ranking,</b> the user selects "Priority" in the top navigation, on any page.</p>
@@ -134,18 +136,20 @@
 
       <div class="uf-journey">
         <h3>3. Start with one measure</h3>
-        <p>Risk, Impact and Preparedness are in the top navigation, in the summary and in "Look in more detail". Each page shows every disease, and a disease name opens that disease.</p>
+        <p>Risk, Impact, Control measures and Response options are in the top navigation, in the summary and in "Look in more detail". Each page shows every disease, and a disease name opens that disease.</p>
         <ol class="uf-steps">
           <li class="uf-step"><span class="uf-number">Step 1 <span class="uf-badge">In design</span></span><span class="uf-pill">Priority</span>
             <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="priority" data-view="cards"></div></div>
-            <p class="uf-note">User selects Risk, Impact or Preparedness</p></li>
+            <p class="uf-note">User selects Risk, Impact, Control measures or Response options</p></li>
           <li class="uf-step uf-step--choice"><ul class="uf-choice">
             <li><span class="uf-number">Step 2: choose one <span class="uf-badge uf-badge--idea">Early ideas</span></span><span class="uf-pill">Risk: all diseases</span>
               <div class="desktop desktop--idea"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="measure" data-kind="risk"></div></div></li>
             <li><span class="uf-number">or <span class="uf-badge uf-badge--none">Not yet explored</span></span><span class="uf-pill">Impact: all diseases</span>
               <div class="desktop desktop--none"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="measure" data-kind="impact"></div></div></li>
-            <li><span class="uf-number">or <span class="uf-badge uf-badge--none">Not yet explored</span></span><span class="uf-pill">Preparedness: all diseases</span>
-              <div class="desktop desktop--none"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="measure" data-kind="prep"></div></div></li>
+            <li><span class="uf-number">or <span class="uf-badge uf-badge--none">Not yet explored</span></span><span class="uf-pill">Control measures: all diseases</span>
+              <div class="desktop desktop--none"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="measure" data-kind="control"></div></div></li>
+            <li><span class="uf-number">or <span class="uf-badge uf-badge--none">Not yet explored</span></span><span class="uf-pill">Response options: all diseases</span>
+              <div class="desktop desktop--none"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="measure" data-kind="response"></div></div></li>
           </ul></li>
           <li class="uf-step"><span class="uf-number">Step 3 <span class="uf-badge uf-badge--idea">Early ideas</span></span><span class="uf-pill">Disease page</span>
             <div class="desktop desktop--idea"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="disease"></div></div>
@@ -168,7 +172,7 @@
         <tbody class="govuk-table__body">
           <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Risk: all diseases</th><td class="govuk-table__cell">1A cards sorted by risk, 1B latest changes tab, 1C list with filter</td><td class="govuk-table__cell">Risk and impact shown together for every disease. Change comes first (1B) or can be filtered (1C). This is where risk changes would live, as the Priority page asks</td></tr>
           <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Disease page</th><td class="govuk-table__cell">2A chart and change history, 2B summary first with a table, 2C priority and four layers</td><td class="govuk-table__cell">2C is the one that matches "all four measures on one page". 2A and 2B show risk history and the reasons for changes</td></tr>
-          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Impact and Preparedness: all diseases</th><td class="govuk-table__cell">Not explored</td><td class="govuk-table__cell">The early ideas show impact next to risk, so it is open whether Impact needs its own page. Preparedness is not covered</td></tr>
+          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Impact, Control measures and Response options: all diseases</th><td class="govuk-table__cell">Not explored</td><td class="govuk-table__cell">The early ideas show impact next to risk, so it is open whether Impact needs its own page. Control measures and response options are not covered</td></tr>
         </tbody>
       </table>
 
@@ -187,10 +191,10 @@
           <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">See what to act on first</th><td class="govuk-table__cell">Priority. Table or Cards, no click needed</td><td class="govuk-table__cell">0</td><td class="govuk-table__cell">T1 to T3</td></tr>
           <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Change how I see the list</th><td class="govuk-table__cell">Priority, "View as" Table or Cards, or sort a column</td><td class="govuk-table__cell">1, stays on page</td><td class="govuk-table__cell">T4, T5</td></tr>
           <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Learn more about one disease</th><td class="govuk-table__cell">Priority, then the disease name</td><td class="govuk-table__cell">1</td><td class="govuk-table__cell">T9</td></tr>
-          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Compare every disease on one measure</th><td class="govuk-table__cell">Priority, then Risk, Impact or Preparedness</td><td class="govuk-table__cell">1</td><td class="govuk-table__cell">T10</td></tr>
-          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Find out why a score changed</th><td class="govuk-table__cell">Priority, then the disease name or a measure page. Changes in risk, impact and preparedness are on those pages</td><td class="govuk-table__cell">1 to 2</td><td class="govuk-table__cell">T12</td></tr>
+          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Compare every disease on one measure</th><td class="govuk-table__cell">Priority, then Risk, Impact, Control measures or Response options</td><td class="govuk-table__cell">1</td><td class="govuk-table__cell">T10</td></tr>
+          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Find out why a score changed</th><td class="govuk-table__cell">Priority, then the disease name or a measure page. Changes in risk, impact, control measures and response options are on those pages</td><td class="govuk-table__cell">1 to 2</td><td class="govuk-table__cell">T12</td></tr>
           <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Go from one disease to how all diseases compare</th><td class="govuk-table__cell">Disease page, then "See all diseases on…"</td><td class="govuk-table__cell">1</td><td class="govuk-table__cell">T13</td></tr>
-          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Go from a measure to one disease</th><td class="govuk-table__cell">Risk, Impact or Preparedness, then the disease name</td><td class="govuk-table__cell">1</td><td class="govuk-table__cell">T13</td></tr>
+          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Go from a measure to one disease</th><td class="govuk-table__cell">Risk, Impact, Control measures or Response options, then the disease name</td><td class="govuk-table__cell">1</td><td class="govuk-table__cell">T13</td></tr>
           <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Get back to the ranking</th><td class="govuk-table__cell">"Priority" in the top navigation, from any page</td><td class="govuk-table__cell">1</td><td class="govuk-table__cell">T13</td></tr>
         </tbody>
       </table>
@@ -207,9 +211,9 @@
       <h3 class="govuk-heading-m">Questions this flow raises</h3>
       <ul class="govuk-list govuk-list--bullet">
         <li>Do people go to a disease or a measure first, and does it depend on their role?</li>
-        <li>Do they understand that Risk, Impact and Preparedness each show every disease?</li>
+        <li>Do they understand that Risk, Impact, Control measures and Response options each show every disease?</li>
         <li>Do they cross between a disease and a measure, or go back to Priority each time?</li>
-        <li>Should the disease page repeat all four measures, or only link to them? Is one Preparedness page enough, or one each for control measures and response options?</li>
+        <li>Should the disease page repeat all four measures, or only link to them?</li>
         <li>The wireframes ask two questions this flow depends on: is each layer a section on one page or a separate page (2C), and do the risk views stay as a "View" switch or get replaced (1D)? This flow assumes separate pages.</li>
       </ul>
     </section>
@@ -218,7 +222,7 @@
       <div>
         <h2 class="govuk-heading-l">Width and spacing</h2>
         <p class="govuk-body">The standard GOV.UK page is 960px wide. Six columns with hints and bars need about 1,000px of table, so the original felt cramped and wrapped headings and tags.</p>
-        <p class="govuk-body"><strong>Recommendation: keep one page, use a wider container for the table.</strong> Option A uses 1,200px with more cell padding and a rule between the Threat and Preparedness columns. Text stays at two-thirds width so lines remain readable.</p>
+        <p class="govuk-body"><strong>Recommendation: keep one page, use a wider container for the table.</strong> Option A uses 1,200px with more cell padding and rules between the priority, threat and preparedness columns. Text stays at two-thirds width so lines remain readable.</p>
         <p class="govuk-body">We would not move the table to its own full-width page yet:</p>
         <ul class="govuk-list govuk-list--bullet">
           <li>Priority is the top level. Putting it a click away hides the main answer from the first look</li>
@@ -233,12 +237,12 @@
         <ul class="govuk-list govuk-list--bullet">
           <li><strong>The summary is at the top</strong> in all options, before the table or cards.</li>
           <li><strong>Source is not repeated at the top.</strong> It is in "Where this information comes from" at the bottom.</li>
-          <li><strong>One header row on the table.</strong> The Threat and Preparedness group headings were removed. A sentence above the table explains the grouping, and a rule separates the two groups. Test whether people miss it.</li>
+          <li><strong>One header row on the table.</strong> The Threat and Preparedness group headings were removed. A sentence above the table explains the grouping, and rules separate priority, threat and preparedness. Test whether people miss it.</li>
           <li><strong>The sorted column has a light tint.</strong> The arrow and the screen reader state say the same thing, so colour is not the only cue.</li>
           <li><strong>Links in the table don't change colour once visited.</strong> Hover and focus still change.</li>
           <li><strong>The matrix option was dropped.</strong> People don't think disease-first across the top, and it pushed the summary down.</li>
-          <li><strong>Two routes out.</strong> Disease names link to a disease page. Risk, Impact and Preparedness are in the top navigation and in a "Look in more detail" line. Column headings only sort.</li>
-          <li><strong>Change is shown for priority only.</strong> A "What has changed" line in the summary, plus an outlined tag ("Score increased" or "Score decreased") with "from 66" under the score, in the table and the cards. Text only, no arrows. Unchanged diseases show nothing. Changes in risk, impact and preparedness belong on their own pages.</li>
+          <li><strong>Two routes out.</strong> Disease names link to a disease page. Risk, Impact, Control measures and Response options are in the top navigation and in a "Look in more detail" line. Column headings only sort.</li>
+          <li><strong>Change is shown for priority only.</strong> A "What has changed" line in the summary, plus an outlined tag ("Score increased" or "Score decreased") with "from 4.4" under the score, in the table and the cards. Text only, no arrows. Unchanged diseases show nothing. Changes in risk, impact, control measures and response options belong on their own pages.</li>
           <li><strong>Impact shows the four areas:</strong> Public health, Animal welfare, Wider economy and society, International trade. A disease can have more than one, shown as a short list.</li>
         </ul>
       </div>

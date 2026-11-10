@@ -28,12 +28,12 @@
     </ol>
     <p class="govuk-body">The second job is the main one. Spend roughly a third of each session on it.</p>
     <h2 class="govuk-heading-l">What we are testing</h2>
-    <p class="govuk-body">The page shows five fictional priority 1 diseases. Each disease shows priority (band, rank, score), then threat (risk of incursion, impact) and preparedness (control measures, response options). A plain-language summary is at the top. Below are the band key, how the score works and where the information comes from. The source is deliberately not repeated at the top, so T6 tests whether people find it at the bottom.</p>
+    <p class="govuk-body">The page shows five fictional priority 1 diseases. Each disease shows priority (band, rank, score out of 5), then threat (risk of incursion, impact) and preparedness (control measures, response options), each scored out of 5 and labelled very low, low, medium, high or very high. A plain-language summary is at the top. Below are the band key, how the score works and where the information comes from. The source is deliberately not repeated at the top, so T6 tests whether people find it at the bottom.</p>
     <p class="govuk-body"><strong>In scope:</strong> reading and comparing, the priority band and score, the four layers, the summary, sorting, source and trust.
     <strong>Out of scope:</strong> the disease page, the layer pages and how users route to them (the concept test). Clicks on those links land on a "This page is not part of the test" page. <strong>Record every one of them as a first click.</strong> They show where people expect to go next, which feeds the routing decision.
-    <strong>Not being tested:</strong> whether the scoring model is right. SMEs may challenge the formula. Capture it, but don't debate it. See "Risks".</p>
-    <p class="govuk-body"><strong>What has changed:</strong> the priority view shows change in <strong>priority only</strong>. Changes in risk, impact and preparedness belong on their own pages (Risk, Impact, Preparedness), which are not designed yet. The priority view shows two things: a "What has changed" paragraph in the summary, and an outlined tag ("Score increased", "Score decreased") with "from 66" under the score for diseases that changed. Unchanged diseases show nothing. The summary also says no disease changed rank or band, and links to the three measure pages for what drove the change.</p>
-    <p class="govuk-body"><strong>Where the numbers come from:</strong> the previous scores are worked out from the formula, using the October risk changes in the spec and holding impact and preparedness the same. Himalayan Dragon Pox was (3 + 3) × 11 = 66 and is now 55. Wing wobble was (2 + 3) × 3 = 15 and is now 18. Ranks and bands are unchanged. These are illustrative, and the team should replace them if real previous scores exist.</p>
+    <strong>Not being tested:</strong> whether the scores are right. All five scores are illustrative and out of 5, with no formula shown, so there is less to challenge. If SMEs question how a score is made, capture it, but don't debate it. See "Risks".</p>
+    <p class="govuk-body"><strong>What has changed:</strong> the priority view shows change in <strong>priority only</strong>. Changes in risk, impact, control measures and response options belong on their own pages, which are not designed yet. The priority view shows two things: a "What has changed" paragraph in the summary, and an outlined tag ("Score increased", "Score decreased") with "from 4.4" under the score for diseases that changed. Unchanged diseases show nothing. The summary also says no disease changed rank or band, and links to the four measure pages for what drove the change.</p>
+    <p class="govuk-body"><strong>Where the numbers come from:</strong> the scores are illustrative and out of 5. Himalayan Dragon Pox was 4.4 and is now 4.1. Wing wobble was 1.2 and is now 1.4. Ranks and bands are unchanged. The team should replace these if real previous scores exist.</p>
     <p class="govuk-body"><strong>Impact areas:</strong> impact shows the four areas the team gave: Public health, Animal welfare, Wider economy and society, International trade. A disease can have more than one, so they show as a short list under the level. Which disease has which area is made up for the prototype, so that all four appear.</p>
     <h2 class="govuk-heading-l">Design options</h2>
     <p class="govuk-body">Three versions are designed as prototypes with the same data and wording. See <a class="govuk-link" href="/public/design/priority-view/options.html">priority view options</a>. An earlier matrix with diseases across the top was dropped: it isn't how people think about the problem and it pushed the summary down.
@@ -226,8 +226,8 @@
     </tr>
     <tr class="govuk-table__row">
     <td class="govuk-table__cell">T12</td>
-    <td class="govuk-table__cell">"Himalayan Dragon Pox's score has dropped from 66 to 55. Is that good news? Where would you look to find out why?"</td>
-    <td class="govuk-table__cell">Says the score is lower, so less urgent, but it is still Prioritise. Looks at Risk, Impact or Preparedness, or the disease page, to find the cause. Record which</td>
+    <td class="govuk-table__cell">"Himalayan Dragon Pox's score has dropped from 4.4 to 4.1. Is that good news? Where would you look to find out why?"</td>
+    <td class="govuk-table__cell">Says the score is lower, so less urgent, but it is still Prioritise. Looks at Risk, Impact, Control measures or Response options, or the disease page, to find the cause. Record which</td>
     <td class="govuk-table__cell">RQ2, RQ8</td>
     </tr>
     <tr class="govuk-table__row">
@@ -240,7 +240,7 @@
     </table>
     <p class="govuk-body">Ask T9, T10 and T13 after T1 to T8, so the routes don't hint at the answers. The placeholder page shows the researcher exactly what was chosen. T13 needs the disease page, which is only an early idea, so it is a walkthrough on a mock-up until that page is designed.</p>
     <h2 class="govuk-heading-l">Routes out of the priority view</h2>
-    <p class="govuk-body">Some users want more on one <strong>disease</strong>. Others want to compare <strong>one measure</strong> (risk, impact, preparedness) across all diseases. The page gives each group its own route, and keeps both separate from sorting.</p>
+    <p class="govuk-body">Some users want more on one <strong>disease</strong>. Others want to compare <strong>one measure</strong> (risk, impact, control measures, response options) across all diseases. The page gives each group its own route, and keeps both separate from sorting.</p>
     <table class="govuk-table">
     <thead class="govuk-table__head">
     <tr class="govuk-table__row">
@@ -257,20 +257,20 @@
     </tr>
     <tr class="govuk-table__row">
     <td class="govuk-table__cell">Measure</td>
-    <td class="govuk-table__cell">Service navigation under the header: <strong>Priority</strong>, Risk, Impact, Preparedness. Plus a "Look in more detail" line under the table with the same links in plain words</td>
+    <td class="govuk-table__cell">Service navigation under the header: <strong>Priority</strong>, Risk, Impact, Control measures, Response options. Plus a "Look in more detail" line under the table with the same links in plain words</td>
     <td class="govuk-table__cell">The navigation is always there and is how people come back. The line is next to the table, where the question comes up</td>
     </tr>
     </tbody>
     </table>
-    <p class="govuk-body"><strong>Moving across levels:</strong> people can cross from a measure page to a disease (select the disease name) and from a disease to a measure ("See all diseases on risk", impact or preparedness). The "Priority" link in the navigation gets them back, and returning keeps their view and sort. The full flow, with a journeys table, is in <a class="govuk-link" href="/public/design/priority-view/options.html#option-c-flow">priority view options</a>. The Priority page is still in design. The disease and Risk pages are only early ideas (see the <a class="govuk-link" href="/public/design/risk-wireframes/index.html#compare">wireframes</a>), and Impact and Preparedness aren't explored yet, so T13 and the cross-over links need a mock-up or a walkthrough.</p>
+    <p class="govuk-body"><strong>Moving across levels:</strong> people can cross from a measure page to a disease (select the disease name) and from a disease to a measure ("See all diseases on risk", impact, control measures or response options). The "Priority" link in the navigation gets them back, and returning keeps their view and sort. The full flow, with a journeys table, is in <a class="govuk-link" href="/public/design/priority-view/options.html#option-c-flow">priority view options</a>. The Priority page is still in design. The disease and Risk pages are only early ideas (see the <a class="govuk-link" href="/public/design/risk-wireframes/index.html#compare">wireframes</a>), and Impact, Control measures and Response options aren't explored yet, so T13 and the cross-over links need a mock-up or a walkthrough.</p>
     <p class="govuk-body"><strong>Why not link the column headings?</strong> They already sort. Making one heading do both would hide one of the jobs. If the team prefers "table as the router" (concept 2 in the earlier proposal), sorting moves to a "Sort by" select above the table. That would also fix sorting on small screens, where it is hidden now. Test that as a variant, not as the default.</p>
-    <p class="govuk-body"><strong>Labels:</strong> the navigation says Risk, Impact and Preparedness, not "layer" or "slice". Watch what people call these and whether they understand that each one shows all diseases.</p>
-    <p class="govuk-body"><strong>Not yet designed:</strong> the disease page and the three measure pages. The disease and Risk pages have very early ideas in the <a class="govuk-link" href="/public/design/risk-wireframes/index.html#compare">wireframes</a> (1A to 1C for risk across diseases, 2A to 2C for one disease). Impact and Preparedness aren't explored. Links lead to a placeholder that says what was chosen. Preparedness data isn't ready, so that page may need an empty state later.</p>
+    <p class="govuk-body"><strong>Labels:</strong> the navigation says Risk, Impact, Control measures and Response options, not "layer" or "slice". Watch what people call these and whether they understand that each one shows all diseases.</p>
+    <p class="govuk-body"><strong>Not yet designed:</strong> the disease page and the four measure pages. The disease and Risk pages have very early ideas in the <a class="govuk-link" href="/public/design/risk-wireframes/index.html#compare">wireframes</a> (1A to 1C for risk across diseases, 2A to 2C for one disease). Impact, Control measures and Response options aren't explored. Links lead to a placeholder that says what was chosen. Preparedness data isn't ready, so that page may need an empty state later.</p>
     <h2 class="govuk-heading-l">Comprehension probes</h2>
     <p class="govuk-body">Ask after the tasks, one at a time, and note the words they use.
     - "What does 'Act now' mean to you? Would you do something different for 'Prioritise'?"
-    - "What do the numbers out of 10 tell you? Is a high number good or bad?" (Preparedness is higher = better, but a high risk is worse. This is the main confusion risk.)
-    - "What is 75 out of 140?" Do they open "How the priority score is worked out"? Do they find it helpful or too much?
+    - "What do the numbers out of 5 tell you? Is a high number good or bad?" (Preparedness is higher = better, but a high risk is worse. The words very low to very high sit beside the numbers, so "High" means good for control measures and bad for risk. This is the main confusion risk.)
+    - "What does a score of 4.1 out of 5 mean?" Do they open "How the priority score is worked out"? Do they find it helpful or too much?
     - "What is the difference between 'control measures' and 'response options'?"
     - "Is anything missing that you'd need before you trusted the order?"</p>
     <h2 class="govuk-heading-l">Discovery: understanding what people want from risk</h2>
@@ -302,7 +302,7 @@
     <li><strong>Where eyes and cursor go first</strong>, and whether they scan across a row or down a column.</li>
     <li><strong>Words they use</strong> for the layers. These might replace "control measures" and "response options".</li>
     <li><strong>Whether sorting is found</strong> and used. It is only discoverable from the underlined headings.</li>
-    <li><strong>Whether people miss the Threat and Preparedness group headings.</strong> The table has no group row. If people mix up the two groups, or ask which numbers are "good", bring a lighter version back.</li>
+    <li><strong>Whether people miss the Threat and Preparedness group headings.</strong> The table has no group row, but rules separate priority, threat and preparedness. If people mix up the two groups, or ask which numbers are "good", bring a lighter version back.</li>
     <li><strong>Questions they ask the moderator.</strong> Each one is a gap in the page.</li>
     <li><strong>Disagreement with the ranking.</strong> Note who and why. It may be a data issue, a scoring issue or a legitimate need.</li>
     </ul>
@@ -317,7 +317,7 @@
     | H5 | A source in the details at the bottom is enough for trust | T6 found without help, and users don't ask for more |
     | H6 | The preparedness scale (high is good) causes confusion beside risk (high is bad) | Errors or hesitation on the probe |
     | H7 | Users want more than a snapshot, especially change over time | The card sort puts change, reasons and history in "must have" |
-    | H10 | A text tag with "from 66" under the score shows a change in priority clearly, without arrows or colour alone | T11 answered quickly and correctly. Nobody asks what the tag means |
+    | H10 | A text tag with "from 4.4" under the score shows a change in priority clearly, without arrows or colour alone | T11 answered quickly and correctly. Nobody asks what the tag means |
     | H11 | A change in score can look more important than it is. The summary line "no disease changed rank or band" stops over-reaction | T12: people say it is still Prioritise, rather than asking for action |
     | H8 | People find both routes without help: disease name for one disease, navigation for one measure | T9 and T10 first clicks are right, and users can say what the Risk page will show |
     | H9 | Some users go to a measure first, others to a disease first, and this follows their role | The first click in T8 differs by role |</p>
@@ -433,16 +433,10 @@
     <td class="govuk-table__cell">Passes</td>
     </tr>
     <tr class="govuk-table__row">
-    <td class="govuk-table__cell">Very high impact</td>
-    <td class="govuk-table__cell">white on <code>#942514</code></td>
-    <td class="govuk-table__cell">8.29:1</td>
-    <td class="govuk-table__cell">Passes. Darker than "High" so the two read differently</td>
-    </tr>
-    <tr class="govuk-table__row">
-    <td class="govuk-table__cell">Risk and impact tags</td>
-    <td class="govuk-table__cell">GOV.UK light tags</td>
-    <td class="govuk-table__cell">6.2 to 12.5:1</td>
-    <td class="govuk-table__cell">Pass</td>
+    <td class="govuk-table__cell">Level blocks in the table (Very low to Very high)</td>
+    <td class="govuk-table__cell">Muted tints: <code>#005a30</code> on <code>#cce2d8</code>, <code>#3b5400</code> on <code>#e6f0c8</code>, <code>#594d00</code> on <code>#fff7bf</code>, <code>#942514</code> on <code>#f4cdc6</code>, <code>#6b1a0e</code> on <code>#e6a69b</code></td>
+    <td class="govuk-table__cell">5.7 to 7.8:1</td>
+    <td class="govuk-table__cell">Pass. Deliberately paler than the priority bands so they stand out less. The word always leads, so colour is not the only cue. The same scale is used for all four measures, so for control measures and response options "Very high" is red even though it is good. H6 checks this</td>
     </tr>
     <tr class="govuk-table__row">
     <td class="govuk-table__cell">Defra link green</td>
@@ -489,11 +483,11 @@
     <li><strong>Brand mode.</strong> The prototype uses Defra mode (system font, green links, text header) rather than GOV.UK mode (GDS Transport, crown header). The brief says GOV.UK only and the page title pattern ends "– GOV.UK". Which do we want in front of users?</li>
     <li><strong>Who writes the summary</strong>, and how often? The prototype shows it as written copy.</li>
     <li><strong>"Preparedness" or "vulnerability".</strong> The board says "vulnerability (preparedness)". The prototype says "Preparedness". Do we test both?</li>
-    <li><strong>Change is shown for priority only</strong>, as a summary line and as tags under the score (changed diseases only). Do we also show "No change" on every row? Showing only changes keeps the table calmer. The risk is that people can't tell "no change" from "not assessed". Risk, impact and preparedness changes, with reasons, belong on their own pages. Those pages aren't designed yet, so T12 will show where people expect to find the cause.</li>
+    <li><strong>Change is shown for priority only</strong>, as a summary line and as tags under the score (changed diseases only). Do we also show "No change" on every row? Showing only changes keeps the table calmer. The risk is that people can't tell "no change" from "not assessed". Risk, impact, control measures and response options changes, with reasons, belong on their own pages. Those pages aren't designed yet, so T12 will show where people expect to find the cause.</li>
     <li><strong>Real or fictional disease names.</strong> The prototype uses fictional names, as the brief decided. SMEs may find it harder to judge plausibility.</li>
     <li><strong>Which participants</strong>, and how do we recruit people who work by disease and by layer?</li>
     <li><strong>How do people reach a measure view?</strong> The page offers the top navigation plus a line under the table. If T10 shows people miss both, test column headings as links, with sorting moved to a select.</li>
-    <li><strong>Does Preparedness get one page or two?</strong> The framework has control measures and response options. The navigation shows one "Preparedness" link.</li>
+    <li><strong>Control measures and response options are separate pages.</strong> The framework has both, so the navigation now shows two links, matching the table headings. Do people expect them together?</li>
     </ol>
 {% endraw %}
   </div>
