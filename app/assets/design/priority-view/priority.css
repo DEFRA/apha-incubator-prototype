@@ -80,6 +80,17 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .app-score { display: block; font-weight: 700; font-size: 1.5rem; line-height: 1; }
 .app-score small { font-size: 1rem; font-weight: 400; color: var(--secondary); }
 .app-level { display: block; margin-top: 4px; font-size: 1rem; line-height: 1.2; }
+
+/* Muted level blocks, so they stand out less than the priority bands. Text on fill: 5.7 to 7.8:1.
+   The word is always shown, so colour is never the only cue. */
+.app-level-tag { display: inline-block; margin-bottom: 6px; padding: 2px 8px; font-size: 1rem; font-weight: 700; line-height: 1.25; }
+.app-level-tag--1 { background: #cce2d8; color: #005a30; }
+.app-level-tag--2 { background: #e6f0c8; color: #3b5400; }
+.app-level-tag--3 { background: #fff7bf; color: #594d00; }
+.app-level-tag--4 { background: #f4cdc6; color: #942514; }
+.app-level-tag--5 { background: #e6a69b; color: #6b1a0e; }
+.app-score--after-tag { font-size: 1.1875rem; }
+.app-score--after-tag small { font-size: 1rem; }
 .app-bar { display: block; width: 100%; max-width: 120px; height: 10px; margin-top: 10px; background: #e5e6e7; border: 1px solid var(--track-outline); }
 .app-bar > span { display: block; height: 100%; background: var(--defra-link); }
 /* Risk and impact are threats: a higher score is worse. Preparedness is the opposite, so threats use a neutral fill, not red or green. */
