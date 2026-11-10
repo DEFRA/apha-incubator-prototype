@@ -7,6 +7,7 @@ the [GOV.UK Frontend](https://github.com/alphagov/govuk-frontend).
 
 This service belongs to the APHA incubator. We are exploring animal diseases and risks. This is our prototype service.
 
+- [Design resource](#design-resource)
 - [Requirements](#requirements)
   - [Node.js](#nodejs)
 - [GOV.UK Prototype Kit and GOV.UK Frontend](#govuk-prototype-kit-and-govuk-frontend)
@@ -28,6 +29,24 @@ This service belongs to the APHA incubator. We are exploring animal diseases and
   - [Debug docker](#debug-docker)
 - [Licence](#licence)
   - [About the licence](#about-the-licence)
+
+## Design resource
+
+The home page is a design resource for the team. It holds our design notes (decisions and directions), the priority
+view options, early wireframes and the test plan. All data is illustrative and the disease names are fictional. When
+the design is refined, the agreed pages will be built here as prototype pages for user research.
+
+| Where                           | What                                                                                             |
+| ------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `app/views/index.html`          | Design resource home page                                                                        |
+| `app/views/design-notes.html`   | Design notes: decisions made, directions, open questions                                         |
+| `app/views/docs/`               | Documents: test plan, design brief and prototype spec                                            |
+| `app/views/layouts/design.html` | Layout for the design resource pages. Prototype pages should use `layouts/main.html`             |
+| `app/assets/design/`            | Static design snapshots (served at `/public/design/`): priority view options, wireframes, images |
+
+> [!CAUTION]
+> This repository is public. Do not add research recordings, participant details, named individuals or internal
+> reference material to it.
 
 ## Requirements
 

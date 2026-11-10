@@ -1,0 +1,501 @@
+{% extends "layouts/design.html" %}
+
+{% set pageName = "Priority view test plan" %}
+{% set activeNav = "docs" %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/">Home</a></li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Priority view test plan</li>
+  </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full app-prose">
+{% raw %}
+    <h1 class="govuk-heading-xl">Priority view test plan</h1>
+    <p class="govuk-body"><strong>Status:</strong> Draft for team review · <strong>Prototype:</strong> <a class="govuk-link" href="/public/design/priority-view/index.html">option A</a>
+    Supersedes the "risk slice on its own" test in <a class="govuk-link" href="/public/design/earlier-test-proposal.html">earlier test proposal</a>. Sources: <a class="govuk-link" href="/docs/design-brief">design brief</a>, <a class="govuk-link" href="/docs/prototype-spec">prototype spec</a> and the journeys and mapping board (5 Nov 2026).</p>
+    <h2 class="govuk-heading-l">Why this test, and why first</h2>
+    <p class="govuk-body">The team has decided not to test the risk slice on its own. Priority is the top level, so we start there. Users meet risk and impact as parts of the priority view, which is closer to how they would use it.</p>
+    <p class="govuk-body">This is a <strong>first look</strong>, not a verdict. It has two jobs:</p>
+    <ol class="govuk-list govuk-list--number">
+    <li><strong>Usability:</strong> can people read the priority view, trust it and say what they would do next?</li>
+    <li><strong>Discovery:</strong> use the view as a conversation starter to learn what people actually want to know about risk, so the risk slice is built from their needs, not our assumptions.</li>
+    </ol>
+    <p class="govuk-body">The second job is the main one. Spend roughly a third of each session on it.</p>
+    <h2 class="govuk-heading-l">What we are testing</h2>
+    <p class="govuk-body">The page shows five fictional priority 1 diseases. Each disease shows priority (band, rank, score), then threat (risk of incursion, impact) and preparedness (control measures, response options). A plain-language summary is at the top. Below are the band key, how the score works and where the information comes from. The source is deliberately not repeated at the top, so T6 tests whether people find it at the bottom.</p>
+    <p class="govuk-body"><strong>In scope:</strong> reading and comparing, the priority band and score, the four layers, the summary, sorting, source and trust.
+    <strong>Out of scope:</strong> the disease page, the layer pages and how users route to them (the concept test). Clicks on those links land on a "This page is not part of the test" page. <strong>Record every one of them as a first click.</strong> They show where people expect to go next, which feeds the routing decision.
+    <strong>Not being tested:</strong> whether the scoring model is right. SMEs may challenge the formula. Capture it, but don't debate it. See "Risks".</p>
+    <p class="govuk-body"><strong>What has changed:</strong> the priority view shows change in <strong>priority only</strong>. Changes in risk, impact and preparedness belong on their own pages (Risk, Impact, Preparedness), which are not designed yet. The priority view shows two things: a "What has changed" paragraph in the summary, and an outlined tag ("Score increased", "Score decreased") with "from 66" under the score for diseases that changed. Unchanged diseases show nothing. The summary also says no disease changed rank or band, and links to the three measure pages for what drove the change.</p>
+    <p class="govuk-body"><strong>Where the numbers come from:</strong> the previous scores are worked out from the formula, using the October risk changes in the spec and holding impact and preparedness the same. Himalayan Dragon Pox was (3 + 3) × 11 = 66 and is now 55. Wing wobble was (2 + 3) × 3 = 15 and is now 18. Ranks and bands are unchanged. These are illustrative, and the team should replace them if real previous scores exist.</p>
+    <p class="govuk-body"><strong>Impact areas:</strong> impact shows the four areas the team gave: Public health, Animal welfare, Wider economy and society, International trade. A disease can have more than one, so they show as a short list under the level. Which disease has which area is made up for the prototype, so that all four appear.</p>
+    <h2 class="govuk-heading-l">Design options</h2>
+    <p class="govuk-body">Three versions are designed as prototypes with the same data and wording. See <a class="govuk-link" href="/public/design/priority-view/options.html">priority view options</a>. An earlier matrix with diseases across the top was dropped: it isn't how people think about the problem and it pushed the summary down.
+    - <strong>A: ranked table</strong> (<a class="govuk-link" href="/public/design/priority-view/index.html">open option A</a>). Best for comparing one measure across diseases.
+    - <strong>B: grouped by action</strong> (<a class="govuk-link" href="/public/design/priority-view/option-b.html">open option B</a>). Best for "what do I do?", with a one-line reason for each disease.
+    - <strong>C: table or cards</strong> (<a class="govuk-link" href="/public/design/priority-view/option-c.html">open option C</a>). One page with a "View as" switch between A and B. The choice is kept in the address (<code>?view=cards</code>), sorting is kept when switching, and it starts on cards on small screens.</p>
+    <p class="govuk-body">The summary is at the top in all three. The table has one header row, a light tint on the sorted column, and links that don't change colour once visited. Test the group labels in the "What we watch for" section.</p>
+    <p class="govuk-body"><strong>How to run them (recommended): use C for everyone.</strong> It contains A and B, so all 6 participants see both. Start half on the table and half on cards. Watch whether they switch, when and why, then ask which they prefer. The cost is that C can't isolate A against B, because the first view colours what people do next. If the team needs a clean comparison, run A and B as separate pages, alternating across participants, and show the other for about 2 minutes at the end. Treat the preference answers as evidence, not a vote.
+    <strong>Extra things to watch:</strong> in C, which view do they land on, do they find the switch without help, and do they switch for a reason (comparing a measure, briefing someone)? If one view is rarely used, drop the other. In B, do people open a card or just read the band? In A, is sorting found, and does the tint help them see which column is sorted? Sorting only applies to the table.
+    <strong>Width:</strong> A uses a 1,200px container because six columns need about 1,000px. B uses the standard 960px. Test on a laptop first. A scrolls sideways below about 1,050px.</p>
+    <h2 class="govuk-heading-l">Research questions</h2>
+    <table class="govuk-table">
+    <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    <th class="govuk-table__header" scope="col">#</th>
+    <th class="govuk-table__header" scope="col">Question</th>
+    <th class="govuk-table__header" scope="col">Needs</th>
+    </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">RQ1</td>
+    <td class="govuk-table__cell">Can users say which disease is the top priority, and why?</td>
+    <td class="govuk-table__cell">UN5</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">RQ2</td>
+    <td class="govuk-table__cell">Do they understand priority as threat combined with preparedness, and that a high risk can still be low priority?</td>
+    <td class="govuk-table__cell">UN4, UN5</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">RQ3</td>
+    <td class="govuk-table__cell">Do they tell risk of incursion and impact apart, and the preparedness layers apart?</td>
+    <td class="govuk-table__cell">brief hypothesis 6</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">RQ4</td>
+    <td class="govuk-table__cell">Do they trust it, and do they know where the data came from?</td>
+    <td class="govuk-table__cell">UN1, UN13</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">RQ5</td>
+    <td class="govuk-table__cell">What do the band names, score and wording mean to them? "Act now", "Prioritise", "Maintain", "Control measures", "Response options"</td>
+    <td class="govuk-table__cell">wording</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">RQ6</td>
+    <td class="govuk-table__cell"><strong>What do they want to know about risk that this view doesn't tell them?</strong></td>
+    <td class="govuk-table__cell">discovery</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">RQ7</td>
+    <td class="govuk-table__cell">What would they do next, and where would they click?</td>
+    <td class="govuk-table__cell">routing</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">RQ8</td>
+    <td class="govuk-table__cell">Do they notice what has changed in priority, and do they know where to go to find out why?</td>
+    <td class="govuk-table__cell">UN2</td>
+    </tr>
+    </tbody>
+    </table>
+    <h2 class="govuk-heading-l">Participants</h2>
+    <ul class="govuk-list govuk-list--bullet">
+    <li><strong>5 to 6 SMEs and policy or operational leads.</strong> Five finds most usability problems. The sixth helps with the discovery themes.</li>
+    <li>Mix <strong>people who work by disease</strong> and <strong>people who work by layer</strong> (for example IDM, impact modelling, preparedness). Record role and what they usually look at. This tells us whether role predicts what they want.</li>
+    <li>Include at least one <strong>assistive technology user</strong> if recruitment allows, and one person who has <strong>not seen the framework</strong> before.</li>
+    <li>Open question from the brief: can everyone open the IDM report link? Check at recruitment.</li>
+    </ul>
+    <h2 class="govuk-heading-l">Session plan (50 minutes, 1:1, moderated)</h2>
+    <table class="govuk-table">
+    <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    <th class="govuk-table__header" scope="col">Min</th>
+    <th class="govuk-table__header" scope="col">Part</th>
+    <th class="govuk-table__header" scope="col">What happens</th>
+    </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">0–5</td>
+    <td class="govuk-table__cell">Introduction</td>
+    <td class="govuk-table__cell">Purpose, consent, recording. Say: "We're testing the page, not you. The data is illustrative and the diseases are fictional." Don't use "slice", "layer" or "framework"</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">5–12</td>
+    <td class="govuk-table__cell"><strong>How they work today</strong></td>
+    <td class="govuk-table__cell">"Tell me about the last time you had to decide which diseases to focus on." Which sources, what they rework by hand, who asks, what "risk" means to them</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">12–17</td>
+    <td class="govuk-table__cell"><strong>Unprompted first look</strong></td>
+    <td class="govuk-table__cell">Open the page. Think aloud, no task: "What is this? What is it telling you?" Stay quiet. Note what they read first and what they ignore</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">17–32</td>
+    <td class="govuk-table__cell"><strong>Tasks</strong></td>
+    <td class="govuk-table__cell">See the table below. Think aloud, no help</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">32–44</td>
+    <td class="govuk-table__cell"><strong>What do you want from this view?</strong></td>
+    <td class="govuk-table__cell">See "Discovery" below</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">44–50</td>
+    <td class="govuk-table__cell">Wrap up</td>
+    <td class="govuk-table__cell">Preference and trust, "one thing you'd change", thanks</td>
+    </tr>
+    </tbody>
+    </table>
+    <p class="govuk-body">Run the first look and tasks <strong>before</strong> the discovery questions, so the prompts don't colour what people see.</p>
+    <h2 class="govuk-heading-l">Tasks</h2>
+    <p class="govuk-body">Scenario: "You've been asked to brief your director on which exotic diseases the team should focus on this month."</p>
+    <table class="govuk-table">
+    <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    <th class="govuk-table__header" scope="col">#</th>
+    <th class="govuk-table__header" scope="col">Task</th>
+    <th class="govuk-table__header" scope="col">Success looks like</th>
+    <th class="govuk-table__header" scope="col">Maps to</th>
+    </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">T1</td>
+    <td class="govuk-table__cell">"Which disease should we act on first?"</td>
+    <td class="govuk-table__cell">Names Sprouting hoof disease unprompted, within a minute</td>
+    <td class="govuk-table__cell">RQ1</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">T2</td>
+    <td class="govuk-table__cell">"Why is it first, when it's unlikely to arrive?"</td>
+    <td class="govuk-table__cell">Mentions low preparedness and high impact</td>
+    <td class="govuk-table__cell">RQ2</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">T3</td>
+    <td class="govuk-table__cell">"Wing wobble is high risk. Why is it ranked last?"</td>
+    <td class="govuk-table__cell">Says we are well prepared. Doesn't say the data is wrong</td>
+    <td class="govuk-table__cell">RQ2</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">T4</td>
+    <td class="govuk-table__cell">"Which disease would do the most harm, and what would it affect?"</td>
+    <td class="govuk-table__cell">Reads impact, not risk. Finds "Animal welfare, International trade, Wider economy and society" for Sprouting hoof disease</td>
+    <td class="govuk-table__cell">RQ3</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">T5</td>
+    <td class="govuk-table__cell">"Where are we least prepared for entry?"</td>
+    <td class="govuk-table__cell">Uses control measures, or sorts that column</td>
+    <td class="govuk-table__cell">RQ3</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">T6</td>
+    <td class="govuk-table__cell">"Where does this information come from? Would you rely on it?"</td>
+    <td class="govuk-table__cell">Finds "Where this information comes from" at the bottom. Says what they'd check</td>
+    <td class="govuk-table__cell">RQ4</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">T7</td>
+    <td class="govuk-table__cell">"You've got two minutes with your director. What would you say?"</td>
+    <td class="govuk-table__cell">A short, correct summary. Reuses or ignores the summary panel</td>
+    <td class="govuk-table__cell">RQ1, UN10</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">T8</td>
+    <td class="govuk-table__cell">"What would you do next, and where would you look?"</td>
+    <td class="govuk-table__cell">Says an action. Records the first click</td>
+    <td class="govuk-table__cell">RQ7</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">T9</td>
+    <td class="govuk-table__cell">"You want everything we know about Himalayan Dragon Pox. How would you get it?"</td>
+    <td class="govuk-table__cell">Clicks the disease name (table, card or summary). Record which</td>
+    <td class="govuk-table__cell">RQ7</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">T10</td>
+    <td class="govuk-table__cell">"See how all the diseases compare on risk."</td>
+    <td class="govuk-table__cell">Uses the Risk link in the top navigation or in "Look in more detail". Record which, and what they expected to see</td>
+    <td class="govuk-table__cell">RQ7</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">T11</td>
+    <td class="govuk-table__cell">"Has anything changed since last month?"</td>
+    <td class="govuk-table__cell">Finds the "What has changed" paragraph or the "Score increased" and "Score decreased" tags. Names Himalayan Dragon Pox and Wing wobble</td>
+    <td class="govuk-table__cell">RQ8</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">T12</td>
+    <td class="govuk-table__cell">"Himalayan Dragon Pox's score has dropped from 66 to 55. Is that good news? Where would you look to find out why?"</td>
+    <td class="govuk-table__cell">Says the score is lower, so less urgent, but it is still Prioritise. Looks at Risk, Impact or Preparedness, or the disease page, to find the cause. Record which</td>
+    <td class="govuk-table__cell">RQ2, RQ8</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">T13</td>
+    <td class="govuk-table__cell">Start on a disease page: "Now see how every disease compares on impact." Then: "Go back to the ranking."</td>
+    <td class="govuk-table__cell">Finds "See all diseases on impact" or the Impact link, then "Priority" in the navigation. Record clicks, hesitation, and whether they use the browser back button instead</td>
+    <td class="govuk-table__cell">RQ7</td>
+    </tr>
+    </tbody>
+    </table>
+    <p class="govuk-body">Ask T9, T10 and T13 after T1 to T8, so the routes don't hint at the answers. The placeholder page shows the researcher exactly what was chosen. T13 needs the disease page, which is only an early idea, so it is a walkthrough on a mock-up until that page is designed.</p>
+    <h2 class="govuk-heading-l">Routes out of the priority view</h2>
+    <p class="govuk-body">Some users want more on one <strong>disease</strong>. Others want to compare <strong>one measure</strong> (risk, impact, preparedness) across all diseases. The page gives each group its own route, and keeps both separate from sorting.</p>
+    <table class="govuk-table">
+    <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    <th class="govuk-table__header" scope="col">Route</th>
+    <th class="govuk-table__header" scope="col">Where it is</th>
+    <th class="govuk-table__header" scope="col">Why</th>
+    </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Disease</td>
+    <td class="govuk-table__cell">Disease names in the table, the cards and the summary. A line under the table says "Select a disease name…"</td>
+    <td class="govuk-table__cell">Names are what people already look for. Three places means a first click is rarely a miss</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Measure</td>
+    <td class="govuk-table__cell">Service navigation under the header: <strong>Priority</strong>, Risk, Impact, Preparedness. Plus a "Look in more detail" line under the table with the same links in plain words</td>
+    <td class="govuk-table__cell">The navigation is always there and is how people come back. The line is next to the table, where the question comes up</td>
+    </tr>
+    </tbody>
+    </table>
+    <p class="govuk-body"><strong>Moving across levels:</strong> people can cross from a measure page to a disease (select the disease name) and from a disease to a measure ("See all diseases on risk", impact or preparedness). The "Priority" link in the navigation gets them back, and returning keeps their view and sort. The full flow, with a journeys table, is in <a class="govuk-link" href="/public/design/priority-view/options.html#option-c-flow">priority view options</a>. The Priority page is still in design. The disease and Risk pages are only early ideas (see the <a class="govuk-link" href="/public/design/risk-wireframes/index.html#compare">wireframes</a>), and Impact and Preparedness aren't explored yet, so T13 and the cross-over links need a mock-up or a walkthrough.</p>
+    <p class="govuk-body"><strong>Why not link the column headings?</strong> They already sort. Making one heading do both would hide one of the jobs. If the team prefers "table as the router" (concept 2 in the earlier proposal), sorting moves to a "Sort by" select above the table. That would also fix sorting on small screens, where it is hidden now. Test that as a variant, not as the default.</p>
+    <p class="govuk-body"><strong>Labels:</strong> the navigation says Risk, Impact and Preparedness, not "layer" or "slice". Watch what people call these and whether they understand that each one shows all diseases.</p>
+    <p class="govuk-body"><strong>Not yet designed:</strong> the disease page and the three measure pages. The disease and Risk pages have very early ideas in the <a class="govuk-link" href="/public/design/risk-wireframes/index.html#compare">wireframes</a> (1A to 1C for risk across diseases, 2A to 2C for one disease). Impact and Preparedness aren't explored. Links lead to a placeholder that says what was chosen. Preparedness data isn't ready, so that page may need an empty state later.</p>
+    <h2 class="govuk-heading-l">Comprehension probes</h2>
+    <p class="govuk-body">Ask after the tasks, one at a time, and note the words they use.
+    - "What does 'Act now' mean to you? Would you do something different for 'Prioritise'?"
+    - "What do the numbers out of 10 tell you? Is a high number good or bad?" (Preparedness is higher = better, but a high risk is worse. This is the main confusion risk.)
+    - "What is 75 out of 140?" Do they open "How the priority score is worked out"? Do they find it helpful or too much?
+    - "What is the difference between 'control measures' and 'response options'?"
+    - "Is anything missing that you'd need before you trusted the order?"</p>
+    <h2 class="govuk-heading-l">Discovery: understanding what people want from risk</h2>
+    <p class="govuk-body">Use these after the tasks. Probe with "why?" and "how would you use that?".</p>
+    <ol class="govuk-list govuk-list--number">
+    <li><strong>Open question.</strong> "If this page could answer one more question about risk, what would it be?"</li>
+    <li><strong>Decisions.</strong> "What decision would you make from this page? What do you need to decide it?"</li>
+    <li><strong>Risk, in their words.</strong> "When you say a disease is 'high risk', what do you mean? What would change your mind?"</li>
+    <li><strong>Information card sort.</strong> Give them cards (or a list to rank) of things we could show. Ask them to sort into <em>must have</em>, <em>nice to have</em> and <em>don't need</em>, and say why.
+       - Whether the risk has changed, and which direction
+       - Why it changed (reasons)
+       - Risk over time (history)
+       - When it was last assessed, and when it will be next
+       - Source and who owns it
+       - Where the disease is now (countries, routes of entry, season)
+       - Which species or sectors are affected
+       - Confidence in the assessment
+       - Short operational summary
+       - What other teams are doing
+       - Add your own</li>
+    <li><strong>Scale.</strong> "Low, Medium, High: is that enough? What would you want in between?" (The workshop used five levels. The framework uses three.)</li>
+    <li><strong>Over time.</strong> "Would you want to know what has changed since last month? How would you want to see it?"</li>
+    <li><strong>Other views.</strong> "Would you ever want to start from risk, or impact, across all diseases instead of from the ranking?" (Only ask if they raise it. Otherwise it leads them.)</li>
+    </ol>
+    <h2 class="govuk-heading-l">What we watch for</h2>
+    <ul class="govuk-list govuk-list--bullet">
+    <li><strong>Hesitation or errors</strong> on T2, T3 and the number-out-of-10 probe. These are the likely misreadings.</li>
+    <li><strong>Whether the colour carries the message.</strong> Do they use the band label, the colour, or both? Do they read the impact tag colour as priority?</li>
+    <li><strong>Where eyes and cursor go first</strong>, and whether they scan across a row or down a column.</li>
+    <li><strong>Words they use</strong> for the layers. These might replace "control measures" and "response options".</li>
+    <li><strong>Whether sorting is found</strong> and used. It is only discoverable from the underlined headings.</li>
+    <li><strong>Whether people miss the Threat and Preparedness group headings.</strong> The table has no group row. If people mix up the two groups, or ask which numbers are "good", bring a lighter version back.</li>
+    <li><strong>Questions they ask the moderator.</strong> Each one is a gap in the page.</li>
+    <li><strong>Disagreement with the ranking.</strong> Note who and why. It may be a data issue, a scoring issue or a legitimate need.</li>
+    </ul>
+    <h2 class="govuk-heading-l">Hypotheses</h2>
+    <p class="govuk-body">Adapted from the design brief.
+    | # | We think | We'd see |
+    |---|---|---|
+    | H1 | One ranked table answers "which disease first?" faster than the current way of working | T1 in under a minute without help |
+    | H2 | Band label plus rank plus score is clear without colour | Correct answers from users who don't mention colour |
+    | H3 | Risk and impact are read as separate things | T4 is answered from the impact column, not the risk column |
+    | H4 | The summary panel helps, and users reuse it | T7 uses the summary words |
+    | H5 | A source in the details at the bottom is enough for trust | T6 found without help, and users don't ask for more |
+    | H6 | The preparedness scale (high is good) causes confusion beside risk (high is bad) | Errors or hesitation on the probe |
+    | H7 | Users want more than a snapshot, especially change over time | The card sort puts change, reasons and history in "must have" |
+    | H10 | A text tag with "from 66" under the score shows a change in priority clearly, without arrows or colour alone | T11 answered quickly and correctly. Nobody asks what the tag means |
+    | H11 | A change in score can look more important than it is. The summary line "no disease changed rank or band" stops over-reaction | T12: people say it is still Prioritise, rather than asking for action |
+    | H8 | People find both routes without help: disease name for one disease, navigation for one measure | T9 and T10 first clicks are right, and users can say what the Risk page will show |
+    | H9 | Some users go to a measure first, others to a disease first, and this follows their role | The first click in T8 differs by role |</p>
+    <h2 class="govuk-heading-l">Success signals</h2>
+    <p class="govuk-body">Within a minute and unprompted, users can say: which disease is the top priority, why, which has the greatest impact, and where the information came from. They say what they'd do next. We also leave with a <strong>ranked list of what users want to know about risk</strong>, which becomes the brief for the risk slice.</p>
+    <h2 class="govuk-heading-l">How we'll decide</h2>
+    <table class="govuk-table">
+    <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    <th class="govuk-table__header" scope="col">If we see</th>
+    <th class="govuk-table__header" scope="col">Then</th>
+    </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Users read the table and the bands correctly</td>
+    <td class="govuk-table__cell">Keep the structure. Move on to the disease page and the risk slice</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Users misread the preparedness numbers</td>
+    <td class="govuk-table__cell">Test other wording or show "gap" instead of "score". Review the colour</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Users ask "what changed?" repeatedly, even with the tags</td>
+    <td class="govuk-table__cell">Move the reason for change onto the priority view, or add a "Latest changes" view (brief hypothesis 2)</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Users ask "why did it change?" and can't find out</td>
+    <td class="govuk-table__cell">The link from the summary to the measure pages isn't enough. Add the main reason next to the change, or open the disease page at the change</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Users miss the change tags but find the summary line</td>
+    <td class="govuk-table__cell">Keep the summary line and drop the tags, or make them stronger</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Users over-react to a change that doesn't move a band</td>
+    <td class="govuk-table__cell">Make the band effect clearer next to the change, and test the wording</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Users go to a layer first (risk, impact)</td>
+    <td class="govuk-table__cell">Feed into the routing concept test. Consider a more visible layer route</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Users don't understand "control measures" or "response options"</td>
+    <td class="govuk-table__cell">Test their own words. Keep the explanation under the heading</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Users reject the ranking itself</td>
+    <td class="govuk-table__cell">Separate the data from the model, and take it to the SMEs who own the scores</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">The card sort has clear "must haves"</td>
+    <td class="govuk-table__cell">Those become the first version of the risk slice</td>
+    </tr>
+    </tbody>
+    </table>
+    <h2 class="govuk-heading-l">Method and logistics</h2>
+    <ul class="govuk-list govuk-list--bullet">
+    <li><strong>Format:</strong> moderated 1:1, in person or remote. 50 minutes. Audio and screen recorded with consent.</li>
+    <li><strong>Prototype:</strong> this page, opened from a link or a laptop. Test on a laptop first. Small screens show a stacked list and sorting is hidden there, so test mobile only if the audience needs it.</li>
+    <li><strong>Roles:</strong> one moderator, one note-taker. Observers are quiet and use a shared notes template (task, first click, success, quotes, issues, wants).</li>
+    <li><strong>Analysis:</strong> after every 2 sessions, group notes into issues and "wants" on a wall. After all sessions, count how many users hit each issue and rate severity. Show the card sort as a ranked table.</li>
+    <li><strong>Timing:</strong> 5 working days. Day 1 prepare and pilot (1 person), days 2 to 4 sessions, day 5 analyse and play back.</li>
+    </ul>
+    <h2 class="govuk-heading-l">Risks</h2>
+    <ul class="govuk-list govuk-list--bullet">
+    <li><strong>Testing the model, not the page.</strong> SMEs may want to debate the formula, bands or scores. Park it in a "model questions" list for the model owners and bring it back to the team. Keep the session on the view.</li>
+    <li><strong>Illustrative data read as real.</strong> The page says so, and the moderator says it at the start. Disease names are fictional for the same reason.</li>
+    <li><strong>Preparedness data isn't ready.</strong> The page shows it as if it were. Tell participants this is a design concept, and don't claim the numbers exist.</li>
+    <li><strong>Leading the discovery.</strong> Don't show any further screens. Don't use "layer" or "slice". Only ask about other views if they raise them first.</li>
+    <li><strong>Colour and accessibility.</strong> Test with at least one user who has low vision or colour vision difference if possible. See below.</li>
+    </ul>
+    <h2 class="govuk-heading-l">Colour accessibility</h2>
+    <p class="govuk-body">The prototype uses the <a class="govuk-link" href="https://github.com/defra-design/defra-frontend">defra-frontend</a> green theme (placeholder values, not yet approved by a Defra design authority) over GOV.UK Frontend. Checked against WCAG 2.2 AA with computed contrast ratios, plus an automated pass over every text and background pairing on the page (35 combinations, none failing, lowest 4.86:1).</p>
+    <table class="govuk-table">
+    <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    <th class="govuk-table__header" scope="col">Use</th>
+    <th class="govuk-table__header" scope="col">Colours</th>
+    <th class="govuk-table__header" scope="col">Ratio</th>
+    <th class="govuk-table__header" scope="col">Decision</th>
+    </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Defra brand green as a fill with white text</td>
+    <td class="govuk-table__cell"><code>#00a33b</code> / white</td>
+    <td class="govuk-table__cell"><strong>3.33:1 (fails 4.5:1)</strong></td>
+    <td class="govuk-table__cell">Only passes for large bold text. Used for <strong>borders and accents only</strong>, never for text or tags</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Maintain band</td>
+    <td class="govuk-table__cell">white on <code>#00703c</code> (GOV.UK green)</td>
+    <td class="govuk-table__cell">6.21:1</td>
+    <td class="govuk-table__cell">Uses GOV.UK green, <strong>not</strong> Defra green</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Act now band</td>
+    <td class="govuk-table__cell">white on <code>#d4351c</code></td>
+    <td class="govuk-table__cell">4.86:1</td>
+    <td class="govuk-table__cell">Passes</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Prioritise band</td>
+    <td class="govuk-table__cell">black on <code>#f47738</code></td>
+    <td class="govuk-table__cell">7.04:1</td>
+    <td class="govuk-table__cell"><strong>Black text.</strong> White on this orange is 2.78:1 and fails</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Monitor band</td>
+    <td class="govuk-table__cell">black on <code>#ffdd00</code></td>
+    <td class="govuk-table__cell">14.55:1</td>
+    <td class="govuk-table__cell">Passes</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Very high impact</td>
+    <td class="govuk-table__cell">white on <code>#942514</code></td>
+    <td class="govuk-table__cell">8.29:1</td>
+    <td class="govuk-table__cell">Passes. Darker than "High" so the two read differently</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Risk and impact tags</td>
+    <td class="govuk-table__cell">GOV.UK light tags</td>
+    <td class="govuk-table__cell">6.2 to 12.5:1</td>
+    <td class="govuk-table__cell">Pass</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Defra link green</td>
+    <td class="govuk-table__cell"><code>#0f7a52</code> on white / page tint</td>
+    <td class="govuk-table__cell">5.35 / 5.04:1</td>
+    <td class="govuk-table__cell">Passes. Hover <code>#0a5c3d</code> is 7.57:1. Visited stays purple and focus stays GOV.UK yellow and black</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Secondary text</td>
+    <td class="govuk-table__cell"><code>#505a5f</code> on white / tint</td>
+    <td class="govuk-table__cell">7.07 / 6.66:1</td>
+    <td class="govuk-table__cell">Passes</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Priority change tags</td>
+    <td class="govuk-table__cell"><code>#942514</code> / <code>#005a30</code> text and border on white</td>
+    <td class="govuk-table__cell">8.29 / 8.38:1</td>
+    <td class="govuk-table__cell">"Score increased" and "Score decreased". Outlined, so they differ from the filled level tags. The words carry the meaning, not the colour, and there are no arrows</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Sorted column tint</td>
+    <td class="govuk-table__cell"><code>#f3f2f1</code> behind text</td>
+    <td class="govuk-table__cell">Link 4.78:1, secondary text 6.33:1, outline of the bars 4.08:1</td>
+    <td class="govuk-table__cell">Passes. It is a hint only: the arrow and the screen reader state (<code>aria-sort</code>) say the same thing</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Preparedness bars</td>
+    <td class="govuk-table__cell"><code>#0f7a52</code> fill, <code>#6f777b</code> outline</td>
+    <td class="govuk-table__cell">5.35 / 4.56:1</td>
+    <td class="govuk-table__cell"><strong>One colour, not red to green.</strong> The old red, amber and green fills failed non-text contrast (yellow was 1.35:1) and relied on colour. The number is always printed</td>
+    </tr>
+    </tbody>
+    </table>
+    <p class="govuk-body"><strong>Design decisions that follow:</strong>
+    - <strong>Colour is never the only cue.</strong> Every band, risk level and impact level has a text label. Rank and score are printed.
+    - <strong>Preparedness is not traffic-lit.</strong> A high number is good here and a high risk is bad, so red-to-green would send mixed signals and fails for red-green colour blindness. Bar length plus the number carries it. This is a design choice we should check in the test (H6).
+    - <strong>Defra green is not used for text or header fills.</strong> A green header with white text would be 3.33:1. The header is black with a green stripe.
+    - <strong>The page background is white.</strong> An earlier version used a pale green taken from the Defra theme's <code>template-background</code> setting (green tint-95). I had approximated the hex myself, and it isn't a brand-approved value. Panels use GOV.UK grey <code>#f3f2f1</code>. It is one variable if the team wants the tint back.
+    - <strong>Colour pairs that need care for colour blindness:</strong> red and orange bands. They differ in lightness (white text on dark red, black text on light orange) and always carry a label.
+    - <strong>Not yet checked:</strong> a real screen reader pass, 200% zoom and text-spacing checks, and forced-colours mode. The score bars are marked decorative (<code>aria-hidden</code>) and the table uses <code>scope</code>, <code>colgroup</code> and <code>aria-sort</code>. Do an accessibility review before testing with users.
+    - If the Defra palette changes after the brand audit, re-run the ratios above.</p>
+    <h2 class="govuk-heading-l">Open decisions for the team</h2>
+    <ol class="govuk-list govuk-list--number">
+    <li><strong>Brand mode.</strong> The prototype uses Defra mode (system font, green links, text header) rather than GOV.UK mode (GDS Transport, crown header). The brief says GOV.UK only and the page title pattern ends "– GOV.UK". Which do we want in front of users?</li>
+    <li><strong>Who writes the summary</strong>, and how often? The prototype shows it as written copy.</li>
+    <li><strong>"Preparedness" or "vulnerability".</strong> The board says "vulnerability (preparedness)". The prototype says "Preparedness". Do we test both?</li>
+    <li><strong>Change is shown for priority only</strong>, as a summary line and as tags under the score (changed diseases only). Do we also show "No change" on every row? Showing only changes keeps the table calmer. The risk is that people can't tell "no change" from "not assessed". Risk, impact and preparedness changes, with reasons, belong on their own pages. Those pages aren't designed yet, so T12 will show where people expect to find the cause.</li>
+    <li><strong>Real or fictional disease names.</strong> The prototype uses fictional names, as the brief decided. SMEs may find it harder to judge plausibility.</li>
+    <li><strong>Which participants</strong>, and how do we recruit people who work by disease and by layer?</li>
+    <li><strong>How do people reach a measure view?</strong> The page offers the top navigation plus a line under the table. If T10 shows people miss both, test column headings as links, with sorting moved to a select.</li>
+    <li><strong>Does Preparedness get one page or two?</strong> The framework has control measures and response options. The navigation shows one "Preparedness" link.</li>
+    </ol>
+{% endraw %}
+  </div>
+</div>
+{% endblock %}

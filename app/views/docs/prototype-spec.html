@@ -1,0 +1,465 @@
+{% extends "layouts/design.html" %}
+
+{% set pageName = "Prototype spec: risk and impact, screen by screen" %}
+{% set activeNav = "docs" %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/">Home</a></li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Prototype spec</li>
+  </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full app-prose">
+{% raw %}
+    <h1 class="govuk-heading-xl">Prototype spec: risk and impact, screen by screen</h1><div class="govuk-inset-text app-status-note"><p class="govuk-body">This is an earlier document. It was written for a test of risk and impact on their own, which the team has replaced with a test of the priority view (see the <a class="govuk-link" href="/docs/priority-view-test-plan">priority view test plan</a>). Where it describes impact, it uses earlier labels. The agreed impact areas are Public health, Animal welfare, Wider economy and society, and International trade.</p></div>
+    <p class="govuk-body">Companion to <a class="govuk-link" href="/docs/design-brief">design brief</a> and <a class="govuk-link" href="/public/design/risk-wireframes/index.html">risk and impact wireframes</a>. Sources: Concept collaboration workshop and the journeys and mapping board (5 Nov 2026).
+    All data is <strong>illustrative</strong>. Diseases are fictional so real names don't distract users.</p>
+    <p class="govuk-body">The <strong>test round</strong> covers risk and impact only. Options marked <strong>design team only</strong> (1D, 2C) show how the design grows to the priority score and all four layers. They are not part of the test.</p>
+    <h2 class="govuk-heading-l">1. Global elements (every screen)</h2>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>GOV.UK header with service name "Disease threat intelligence".</li>
+    <li>Alpha phase banner with a feedback link.</li>
+    <li>Standard GOV.UK footer.</li>
+    <li>Page title pattern: <code>[Page] – Disease threat intelligence – GOV.UK</code>.</li>
+    <li>Sentence-case headings and disease names.</li>
+    <li>Breadcrumbs, not a back link: <code>Home &gt; Diseases</code>.</li>
+    <li>GOV.UK Frontend components wherever one exists.</li>
+    </ul>
+    <h2 class="govuk-heading-l">2. Scoring framework (from the journeys and mapping board)</h2>
+    <table class="govuk-table">
+    <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    <th class="govuk-table__header" scope="col">Layer</th>
+    <th class="govuk-table__header" scope="col">Group</th>
+    <th class="govuk-table__header" scope="col">Scale</th>
+    <th class="govuk-table__header" scope="col">Source</th>
+    </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">1 Risk of incursion</td>
+    <td class="govuk-table__cell">Threat</td>
+    <td class="govuk-table__cell">Low 1, Medium 2, High 3</td>
+    <td class="govuk-table__cell">IDM monthly report, Risk ID report</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">2 Impact</td>
+    <td class="govuk-table__cell">Threat</td>
+    <td class="govuk-table__cell">High 3, Very high 4, plus what is affected (animal health, economy)</td>
+    <td class="govuk-table__cell">D2R2 data, disease modelling, impact scoring</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">3 Control measures</td>
+    <td class="govuk-table__cell">Vulnerability (preparedness)</td>
+    <td class="govuk-table__cell">0 to 10, 10 = excellent. How well we can prevent entry</td>
+    <td class="govuk-table__cell">Preparedness indices</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">4 Response options</td>
+    <td class="govuk-table__cell">Vulnerability (preparedness)</td>
+    <td class="govuk-table__cell">0 to 10, 10 = excellent. How well we can respond</td>
+    <td class="govuk-table__cell">Preparedness indices</td>
+    </tr>
+    </tbody>
+    </table>
+    <p class="govuk-body"><strong>Priority = (Risk + Impact) × (20 − Control − Response)</strong>, out of 140, ranked 1 to 5.
+    Bands: <strong>Act now</strong> 70+ · <strong>Prioritise</strong> 45–69 · <strong>Monitor</strong> 20–44 · <strong>Maintain</strong> under 20.</p>
+    <p class="govuk-body">Because preparedness is multiplied, a well-prepared disease scores low even when its threat is high. A poorly prepared one stays near the top even when unlikely to enter.</p>
+    <h2 class="govuk-heading-l">3. Dummy data</h2>
+    <p class="govuk-body">Risk report: <strong>IDM monthly assessment report, October 2026</strong>.</p>
+    <table class="govuk-table">
+    <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    <th class="govuk-table__header" scope="col">Disease</th>
+    <th class="govuk-table__header" scope="col">Risk</th>
+    <th class="govuk-table__header" scope="col">Previous risk</th>
+    <th class="govuk-table__header" scope="col">Change</th>
+    <th class="govuk-table__header" scope="col">Impact</th>
+    <th class="govuk-table__header" scope="col">What is affected</th>
+    <th class="govuk-table__header" scope="col">Last assessed</th>
+    <th class="govuk-table__header" scope="col">Reason for change</th>
+    </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Wing wobble</td>
+    <td class="govuk-table__cell">High</td>
+    <td class="govuk-table__cell">Medium</td>
+    <td class="govuk-table__cell">Risk increased</td>
+    <td class="govuk-table__cell">High</td>
+    <td class="govuk-table__cell">Economy</td>
+    <td class="govuk-table__cell">31 Oct 2026</td>
+    <td class="govuk-table__cell">Outbreaks in neighbouring countries; migration season begins</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Fuzzy fox flu</td>
+    <td class="govuk-table__cell">High</td>
+    <td class="govuk-table__cell">High</td>
+    <td class="govuk-table__cell">No change</td>
+    <td class="govuk-table__cell">High</td>
+    <td class="govuk-table__cell">Economy</td>
+    <td class="govuk-table__cell">31 Aug 2026</td>
+    <td class="govuk-table__cell">No new reports</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Himalayan Dragon Pox</td>
+    <td class="govuk-table__cell">Medium</td>
+    <td class="govuk-table__cell">High</td>
+    <td class="govuk-table__cell">Risk decreased</td>
+    <td class="govuk-table__cell">High</td>
+    <td class="govuk-table__cell">Animal health</td>
+    <td class="govuk-table__cell">31 Oct 2026</td>
+    <td class="govuk-table__cell">Outbreak contained at source; trade restrictions in place</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Rainbow tail disease</td>
+    <td class="govuk-table__cell">Medium</td>
+    <td class="govuk-table__cell">Medium</td>
+    <td class="govuk-table__cell">No change</td>
+    <td class="govuk-table__cell">High</td>
+    <td class="govuk-table__cell">Animal health</td>
+    <td class="govuk-table__cell">30 Sep 2026</td>
+    <td class="govuk-table__cell">No new reports</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Sprouting hoof disease</td>
+    <td class="govuk-table__cell">Low</td>
+    <td class="govuk-table__cell">Low</td>
+    <td class="govuk-table__cell">No change</td>
+    <td class="govuk-table__cell">Very high</td>
+    <td class="govuk-table__cell">Animal health and economy</td>
+    <td class="govuk-table__cell">30 Sep 2026</td>
+    <td class="govuk-table__cell">No new reports</td>
+    </tr>
+    </tbody>
+    </table>
+    <p class="govuk-body"><strong>Design team only (priority):</strong></p>
+    <table class="govuk-table">
+    <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    <th class="govuk-table__header" scope="col">Disease</th>
+    <th class="govuk-table__header" scope="col">Control</th>
+    <th class="govuk-table__header" scope="col">Response</th>
+    <th class="govuk-table__header" scope="col">Priority</th>
+    <th class="govuk-table__header" scope="col">Band</th>
+    <th class="govuk-table__header" scope="col">Rank</th>
+    </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Sprouting hoof disease</td>
+    <td class="govuk-table__cell">3/10</td>
+    <td class="govuk-table__cell">2/10</td>
+    <td class="govuk-table__cell">75</td>
+    <td class="govuk-table__cell">Act now</td>
+    <td class="govuk-table__cell">1</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Himalayan Dragon Pox</td>
+    <td class="govuk-table__cell">5/10</td>
+    <td class="govuk-table__cell">4/10</td>
+    <td class="govuk-table__cell">55</td>
+    <td class="govuk-table__cell">Prioritise</td>
+    <td class="govuk-table__cell">2</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Rainbow tail disease</td>
+    <td class="govuk-table__cell">4/10</td>
+    <td class="govuk-table__cell">6/10</td>
+    <td class="govuk-table__cell">50</td>
+    <td class="govuk-table__cell">Prioritise</td>
+    <td class="govuk-table__cell">3</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Fuzzy fox flu</td>
+    <td class="govuk-table__cell">6/10</td>
+    <td class="govuk-table__cell">7/10</td>
+    <td class="govuk-table__cell">42</td>
+    <td class="govuk-table__cell">Monitor</td>
+    <td class="govuk-table__cell">4</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Wing wobble</td>
+    <td class="govuk-table__cell">8/10</td>
+    <td class="govuk-table__cell">9/10</td>
+    <td class="govuk-table__cell">18</td>
+    <td class="govuk-table__cell">Maintain</td>
+    <td class="govuk-table__cell">5</td>
+    </tr>
+    </tbody>
+    </table>
+    <p class="govuk-body">Check: Sprouting hoof disease = (1 + 4) × (20 − 3 − 2) = 75.</p>
+    <p class="govuk-body">Risk levels shown in the test: <strong>High · Medium · Low · Very low · Negligible</strong> (APHA standard). Only High, Medium and Low appear in the data. How these map to the framework's three levels is an open question.</p>
+    <p class="govuk-body">Default sort: highest risk first. Ties: most recent change first. Impact uses the framework's High and Very high.</p>
+    <p class="govuk-body"><strong>Wing wobble</strong> is the example on screen 2 and has 12 months of risk history (Nov 2025 → Oct 2026): Low, Low, Low, Medium, Medium, Low, Low, Low, Medium, Medium, Medium, High. Reasons for change are fictional but read like real ones. No bracketed placeholders appear in the test prototype. Reasons: Feb 2026 "Cases reported in a country with direct trade links"; Apr 2026 "Outbreak declared over in the affected country"; Jul 2026 "New cases reported in two further countries"; Oct 2026 "Outbreaks reported in neighbouring countries". Impact statement: "High. An outbreak would mainly affect the economy through trade restrictions."</p>
+    <p class="govuk-body">Impact has no change history in the data we have, so the test shows it as a level and a statement only.</p>
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+    <h2 class="govuk-heading-l">4. Screen 1: Disease overview</h2>
+    <p class="govuk-body"><strong>URL:</strong> <code>/diseases</code>
+    <strong>Purpose:</strong> Show which diseases are highest risk, what changed, how big the impact would be, and where the data came from.
+    <strong>Needs:</strong> UN1, UN2, UN5, UN10, UN13.</p>
+    <h3 class="govuk-heading-m">Layout (top to bottom)</h3>
+    <ol class="govuk-list govuk-list--number">
+    <li>Breadcrumbs.</li>
+    <li>H1 "Diseases".</li>
+    <li>Source sentence: "Risk is from the IDM monthly assessment report, October 2026. Impact is from APHA impact scoring." The report name is a link.</li>
+    <li>Controls: view toggle (Cards | List) and a <strong>Sort by</strong> select (Highest risk · Lowest risk · Most recent change).</li>
+    <li>Disease cards or table.</li>
+    <li>Details: "What the levels mean" (risk and impact definitions).</li>
+    </ol>
+    <h3 class="govuk-heading-m">Disease card (option 1A)</h3>
+    <table class="govuk-table">
+    <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    <th class="govuk-table__header" scope="col">Element</th>
+    <th class="govuk-table__header" scope="col">Content / component</th>
+    </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Card title</td>
+    <td class="govuk-table__cell">Disease name, linked to screen 2 (visually hidden text keeps link text unique)</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Risk</td>
+    <td class="govuk-table__cell">Risk meter (5 bars) plus the word, e.g. "High"</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Change</td>
+    <td class="govuk-table__cell">GOV.UK Tag: "Risk increased", "Risk decreased", "No change", with "from Medium" in plain text. Text only, no arrows</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Impact</td>
+    <td class="govuk-table__cell">Level plus what is affected, e.g. "High (economy)"</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Last assessed</td>
+    <td class="govuk-table__cell">Date</td>
+    </tr>
+    </tbody>
+    </table>
+    <p class="govuk-body">Rules:
+    - Cards stay equal height and width.
+    - Colour is never the only signal: tag wording stays.
+    - Reading order: title → risk → change → impact → date.
+    - One column on mobile. Two columns on desktop.</p>
+    <h3 class="govuk-heading-m">Latest changes (option 1B)</h3>
+    <p class="govuk-body">Two tabs: "All diseases (5)" and "Latest changes (2)". The sentence under the heading says how many risk levels changed. The latest changes tab lists increased and decreased diseases. Tab 2 ends with "3 diseases had no change in risk. View all diseases."</p>
+    <h3 class="govuk-heading-m">List view (option 1C)</h3>
+    <p class="govuk-body">GOV.UK table. Columns: Disease · Risk · Change · Impact · Last assessed. Disease name is a link. Includes a checkbox "Hide diseases with no change in risk", default off.</p>
+    <h3 class="govuk-heading-m">Interactions and states</h3>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>Sort keeps the chosen view. Announce changes in an <code>aria-live="polite"</code> region ("Sorted by highest risk").</li>
+    <li>No JavaScript: the sort select uses a submit button.</li>
+    <li>Empty state: "No diseases match."</li>
+    </ul>
+    <h3 class="govuk-heading-m">Variants to test</h3>
+    <table class="govuk-table">
+    <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    <th class="govuk-table__header" scope="col">Variant</th>
+    <th class="govuk-table__header" scope="col">A</th>
+    <th class="govuk-table__header" scope="col">B</th>
+    </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Latest changes</td>
+    <td class="govuk-table__cell">None, sort only (1A)</td>
+    <td class="govuk-table__cell">Tabs (1B)</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Layout</td>
+    <td class="govuk-table__cell">Cards (1A)</td>
+    <td class="govuk-table__cell">List with filter (1C)</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Change wording</td>
+    <td class="govuk-table__cell">"Risk increased"</td>
+    <td class="govuk-table__cell">"Up 1 level"</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Source</td>
+    <td class="govuk-table__cell">Stated once</td>
+    <td class="govuk-table__cell">Link on every card</td>
+    </tr>
+    </tbody>
+    </table>
+    <h3 class="govuk-heading-m">Open questions</h3>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>Does hiding "no change" diseases risk hiding a high one? Default the filter to off.</li>
+    <li>Is "what is affected" worth a line on the card?</li>
+    <li>Does a change in impact belong in "Latest changes"?</li>
+    <li>Check the layout with more than five diseases.</li>
+    </ul>
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+    <h2 class="govuk-heading-l">5. Screen 2: Disease detail</h2>
+    <p class="govuk-body"><strong>URL:</strong> <code>/diseases/wing-wobble</code>
+    <strong>Purpose:</strong> Explain why the risk is at this level, what changed, how big the impact is, and what to do.
+    <strong>Needs:</strong> UN2, UN4, UN10, UN14.</p>
+    <h3 class="govuk-heading-m">Layout, option 2A (chart and change history)</h3>
+    <ol class="govuk-list govuk-list--number">
+    <li>Breadcrumbs: <code>Home &gt; Diseases &gt; Wing wobble</code>.</li>
+    <li>H1 "Wing wobble".</li>
+    <li>Summary list: Risk (meter, word, change tag, "from Medium") · Impact (level and what is affected) · Last assessed · Source (link to the October 2026 report).</li>
+    <li><strong>What this means</strong>: the "so what", 1–2 sentences.</li>
+    <li><strong>Risk over time</strong>: line chart, one dot per monthly report. Buttons: 6 months · 12 months · All. "Show as table" in a Details component.</li>
+    <li><strong>Change history</strong>: GOV.UK table with Month · Risk and change · Reason for change. Checkbox "Show months with no change" (default off).</li>
+    <li><strong>Impact</strong>: level and a short statement.</li>
+    </ol>
+    <h3 class="govuk-heading-m">Layout, option 2B (summary first, table only)</h3>
+    <ol class="govuk-list govuk-list--number">
+    <li>Breadcrumbs and H1.</li>
+    <li>Two boxes side by side: Risk (level, change, date, source) and Impact (level, what is affected, date).</li>
+    <li><strong>What this means</strong>.</li>
+    <li><strong>Why the risk changed</strong>.</li>
+    <li><strong>Risk history, last 12 months</strong>: table of every month, with changes highlighted. No chart.</li>
+    </ol>
+    <h3 class="govuk-heading-m">Chart requirements (2A)</h3>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>Y axis: the levels in order, labelled with words, not just colours.</li>
+    <li>Single line. Don't compare diseases in this round.</li>
+    <li>Text summary above the chart: "Risk rose from Medium to High in October 2026."</li>
+    <li>Keyboard-operable points. A table alternative is always available.</li>
+    <li>Colours pass 3:1 contrast for graphics.</li>
+    </ul>
+    <h3 class="govuk-heading-m">Interactions and states</h3>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>Time buttons update the chart and the table caption.</li>
+    <li>The checkbox filters the history rows. No JavaScript: all rows are shown.</li>
+    <li>Print: chart and table both shown.</li>
+    </ul>
+    <h3 class="govuk-heading-m">Variants to test</h3>
+    <table class="govuk-table">
+    <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    <th class="govuk-table__header" scope="col">Variant</th>
+    <th class="govuk-table__header" scope="col">A</th>
+    <th class="govuk-table__header" scope="col">B</th>
+    </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Layout</td>
+    <td class="govuk-table__cell">Chart and history (2A)</td>
+    <td class="govuk-table__cell">Summary first, table only (2B)</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">History</td>
+    <td class="govuk-table__cell">Changes only</td>
+    <td class="govuk-table__cell">Every month, with change highlighted</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">"What this means"</td>
+    <td class="govuk-table__cell">Short paragraph</td>
+    <td class="govuk-table__cell">Bullets</td>
+    </tr>
+    </tbody>
+    </table>
+    <h3 class="govuk-heading-m">Open questions</h3>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>Is a statement enough for impact, given it has no history?</li>
+    <li>Is the risk source always IDM? If WOAH is also used: add a Sources column and a filter.</li>
+    <li>How to show multiple strains and an outbreak already in the UK.</li>
+    <li>Real data is needed for "What this means" and the reasons.</li>
+    </ul>
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+    <h2 class="govuk-heading-l">6. Design team only: growing to priority and all four layers</h2>
+    <p class="govuk-body">Wireframes: <strong>1D Ranked by priority</strong> and <strong>2C Priority and four layers</strong>. Not part of the test.</p>
+    <h3 class="govuk-heading-m">1D Overview</h3>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>H1 "Diseases by priority". Priority is the default sort.</li>
+    <li>Each row: rank, disease name (link), priority band (tag-style, text and colour) and score "75 / 140".</li>
+    <li>One plain-language sentence per disease explains the "so what" (e.g. "Unlikely to enter the UK, but the greatest impact and we are least prepared.").</li>
+    <li>One line under it: the four layers, e.g. "Risk Low · Impact Very high · Control 3/10 · Response 2/10".</li>
+    <li>"How the score works" link to the formula and bands.</li>
+    <li>Cards and list (1A to 1C) could sit behind a "View" switch as the layers view.</li>
+    </ul>
+    <h3 class="govuk-heading-m">2C Detail</h3>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>Priority headline: band, score, rank, then the plain sentence.</li>
+    <li>"How the score is made": two groups, <strong>Threat</strong> (risk, impact) and <strong>Vulnerability (preparedness)</strong> (control measures, response options). Each layer links to its own history or detail, which reuses the 2A or 2B pattern.</li>
+    <li>Details: "How the score works" with the worked formula.</li>
+    </ul>
+    <h3 class="govuk-heading-m">Decisions to make before building beyond risk</h3>
+    <ul class="govuk-list govuk-list--bullet">
+    <li><strong>Scales:</strong> the workshop used five risk levels, the framework three. Agree one.</li>
+    <li><strong>Colour:</strong> priority bands carry colour. Change tags stay neutral, because an increase is bad for risk and impact but good for preparedness.</li>
+    <li><strong>Preparedness display:</strong> it is scored so higher is better, but vulnerability is 20 minus it. Show the gap or the score, as a number, a bar or both.</li>
+    <li><strong>Per layer:</strong> its own scale definition, source, last-assessed date, reason for change and "what this means". Don't assume monthly IDM reporting.</li>
+    <li><strong>Priority history:</strong> does the score have its own history over time?</li>
+    <li><strong>Ownership:</strong> who writes the plain sentence, and how often.</li>
+    <li><strong>Naming:</strong> keep "Diseases" as the page name so it doesn't need renaming later.</li>
+    <li><strong>Not confirmed:</strong> impact and preparedness scales and data. All values here are invented.</li>
+    </ul>
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
+    <h2 class="govuk-heading-l">7. Test plan summary (5 working days)</h2>
+    <table class="govuk-table">
+    <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    <th class="govuk-table__header" scope="col">Task</th>
+    <th class="govuk-table__header" scope="col">Screen</th>
+    <th class="govuk-table__header" scope="col">Measure</th>
+    </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">"Which disease is highest risk right now?"</td>
+    <td class="govuk-table__cell">1</td>
+    <td class="govuk-table__cell">Time, correct answer</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">"What has changed since last month?"</td>
+    <td class="govuk-table__cell">1</td>
+    <td class="govuk-table__cell">Finds changes, tab usage</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">"Which disease would be worst if it arrived?"</td>
+    <td class="govuk-table__cell">1</td>
+    <td class="govuk-table__cell">Finds impact, separates it from risk</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">"Which disease would you worry about least, and why?"</td>
+    <td class="govuk-table__cell">1</td>
+    <td class="govuk-table__cell">Does a low risk with a very high impact surprise them?</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">"Where does this information come from? Do you trust it?"</td>
+    <td class="govuk-table__cell">1 / 2</td>
+    <td class="govuk-table__cell">Finds source, trust comments</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">"Why did the risk for Wing wobble go up?"</td>
+    <td class="govuk-table__cell">2</td>
+    <td class="govuk-table__cell">Finds reason</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">"How has it changed over the year?"</td>
+    <td class="govuk-table__cell">2</td>
+    <td class="govuk-table__cell">Uses chart or table</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">"What would you do next?"</td>
+    <td class="govuk-table__cell">2</td>
+    <td class="govuk-table__cell">Understands the "so what"</td>
+    </tr>
+    </tbody>
+    </table>
+    <h2 class="govuk-heading-l">8. Accessibility checklist</h2>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>Colour is never the only signal (tag text, risk word).</li>
+    <li>Risk meter has a text alternative ("High, 5 of 5" etc.; final scale to be confirmed).</li>
+    <li>Link text is unique or has a visually hidden suffix.</li>
+    <li>Chart has a table alternative.</li>
+    <li>Works at 320px wide and at 200% zoom.</li>
+    <li>Works with keyboard only and with a screen reader (test VoiceOver).</li>
+    </ul>
+{% endraw %}
+  </div>
+</div>
+{% endblock %}

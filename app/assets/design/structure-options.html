@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Disease-first or layer-first? – Structure options</title>
+<style>
+  :root { --ink:#0b0c0c; --mid:#505a5f; --line:#b1b4b6; --fill:#f3f2f1; --blue:#1d70b8; --tint:#d2e2f1; --green:#00703c; }
+  * { box-sizing: border-box; }
+  body { font-family: Arial, Helvetica, sans-serif; color: var(--ink); margin: 0; line-height: 1.45; font-size: 16px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 32px 24px 96px; }
+  h1 { font-size: 36px; margin: 0 0 12px; }
+  h2 { font-size: 26px; margin: 72px 0 8px; border-top: 4px solid var(--ink); padding-top: 16px; }
+  h3 { font-size: 20px; margin: 0 0 6px; }
+  p { margin: 0 0 14px; }
+  .lede { color: var(--mid); max-width: 740px; font-size: 18px; }
+  .small { font-size: 14px; color: var(--mid); }
+  nav a { margin-right: 20px; color: var(--blue); }
+  .badge { display:inline-block; font-size: 12px; font-weight: bold; padding: 2px 8px; background: var(--ink); color:#fff; vertical-align: middle; margin-left: 8px; }
+  .badge.out { background:#fff; color: var(--ink); border: 2px solid var(--ink); }
+
+  /* The question: boxes */
+  .q { background: var(--fill); padding: 32px 24px 28px; margin-top: 20px; }
+  .q-top { display:flex; justify-content:center; }
+  .box { background:#fff; border: 2px solid var(--ink); padding: 12px 16px; text-align:center; font-weight:bold; min-width: 210px; }
+  .box small { display:block; font-weight: normal; font-size: 13px; color: var(--mid); margin-top: 2px; }
+  .box.a { border-color: #1d70b8; } .box.b { border-color: #912b19; } .box.c { border-color: var(--green); }
+  .q-split { display:grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 0; position: relative; }
+  .q-arrows { height: 70px; position: relative; }
+  .q-arrows svg { position:absolute; inset:0; width:100%; height:100%; }
+  .q-col { display:flex; flex-direction:column; align-items:center; gap: 0; }
+  .q-col .lab { font-weight: bold; margin: 0 0 8px; text-align:center; }
+  .q-col .lab span { display:block; font-weight: normal; font-size: 14px; color: var(--mid); }
+  .q-col .arrow-down { width: 3px; height: 22px; background: var(--mid); position: relative; margin: 6px 0 14px; }
+  .q-col .arrow-down::after { content:""; position:absolute; left:-6px; bottom:-8px; border: 7.5px solid transparent; border-top: 10px solid var(--mid); border-bottom: 0; }
+  .q-end { display:flex; justify-content:center; margin-top: 10px; }
+  .q-note { text-align:center; margin: 14px 0 0; font-weight: bold; }
+
+  /* Grid diagram */
+  .grids { display:grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 24px; }
+  .grids h3 { font-size: 17px; }
+  table.g { border-collapse: collapse; width: 100%; font-size: 13px; background:#fff; }
+  table.g th, table.g td { border: 1px solid var(--line); padding: 6px 6px; text-align:center; }
+  table.g th { background: var(--fill); font-size: 12px; }
+  table.g td:first-child, table.g th:first-child { text-align:left; }
+  table.g .row-hl td { background: var(--tint); font-weight: bold; }
+  table.g td.col-hl, table.g th.col-hl { background: var(--tint); font-weight: bold; }
+  table.g .row-hl td.col-hl { background: #8fb3e0; }
+  .grids .cap { font-size: 14px; color: var(--mid); margin: 8px 0 0; }
+
+  /* User flow style */
+  .uf-journey { background: var(--fill); padding: 20px 20px 18px; margin-bottom: 28px; }
+  .uf-journey > h3 { margin-bottom: 4px; }
+  .uf-journey > p { max-width: 760px; }
+  .uf-steps { list-style: none; margin: 18px 0 0; padding: 0; display: flex; gap: 0 48px; align-items: flex-start; }
+  .uf-step { position: relative; display:flex; flex-direction:column; align-items:center; width: 170px; text-align:center; flex: none; }
+  .uf-step:not(:last-child)::after { content:""; position:absolute; right:-40px; top: 150px; width: 30px; height: 3px; background: var(--mid); }
+  .uf-step:not(:last-child)::before { content:""; position:absolute; right:-41px; top: 144px; border: 7.5px solid transparent; border-left: 10px solid var(--mid); border-right: 0; }
+  .uf-step--choice { width: auto; }
+  .uf-choice { list-style:none; margin:0; padding:0; display:flex; gap: 20px; outline: 2px dashed var(--line); outline-offset: 6px; }
+  .uf-choice > li { width: 170px; display:flex; flex-direction:column; align-items:center; text-align:center; }
+  .uf-number { font-size: 14px; color: var(--mid); margin-bottom: 4px; }
+  .uf-pill { display:flex; align-items:center; justify-content:center; background:#fff; border-radius: 999px; padding: 6px 14px; font-weight: bold; font-size: 15px; line-height: 1.25; min-height: 52px; margin-bottom: 14px; width: 100%; }
+  .uf-note { font-size: 14px; color: var(--mid); margin: 10px 0 0; }
+  .uf-end { background:#fff; border-left: 4px solid var(--green); padding: 8px 12px; margin-top: 18px; font-size: 14px; max-width: 760px; }
+
+  .desktop { width: 170px; border: 3px solid var(--line); border-radius: 6px; background: var(--fill); overflow: hidden; }
+  .chrome { height: 11px; display:flex; gap:3px; align-items:center; padding-left:6px; }
+  .chrome b { width:4px; height:4px; border-radius:50%; background:#d4351c; display:block; }
+  .chrome b:nth-child(2){ background:#ffdd00; } .chrome b:nth-child(3){ background:var(--green); }
+  .screen { background:#fff; height: 132px; margin: 0 3px 3px; overflow:hidden; text-align:left; }
+  .gb { background: var(--ink); color:#fff; font: 700 6px/11px Arial; padding-left: 5px; border-bottom: 2px solid var(--blue); }
+  .bd { padding: 6px 7px; }
+  .ln { height: 2.5px; background:#d8d8d8; margin-bottom: 3px; }
+  .ln.d { background:#808080; } .ln.k { background:#8fb3e0; }
+  .hd { height: 6px; background:#8a8a8a; margin: 3px 0 6px; }
+  .w20{width:20%}.w30{width:30%}.w40{width:40%}.w50{width:50%}.w60{width:60%}.w70{width:70%}.w80{width:80%}
+  .tx { font: 700 7px/9px Arial; color: var(--ink); }
+  .tx.m { font-weight: normal; color: var(--mid); }
+  .rowf { display:flex; align-items:center; gap: 4px; margin-bottom: 4px; }
+  .rowf .ln { margin: 0; }
+  .rk { width: 8px; font: 700 7px/8px Arial; flex:none; }
+  .band { display:block; height: 7px; width: 24px; flex:none; margin-left:auto; }
+  .b-act { background:#912b19; } .b-pri { background:#b8460f; } .b-mon { background:#b58105; } .b-mai { background:var(--green); }
+  .tabs { display:flex; gap:2px; margin: 4px 0 5px; }
+  .tabs span { font: 6.5px/9px Arial; padding: 0 4px; background: var(--fill); border: 1px solid #d8d8d8; }
+  .tabs span.on { background:#fff; font-weight: 700; border-bottom-color:#fff; box-shadow: inset 0 2px 0 var(--blue); }
+  .tiles { display:grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-top: 4px; }
+  .tile { border: 1px solid var(--line); padding: 3px 4px 1px; }
+  .tile.on { background: var(--tint); border-color: var(--blue); }
+  .tile .tx { margin-bottom: 2px; }
+  .tile .tx.v { font-size: 8.5px; line-height: 10px; margin-bottom: 3px; }
+  .bar { height: 4px; background:#e5e5e5; margin: 2px 0 3px; } .bar i { display:block; height:100%; background:var(--ink); }
+  .cell { flex: none; height: 6px; background:#d8d8d8; }
+  .cell.on { background: var(--blue); }
+  .sumrow { display:flex; gap: 4px; margin-bottom: 3px; } .sumrow .ln { margin:0; }
+  .chart { display:block; width:100%; height: 34px; margin: 3px 0 4px; }
+  .crumb { height: 2.5px; width: 45%; background:#8fb3e0; margin-bottom: 4px; }
+  .switch { display:flex; gap: 2px; margin: 3px 0; } .switch span { font: 6.5px/9px Arial; padding: 0 4px; border:1px solid var(--ink); } .switch span.on { background: var(--ink); color:#fff; }
+  .xlinks { margin-top: 4px; border-top: 1px solid #d8d8d8; padding-top: 3px; }
+
+  /* Compare */
+  .cmp { display:grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 20px; }
+  .cmp > div { border-top: 6px solid var(--ink); padding-top: 12px; }
+  .cmp .a { border-color: #1d70b8; } .cmp .b { border-color: #912b19; } .cmp .c { border-color: var(--green); }
+  .cmp h3 { font-size: 19px; }
+  .cmp h4 { font-size: 13px; text-transform: uppercase; letter-spacing: .5px; color: var(--mid); margin: 16px 0 4px; }
+  .cmp ul { margin: 0; padding-left: 18px; } .cmp li { margin-bottom: 5px; font-size: 15px; }
+  table.t { border-collapse: collapse; width: 100%; font-size: 15px; margin-top: 16px; }
+  table.t th { text-align:left; border-bottom: 2px solid var(--ink); padding: 8px 12px 8px 0; }
+  table.t td { border-bottom: 1px solid var(--line); padding: 10px 12px 10px 0; vertical-align: top; }
+  .box-note { background: var(--fill); border-left: 5px solid var(--blue); padding: 14px 18px; margin: 20px 0; }
+  .box-note h3 { font-size: 18px; }
+  ul.plain { margin: 0 0 14px; padding-left: 20px; } ul.plain li { margin-bottom: 6px; }
+  @media (max-width: 980px) { .grids, .cmp { grid-template-columns: 1fr; } .uf-steps { flex-wrap: wrap; gap: 30px 48px; } }
+  @page { size: A3 landscape; margin: 14mm; }
+  @media print {
+    .uf-journey, .cmp > div, .grids > div, .box-note, table.t tr, .q { break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    h2 { break-after: avoid; }
+    nav { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="app-hub-bar"><a href="/">Back to the design resource home</a><span>Work in progress. Illustrative data, fictional disease names.</span></div>
+<style>.app-hub-bar{background:#0b0c0c;color:#b1b4b6;font:16px/1.3 Arial,sans-serif;padding:10px 20px}.app-hub-bar a{color:#fff;font-weight:700;margin-right:16px}.app-hub-bar a:focus{outline:3px solid #ffdd00;background:#ffdd00;color:#0b0c0c}@media print{.app-hub-bar{display:none}}</style>
+<div class="wrap">
+
+<h1>Disease-first or layer-first?</h1>
+<p class="lede">Users will start on the priority overview. From there, do they go into a <b>disease</b> and then see its layers (risk, impact, preparedness), or go into a <b>layer</b> and then see all diseases? Or do we need both?</p>
+<p class="small">All data is illustrative and the diseases are fictional. "Layer" means risk, impact or preparedness (control measures and response options).</p>
+<nav><a href="#question">The question</a><a href="#grid">One grid, two ways to read it</a><a href="#flows">User flows</a><a href="#compare">Comparing the options</a><a href="#decide">Deciding</a></nav>
+
+<!-- ============ THE QUESTION ============ -->
+<h2 id="question">The question</h2>
+<p class="lede">Both routes end up in the same place: one disease seen through one layer. They differ in what users see in the middle.</p>
+
+<div class="q">
+  <div class="q-top"><div class="box">Priority overview<small>Diseases ranked by priority</small></div></div>
+  <div class="q-arrows">
+    <svg viewBox="0 0 1000 70" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M500 0 V22 H250 V62" fill="none" stroke="#505a5f" stroke-width="3"/><path d="M243 54 L250 68 L257 54 Z" fill="#505a5f"/>
+      <path d="M500 22 H750 V62" fill="none" stroke="#505a5f" stroke-width="3"/><path d="M743 54 L750 68 L757 54 Z" fill="#505a5f"/>
+    </svg>
+  </div>
+  <div class="q-split">
+    <div class="q-col">
+      <p class="lab" style="color:#1d70b8">Option A: Disease-first<span>"Tell me about this disease"</span></p>
+      <div class="box a">A disease page<small>Priority, plus a headline from each layer</small></div>
+      <div class="arrow-down"></div>
+      <div class="box a">Disease + layer<small>e.g. Sprouting hoof disease: Risk</small></div>
+    </div>
+    <div class="q-col">
+      <p class="lab" style="color:#912b19">Option B: Layer-first<span>"Show me this layer across diseases"</span></p>
+      <div class="box b">A layer page<small>e.g. Risk for all diseases</small></div>
+      <div class="arrow-down"></div>
+      <div class="box b">Disease + layer<small>e.g. Sprouting hoof disease: Risk</small></div>
+    </div>
+  </div>
+  <p class="q-note" style="color:var(--green)">Option C: both routes, joined by links, ending on the same disease + layer page.</p>
+</div>
+
+<!-- ============ GRID ============ -->
+<h2 id="grid">One grid, two ways to read it</h2>
+<p class="lede">Think of the data as a grid: every disease has a value for every layer. The priority score is the combination across a row. Disease-first reads across a row. Layer-first reads down a column.</p>
+
+<div class="grids">
+  <div>
+    <h3 style="color:#1d70b8">A: Read across a row</h3>
+    <table class="g">
+      <thead><tr><th>Disease</th><th>Risk</th><th>Impact</th><th>Control</th><th>Response</th></tr></thead>
+      <tbody>
+        <tr><td>Wing wobble</td><td>High</td><td>High</td><td>8</td><td>9</td></tr>
+        <tr class="row-hl"><td>Sprouting hoof disease</td><td>Low</td><td>Very high</td><td>3</td><td>2</td></tr>
+        <tr><td>Himalayan Dragon Pox</td><td>Medium</td><td>High</td><td>5</td><td>4</td></tr>
+      </tbody>
+    </table>
+    <p class="cap">Good for: "What is the whole picture for this disease, and what should I do?"</p>
+  </div>
+  <div>
+    <h3 style="color:#912b19">B: Read down a column</h3>
+    <table class="g">
+      <thead><tr><th>Disease</th><th class="col-hl">Risk</th><th>Impact</th><th>Control</th><th>Response</th></tr></thead>
+      <tbody>
+        <tr><td>Wing wobble</td><td class="col-hl">High</td><td>High</td><td>8</td><td>9</td></tr>
+        <tr><td>Sprouting hoof disease</td><td class="col-hl">Low</td><td>Very high</td><td>3</td><td>2</td></tr>
+        <tr><td>Himalayan Dragon Pox</td><td class="col-hl">Medium</td><td>High</td><td>5</td><td>4</td></tr>
+      </tbody>
+    </table>
+    <p class="cap">Good for: "How do all diseases compare on risk, and what changed this month?"</p>
+  </div>
+  <div>
+    <h3 style="color:var(--green)">C: Either, ending at one cell</h3>
+    <table class="g">
+      <thead><tr><th>Disease</th><th class="col-hl">Risk</th><th>Impact</th><th>Control</th><th>Response</th></tr></thead>
+      <tbody>
+        <tr><td>Wing wobble</td><td class="col-hl">High</td><td>High</td><td>8</td><td>9</td></tr>
+        <tr class="row-hl"><td>Sprouting hoof disease</td><td class="col-hl">Low</td><td>Very high</td><td>3</td><td>2</td></tr>
+        <tr><td>Himalayan Dragon Pox</td><td class="col-hl">Medium</td><td>High</td><td>5</td><td>4</td></tr>
+      </tbody>
+    </table>
+    <p class="cap">The darker cell is the shared destination: this disease, this layer, with its own source, date and history.</p>
+  </div>
+</div>
+
+<!-- ============ FLOWS ============ -->
+<h2 id="flows">User flows</h2>
+<p class="lede">Desktop only. Each row is one route from the priority overview to the same destination: the history of one layer for one disease.</p>
+
+<div class="uf-journey">
+  <h3 style="color:#1d70b8">Option A: Disease-first</h3>
+  <p>The overview lists diseases. A disease page shows its priority and a <b>headline from each layer</b> (its level or score and one line on what it means). Each headline links to the full layer page, where the detail and history live.</p>
+  <ol class="uf-steps">
+    <li class="uf-step"><span class="uf-number">Step 1</span><span class="uf-pill">Priority overview</span>
+      <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="overview"></div></div>
+      <p class="uf-note">Diseases ranked. User picks a disease</p></li>
+    <li class="uf-step"><span class="uf-number">Step 2</span><span class="uf-pill">Disease page with layer headlines</span>
+      <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="disease" data-on=""></div></div>
+      <p class="uf-note">Priority, then a headline for risk, impact and preparedness. User picks a layer to go deeper</p></li>
+    <li class="uf-step uf-step--choice"><ul class="uf-choice">
+      <li><span class="uf-number">Step 3 – choose one</span><span class="uf-pill">Risk for this disease</span>
+        <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="detail" data-kind="risk"></div></div></li>
+      <li><span class="uf-number">or</span><span class="uf-pill">Impact for this disease</span>
+        <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="detail" data-kind="impact"></div></div></li>
+      <li><span class="uf-number">or</span><span class="uf-pill">Preparedness for this disease</span>
+        <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="detail" data-kind="prep"></div></div></li>
+    </ul></li>
+  </ol>
+  <p class="uf-end"><b>To compare risk across diseases,</b> the user goes back to the overview or opens each disease in turn.</p>
+</div>
+
+<div class="uf-journey">
+  <h3 style="color:#912b19">Option B: Layer-first</h3>
+  <p>The overview links to a page for each layer, listing all diseases. A disease opens from there, already in that layer.</p>
+  <ol class="uf-steps">
+    <li class="uf-step"><span class="uf-number">Step 1</span><span class="uf-pill">Priority overview</span>
+      <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="overview" data-tabs="1"></div></div>
+      <p class="uf-note">Tabs for each layer sit above the list</p></li>
+    <li class="uf-step uf-step--choice"><ul class="uf-choice">
+      <li><span class="uf-number">Step 2 – choose one</span><span class="uf-pill">Risk: all diseases</span>
+        <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="layer" data-kind="risk"></div></div></li>
+      <li><span class="uf-number">or</span><span class="uf-pill">Impact: all diseases</span>
+        <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="layer" data-kind="impact"></div></div></li>
+      <li><span class="uf-number">or</span><span class="uf-pill">Preparedness: all diseases</span>
+        <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="layer" data-kind="prep"></div></div></li>
+    </ul></li>
+    <li class="uf-step"><span class="uf-number">Step 3</span><span class="uf-pill">One disease, in that layer</span>
+      <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="detail" data-kind="risk"></div></div>
+      <p class="uf-note">The user chose the layer first</p></li>
+  </ol>
+  <p class="uf-end"><b>To see everything about one disease,</b> the user goes back, switches layer and finds the disease again, once per layer.</p>
+</div>
+
+<div class="uf-journey">
+  <h3 style="color:var(--green)">Option C: Both, one shared destination</h3>
+  <p>The overview offers a switch: "By disease" or "By layer". Either route ends on the same disease + layer page. That page links sideways to the other layers for the same disease and to the same layer for other diseases.</p>
+  <ol class="uf-steps">
+    <li class="uf-step"><span class="uf-number">Step 1</span><span class="uf-pill">Priority overview</span>
+      <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="overview" data-switch="1"></div></div>
+      <p class="uf-note">Switch: By disease | By layer</p></li>
+    <li class="uf-step uf-step--choice"><ul class="uf-choice">
+      <li><span class="uf-number">Step 2 – choose one</span><span class="uf-pill">Disease page</span>
+        <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="disease" data-on=""></div></div>
+        <p class="uf-note">From "By disease"</p></li>
+      <li><span class="uf-number">or</span><span class="uf-pill">Layer page</span>
+        <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="layer" data-kind="risk"></div></div>
+        <p class="uf-note">From "By layer"</p></li>
+    </ul></li>
+    <li class="uf-step"><span class="uf-number">Step 3</span><span class="uf-pill">Disease + layer page</span>
+      <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="detail" data-kind="risk" data-links="1"></div></div>
+      <p class="uf-note">Links to other layers of this disease, and this layer for other diseases</p></li>
+  </ol>
+  <p class="uf-end"><b>Cost:</b> two sets of pages to design, build and test, and a clear way of telling users where they are.</p>
+</div>
+
+<!-- ============ COMPARE ============ -->
+<h2 id="compare">Comparing the options</h2>
+<div class="cmp">
+  <div class="a">
+    <h3>A: Disease-first</h3>
+    <p class="small">"What do I need to know about this disease?"</p>
+    <h4>For</h4>
+    <ul>
+      <li>Priority is a score for each disease, so the overview and the next step line up.</li>
+      <li>One page answers "what is the so what, and what do I do?" (UN10).</li>
+      <li>Fits the workshop idea of showing risk, impact and preparedness together for a disease.</li>
+      <li>Adding preparedness later is another block on the page. The navigation doesn't change.</li>
+      <li>Headlines on the disease page give the "so what" for each layer without opening every layer page. They also keep the page short.</li>
+    </ul>
+    <h4>Against</h4>
+    <ul>
+      <li>Hard to compare one layer across diseases, e.g. "what changed in risk this month?" (UN2).</li>
+      <li>Layers come from different sources and dates, so each headline needs its own date and source.</li>
+      <li>Someone has to write or generate a headline for every layer and disease, and keep it current.</li>
+    </ul>
+  </div>
+  <div class="b">
+    <h3>B: Layer-first</h3>
+    <p class="small">"How do all diseases compare on this layer?"</p>
+    <h4>For</h4>
+    <ul>
+      <li>Matches how the evidence is produced: the IDM monthly report for risk, separate impact and preparedness data owned by different teams.</li>
+      <li>Easy to show "latest changes", sort and filter within one layer, with one scale and one colour meaning.</li>
+      <li>Each layer can launch when its data is ready.</li>
+    </ul>
+    <h4>Against</h4>
+    <ul>
+      <li>Priority is the combination. A layer-first route can feel disconnected from it.</li>
+      <li>No single page for one disease, so users do the joining up themselves.</li>
+      <li>Layers with no data yet (preparedness) show as empty tabs.</li>
+    </ul>
+  </div>
+  <div class="c">
+    <h3>C: Both</h3>
+    <p class="small">"Let me start from either."</p>
+    <h4>For</h4>
+    <ul>
+      <li>Serves both ways of thinking.</li>
+      <li>Only one destination page per disease and layer, so nothing is built twice.</li>
+      <li>The switch can start small, e.g. by disease only, and grow.</li>
+    </ul>
+    <h4>Against</h4>
+    <ul>
+      <li>More to design, build, test and keep consistent.</li>
+      <li>Users can lose track of where they are, so it needs clear labels and breadcrumbs.</li>
+      <li>Risk of two overviews that disagree on sort order.</li>
+    </ul>
+  </div>
+</div>
+
+<h3 style="margin-top:40px">Which tasks suit which route?</h3>
+<table class="t">
+  <thead><tr><th>Task</th><th>Easiest route</th></tr></thead>
+  <tbody>
+    <tr><td>"Which disease should we act on first?"</td><td>Overview (priority). Same in A, B and C.</td></tr>
+    <tr><td>"Why is this disease top priority, and what do I do?"</td><td>A: disease page</td></tr>
+    <tr><td>"What changed in risk this month?"</td><td>B: risk layer page (A needs the overview or each disease)</td></tr>
+    <tr><td>"Which diseases have the highest impact?"</td><td>B: impact layer page</td></tr>
+    <tr><td>"Where are we least prepared?"</td><td>B: preparedness layer page, or the ranked overview</td></tr>
+    <tr><td>"Show me everything we know about one disease."</td><td>A: disease page</td></tr>
+  </tbody>
+</table>
+
+<!-- ============ DECIDING ============ -->
+<h2 id="decide">Deciding</h2>
+
+<div class="box-note">
+  <h3>What the current wireframes already assume</h3>
+  <p style="margin:0">The test round (risk and impact) leans both ways. Cards with a "Latest changes" tab (1B) behave like a layer page for risk. The detail pages (2A, 2B) behave like a disease page. Whichever way the team goes, the test should not mix the two without saying so.</p>
+</div>
+
+<h3>Questions that decide it</h3>
+<ul class="plain">
+  <li><b>Who are the users, and how do they work?</b> Do SMEs think disease by disease, or does each own a layer (risk, impact, preparedness)?</li>
+  <li><b>What do they open the service to do?</b> Act on the top priorities (disease-first), or review what changed this month (layer-first)?</li>
+  <li><b>How often does each layer update?</b> Monthly for risk. Impact and preparedness are probably slower. Mixing them on one page could mislead.</li>
+  <li><b>Is the priority score the main product?</b> If so, disease-first keeps it central.</li>
+  <li><b>Can we afford both?</b> One destination page keeps the cost down.</li>
+</ul>
+
+<h3>A way forward to discuss</h3>
+<p>Start with <b>disease-first</b> as the default: priority overview, then a disease page with a headline from each layer, then the layer pages. Priority is per disease and the main question is "what do I act on?", and the headlines answer it without opening every layer. Add a <b>light layer view</b> on the overview, such as a layer selector above the same list, so users who want to compare one layer across diseases can. Both end on one disease + layer page (option C, built up in stages).</p>
+<p>To check this with users, use a first-click test with two tasks: "Find which disease changed in risk this month" and "Find why this disease is top priority". Watch which route they take.</p>
+<p class="small">This is a suggestion for the team to challenge, not a decision. It depends on the answers above.</p>
+
+</div>
+
+<script>
+// Draw the small wireframes so each screen is described once and reused.
+(function () {
+  var diseases = [
+    { n: 'Sprouting hoof disease', band: 'act', rank: 1, risk: 1, imp: 4, c: 3, r: 2 },
+    { n: 'Himalayan Dragon Pox', band: 'pri', rank: 2, risk: 2, imp: 3, c: 5, r: 4 },
+    { n: 'Rainbow tail disease', band: 'pri', rank: 3, risk: 2, imp: 3, c: 4, r: 6 },
+    { n: 'Fuzzy fox flu', band: 'mon', rank: 4, risk: 3, imp: 3, c: 6, r: 7 },
+    { n: 'Wing wobble', band: 'mai', rank: 5, risk: 3, imp: 3, c: 8, r: 9 }
+  ];
+  var gb = '<div class="gb">GOV.UK</div>';
+  function ln(cls) { return '<div class="ln ' + (cls || '') + '"></div>'; }
+  function tabs(active) {
+    var t = ['Priority', 'Risk', 'Impact', 'Prep.'];
+    return '<div class="tabs">' + t.map(function (x, i) { return '<span' + (i === active ? ' class="on"' : '') + '>' + x + '</span>'; }).join('') + '</div>';
+  }
+  function overview(el) {
+    var h = gb + '<div class="bd"><div class="tx" style="font-size:9px">Diseases by priority</div>';
+    if (el.dataset.switch) h += '<div class="switch"><span class="on">By disease</span><span>By layer</span></div>';
+    else if (el.dataset.tabs) h += tabs(0);
+    else h += '<div style="height:5px"></div>';
+    diseases.forEach(function (d) {
+      h += '<div class="rowf"><span class="rk">' + d.rank + '</span><div class="ln k" style="width:52%"></div><span class="band b-' + d.band + '"></span></div>';
+    });
+    el.innerHTML = h + '</div>';
+  }
+  function disease(el) {
+    el.innerHTML = gb + '<div class="bd"><div class="crumb"></div><div class="tx" style="font-size:9px">Sprouting hoof disease</div>' +
+      '<div class="rowf" style="margin-top:3px"><span class="band b-act" style="margin:0"></span><span class="tx">75 / 140</span></div>' + ln('w80') +
+      '<div class="tiles">' +
+      '<div class="tile"><div class="tx">Risk</div><div class="tx v">Low</div>' + ln('k w50') + '</div>' +
+      '<div class="tile"><div class="tx">Impact</div><div class="tx v">Very high</div>' + ln('k w50') + '</div>' +
+      '<div class="tile"><div class="tx">Control</div><div class="tx v">3 / 10</div>' + ln('k w50') + '</div>' +
+      '<div class="tile"><div class="tx">Response</div><div class="tx v">2 / 10</div>' + ln('k w50') + '</div>' +
+      '</div></div>';
+  }
+  function layer(el) {
+    var k = el.dataset.kind, idx = { risk: 1, impact: 2, prep: 3 }[k];
+    var h = gb + '<div class="bd">' + tabs(idx);
+    diseases.forEach(function (d) {
+      h += '<div class="rowf"><div class="ln" style="width:36%"></div>';
+      if (k === 'risk') h += '<span class="cell on" style="width:' + (8 * d.risk + 4) + 'px"></span><span class="cell" style="width:14px"></span>';
+      if (k === 'impact') h += '<span class="cell on" style="width:' + (8 * (d.imp - 1) + 6) + 'px"></span><div class="ln" style="width:22%"></div>';
+      if (k === 'prep') h += '<div class="bar" style="width:24%;margin:0"><i style="width:' + d.c * 10 + '%"></i></div><div class="bar" style="width:24%;margin:0"><i style="width:' + d.r * 10 + '%"></i></div>';
+      h += '</div>';
+    });
+    el.innerHTML = h + '</div>';
+  }
+  function detail(el) {
+    var k = el.dataset.kind, label = { risk: 'Risk', impact: 'Impact', prep: 'Preparedness' }[k];
+    var h = gb + '<div class="bd"><div class="crumb"></div><div class="tx" style="font-size:9px">Sprouting hoof disease</div>' +
+      '<div class="tx m" style="margin-bottom:3px">' + label + '</div>';
+    h += '<div class="sumrow"><div class="ln d" style="width:30%"></div><div class="ln" style="width:40%"></div></div>';
+    if (k === 'risk') {
+      h += '<svg class="chart" viewBox="0 0 100 34" preserveAspectRatio="none" aria-hidden="true"><polyline fill="none" stroke="#0b0c0c" stroke-width="1.2" points="2,26 14,26 26,26 38,14 50,14 62,26 74,26 86,14 98,6"/></svg>' + ln() + ln('w80') + ln('w60');
+    } else if (k === 'impact') {
+      h += ln('w80') + ln('w70') + ln('w50') + '<div style="height:4px"></div>' + ln('w80') + ln('w60');
+    } else {
+      h += '<div class="tx">Control measures</div><div class="bar"><i style="width:30%"></i></div>' + ln('w70') + '<div class="tx">Response options</div><div class="bar"><i style="width:20%"></i></div>' + ln('w70');
+    }
+    if (el.dataset.links) h += '<div class="xlinks"><div class="ln k w60"></div><div class="ln k w50"></div></div>';
+    el.innerHTML = h + '</div>';
+  }
+  var fn = { overview: overview, disease: disease, layer: layer, detail: detail };
+  document.querySelectorAll('.screen').forEach(function (el) {
+    el.setAttribute('aria-hidden', 'true');
+    fn[el.dataset.screen](el);
+  });
+})();
+</script>
+</body>
+</html>

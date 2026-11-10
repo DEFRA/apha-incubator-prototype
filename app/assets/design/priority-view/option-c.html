@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+<head>
+<meta charset="utf-8">
+<title>Diseases by priority – Disease threat intelligence</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="govuk-frontend.min.css">
+<link rel="stylesheet" href="priority.css">
+</head>
+<body class="govuk-template__body">
+<a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
+<div class="app-hub-bar"><a href="/">Back to the design resource home</a><span>Work in progress. Illustrative data, fictional disease names.</span></div>
+<style>.app-hub-bar{background:#0b0c0c;color:#b1b4b6;font:16px/1.3 Arial,sans-serif;padding:10px 20px}.app-hub-bar a{color:#fff;font-weight:700;margin-right:16px}.app-hub-bar a:focus{outline:3px solid #ffdd00;background:#ffdd00;color:#0b0c0c}@media print{.app-hub-bar{display:none}}</style>
+
+<header class="govuk-header" data-module="govuk-header">
+  <div class="govuk-header__container govuk-width-container app-wide">
+    <div class="govuk-header__logo">
+      <a href="option-c.html" class="govuk-header__link govuk-header__link--homepage">
+        <span class="govuk-header__logotype-text">Animal and Plant Health Agency</span>
+      </a>
+    </div>
+    <div class="govuk-header__content">
+      <a href="option-c.html" class="govuk-header__link govuk-header__service-name">Disease threat intelligence</a>
+    </div>
+  </div>
+</header>
+
+<section aria-label="Service information" class="govuk-service-navigation app-nav">
+  <div class="govuk-width-container app-wide">
+    <div class="govuk-service-navigation__container">
+      <nav aria-label="Views" class="govuk-service-navigation__wrapper">
+        <ul class="govuk-service-navigation__list" id="navigation">
+          <li class="govuk-service-navigation__item govuk-service-navigation__item--active"><a class="govuk-service-navigation__link" href="option-c.html" aria-current="page"><strong class="govuk-service-navigation__active-fallback">Priority</strong></a></li>
+          <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="not-in-test.html?page=layer&amp;layer=risk">Risk</a></li>
+          <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="not-in-test.html?page=layer&amp;layer=impact">Impact</a></li>
+          <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="not-in-test.html?page=layer&amp;layer=preparedness">Preparedness</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<div class="govuk-width-container app-wide">
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+      <strong class="govuk-tag govuk-phase-banner__content__tag">Alpha</strong>
+      <span class="govuk-phase-banner__text">This is a new service. Your <a class="govuk-link" href="not-in-test.html?page=feedback">feedback</a> will help us to improve it.</span>
+    </p>
+  </div>
+
+  <main class="govuk-main-wrapper app-main" id="main-content">
+    <p class="app-view-label">Option C: one page with a table and a cards view</p>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl">Diseases by priority</h1>
+        <p class="govuk-body-l">Which exotic animal diseases need action first. We combine how likely each disease is to reach the UK, how much harm it would do, and how well prepared we are.</p>
+        <div class="govuk-inset-text">
+          This is a prototype. The data is illustrative and the disease names are fictional.
+        </div>
+      </div>
+    </div>
+
+    <p class="govuk-body app-scope">Showing <strong>5 priority 1 diseases</strong>.</p>
+
+    <h2 class="govuk-heading-m" id="summary-heading">Summary</h2>
+    <div class="app-focus" aria-labelledby="summary-heading">
+      <p class="govuk-body"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=sprouting-hoof-disease"><strong>Sprouting hoof disease</strong></a> is unlikely to reach the UK, but it would have the greatest impact and we are least prepared for it. That makes it the top priority, followed by <a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">Himalayan Dragon Pox</a> and <a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=rainbow-tail-disease">Rainbow tail disease</a>. <a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=wing-wobble">Wing wobble</a> is high risk, but we are well prepared, so we only need to maintain that readiness.</p>
+      <p class="govuk-body"><strong>What has changed.</strong> In the latest assessment (October 2026), no disease changed rank or priority band. The score for <a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">Himalayan Dragon Pox</a> fell from 66 to 55, and the score for <a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=wing-wobble">Wing wobble</a> rose from 15 to 18. The other three are unchanged. Changes in <a class="govuk-link" href="not-in-test.html?page=layer&amp;layer=risk">risk</a>, <a class="govuk-link" href="not-in-test.html?page=layer&amp;layer=impact">impact</a> and <a class="govuk-link" href="not-in-test.html?page=layer&amp;layer=preparedness">preparedness</a> are on their own pages.</p>
+    </div>
+
+    <p class="govuk-visually-hidden" id="view-status" role="status" aria-live="polite"></p>
+
+    <!-- The toggle needs JavaScript, so it stays hidden without it and the table is shown on its own. -->
+    <div class="app-toggle" id="view-toggle" role="group" aria-labelledby="toggle-label" hidden>
+      <span class="app-toggle__label" id="toggle-label">View as</span>
+      <button type="button" class="app-toggle__button" data-view="table" aria-pressed="true">Table</button>
+      <button type="button" class="app-toggle__button" data-view="cards" aria-pressed="false">Cards</button>
+    </div>
+
+    <!-- ===== Table view ===== -->
+    <div id="view-table">
+      <p class="app-view-label">Option C, table view</p>      <h2 class="govuk-heading-m" id="table-heading">Priority 1 diseases, ranked 1 to 5</h2>
+      <p class="govuk-body" id="table-desc">Priority is worked out from the threat (risk of incursion and impact) and how prepared we are (control measures and response options). Preparedness is scored out of 10, where 10 is excellent. Changes in priority since the last assessment are shown under the score.</p>
+      <p class="govuk-hint app-sort-note">Sorting is not available on small screens. Diseases are shown in priority order.</p>
+
+      <div class="app-scroll" tabindex="0" role="region" aria-label="Priority table, scrolls sideways on narrow screens">
+      <table class="govuk-table app-table app-table--rows" id="priority-table" aria-labelledby="table-heading" aria-describedby="table-desc">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header" aria-sort="none" data-key="disease" data-first="ascending"><a class="govuk-link" href="?sort=disease&amp;order=ascending">Disease</a></th>
+            <th scope="col" class="govuk-table__header" aria-sort="ascending" data-key="priority" data-first="ascending"><a class="govuk-link" href="?sort=priority&amp;order=descending">Priority</a><span class="app-hint">Score out of 140</span></th>
+            <th scope="col" class="govuk-table__header" aria-sort="none" data-key="risk" data-first="descending"><a class="govuk-link" href="?sort=risk&amp;order=descending">Risk of incursion</a><span class="app-hint">Chance of arriving</span></th>
+            <th scope="col" class="govuk-table__header" aria-sort="none" data-key="impact" data-first="descending"><a class="govuk-link" href="?sort=impact&amp;order=descending">Impact</a><span class="app-hint">Harm if it arrives</span></th>
+            <th scope="col" class="govuk-table__header" aria-sort="none" data-key="control" data-first="ascending"><a class="govuk-link" href="?sort=control&amp;order=ascending">Control measures</a><span class="app-hint">Preventing entry</span></th>
+            <th scope="col" class="govuk-table__header" aria-sort="none" data-key="response" data-first="ascending"><a class="govuk-link" href="?sort=response&amp;order=ascending">Response options</a><span class="app-hint">Dealing with it</span></th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+
+          <tr class="govuk-table__row" data-rank="1">
+            <th scope="row" class="govuk-table__header" data-sort-value="Sprouting hoof disease"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=sprouting-hoof-disease">Sprouting hoof disease</a></th>
+            <td class="govuk-table__cell app-priority" data-label="Priority" data-sort-value="1">
+              <span class="app-band app-band--act">Act now</span>
+              <span class="app-priority__detail"><span class="app-rank">Rank 1</span> · score 75</span>
+            </td>
+            <td class="govuk-table__cell" data-label="Risk of incursion" data-sort-value="1"><strong class="govuk-tag govuk-tag--green">Low</strong></td>
+            <td class="govuk-table__cell" data-label="Impact" data-sort-value="4"><strong class="govuk-tag app-tag--very-high">Very high</strong><ul class="app-areas"><li>Animal welfare</li><li>International trade</li><li>Wider economy and society</li></ul></td>
+            <td class="govuk-table__cell" data-label="Control measures" data-sort-value="3"><span class="app-score">3<small> out of 10</small></span><span class="app-bar" aria-hidden="true"><span style="width:30%"></span></span></td>
+            <td class="govuk-table__cell" data-label="Response options" data-sort-value="2"><span class="app-score">2<small> out of 10</small></span><span class="app-bar" aria-hidden="true"><span style="width:20%"></span></span></td>
+          </tr>
+
+          <tr class="govuk-table__row" data-rank="2">
+            <th scope="row" class="govuk-table__header" data-sort-value="Himalayan Dragon Pox"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">Himalayan Dragon Pox</a></th>
+            <td class="govuk-table__cell app-priority" data-label="Priority" data-sort-value="2">
+              <span class="app-band app-band--prioritise">Prioritise</span>
+              <span class="app-priority__detail"><span class="app-rank">Rank 2</span> · score 55</span>
+              <span class="app-change"><strong class="app-change__tag app-change__tag--down">Score decreased</strong><span class="app-change__from">from 66</span></span>
+            </td>
+            <td class="govuk-table__cell" data-label="Risk of incursion" data-sort-value="2"><strong class="govuk-tag govuk-tag--yellow">Medium</strong></td>
+            <td class="govuk-table__cell" data-label="Impact" data-sort-value="3"><strong class="govuk-tag govuk-tag--red">High</strong><ul class="app-areas"><li>Animal welfare</li></ul></td>
+            <td class="govuk-table__cell" data-label="Control measures" data-sort-value="5"><span class="app-score">5<small> out of 10</small></span><span class="app-bar" aria-hidden="true"><span style="width:50%"></span></span></td>
+            <td class="govuk-table__cell" data-label="Response options" data-sort-value="4"><span class="app-score">4<small> out of 10</small></span><span class="app-bar" aria-hidden="true"><span style="width:40%"></span></span></td>
+          </tr>
+
+          <tr class="govuk-table__row" data-rank="3">
+            <th scope="row" class="govuk-table__header" data-sort-value="Rainbow tail disease"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=rainbow-tail-disease">Rainbow tail disease</a></th>
+            <td class="govuk-table__cell app-priority" data-label="Priority" data-sort-value="3">
+              <span class="app-band app-band--prioritise">Prioritise</span>
+              <span class="app-priority__detail"><span class="app-rank">Rank 3</span> · score 50</span>
+            </td>
+            <td class="govuk-table__cell" data-label="Risk of incursion" data-sort-value="2"><strong class="govuk-tag govuk-tag--yellow">Medium</strong></td>
+            <td class="govuk-table__cell" data-label="Impact" data-sort-value="3"><strong class="govuk-tag govuk-tag--red">High</strong><ul class="app-areas"><li>Animal welfare</li></ul></td>
+            <td class="govuk-table__cell" data-label="Control measures" data-sort-value="4"><span class="app-score">4<small> out of 10</small></span><span class="app-bar" aria-hidden="true"><span style="width:40%"></span></span></td>
+            <td class="govuk-table__cell" data-label="Response options" data-sort-value="6"><span class="app-score">6<small> out of 10</small></span><span class="app-bar" aria-hidden="true"><span style="width:60%"></span></span></td>
+          </tr>
+
+          <tr class="govuk-table__row" data-rank="4">
+            <th scope="row" class="govuk-table__header" data-sort-value="Fuzzy fox flu"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=fuzzy-fox-flu">Fuzzy fox flu</a></th>
+            <td class="govuk-table__cell app-priority" data-label="Priority" data-sort-value="4">
+              <span class="app-band app-band--monitor">Monitor</span>
+              <span class="app-priority__detail"><span class="app-rank">Rank 4</span> · score 42</span>
+            </td>
+            <td class="govuk-table__cell" data-label="Risk of incursion" data-sort-value="3"><strong class="govuk-tag govuk-tag--red">High</strong></td>
+            <td class="govuk-table__cell" data-label="Impact" data-sort-value="3"><strong class="govuk-tag govuk-tag--red">High</strong><ul class="app-areas"><li>Public health</li><li>Wider economy and society</li></ul></td>
+            <td class="govuk-table__cell" data-label="Control measures" data-sort-value="6"><span class="app-score">6<small> out of 10</small></span><span class="app-bar" aria-hidden="true"><span style="width:60%"></span></span></td>
+            <td class="govuk-table__cell" data-label="Response options" data-sort-value="7"><span class="app-score">7<small> out of 10</small></span><span class="app-bar" aria-hidden="true"><span style="width:70%"></span></span></td>
+          </tr>
+
+          <tr class="govuk-table__row" data-rank="5">
+            <th scope="row" class="govuk-table__header" data-sort-value="Wing wobble"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=wing-wobble">Wing wobble</a></th>
+            <td class="govuk-table__cell app-priority" data-label="Priority" data-sort-value="5">
+              <span class="app-band app-band--maintain">Maintain</span>
+              <span class="app-priority__detail"><span class="app-rank">Rank 5</span> · score 18</span>
+              <span class="app-change"><strong class="app-change__tag app-change__tag--up">Score increased</strong><span class="app-change__from">from 15</span></span>
+            </td>
+            <td class="govuk-table__cell" data-label="Risk of incursion" data-sort-value="3"><strong class="govuk-tag govuk-tag--red">High</strong></td>
+            <td class="govuk-table__cell" data-label="Impact" data-sort-value="3"><strong class="govuk-tag govuk-tag--red">High</strong><ul class="app-areas"><li>International trade</li></ul></td>
+            <td class="govuk-table__cell" data-label="Control measures" data-sort-value="8"><span class="app-score">8<small> out of 10</small></span><span class="app-bar" aria-hidden="true"><span style="width:80%"></span></span></td>
+            <td class="govuk-table__cell" data-label="Response options" data-sort-value="9"><span class="app-score">9<small> out of 10</small></span><span class="app-bar" aria-hidden="true"><span style="width:90%"></span></span></td>
+          </tr>
+
+        </tbody>
+      </table>
+      </div>
+
+      <h2 class="govuk-heading-m app-section-heading">What the priority bands mean</h2>
+      <ul class="app-key">
+        <li><span class="app-band app-band--act">Act now</span> Score of 70 or more. The main focus for resources.</li>
+        <li><span class="app-band app-band--prioritise">Prioritise</span> Score of 45 to 69. Close the preparedness gaps.</li>
+        <li><span class="app-band app-band--monitor">Monitor</span> Score of 20 to 44. Review readiness and watch the risk.</li>
+        <li><span class="app-band app-band--maintain">Maintain</span> Score under 20. Keep current arrangements.</li>
+      </ul>
+    </div>
+
+    <!-- ===== Cards view ===== -->
+    <div id="view-cards" hidden>
+      <p class="app-view-label">Option C, cards view</p>      <h2 class="govuk-heading-m" id="cards-heading">Priority 1 diseases, grouped by what to do</h2>
+      <p class="govuk-body" id="cards-desc">Priority is worked out from the threat (risk of incursion and impact) and how prepared we are (control measures and response options). Preparedness is scored out of 10, where 10 is excellent. Changes in priority since the last assessment are shown under the score.</p>
+
+      <section class="app-band-section" aria-labelledby="band-act">
+        <div class="app-band-section__head">
+          <h3 class="govuk-heading-l" id="band-act"><span class="app-band app-band--act">Act now</span></h3>
+          <p class="govuk-body">Score of 70 or more. The main focus for resources.</p>
+        </div>
+        <ul class="app-cards">
+          <li class="app-card app-card--act">
+            <h4 class="govuk-heading-m"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=sprouting-hoof-disease">Sprouting hoof disease</a></h4>
+            <p class="govuk-body app-card__meta"><span class="app-rank">Rank 1</span> · score 75 out of 140</p>
+            <p class="govuk-body app-card__why">Unlikely to arrive, but it would have the greatest impact and we are least prepared for it.</p>
+            <dl>
+              <div><dt class="govuk-body-s">Risk of incursion</dt><dd><strong class="govuk-tag govuk-tag--green">Low</strong></dd></div>
+              <div><dt class="govuk-body-s">Impact</dt><dd><strong class="govuk-tag app-tag--very-high">Very high</strong><ul class="app-areas"><li>Animal welfare</li><li>International trade</li><li>Wider economy and society</li></ul></dd></div>
+              <div><dt class="govuk-body-s">Control measures</dt><dd><span class="app-score">3<small> out of 10</small></span><span class="app-bar" aria-hidden="true"><span style="width:30%"></span></span></dd></div>
+              <div><dt class="govuk-body-s">Response options</dt><dd><span class="app-score">2<small> out of 10</small></span><span class="app-bar" aria-hidden="true"><span style="width:20%"></span></span></dd></div>
+            </dl>
+          </li>
+        </ul>
+      </section>
+
+      <section class="app-band-section" aria-labelledby="band-prioritise">
+        <div class="app-band-section__head">
+          <h3 class="govuk-heading-l" id="band-prioritise"><span class="app-band app-band--prioritise">Prioritise</span></h3>
+          <p class="govuk-body">Score of 45 to 69. Close the preparedness gaps.</p>
+        </div>
+        <ul class="app-cards">
+          <li class="app-card app-card--prioritise">
+            <h4 class="govuk-heading-m"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">Himalayan Dragon Pox</a></h4>
+            <p class="govuk-body app-card__meta"><span class="app-rank">Rank 2</span> · score 55 out of 140<span class="app-change"><strong class="app-change__tag app-change__tag--down">Score decreased</strong><span class="app-change__from">from 66</span></span></p>
+            <p class="govuk-body app-card__why">Medium risk and high impact. Neither our control measures nor our response options are strong.</p>
+            <dl>
+              <div><dt class="govuk-body-s">Risk of incursion</dt><dd><strong class="govuk-tag govuk-tag--yellow">Medium</strong></dd></div>
+              <div><dt class="govuk-body-s">Impact</dt><dd><strong class="govuk-tag govuk-tag--red">High</strong><ul class="app-areas"><li>Animal welfare</li></ul></dd></div>
+              <div><dt class="govuk-body-s">Control measures</dt><dd><span class="app-score">5<small> out of 10</small></span><span class="app-bar" aria-hidden="true"><span style="width:50%"></span></span></dd></div>
+              <div><dt class="govuk-body-s">Response options</dt><dd><span class="app-score">4<small> out of 10</small></span><span class="app-bar" aria-hidden="true"><span style="width:40%"></span></span></dd></div>
+            </dl>
+          </li>
+          <li class="app-card app-card--prioritise">
+            <h4 class="govuk-heading-m"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=rainbow-tail-disease">Rainbow tail disease</a></h4>
+            <p class="govuk-body app-card__meta"><span class="app-rank">Rank 3</span> · score 50 out of 140</p>
+            <p class="govuk-body app-card__why">Medium risk and high impact. Control measures need the most work.</p>
+            <dl>
+              <div><dt class="govuk-body-s">Risk of incursion</dt><dd><strong class="govuk-tag govuk-tag--yellow">Medium</strong></dd></div>
+              <div><dt class="govuk-body-s">Impact</dt><dd><strong class="govuk-tag govuk-tag--red">High</strong><ul class="app-areas"><li>Animal welfare</li></ul></dd></div>
+              <div><dt class="govuk-body-s">Control measures</dt><dd><span class="app-score">4<small> out of 10</small></span><span class="app-bar" aria-hidden="true"><span style="width:40%"></span></span></dd></div>
+              <div><dt class="govuk-body-s">Response options</dt><dd><span class="app-score">6<small> out of 10</small></span><span class="app-bar" aria-hidden="true"><span style="width:60%"></span></span></dd></div>
+            </dl>
+          </li>
+        </ul>
+      </section>
+
+      <section class="app-band-section" aria-labelledby="band-monitor">
+        <div class="app-band-section__head">
+          <h3 class="govuk-heading-l" id="band-monitor"><span class="app-band app-band--monitor">Monitor</span></h3>
+          <p class="govuk-body">Score of 20 to 44. Review readiness and watch the risk.</p>
+        </div>
+        <ul class="app-cards">
+          <li class="app-card app-card--monitor">
+            <h4 class="govuk-heading-m"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=fuzzy-fox-flu">Fuzzy fox flu</a></h4>
+            <p class="govuk-body app-card__meta"><span class="app-rank">Rank 4</span> · score 42 out of 140</p>
+            <p class="govuk-body app-card__why">High risk and high impact, but we are reasonably well prepared. Keep watching.</p>
+            <dl>
+              <div><dt class="govuk-body-s">Risk of incursion</dt><dd><strong class="govuk-tag govuk-tag--red">High</strong></dd></div>
+              <div><dt class="govuk-body-s">Impact</dt><dd><strong class="govuk-tag govuk-tag--red">High</strong><ul class="app-areas"><li>Public health</li><li>Wider economy and society</li></ul></dd></div>
+              <div><dt class="govuk-body-s">Control measures</dt><dd><span class="app-score">6<small> out of 10</small></span><span class="app-bar" aria-hidden="true"><span style="width:60%"></span></span></dd></div>
+              <div><dt class="govuk-body-s">Response options</dt><dd><span class="app-score">7<small> out of 10</small></span><span class="app-bar" aria-hidden="true"><span style="width:70%"></span></span></dd></div>
+            </dl>
+          </li>
+        </ul>
+      </section>
+
+      <section class="app-band-section" aria-labelledby="band-maintain">
+        <div class="app-band-section__head">
+          <h3 class="govuk-heading-l" id="band-maintain"><span class="app-band app-band--maintain">Maintain</span></h3>
+          <p class="govuk-body">Score under 20. Keep current arrangements.</p>
+        </div>
+        <ul class="app-cards">
+          <li class="app-card app-card--maintain">
+            <h4 class="govuk-heading-m"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=wing-wobble">Wing wobble</a></h4>
+            <p class="govuk-body app-card__meta"><span class="app-rank">Rank 5</span> · score 18 out of 140<span class="app-change"><strong class="app-change__tag app-change__tag--up">Score increased</strong><span class="app-change__from">from 15</span></span></p>
+            <p class="govuk-body app-card__why">High risk, but we are well prepared, so we only need to maintain that readiness.</p>
+            <dl>
+              <div><dt class="govuk-body-s">Risk of incursion</dt><dd><strong class="govuk-tag govuk-tag--red">High</strong></dd></div>
+              <div><dt class="govuk-body-s">Impact</dt><dd><strong class="govuk-tag govuk-tag--red">High</strong><ul class="app-areas"><li>International trade</li></ul></dd></div>
+              <div><dt class="govuk-body-s">Control measures</dt><dd><span class="app-score">8<small> out of 10</small></span><span class="app-bar" aria-hidden="true"><span style="width:80%"></span></span></dd></div>
+              <div><dt class="govuk-body-s">Response options</dt><dd><span class="app-score">9<small> out of 10</small></span><span class="app-bar" aria-hidden="true"><span style="width:90%"></span></span></dd></div>
+            </dl>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="govuk-grid-row app-section">
+      <div class="govuk-grid-column-two-thirds">
+        <h2 class="govuk-heading-m">Look in more detail</h2>
+        <p class="govuk-body"><strong>One disease.</strong> Select a disease name to see everything we know about it.</p>
+        <p class="govuk-body"><strong>One measure across all diseases.</strong> See <a class="govuk-link" href="not-in-test.html?page=layer&amp;layer=risk">risk of incursion</a>, <a class="govuk-link" href="not-in-test.html?page=layer&amp;layer=impact">impact</a> or <a class="govuk-link" href="not-in-test.html?page=layer&amp;layer=preparedness">preparedness</a> for every disease side by side.</p>
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary"><span class="govuk-details__summary-text">How the priority score is worked out</span></summary>
+          <div class="govuk-details__text">
+            <p class="govuk-body">Threat (risk of incursion plus impact) is multiplied by how unprepared we are (20 minus control measures minus response options).</p>
+            <p class="govuk-body"><strong>Priority = (risk of incursion + impact) × (20 − control measures − response options)</strong></p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>Risk of incursion: Low is 1, Medium is 2, High is 3</li>
+              <li>Impact: High is 3, Very high is 4</li>
+              <li>Control measures and response options: 0 to 10, where 10 is excellent</li>
+            </ul>
+            <p class="govuk-body">Because preparedness is multiplied, a well-prepared disease scores low even when the threat is high. A poorly prepared disease stays near the top even when it is unlikely to arrive.</p>
+            <p class="govuk-body">Example: Sprouting hoof disease is (1 + 4) × (20 − 3 − 2) = 75.</p>
+          </div>
+        </details>
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary"><span class="govuk-details__summary-text">Where this information comes from</span></summary>
+          <div class="govuk-details__text">
+            <table class="govuk-table">
+              <caption class="govuk-table__caption govuk-visually-hidden">Sources for each part of the priority score</caption>
+              <thead class="govuk-table__head"><tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Measure</th>
+                <th scope="col" class="govuk-table__header">Source</th>
+              </tr></thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Risk of incursion</th><td class="govuk-table__cell">International disease monitoring (IDM) monthly report and Risk ID report</td></tr>
+                <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Impact</th><td class="govuk-table__cell">D2R2 animal disease impact data, exotic animal disease modelling and impact scoring</td></tr>
+                <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Control measures</th><td class="govuk-table__cell">Preparedness indices</td></tr>
+                <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Response options</th><td class="govuk-table__cell">Preparedness indices</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+    </div>
+  </main>
+</div>
+
+<footer class="govuk-footer">
+  <div class="govuk-width-container app-wide">
+    <div class="govuk-footer__meta">
+      <div class="govuk-footer__meta-item govuk-footer__meta-item--grow">
+        <h2 class="govuk-visually-hidden">Support links</h2>
+        <ul class="govuk-footer__inline-list">
+          <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="not-in-test.html?page=accessibility">Accessibility statement</a></li>
+          <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="not-in-test.html?page=privacy">Privacy</a></li>
+          <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="not-in-test.html?page=cookies">Cookies</a></li>
+          <li class="govuk-footer__inline-list-item"><a class="govuk-footer__link" href="not-in-test.html?page=contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Progressive enhancement. Without JavaScript the table is shown on its own and the header links are plain links.
+  (function () {
+    var table = document.getElementById('priority-table');
+    var body = table.tBodies[0];
+    var heads = Array.prototype.slice.call(table.querySelectorAll('th[data-key]'));
+    var status = document.getElementById('view-status');
+    var cols = { disease: 0, priority: 1, risk: 2, impact: 3, control: 4, response: 5 };
+    var names = { disease: 'disease name', priority: 'priority', risk: 'risk of incursion', impact: 'impact', control: 'control measures', response: 'response options' };
+    var views = { table: document.getElementById('view-table'), cards: document.getElementById('view-cards') };
+    var toggle = document.getElementById('view-toggle');
+    var buttons = Array.prototype.slice.call(toggle.querySelectorAll('button'));
+    var q = new URLSearchParams(location.search);
+
+    function updateUrl(changes) {
+      var p = new URLSearchParams(location.search);
+      Object.keys(changes).forEach(function (k) { p.set(k, changes[k]); });
+      history.replaceState(null, '', '?' + p.toString());
+    }
+
+    // A light tint on the sorted column. The arrow and aria-sort carry the state too, so colour is not the only cue.
+    function markSorted(key) {
+      Array.prototype.forEach.call(table.rows, function (row) {
+        Array.prototype.forEach.call(row.cells, function (cell, i) {
+          cell.classList.toggle('app-sorted', i === cols[key]);
+        });
+      });
+    }
+
+    function value(row, key) {
+      var v = row.cells[cols[key]].getAttribute('data-sort-value');
+      return key === 'disease' ? v.toLowerCase() : Number(v);
+    }
+
+    function sortBy(key, order, announce) {
+      var rows = Array.prototype.slice.call(body.rows);
+      rows.sort(function (a, b) {
+        var x = value(a, key), y = value(b, key);
+        var d = x < y ? -1 : x > y ? 1 : 0;
+        if (order === 'descending') d = -d;
+        return d || (Number(a.dataset.rank) - Number(b.dataset.rank));
+      });
+      rows.forEach(function (r) { body.appendChild(r); });
+      heads.forEach(function (th) {
+        var on = th.dataset.key === key;
+        th.setAttribute('aria-sort', on ? order : 'none');
+        var next = on ? (order === 'ascending' ? 'descending' : 'ascending') : th.dataset.first;
+        th.querySelector('a').setAttribute('href', '?sort=' + th.dataset.key + '&order=' + next);
+      });
+      if (announce) status.textContent = 'Sorted by ' + names[key] + ', ' + order;
+      markSorted(key);
+    }
+
+    function setView(view, announce) {
+      views.table.hidden = view !== 'table';
+      views.cards.hidden = view !== 'cards';
+      buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.view === view)); });
+      if (announce) status.textContent = 'Showing the ' + view + ' view';
+    }
+
+    heads.forEach(function (th) {
+      th.querySelector('a').addEventListener('click', function (e) {
+        e.preventDefault();
+        var key = th.dataset.key;
+        var current = th.getAttribute('aria-sort');
+        var order = current === 'none' ? th.dataset.first : (current === 'ascending' ? 'descending' : 'ascending');
+        sortBy(key, order, true);
+        updateUrl({ sort: key, order: order });
+      });
+    });
+
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        setView(b.dataset.view, true);
+        updateUrl({ view: b.dataset.view });
+      });
+    });
+
+    toggle.hidden = false;
+    markSorted('priority');
+    if (cols.hasOwnProperty(q.get('sort')) && /^(ascending|descending)$/.test(q.get('order'))) {
+      sortBy(q.get('sort'), q.get('order'), false);
+    }
+
+    // Table by default. On a small screen, where sorting isn't available, start on cards.
+    // view=both shows the table and then the cards, for printing or saving as a PDF.
+    var small = window.matchMedia('(max-width: 40.0525em)').matches;
+    if (q.get('view') === 'both') {
+      document.body.classList.add('app-both');
+      toggle.hidden = true;
+      views.table.hidden = false;
+      views.cards.hidden = false;
+      Array.prototype.forEach.call(document.querySelectorAll('details'), function (d) { d.open = true; });
+    } else {
+      setView(q.get('view') === 'cards' || (small && q.get('view') !== 'table') ? 'cards' : 'table', false);
+    }
+  })();
+</script>
+</body>
+</html>

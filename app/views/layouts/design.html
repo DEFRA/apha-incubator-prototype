@@ -1,0 +1,21 @@
+{#
+Layout for the design resource pages (home, design notes, documents).
+The prototype pages themselves should extend layouts/main.html instead.
+#}
+
+{% extends "layouts/main.html" %}
+
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+
+{% set serviceName = "APHA incubator design resource" %}
+
+{% block govukServiceNavigation %}
+  {{ govukServiceNavigation({
+    serviceName: serviceName,
+    serviceUrl: "/",
+    navigation: [
+      { href: "/", text: "Home", active: activeNav == "home" },
+      { href: "/design-notes", text: "Design notes", active: activeNav == "design-notes" }
+    ]
+  }) }}
+{% endblock %}

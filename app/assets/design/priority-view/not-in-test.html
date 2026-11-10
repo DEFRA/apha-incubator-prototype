@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+<head>
+<meta charset="utf-8">
+<title>This page is not part of the test – Disease threat intelligence</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="govuk-frontend.min.css">
+<style>
+  html, body, body * { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", arial, sans-serif !important; }
+  html.govuk-template, .govuk-template__body { background: #fff; }
+  .govuk-link:link, .govuk-link:visited { color: #0f7a52; }
+  .govuk-link:hover { color: #0a5c3d; }
+  .govuk-link:focus { color: #0b0c0c; }
+  .govuk-width-container, .govuk-phase-banner { background: transparent; }
+</style>
+</head>
+<body class="govuk-template__body">
+<div class="app-hub-bar"><a href="/">Back to the design resource home</a><span>Work in progress. Illustrative data, fictional disease names.</span></div>
+<style>.app-hub-bar{background:#0b0c0c;color:#b1b4b6;font:16px/1.3 Arial,sans-serif;padding:10px 20px}.app-hub-bar a{color:#fff;font-weight:700;margin-right:16px}.app-hub-bar a:focus{outline:3px solid #ffdd00;background:#ffdd00;color:#0b0c0c}@media print{.app-hub-bar{display:none}}</style>
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <div class="govuk-grid-row"><div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">This page is not part of the test</h1>
+      <p class="govuk-body" id="chose" hidden>You chose: <strong id="chose-what"></strong></p>
+      <p class="govuk-body">Tell the researcher what you expected to see here.</p>
+      <p class="govuk-body"><a class="govuk-link" href="javascript:history.back()">Go back</a></p>
+    </div></div>
+  </main>
+</div>
+<script>
+  // Shows the researcher which route was chosen, so first clicks are easy to record.
+  (function () {
+    var q = new URLSearchParams(location.search);
+    var diseases = { 'sprouting-hoof-disease': 'Sprouting hoof disease', 'himalayan-dragon-pox': 'Himalayan Dragon Pox', 'rainbow-tail-disease': 'Rainbow tail disease', 'fuzzy-fox-flu': 'Fuzzy fox flu', 'wing-wobble': 'Wing wobble' };
+    var layers = { risk: 'Risk across all diseases', impact: 'Impact across all diseases', preparedness: 'Preparedness across all diseases' };
+    var label = null;
+    if (q.get('page') === 'disease' && diseases[q.get('disease')]) label = 'Disease page: ' + diseases[q.get('disease')];
+    else if (q.get('page') === 'layer' && layers[q.get('layer')]) label = layers[q.get('layer')];
+    else if (q.get('page')) label = q.get('page');
+    if (label) {
+      document.getElementById('chose-what').textContent = label;
+      document.getElementById('chose').hidden = false;
+    }
+  })();
+</script>
+</body>
+</html>

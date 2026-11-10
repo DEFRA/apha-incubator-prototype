@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wireframe options – Risk and impact</title>
+<style>
+  :root { --ink:#0b0c0c; --mid:#505a5f; --line:#b1b4b6; --fill:#f3f2f1; --blue:#1d70b8; }
+  * { box-sizing: border-box; }
+  body { font-family: Arial, Helvetica, sans-serif; color: var(--ink); margin: 0; line-height: 1.4; font-size: 15px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 32px 24px 96px; }
+  h1 { font-size: 34px; margin: 0 0 12px; }
+  h2 { font-size: 26px; margin: 72px 0 6px; border-top: 4px solid var(--ink); padding-top: 16px; }
+  h3 { font-size: 20px; margin: 0 0 4px; }
+  p { margin: 0 0 14px; }
+  .lede { color: var(--mid); max-width: 720px; }
+  .small { font-size: 13px; color: var(--mid); }
+  nav a { margin-right: 20px; color: var(--blue); }
+
+  .option { display: grid; grid-template-columns: minmax(0, 620px) minmax(240px, 1fr); gap: 40px; margin: 40px 0 56px; align-items: start; }
+  .option.dt .frame { border-style: dashed; }
+  .notes { font-size: 14px; }
+  .notes h4 { font-size: 13px; text-transform: uppercase; letter-spacing: .5px; color: var(--mid); margin: 18px 0 4px; }
+  .notes h4:first-of-type { margin-top: 0; }
+  .notes ul { margin: 0; padding-left: 18px; }
+  .notes li { margin-bottom: 4px; }
+  .badge { display: inline-block; font-size: 12px; font-weight: bold; padding: 2px 8px; border: 2px solid var(--ink); margin-left: 8px; vertical-align: middle; }
+  .badge.test { background: var(--ink); color: #fff; }
+  .badge.dt { background: #fff; }
+
+  /* Frame */
+  .frame { border: 2px solid var(--ink); font-size: 14px; background: #fff; }
+  .frame.mobile { width: 320px; font-size: 13px; }
+  .bar-top { background: var(--ink); color: #fff; padding: 10px 18px; font-weight: bold; }
+  .bar-top span { font-weight: normal; border-left: 1px solid #fff; margin-left: 12px; padding-left: 12px; }
+  .body { padding: 20px 18px 24px; }
+  .crumbs { font-size: 13px; color: var(--blue); margin-bottom: 16px; }
+  .frame h5 { font-size: 17px; margin: 24px 0 8px; }
+  .frame h6 { font-size: 15px; margin: 0 0 6px; }
+  .page-title { font-size: 26px; font-weight: bold; margin: 0 0 12px; }
+  .l { color: var(--blue); text-decoration: underline; }
+  .muted { color: var(--mid); }
+  .ph { background: var(--fill); border: 1px dashed var(--line); color: var(--mid); padding: 10px; font-size: 13px; }
+  .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin: 12px 0; }
+  .btn { display:inline-block; border:1px solid var(--ink); padding:4px 12px; font-size:13px; }
+  .btn.on { background: var(--ink); color:#fff; }
+  .select { display:inline-block; border:2px solid var(--ink); padding:4px 10px; min-width: 160px; font-size: 13px; }
+  .check::before { content: "☐ "; }
+  .details { color: var(--blue); text-decoration: underline; font-size: 14px; margin-top: 18px; }
+  .details::before { content: "▸ "; }
+
+  .tag { display:inline-block; padding: 2px 8px; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: .3px; white-space: nowrap; }
+  .tag.up { background:#f4cdc6; color:#942514; }
+  .tag.down { background:#cce2d8; color:#005a30; }
+  .tag.same { background:#e5e5e5; color:#383f43; }
+  .band { display:inline-block; padding: 3px 10px; font-size: 12px; font-weight: bold; text-transform: uppercase; color:#fff; white-space: nowrap; }
+  .band.act { background:#912b19; } .band.pri { background:#b8460f; } .band.mon { background:#7a5a00; } .band.mai { background:#005a30; }
+
+  .meter { display:inline-flex; gap:2px; vertical-align: middle; margin-right: 6px; }
+  .meter i { width: 10px; height: 14px; border: 1px solid var(--ink); display:block; }
+  .meter i.f { background: var(--ink); }
+  .score { display:inline-block; width: 90px; height: 8px; background: #e5e5e5; vertical-align: middle; margin-left: 6px; }
+  .score i { display:block; height: 100%; background: var(--ink); }
+
+  .cards { display:grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .cards.one { grid-template-columns: 1fr; }
+  .card { border: 1px solid var(--line); }
+  .card .ch { background: var(--fill); padding: 10px 12px; border-bottom: 1px solid var(--line); font-weight: bold; }
+  .card .cb { padding: 12px; }
+  .card .ln { display:grid; grid-template-columns: 64px 1fr; gap: 8px; margin-bottom: 8px; align-items: center; }
+  .card .ln:last-child { margin-bottom: 0; }
+  .card .ln span:first-child { color: var(--mid); font-size: 13px; }
+
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th { text-align: left; border-bottom: 2px solid var(--ink); padding: 8px 8px 8px 0; }
+  td { border-bottom: 1px solid var(--line); padding: 10px 8px 10px 0; vertical-align: top; }
+  .tabs { display:flex; gap:4px; border-bottom: 1px solid var(--line); margin: 16px 0; }
+  .tabs span { padding: 7px 14px; background: var(--fill); border: 1px solid var(--line); border-bottom: 0; font-size: 13px; }
+  .tabs span.on { background:#fff; font-weight:bold; }
+  .summary { display:grid; grid-template-columns: 120px 1fr; margin: 0; }
+  .summary dt, .summary dd { margin:0; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .summary dt { font-weight: bold; }
+  .two { display:grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .rank { display:grid; grid-template-columns: 34px 1fr; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+  .rank .n { font-size: 22px; font-weight: bold; }
+  .rank .t { display:flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .rank .t b { color: var(--blue); text-decoration: underline; font-size: 16px; }
+  .rank p { margin: 6px 0 6px; }
+  .rank .lay { font-size: 12px; color: var(--mid); }
+  .group { border: 1px solid var(--line); padding: 12px; }
+  .group h6 { color: var(--mid); text-transform: uppercase; font-size: 12px; letter-spacing: .4px; }
+  .big { font-size: 22px; font-weight: bold; }
+  svg { width:100%; height:auto; display:block; }
+
+  .ref table { font-size: 14px; }
+  .ref td, .ref th { padding: 8px 12px 8px 0; }
+  .ref { background: var(--fill); padding: 20px 24px; margin: 24px 0 0; }
+  .ref h3 { margin-bottom: 10px; }
+  .legend { display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; align-items:center; }
+  svg text { font-family: Arial, sans-serif; }
+  @media (max-width: 900px) { .option { grid-template-columns: 1fr; gap: 16px; } }
+</style>
+</head>
+<body>
+<div class="app-hub-bar"><a href="/">Back to the design resource home</a><span>Work in progress. Illustrative data, fictional disease names.</span></div>
+<style>.app-hub-bar{background:#0b0c0c;color:#b1b4b6;font:16px/1.3 Arial,sans-serif;padding:10px 20px}.app-hub-bar a{color:#fff;font-weight:700;margin-right:16px}.app-hub-bar a:focus{outline:3px solid #ffdd00;background:#ffdd00;color:#0b0c0c}@media print{.app-hub-bar{display:none}}</style>
+<div class="wrap">
+
+<h1>Wireframe options: Risk and impact</h1>
+<p class="lede">Low-fidelity options for the two screens in the <a href="/docs/prototype-spec">prototype spec</a>. <span class="badge test">Test round</span> options show risk and impact only. <span class="badge dt">Design team only</span> options (dashed frames) show how the design grows to all four scoring layers. All data is illustrative and the diseases are fictional. Header, alpha banner and footer are left out of each frame to keep them clear.</p>
+<nav><a href="#ref">Scoring framework</a><a href="#s1">Screen 1: Overview</a><a href="#s2">Screen 2: Detail</a><a href="#m">Mobile</a><a href="#compare">Comparing options</a></nav>
+
+<!-- ============ SCORING REFERENCE ============ -->
+<div class="ref" id="ref">
+<h3>Scoring framework this design must respect</h3>
+<p class="small">From the journeys and mapping board. Four layers of evidence combine into one priority score per disease.</p>
+<table>
+  <thead><tr><th>Layer</th><th>Group</th><th>Scale</th><th>Source</th></tr></thead>
+  <tbody>
+    <tr><td><b>1</b> Risk of incursion</td><td>Threat</td><td>Low 1, Medium 2, High 3</td><td>IDM monthly report, Risk ID report</td></tr>
+    <tr><td><b>2</b> Impact</td><td>Threat</td><td>High 3, Very high 4, plus what is affected (animal health, economy)</td><td>D2R2 data, disease modelling, impact scoring</td></tr>
+    <tr><td><b>3</b> Control measures</td><td>Vulnerability</td><td>0 to 10 (10 = excellent): how well we can prevent entry</td><td>Preparedness indices</td></tr>
+    <tr><td><b>4</b> Response options</td><td>Vulnerability</td><td>0 to 10 (10 = excellent): how well we can respond</td><td>Preparedness indices</td></tr>
+  </tbody>
+</table>
+<p style="margin-top:14px"><b>Priority = (Risk + Impact) × (20 − Control − Response)</b>, out of 140, ranked 1 to 5.</p>
+<div class="legend"><span class="band act">Act now 70+</span><span class="band pri">Prioritise 45 to 69</span><span class="band mon">Monitor 20 to 44</span><span class="band mai">Maintain under 20</span></div>
+<p class="small" style="margin:14px 0 0">Illustrative mapping to the fictional names: Sprouting hoof disease (priority 75), Himalayan Dragon Pox (55), Rainbow tail disease (50), Fuzzy fox flu (42), Wing wobble (18).</p>
+</div>
+
+<!-- ============ SCREEN 1 ============ -->
+<h2 id="s1">Screen 1: Disease overview</h2>
+<p class="lede">Needs: UN1 trusted source, UN2 risk changes, UN5 deprioritise, UN10 summary, UN13 single source.</p>
+
+<!-- 1A -->
+<section class="option">
+<div class="frame">
+  <div class="bar-top">GOV.UK<span>Disease threat intelligence</span></div>
+  <div class="body">
+    <div class="crumbs">Home &rsaquo; Diseases</div>
+    <div class="page-title">Diseases</div>
+    <p>Risk is from the <span class="l">IDM monthly assessment report, October 2026</span>. Impact is from APHA impact scoring.</p>
+    <div class="row"><span class="btn on">Cards</span><span class="btn">List</span><span class="select">Sort: highest risk ▾</span></div>
+    <div class="cards">
+      <div class="card"><div class="ch l">Wing wobble</div><div class="cb">
+        <div class="ln"><span>Risk</span><span><i class="meter"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></i>High</span></div>
+        <div class="ln"><span></span><span><span class="tag up">Risk increased</span> <span class="small">from Medium</span></span></div>
+        <div class="ln"><span>Impact</span><span>High <span class="small">(economy)</span></span></div>
+        <div class="ln"><span>Assessed</span><span>31 Oct 2026</span></div></div></div>
+      <div class="card"><div class="ch l">Fuzzy fox flu</div><div class="cb">
+        <div class="ln"><span>Risk</span><span><i class="meter"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></i>High</span></div>
+        <div class="ln"><span></span><span><span class="tag same">No change</span></span></div>
+        <div class="ln"><span>Impact</span><span>High <span class="small">(economy)</span></span></div>
+        <div class="ln"><span>Assessed</span><span>31 Aug 2026</span></div></div></div>
+      <div class="card"><div class="ch l">Himalayan Dragon Pox</div><div class="cb">
+        <div class="ln"><span>Risk</span><span><i class="meter"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></i>Medium</span></div>
+        <div class="ln"><span></span><span><span class="tag down">Risk decreased</span> <span class="small">from High</span></span></div>
+        <div class="ln"><span>Impact</span><span>High <span class="small">(animal health)</span></span></div>
+        <div class="ln"><span>Assessed</span><span>31 Oct 2026</span></div></div></div>
+      <div class="card"><div class="ch l">Rainbow tail disease</div><div class="cb">
+        <div class="ln"><span>Risk</span><span><i class="meter"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></i>Medium</span></div>
+        <div class="ln"><span></span><span><span class="tag same">No change</span></span></div>
+        <div class="ln"><span>Impact</span><span>High <span class="small">(animal health)</span></span></div>
+        <div class="ln"><span>Assessed</span><span>30 Sep 2026</span></div></div></div>
+    </div>
+    <p class="small" style="margin-top:14px">+ 1 more card (Sprouting hoof disease)</p>
+    <div class="details">What the levels mean</div>
+  </div>
+</div>
+<div class="notes">
+  <h3>1A Cards, sorted by risk <span class="badge test">Test</span></h3>
+  <p class="small">Baseline. Source stated once under the heading.</p>
+  <h4>Tests</h4>
+  <ul><li>Sorting by risk beats A to Z.</li><li>Text tags beat arrows.</li><li>Can users find the changes unaided?</li><li>Do users read risk and impact as two different things?</li></ul>
+  <h4>Variants to try</h4>
+  <ul><li>Source link on every card instead of once.</li><li>"Up 1 level" wording.</li></ul>
+  <h4>Design team questions</h4>
+  <ul><li>Impact has "what is affected" (animal health, economy). Is that worth a line on the card?</li><li>Does impact change over time, or is it fixed until reassessed?</li></ul>
+</div>
+</section>
+
+<!-- 1B -->
+<section class="option">
+<div class="frame">
+  <div class="bar-top">GOV.UK<span>Disease threat intelligence</span></div>
+  <div class="body">
+    <div class="crumbs">Home &rsaquo; Diseases</div>
+    <div class="page-title">Diseases</div>
+    <p>Risk is from the <span class="l">IDM monthly assessment report, October 2026</span>. 2 risk levels changed this month.</p>
+    <div class="tabs"><span>All diseases (5)</span><span class="on">Latest changes (2)</span></div>
+    <div class="cards one">
+      <div class="card"><div class="ch l">Wing wobble</div><div class="cb">
+        <div class="ln"><span>Risk</span><span><i class="meter"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></i>High <span class="tag up">Risk increased</span> <span class="small">from Medium</span></span></div>
+        <div class="ln"><span>Impact</span><span>High <span class="small">(economy)</span></span></div></div></div>
+      <div class="card"><div class="ch l">Himalayan Dragon Pox</div><div class="cb">
+        <div class="ln"><span>Risk</span><span><i class="meter"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></i>Medium <span class="tag down">Risk decreased</span> <span class="small">from High</span></span></div>
+        <div class="ln"><span>Impact</span><span>High <span class="small">(animal health)</span></span></div></div></div>
+    </div>
+    <p class="small" style="margin-top:14px">3 diseases had no change in risk. <span class="l">View all diseases</span></p>
+  </div>
+</div>
+<div class="notes">
+  <h3>1B Latest changes tab <span class="badge test">Test</span></h3>
+  <p class="small">Puts change first with two tabs.</p>
+  <h4>Tests</h4>
+  <ul><li>Is a "latest changes" view worth the extra weight over 1A?</li><li>Does the tab hide diseases users should see?</li></ul>
+  <h4>Variants to try</h4>
+  <ul><li>A banner at the top of 1A instead of tabs.</li><li>Three tabs: highest risk, increased, decreased.</li></ul>
+  <h4>Design team questions</h4>
+  <ul><li>Should a changed impact appear here too?</li></ul>
+</div>
+</section>
+
+<!-- 1C -->
+<section class="option">
+<div class="frame">
+  <div class="bar-top">GOV.UK<span>Disease threat intelligence</span></div>
+  <div class="body">
+    <div class="crumbs">Home &rsaquo; Diseases</div>
+    <div class="page-title">Diseases</div>
+    <div class="row"><span class="btn">Cards</span><span class="btn on">List</span><span class="select">Sort: highest risk ▾</span></div>
+    <div class="row"><span class="check">Hide diseases with no change in risk</span></div>
+    <table>
+      <thead><tr><th>Disease</th><th>Risk</th><th>Change</th><th>Impact</th><th>Assessed</th></tr></thead>
+      <tbody>
+        <tr><td class="l">Wing wobble</td><td>High</td><td><span class="tag up">Increased</span></td><td>High</td><td>31 Oct 2026</td></tr>
+        <tr><td class="l">Fuzzy fox flu</td><td>High</td><td><span class="tag same">No change</span></td><td>High</td><td>31 Aug 2026</td></tr>
+        <tr><td class="l">Himalayan Dragon Pox</td><td>Medium</td><td><span class="tag down">Decreased</span></td><td>High</td><td>31 Oct 2026</td></tr>
+        <tr><td colspan="5" class="muted">+ 2 more rows</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="notes">
+  <h3>1C List with filter <span class="badge test">Test</span></h3>
+  <p class="small">A table for comparing, with an optional filter instead of hiding diseases.</p>
+  <h4>Tests</h4>
+  <ul><li>List vs cards for comparing diseases.</li><li>Does the filter help or hide things that matter (UN5)?</li></ul>
+  <h4>Design team questions</h4>
+  <ul><li>Hiding no-change diseases could hide a high risk. Should the filter default to off?</li><li>Test with 1A as the control.</li></ul>
+</div>
+</section>
+
+<!-- 1D -->
+<section class="option dt">
+<div class="frame">
+  <div class="bar-top">GOV.UK<span>Disease threat intelligence</span></div>
+  <div class="body">
+    <div class="crumbs">Home &rsaquo; Diseases</div>
+    <div class="page-title">Diseases by priority</div>
+    <p>Priority combines risk, impact, control measures and response options. <span class="l">How the score works</span></p>
+    <div class="rank"><div class="n">1</div><div>
+      <div class="t"><b>Sprouting hoof disease</b><span><span class="band act">Act now</span> <b style="text-decoration:none;color:var(--ink)">75</b><span class="small"> / 140</span></span></div>
+      <p>Unlikely to enter the UK, but the greatest impact and we are least prepared.</p>
+      <div class="lay">Risk Low · Impact Very high · Control 3/10 · Response 2/10</div></div></div>
+    <div class="rank"><div class="n">2</div><div>
+      <div class="t"><b>Himalayan Dragon Pox</b><span><span class="band pri">Prioritise</span> <b style="text-decoration:none;color:var(--ink)">55</b><span class="small"> / 140</span></span></div>
+      <p>Risk is Medium and falling, with gaps in both control and response.</p>
+      <div class="lay">Risk Medium · Impact High · Control 5/10 · Response 4/10</div></div></div>
+    <div class="rank"><div class="n">5</div><div>
+      <div class="t"><b>Wing wobble</b><span><span class="band mai">Maintain</span> <b style="text-decoration:none;color:var(--ink)">18</b><span class="small"> / 140</span></span></div>
+      <p>High risk, but we are well prepared, so keep current arrangements.</p>
+      <div class="lay">Risk High · Impact High · Control 8/10 · Response 9/10</div></div></div>
+    <p class="small" style="margin-top:12px">+ 2 more diseases (ranks 3 and 4)</p>
+  </div>
+</div>
+<div class="notes">
+  <h3>1D Ranked by priority <span class="badge dt">Design team only</span></h3>
+  <p class="small">Shows how the overview grows once all four layers exist. Priority becomes the default sort.</p>
+  <h4>Shows</h4>
+  <ul><li>Rank, band and score lead. The four layers sit underneath as one line.</li><li>One plain sentence per disease explains the "so what" (UN10).</li><li>Colour belongs to the priority band, so change tags stay neutral.</li></ul>
+  <h4>Design team questions</h4>
+  <ul><li>Who writes the sentence and how often?</li><li>Do users trust a combined score or need to see the working first?</li><li>Do we show the 0 to 10 scores as numbers, bars or both?</li><li>How do the five IDM risk levels map to the framework's Low, Medium, High?</li><li>Keep 1A to 1C as the layers view behind a "View" switch, or replace them?</li></ul>
+</div>
+</section>
+
+<!-- ============ SCREEN 2 ============ -->
+<h2 id="s2">Screen 2: Disease detail</h2>
+<p class="lede">Needs: UN2 risk changes, UN4 horizons, UN10 summary, UN14 change over time.</p>
+
+<!-- 2A -->
+<section class="option">
+<div class="frame">
+  <div class="bar-top">GOV.UK<span>Disease threat intelligence</span></div>
+  <div class="body">
+    <div class="crumbs">Home &rsaquo; Diseases &rsaquo; Wing wobble</div>
+    <div class="page-title">Wing wobble</div>
+    <dl class="summary">
+      <dt>Risk</dt><dd><i class="meter"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i></i>High <span class="tag up">Risk increased</span> <span class="small">from Medium</span></dd>
+      <dt>Impact</dt><dd>High <span class="small">(economy)</span></dd>
+      <dt>Last assessed</dt><dd>31 October 2026</dd>
+      <dt>Source</dt><dd class="l">IDM monthly assessment report, October 2026</dd>
+    </dl>
+    <h5>What this means</h5>
+    <p>Outbreaks in neighbouring countries and the start of the autumn migration season have raised the chance of the disease reaching the UK. Review your surveillance and response plans.</p>
+    <h5>Risk over time</h5>
+    <div class="row" style="margin-top:0"><span class="btn">6 months</span><span class="btn on">12 months</span><span class="btn">All</span></div>
+    <svg viewBox="0 0 640 200" role="img" aria-label="Line chart of monthly risk level, November 2025 to October 2026">
+      <g font-size="11" fill="#505a5f"><text x="4" y="24">High</text><text x="4" y="64">Medium</text><text x="4" y="104">Low</text><text x="4" y="144">Very low</text></g>
+      <g stroke="#e5e5e5"><line x1="70" x2="630" y1="20" y2="20"/><line x1="70" x2="630" y1="60" y2="60"/><line x1="70" x2="630" y1="100" y2="100"/><line x1="70" x2="630" y1="140" y2="140"/></g>
+      <polyline fill="none" stroke="#0b0c0c" stroke-width="2" points="90,100 135,100 180,100 225,60 270,60 315,100 360,100 405,100 450,60 495,60 540,60 585,20"/>
+      <g fill="#0b0c0c"><circle cx="90" cy="100" r="4"/><circle cx="135" cy="100" r="4"/><circle cx="180" cy="100" r="4"/><circle cx="225" cy="60" r="4"/><circle cx="270" cy="60" r="4"/><circle cx="315" cy="100" r="4"/><circle cx="360" cy="100" r="4"/><circle cx="405" cy="100" r="4"/><circle cx="450" cy="60" r="4"/><circle cx="495" cy="60" r="4"/><circle cx="540" cy="60" r="4"/><circle cx="585" cy="20" r="6" fill="#d4351c"/></g>
+      <g font-size="10" fill="#505a5f" text-anchor="middle"><text x="90" y="170">Nov</text><text x="225" y="170">Feb</text><text x="360" y="170">May</text><text x="495" y="170">Aug</text><text x="585" y="170">Oct</text></g>
+    </svg>
+    <div class="details">Show as table</div>
+    <h5>Change history</h5>
+    <table>
+      <thead><tr><th>Month</th><th>Risk</th><th>Reason for change</th></tr></thead>
+      <tbody>
+        <tr><td>Oct 2026</td><td>High <span class="tag up">Increased</span></td><td>Outbreaks in neighbouring countries</td></tr>
+        <tr><td>Jul 2026</td><td>Medium <span class="tag up">Increased</span></td><td>New cases in two further countries</td></tr>
+        <tr><td>Apr 2026</td><td>Low <span class="tag down">Decreased</span></td><td>Outbreak declared over in the affected country</td></tr>
+        <tr><td colspan="3" class="muted">+ 1 more row</td></tr>
+      </tbody>
+    </table>
+    <div class="row"><span class="check">Show months with no change</span></div>
+    <h5>Impact</h5>
+    <p>High. An outbreak would mainly affect the economy through trade restrictions.</p>
+  </div>
+</div>
+<div class="notes">
+  <h3>2A Chart and change history <span class="badge test">Test</span></h3>
+  <p class="small">Risk trend first, impact as its own short section.</p>
+  <h4>Tests</h4>
+  <ul><li>Does the chart add anything beyond the table?</li><li>Do users find "why" in the reason column?</li><li>Do users find the impact section?</li></ul>
+  <h4>Variants to try</h4>
+  <ul><li>Every month in the table instead of changes only.</li></ul>
+  <h4>Design team questions</h4>
+  <ul><li>Impact has no change history in the data we have. Is a short statement enough?</li><li>Chart needs a table alternative and a text summary.</li></ul>
+</div>
+</section>
+
+<!-- 2B -->
+<section class="option">
+<div class="frame">
+  <div class="bar-top">GOV.UK<span>Disease threat intelligence</span></div>
+  <div class="body">
+    <div class="crumbs">Home &rsaquo; Diseases &rsaquo; Wing wobble</div>
+    <div class="page-title">Wing wobble</div>
+    <div class="two">
+      <div class="group"><h6>Risk</h6><div class="big">High</div><span class="tag up">Risk increased</span> <span class="small">from Medium</span><p class="small" style="margin:8px 0 0">Assessed 31 Oct 2026<br><span class="l">IDM report, October 2026</span></p></div>
+      <div class="group"><h6>Impact</h6><div class="big">High</div><span class="small">Mostly economy</span><p class="small" style="margin:8px 0 0">Assessed 30 Sep 2026</p></div>
+    </div>
+    <h5>What this means</h5>
+    <p>Wing wobble is now the highest risk disease on this list. The risk is expected to stay High until the end of the autumn migration season. Review your surveillance and response plans.</p>
+    <h5>Why the risk changed</h5>
+    <p>Outbreaks in neighbouring countries and the start of the migration season.</p>
+    <h5>Risk history, last 12 months</h5>
+    <table>
+      <thead><tr><th>Month</th><th>Risk</th><th>Change</th></tr></thead>
+      <tbody>
+        <tr><td><b>Oct 2026</b></td><td><b>High</b></td><td><span class="tag up">Increased</span></td></tr>
+        <tr><td>Sep 2026</td><td>Medium</td><td><span class="tag same">No change</span></td></tr>
+        <tr><td>Aug 2026</td><td>Medium</td><td><span class="tag same">No change</span></td></tr>
+        <tr><td colspan="3" class="muted">+ 9 more rows</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="notes">
+  <h3>2B Summary first, table only <span class="badge test">Test</span></h3>
+  <p class="small">No chart. The "so what" leads. Risk and impact sit side by side.</p>
+  <h4>Tests</h4>
+  <ul><li>Do users need a chart at all?</li><li>Is "so what" first better for UN10?</li></ul>
+  <h4>Design team questions</h4>
+  <ul><li>Side by side boxes make risk and impact equal. Is that right when risk is the live data?</li><li>A table is simpler to make accessible than a chart.</li></ul>
+</div>
+</section>
+
+<!-- 2C -->
+<section class="option dt">
+<div class="frame">
+  <div class="bar-top">GOV.UK<span>Disease threat intelligence</span></div>
+  <div class="body">
+    <div class="crumbs">Home &rsaquo; Diseases &rsaquo; Sprouting hoof disease</div>
+    <div class="page-title">Sprouting hoof disease</div>
+    <div class="row" style="margin-top:0"><span class="band act">Act now</span><span class="big">75</span><span class="small">out of 140 · Rank 1 of 5</span></div>
+    <p>Unlikely to enter the UK, but it would have the greatest impact and we are least prepared for it.</p>
+    <h5>How the score is made</h5>
+    <div class="two">
+      <div class="group"><h6>Threat</h6>
+        <p style="margin:0 0 10px"><b>Risk of incursion</b><br>Low <span class="small">· no change</span><br><span class="l small">View risk history</span></p>
+        <p style="margin:0"><b>Impact</b><br>Very high <span class="small">· animal health and economy</span><br><span class="l small">View impact detail</span></p></div>
+      <div class="group"><h6>Vulnerability (preparedness)</h6>
+        <p style="margin:0 0 10px"><b>Control measures</b><br>3 / 10<span class="score"><i style="width:30%"></i></span><br><span class="l small">View detail</span></p>
+        <p style="margin:0"><b>Response options</b><br>2 / 10<span class="score"><i style="width:20%"></i></span><br><span class="l small">View detail</span></p></div>
+    </div>
+    <div class="details">How the score works</div>
+    <p class="small" style="margin:8px 0 0 14px">(Risk + Impact) × (20 − Control − Response) = (1 + 4) × (20 − 3 − 2) = 75</p>
+  </div>
+</div>
+<div class="notes">
+  <h3>2C Priority and four layers <span class="badge dt">Design team only</span></h3>
+  <p class="small">Shows how the detail page grows. Each layer links to its own history or detail.</p>
+  <h4>Shows</h4>
+  <ul><li>Priority and the plain-language "so what" first.</li><li>Four layers grouped as the framework groups them: Threat and Vulnerability.</li><li>The working shown on demand, so the score can be trusted (UN1).</li><li>Each layer keeps its own source, date and history, using the screen 2A or 2B pattern.</li></ul>
+  <h4>Design team questions</h4>
+  <ul><li>Is the layer a section on one page or a separate page?</li><li>Preparedness is scored so higher is better, but vulnerability is 20 minus it. Show the gap, or the score?</li><li>Does priority have its own history over time?</li></ul>
+</div>
+</section>
+
+<!-- ============ MOBILE ============ -->
+<h2 id="m">Mobile (320px)</h2>
+<p class="lede">Cards and sections stack to one column. Reading order matches the desktop order.</p>
+<div style="display:flex; gap:40px; flex-wrap:wrap; margin-top:24px; align-items:flex-start">
+<div>
+  <h3>1A on mobile</h3>
+  <div class="frame mobile" style="margin-top:12px">
+    <div class="bar-top">GOV.UK</div>
+    <div class="body">
+      <div class="crumbs">Home &rsaquo; Diseases</div>
+      <div class="page-title">Diseases</div>
+      <p>Risk from the <span class="l">IDM report, October 2026</span>.</p>
+      <div class="row"><span class="btn on">Cards</span><span class="btn">List</span></div>
+      <div class="row"><span class="select">Sort: highest risk ▾</span></div>
+      <div class="cards one">
+        <div class="card"><div class="ch l">Wing wobble</div><div class="cb">
+          <div class="ln"><span>Risk</span><span>High <span class="tag up">Increased</span></span></div>
+          <div class="ln"><span>Impact</span><span>High <span class="small">(economy)</span></span></div>
+          <div class="ln"><span>Assessed</span><span>31 Oct 2026</span></div></div></div>
+        <div class="card"><div class="ch l">Fuzzy fox flu</div><div class="cb">
+          <div class="ln"><span>Risk</span><span>High <span class="tag same">No change</span></span></div>
+          <div class="ln"><span>Impact</span><span>High <span class="small">(economy)</span></span></div>
+          <div class="ln"><span>Assessed</span><span>31 Aug 2026</span></div></div></div>
+      </div>
+      <p class="small" style="margin-top:12px">+ 3 more cards</p>
+    </div>
+  </div>
+</div>
+<div>
+  <h3>2A on mobile</h3>
+  <div class="frame mobile" style="margin-top:12px">
+    <div class="bar-top">GOV.UK</div>
+    <div class="body">
+      <div class="crumbs">Home &rsaquo; Diseases &rsaquo; Wing wobble</div>
+      <div class="page-title">Wing wobble</div>
+      <dl class="summary" style="grid-template-columns:92px 1fr">
+        <dt>Risk</dt><dd>High <span class="tag up">Increased</span></dd>
+        <dt>Impact</dt><dd>High</dd>
+        <dt>Assessed</dt><dd>31 Oct 2026</dd>
+      </dl>
+      <h5>Risk over time</h5>
+      <div class="ph" style="height:110px">Chart, full width</div>
+      <div class="details">Show as table</div>
+      <h5>Change history</h5>
+      <table><thead><tr><th>Month</th><th>Risk</th></tr></thead>
+        <tbody><tr><td>Oct 2026</td><td>High</td></tr><tr><td>Jul 2026</td><td>Medium</td></tr></tbody></table>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ============ COMPARE ============ -->
+<div class="ref" id="compare" style="margin-top:72px">
+<h3>Comparing options</h3>
+<table>
+  <thead><tr><th>Option</th><th>For</th><th>Strength</th><th>Risk</th></tr></thead>
+  <tbody>
+    <tr><td><b>1A</b> Cards</td><td>Test</td><td>Simple. Control for the others.</td><td>Changes can be missed.</td></tr>
+    <tr><td><b>1B</b> Latest changes tab</td><td>Test</td><td>Puts change (UN2) first.</td><td>Tab can hide diseases.</td></tr>
+    <tr><td><b>1C</b> List with filter</td><td>Test</td><td>Fast to compare.</td><td>Filter could hide a high risk.</td></tr>
+    <tr><td><b>1D</b> Ranked by priority</td><td>Design team</td><td>Answers "what do I act on?" (UN5). Scales to all four layers.</td><td>Needs agreed scales, data and a trusted score.</td></tr>
+    <tr><td><b>2A</b> Chart and history</td><td>Test</td><td>Shows trend (UN14) and reasons.</td><td>Custom chart needs accessibility work.</td></tr>
+    <tr><td><b>2B</b> Summary first, table</td><td>Test</td><td>"So what" first (UN10). Simple to build.</td><td>Trend is harder to see.</td></tr>
+    <tr><td><b>2C</b> Priority and four layers</td><td>Design team</td><td>Shows the working behind the score.</td><td>Page may get long without a clear layer pattern.</td></tr>
+  </tbody>
+</table>
+<p class="small" style="margin:14px 0 0">Likely base for the test: 1A with the 1C list view, plus 1B as the variant. For screen 2, test 2A against 2B. If 1D and 2C are the destination, check that the test designs can grow into them without a redesign.</p>
+</div>
+
+</div>
+</body>
+</html>
