@@ -33,7 +33,7 @@
   (function () {
     var q = new URLSearchParams(location.search);
     var diseases = { 'sprouting-hoof-disease': 'Sprouting hoof disease', 'himalayan-dragon-pox': 'Himalayan Dragon Pox', 'rainbow-tail-disease': 'Rainbow tail disease', 'fuzzy-fox-flu': 'Fuzzy fox flu', 'wing-wobble': 'Wing wobble' };
-    var layers = { risk: 'Risk across all diseases', impact: 'Impact across all diseases', preparedness: 'Preparedness across all diseases' };
+    var layers = { risk: 'Risk across all diseases', impact: 'Impact across all diseases', control: 'Control measures across all diseases', response: 'Response options across all diseases' };
     var label = null;
     if (q.get('page') === 'disease' && diseases[q.get('disease')]) label = 'Disease page: ' + diseases[q.get('disease')];
     else if (q.get('page') === 'layer' && layers[q.get('layer')]) label = layers[q.get('layer')];

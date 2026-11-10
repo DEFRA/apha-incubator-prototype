@@ -60,7 +60,6 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .app-band--prioritise { background: #f47738; color: #0b0c0c; } /* 7.04:1. White would fail at 2.78:1 */
 .app-band--monitor { background: #ffdd00; color: #0b0c0c; }    /* 14.55:1 */
 .app-band--maintain { background: #00703c; color: #fff; }      /* 6.21:1. Defra green #00a33b would fail at 3.33:1 */
-.app-tag--very-high { background: #942514; color: #fff; }      /* 8.29:1 */
 
 .app-priority__detail { white-space: nowrap; display: block; margin-top: 8px; color: var(--secondary); }
 
@@ -82,6 +81,8 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .app-score small { font-size: 1rem; font-weight: 400; color: var(--secondary); }
 .app-bar { display: block; width: 100%; max-width: 120px; height: 10px; margin-top: 10px; background: #e5e6e7; border: 1px solid var(--track-outline); }
 .app-bar > span { display: block; height: 100%; background: var(--defra-link); }
+/* Risk and impact are threats: a higher score is worse. Preparedness is the opposite, so threats use a neutral fill, not red or green. */
+.app-bar--threat > span { background: var(--secondary); }
 
 /* Option A: table */
 .app-table th, .app-table td { vertical-align: top; padding: 20px 15px; }
@@ -101,6 +102,8 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 
 .app-table--rows { min-width: 1000px; }
 .app-table--rows thead th:nth-child(1) { width: 20%; }
+.app-table--rows thead th:nth-child(3),
+.app-table--rows tbody td:nth-child(3),
 .app-table--rows thead th:nth-child(5),
 .app-table--rows tbody td:nth-child(5) { padding-left: 25px; border-left: 1px solid var(--divider); }
 
@@ -140,7 +143,7 @@ html.govuk-template, .govuk-template__body { background: #fff; }
   .app-scroll { margin: 0; }
   .app-table .app-sorted { background: none; }
   .app-table--rows tr { border: 1px solid var(--divider); margin-bottom: 15px; padding: 10px 15px; }
-  .app-table--rows th, .app-table--rows td, .app-table--rows tbody td:nth-child(5) { border: 0; padding: 8px 0; }
+  .app-table--rows th, .app-table--rows td, .app-table--rows tbody td:nth-child(3), .app-table--rows tbody td:nth-child(5) { border: 0; padding: 8px 0; }
   .app-table--rows td[data-label]::before { content: attr(data-label); display: block; font-weight: 700; margin-bottom: 5px; }
   .app-card dl { grid-template-columns: 1fr; }
   .app-cards { grid-template-columns: 1fr; }
