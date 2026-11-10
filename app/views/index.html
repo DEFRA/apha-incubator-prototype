@@ -1,19 +1,161 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/design.html" %}
 
-{% set pageName="Home" %}
+{% set pageName = "Home" %}
+{% set activeNav = "home" %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">APHA incubator design resource</h1>
 
-    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
+    <p class="govuk-body-l">
+      Design work for an early warning service for exotic animal diseases. It brings our decisions, prototypes and test
+      plans together, so the team can see where we are and why.
+    </p>
 
-    <h1 class="govuk-heading-xl">
-      {{ serviceName }}
-    </h1>
+    <div class="govuk-warning-text">
+      <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+      <strong class="govuk-warning-text__text">
+        <span class="govuk-visually-hidden">Warning</span>
+        This is work in progress. All data is illustrative and the disease names are fictional. Pages marked
+        &quot;Early ideas&quot; are not designs.
+      </strong>
+    </div>
 
-    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
+    <h2 class="govuk-heading-m">Start here</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a class="govuk-link" href="/design-notes">Design notes</a>: the decisions we have made, the directions we are taking and what is still open</li>
+      <li><a class="govuk-link" href="/public/design/priority-view/options.html">Priority view options</a>: the three options, how people move around and how we would test them</li>
+    </ul>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h2 class="govuk-heading-l" id="priority-view">Priority view</h2>
+    <p class="govuk-body">The top-level page that ranks diseases. This is what we plan to test first.</p>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">Priority view pages</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Page</th>
+          <th scope="col" class="govuk-table__header">What it is</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/public/design/priority-view/options.html">Priority view options</a></td>
+          <td class="govuk-table__cell">Compares options A, B and C, explains the width and spacing decision and the user flows, and says how we would test them</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">In design</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/public/design/priority-view/option-c.html">Option C: table or cards</a></td>
+          <td class="govuk-table__cell">One page with a switch between a table and cards. The option we recommend testing</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">In design</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/public/design/priority-view/index.html">Option A: ranked table</a></td>
+          <td class="govuk-table__cell">Best for comparing one measure across diseases</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">In design</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/public/design/priority-view/option-b.html">Option B: grouped by action</a></td>
+          <td class="govuk-table__cell">Cards grouped by what to do, best for &quot;what do I do next?&quot;</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">In design</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/docs/priority-view-test-plan">Priority view test plan</a></td>
+          <td class="govuk-table__cell">Research questions, tasks, session plan, colour accessibility and open decisions</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Draft</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">
+            Option C as images:
+            <a class="govuk-link" href="/public/design/images/priority-view-option-c-table.png">table view<span class="govuk-visually-hidden"> (image)</span></a>
+            and
+            <a class="govuk-link" href="/public/design/images/priority-view-option-c-cards.png">cards view<span class="govuk-visually-hidden"> (image)</span></a>
+          </td>
+          <td class="govuk-table__cell">Long screenshots of each view, for sharing and viewing on a screen</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">In design</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-l" id="risk-ideas">Ideas for risk and disease pages</h2>
+    <p class="govuk-body">Very early thinking about the pages the priority view links to. These are not designs.</p>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">Early ideas for risk and disease pages</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Page</th>
+          <th scope="col" class="govuk-table__header">What it is</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/public/design/risk-wireframes/index.html">Risk and impact wireframes</a></td>
+          <td class="govuk-table__cell">Options for a page showing every disease (1A to 1D) and a page for one disease (2A to 2C)</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--purple">Early ideas</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/public/design/structure-options.html">Disease-first or layer-first?</a></td>
+          <td class="govuk-table__cell">Three ways to move between diseases and the risk, impact and preparedness layers, with user flows</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--purple">Early ideas</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-l" id="background">Background</h2>
+    <p class="govuk-body">Earlier documents. They explain how we got here, but parts have been replaced by the priority view work.</p>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">Background documents</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Page</th>
+          <th scope="col" class="govuk-table__header">What it is</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/docs/design-brief">Design brief</a></td>
+          <td class="govuk-table__cell">The problem, users, needs and hypotheses for the risk and impact prototype</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey">Earlier document</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/docs/prototype-spec">Prototype spec</a></td>
+          <td class="govuk-table__cell">The scoring framework, illustrative data and screen-by-screen requirements</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey">Earlier document</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/public/design/earlier-test-proposal.html">Earlier test proposal</a></td>
+          <td class="govuk-table__cell">What to test first, routing and the risk slice. Replaced by the priority view test plan</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey">Earlier document</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-l" id="about">About this resource</h2>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body">
+          This site is also the prototype. The design pages above are static snapshots. When the design is refined,
+          the priority view will be rebuilt here as prototype pages using GOV.UK Frontend, ready to test with users.
+        </p>
+        <p class="govuk-body">Where things are kept:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><code>app/views</code> holds this home page, the <a class="govuk-link" href="/design-notes">design notes</a> and the documents. Prototype pages will go here too</li>
+          <li><code>app/assets/design</code> holds the design snapshots: priority view options, wireframes and images</li>
+        </ul>
+        <p class="govuk-body">To run it on your own computer, follow the instructions in the repository README.</p>
+        <p class="govuk-body govuk-!-font-size-16">Last updated 10 November 2026.</p>
+      </div>
+    </div>
+
   </div>
 </div>
 

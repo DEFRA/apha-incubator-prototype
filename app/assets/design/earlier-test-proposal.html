@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What to test first – routing and the risk slice</title>
+<style>
+  :root { --ink:#0b0c0c; --mid:#505a5f; --line:#b1b4b6; --fill:#f3f2f1; --blue:#1d70b8; --tint:#d2e2f1; --green:#00703c; --red:#912b19; }
+  * { box-sizing: border-box; }
+  body { font-family: Arial, Helvetica, sans-serif; color: var(--ink); margin: 0; line-height: 1.45; font-size: 16px; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 32px 24px 96px; }
+  h1 { font-size: 36px; margin: 0 0 12px; }
+  h2 { font-size: 26px; margin: 72px 0 8px; border-top: 4px solid var(--ink); padding-top: 16px; }
+  h3 { font-size: 20px; margin: 0 0 6px; }
+  p { margin: 0 0 14px; }
+  .lede { color: var(--mid); max-width: 760px; font-size: 18px; }
+  .small { font-size: 14px; color: var(--mid); }
+  nav a { margin-right: 20px; color: var(--blue); }
+  .draft { display:inline-block; background:#fff; border: 2px solid var(--ink); font-size: 13px; font-weight: bold; padding: 2px 10px; margin-bottom: 14px; }
+  .t1 { color: var(--blue); } .t2 { color: var(--green); }
+
+  /* Two tests at a glance */
+  .two { display:grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 20px; }
+  .card { border-top: 6px solid var(--ink); background: var(--fill); padding: 18px 20px 14px; }
+  .card.t1b { border-color: var(--blue); } .card.t2b { border-color: var(--green); }
+  .card h3 { font-size: 22px; }
+  .card dl { margin: 12px 0 0; display:grid; grid-template-columns: 120px 1fr; gap: 6px 12px; font-size: 15px; }
+  .card dt { font-weight: bold; } .card dd { margin: 0; }
+
+  /* Relationship diagram */
+  .diagram { background: var(--fill); padding: 20px; margin-top: 24px; }
+  .diagram svg { width: 100%; height: auto; display:block; }
+  .legend { display:flex; gap: 24px; flex-wrap:wrap; margin-top: 12px; font-size: 14px; }
+  .legend span::before { content:""; display:inline-block; width: 14px; height: 14px; margin-right: 8px; vertical-align: -2px; border: 2px solid var(--ink); }
+  .legend .l1::before { border-color: var(--blue); background:#fff; } .legend .l2::before { border-color: var(--green); background:#cfe5d8; } .legend .l3::before { border-style: dashed; background: #fff; }
+
+  /* User flow style */
+  .uf-journey { background: var(--fill); padding: 20px 20px 18px; margin-bottom: 28px; }
+  .uf-journey > p { max-width: 780px; }
+  .uf-steps { list-style: none; margin: 18px 0 0; padding: 0; display: flex; gap: 0 48px; align-items: flex-start; }
+  .uf-step { position: relative; display:flex; flex-direction:column; align-items:center; width: 170px; text-align:center; flex: none; }
+  .uf-step:not(:last-child)::after { content:""; position:absolute; right:-40px; top: 150px; width: 30px; height: 3px; background: var(--mid); }
+  .uf-step:not(:last-child)::before { content:""; position:absolute; right:-41px; top: 144px; border: 7.5px solid transparent; border-left: 10px solid var(--mid); border-right: 0; }
+  .uf-step--choice { width: auto; }
+  .uf-choice { list-style:none; margin:0; padding:0; display:flex; gap: 20px; outline: 2px dashed var(--line); outline-offset: 6px; }
+  .uf-choice > li { width: 170px; display:flex; flex-direction:column; align-items:center; text-align:center; }
+  .uf-number { font-size: 14px; color: var(--mid); margin-bottom: 4px; }
+  .uf-pill { display:flex; align-items:center; justify-content:center; background:#fff; border-radius: 999px; padding: 6px 14px; font-weight: bold; font-size: 15px; line-height: 1.25; min-height: 52px; margin-bottom: 14px; width: 100%; }
+  .uf-note { font-size: 14px; color: var(--mid); margin: 10px 0 0; }
+  .uf-end { background:#fff; border-left: 4px solid var(--green); padding: 8px 12px; margin-top: 22px; font-size: 14px; max-width: 780px; }
+  .uf-end.blue { border-color: var(--blue); }
+  .desktop { width: 170px; border: 3px solid var(--line); border-radius: 6px; background: var(--fill); overflow: hidden; }
+  .chrome { height: 11px; display:flex; gap:3px; align-items:center; padding-left:6px; }
+  .chrome b { width:4px; height:4px; border-radius:50%; background:#d4351c; display:block; }
+  .chrome b:nth-child(2){ background:#ffdd00; } .chrome b:nth-child(3){ background:var(--green); }
+  .screen { background:#fff; height: 132px; margin: 0 3px 3px; overflow:hidden; text-align:left; }
+  .gb { background: var(--ink); color:#fff; font: 700 6px/11px Arial; padding-left: 5px; border-bottom: 2px solid var(--blue); }
+  .bd { padding: 6px 7px; }
+  .ln { height: 2.5px; background:#d8d8d8; margin-bottom: 3px; }
+  .ln.d { background:#808080; } .ln.k { background:#8fb3e0; }
+  .w20{width:20%}.w30{width:30%}.w40{width:40%}.w50{width:50%}.w60{width:60%}.w70{width:70%}.w80{width:80%}
+  .tx { font: 700 7px/9px Arial; color: var(--ink); }
+  .tx.m { font-weight: normal; color: var(--mid); }
+  .rowf { display:flex; align-items:center; gap: 4px; margin-bottom: 4px; }
+  .rowf .ln { margin: 0; }
+  .rk { width: 8px; font: 700 7px/8px Arial; flex:none; }
+  .band { display:block; height: 7px; width: 24px; flex:none; margin-left:auto; }
+  .b-act { background:#912b19; } .b-pri { background:#b8460f; } .b-mon { background:#b58105; } .b-mai { background:var(--green); }
+  .tabs { display:flex; gap:2px; margin: 4px 0 5px; }
+  .tabs span { font: 6.5px/9px Arial; padding: 0 4px; background: var(--fill); border: 1px solid #d8d8d8; }
+  .tabs span.on { background:#fff; font-weight: 700; border-bottom-color:#fff; box-shadow: inset 0 2px 0 var(--blue); }
+  .hl { background:#ffdd00 !important; outline: 1px solid var(--ink); color: var(--ink); }
+  .switch { display:flex; gap: 2px; margin: 3px 0 5px; align-items:center; } .switch .tx { margin-right: 3px; }
+  .switch span { font: 6.5px/9px Arial; padding: 0 4px; border:1px solid var(--ink); } .switch span.on { background: var(--ink); color:#fff; }
+  .switch.hl { display:inline-flex; padding: 2px 3px; }
+  .thead { display:flex; gap: 3px; margin: 3px 0 3px; font: 700 5.5px/8px Arial; }
+  .thead span { flex:1; text-align:center; padding: 0 1px; }
+  .thead span:first-child { flex: 2.2; text-align:left; }
+  .trow { display:flex; gap: 3px; align-items:center; margin-bottom: 4px; }
+  .trow > div:first-child { flex: 2.2; } .trow > div { flex:1; }
+  .c { height: 5px; background:#8a8a8a; } .c.l { background:#d8d8d8; } .c.m { background:#808080; }
+  .tiles { display:grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-top: 4px; }
+  .tile { border: 1px solid var(--line); padding: 3px 4px 1px; } .tile .tx { margin-bottom: 2px; } .tile .tx.v { font-size: 8.5px; line-height: 10px; margin-bottom: 3px; }
+  .cell { flex: none; height: 6px; background:#d8d8d8; } .cell.on { background: var(--blue); }
+  .bar { height: 4px; background:#e5e5e5; margin: 2px 0 3px; } .bar i { display:block; height:100%; background:var(--ink); }
+  .sumrow { display:flex; gap: 4px; margin-bottom: 3px; } .sumrow .ln { margin:0; }
+  .chart { display:block; width:100%; height: 34px; margin: 3px 0 4px; }
+  .crumb { height: 2.5px; width: 45%; background:#8fb3e0; margin-bottom: 4px; }
+  .mcards { display:grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-top: 4px; }
+  .mcard { border: 1px solid var(--line); padding: 3px; } .mcard .tag { height: 4px; width: 55%; margin: 2px 0; }
+  .tag.up { background:#f4cdc6; } .tag.dn { background:#cce2d8; } .tag.sm { background:#e5e5e5; }
+  .mcards.one { grid-template-columns: 1fr; }
+  .box2 { display:grid; grid-template-columns: 1fr 1fr; gap: 3px; margin: 3px 0 4px; } .box2 > div { border: 1px solid var(--line); padding: 3px; }
+
+  /* Tables and lists */
+  table.t { border-collapse: collapse; width: 100%; font-size: 15px; margin-top: 16px; }
+  table.t th { text-align:left; border-bottom: 2px solid var(--ink); padding: 8px 12px 8px 0; }
+  table.t td { border-bottom: 1px solid var(--line); padding: 10px 12px 10px 0; vertical-align: top; }
+  table.t td:first-child { font-weight: bold; white-space: nowrap; }
+  .cols { display:grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 16px; }
+  .cols h3 { font-size: 18px; }
+  ul.plain { margin: 0 0 14px; padding-left: 20px; } ul.plain li { margin-bottom: 6px; }
+  .box-note { background: var(--fill); border-left: 5px solid var(--blue); padding: 14px 18px; margin: 20px 0; }
+  .box-note.g { border-color: var(--green); }
+  .box-note h3 { font-size: 18px; }
+  .tests { display:inline-block; font-size: 12px; font-weight: bold; padding: 2px 8px; color:#fff; vertical-align: middle; margin-left: 8px; }
+  .tests.a { background: var(--blue); } .tests.b { background: var(--green); }
+  @page { size: A3 landscape; margin: 14mm; }
+  @media (max-width: 700px) { .two, .cols { grid-template-columns: 1fr; } .uf-steps { flex-wrap: wrap; gap: 30px 48px; } }
+  @media print { .uf-journey, .card, .box-note, table.t tr, .diagram { break-inside: avoid; -webkit-print-color-adjust: exact; print-color-adjust: exact; } body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } h2 { break-after: avoid; } nav { display:none; } }
+</style>
+</head>
+<body>
+<div class="app-hub-bar"><a href="/">Back to the design resource home</a><span>Earlier proposal, partly superseded by the priority view test plan.</span></div>
+<style>.app-hub-bar{background:#0b0c0c;color:#b1b4b6;font:16px/1.3 Arial,sans-serif;padding:10px 20px}.app-hub-bar a{color:#fff;font-weight:700;margin-right:16px}.app-hub-bar a:focus{outline:3px solid #ffdd00;background:#ffdd00;color:#0b0c0c}@media print{.app-hub-bar{display:none}}</style>
+<div class="wrap">
+
+<span class="draft">Draft for team review</span>
+<h1>What to test first</h1>
+<p class="lede">The team is leaning towards offering both a by-disease and a by-layer view. This page proposes two separate tests: a <b class="t1">concept test</b> on how users get from the priority view into each, and a <b class="t2">risk slice test</b> on the pages they land on.</p>
+<p class="small">"Layer" means risk, impact or preparedness (the team also says "slice"). All data is illustrative and the diseases are fictional.</p>
+<nav><a href="#glance">The two tests</a><a href="#concept">Test 1: routing</a><a href="#risk">Test 2: risk slice</a><a href="#plan">Running both</a><a href="#decide">Decisions needed</a></nav>
+
+<!-- ============ AT A GLANCE ============ -->
+<h2 id="glance">The two tests at a glance</h2>
+<p class="lede">They answer different questions, so neither depends on the other. Whichever way the routing goes, users land on a disease risk page, and the risk across diseases page is the layer view for risk.</p>
+
+<div class="two">
+  <div class="card t1b">
+    <h3 class="t1">Test 1: Concept test</h3>
+    <p><b>How should users move between the by-disease and by-layer views?</b></p>
+    <dl>
+      <dt>Tests</dt><dd>Where the priority view leads, and how the second view is reached (a switch, or the table itself).</dd>
+      <dt>Fidelity</dt><dd>Low. Static concept screens with click areas.</dd>
+      <dt>Shows</dt><dd>Priority view, a disease page with layer headlines, and a layer page.</dd>
+    </dl>
+  </div>
+  <div class="card t2b">
+    <h3 class="t2">Test 2: Risk slice</h3>
+    <p><b>Do the risk pages work for users?</b></p>
+    <dl>
+      <dt>Tests</dt><dd>A <b>risk across diseases</b> page and a <b>disease risk</b> page, and the link between them.</dd>
+      <dt>Fidelity</dt><dd>Higher. Clickable GOV.UK prototype with illustrative data.</dd>
+      <dt>Shows</dt><dd>Levels, changes, reasons, history and source.</dd>
+    </dl>
+  </div>
+</div>
+
+<div class="diagram">
+<svg viewBox="0 0 1040 330" role="img" aria-label="Diagram showing which pages each test covers">
+  <defs><marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#505a5f"/></marker></defs>
+  <g font-family="Arial" font-size="15" text-anchor="middle">
+    <rect x="20" y="115" width="200" height="80" fill="#fff" stroke="#1d70b8" stroke-width="3"/>
+    <text x="120" y="150" font-weight="bold">Priority view</text><text x="120" y="172" font-size="13" fill="#505a5f">Diseases ranked</text>
+
+    <rect x="330" y="30" width="230" height="80" fill="#fff" stroke="#1d70b8" stroke-width="3"/>
+    <text x="445" y="65" font-weight="bold">Disease page</text><text x="445" y="87" font-size="13" fill="#505a5f">Headline from each layer</text>
+
+    <rect x="330" y="220" width="230" height="80" fill="#cfe5d8" stroke="#00703c" stroke-width="3"/>
+    <text x="445" y="255" font-weight="bold">Risk across diseases</text><text x="445" y="277" font-size="13" fill="#505a5f">The layer page for risk</text>
+
+    <rect x="710" y="115" width="230" height="80" fill="#cfe5d8" stroke="#00703c" stroke-width="3"/>
+    <text x="825" y="150" font-weight="bold">Disease risk page</text><text x="825" y="172" font-size="13" fill="#505a5f">One disease, one layer</text>
+
+    <path d="M220 140 C275 140 275 70 326 70" fill="none" stroke="#505a5f" stroke-width="3" marker-end="url(#ar)"/>
+    <path d="M220 170 C275 170 275 260 326 260" fill="none" stroke="#505a5f" stroke-width="3" marker-end="url(#ar)"/>
+    <path d="M560 70 C640 70 640 140 706 140" fill="none" stroke="#505a5f" stroke-width="3" marker-end="url(#ar)"/>
+    <path d="M560 260 C640 260 640 170 706 170" fill="none" stroke="#505a5f" stroke-width="3" marker-end="url(#ar)"/>
+
+    <text x="120" y="100" fill="#1d70b8" font-weight="bold">TEST 1: routing</text>
+    <text x="445" y="22" fill="#1d70b8" font-weight="bold">TEST 1: concept screen only</text>
+    <text x="445" y="320" fill="#00703c" font-weight="bold">TEST 2: risk slice</text>
+    <text x="825" y="225" fill="#00703c" font-weight="bold">TEST 2: risk slice</text>
+  </g>
+</svg>
+<div class="legend"><span class="l1">Shown in the concept test only</span><span class="l2">Built properly for the risk slice test</span></div>
+</div>
+
+<!-- ============ TEST 1 ============ -->
+<h2 id="concept"><span class="t1">Test 1:</span> Concept test: how users route between the two views</h2>
+<p class="lede">Everyone starts on the priority view, because priority is the top level. The question is how the by-disease and by-layer views sit under it. Three ways to do it, shown here with the priority view as step 1. The yellow highlight is the part that does the routing.</p>
+
+<div class="uf-journey">
+  <h3 class="t1">Concept 1: A switch</h3>
+  <p>A "View by" switch above the list: <b>Disease</b> or <b>Layer</b>. Disease is the default and shows the ranked list. Layer shows risk, impact and preparedness, each listing all diseases.</p>
+  <ol class="uf-steps">
+    <li class="uf-step"><span class="uf-number">Step 1</span><span class="uf-pill">Priority view</span>
+      <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="ovswitch"></div></div>
+      <p class="uf-note">Switch above the ranked list</p></li>
+    <li class="uf-step uf-step--choice"><ul class="uf-choice">
+      <li><span class="uf-number">Step 2 – choose one</span><span class="uf-pill">Disease page</span>
+        <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="disease"></div></div>
+        <p class="uf-note">Click a disease</p></li>
+      <li><span class="uf-number">or</span><span class="uf-pill">Layer page</span>
+        <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="layer"></div></div>
+        <p class="uf-note">Switch to "Layer"</p></li>
+    </ul></li>
+  </ol>
+  <p class="uf-end blue"><b>Why test it:</b> an explicit control is easy to explain. It gives both views equal weight. The question is whether users notice it and understand "layer".</p>
+</div>
+
+<div class="uf-journey">
+  <h3 class="t1">Concept 2: The table is the router</h3>
+  <p>The priority view is a table. <b>Priority</b> (band and score) is the first column and the default sort, with a column for each layer that feeds it. Click a <b>disease name</b> to open the disease page. Click a <b>layer column heading</b> (Risk, Impact, Control, Response) to see that layer across all diseases. No separate control.</p>
+  <ol class="uf-steps">
+    <li class="uf-step"><span class="uf-number">Step 1</span><span class="uf-pill">Priority view</span>
+      <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="ovtable"></div></div>
+      <p class="uf-note">Priority first. Layer headings link to the layer pages</p></li>
+    <li class="uf-step uf-step--choice"><ul class="uf-choice">
+      <li><span class="uf-number">Step 2 – choose one</span><span class="uf-pill">Disease page</span>
+        <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="disease"></div></div>
+        <p class="uf-note">Click a disease name</p></li>
+      <li><span class="uf-number">or</span><span class="uf-pill">Layer page</span>
+        <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="layer"></div></div>
+        <p class="uf-note">Click a column heading</p></li>
+    </ul></li>
+  </ol>
+  <p class="uf-end blue"><b>Why test it:</b> it matches the grid of diseases and layers the data already forms, so it needs no extra control. The risk is that heading links are not obvious.</p>
+</div>
+
+<div class="uf-journey">
+  <h3 class="t1">Concept 3: Layer tabs lead <span class="small">(challenger, see recommendation)</span></h3>
+  <p>Tabs run across the top: <b>Priority</b>, <b>Risk</b>, <b>Impact</b>, <b>Preparedness</b>. Priority is the first tab and the default. Each layer tab lists all diseases. A disease opens its page from any tab.</p>
+  <ol class="uf-steps">
+    <li class="uf-step"><span class="uf-number">Step 1</span><span class="uf-pill">Priority view</span>
+      <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="ovtabs"></div></div>
+      <p class="uf-note">Layer tabs are the main navigation</p></li>
+    <li class="uf-step uf-step--choice"><ul class="uf-choice">
+      <li><span class="uf-number">Step 2 – choose one</span><span class="uf-pill">Disease page</span>
+        <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="disease"></div></div>
+        <p class="uf-note">Click a disease</p></li>
+      <li><span class="uf-number">or</span><span class="uf-pill">Layer page</span>
+        <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="layer"></div></div>
+        <p class="uf-note">Click a layer tab</p></li>
+    </ul></li>
+  </ol>
+  <p class="uf-end blue"><b>Why test it:</b> it treats the layer view as an equal. That suits people who own a layer. The risk is that priority becomes just one tab, and layers without data show as empty tabs.</p>
+</div>
+
+<h3 style="margin-top:36px">How the three compare</h3>
+<table class="t">
+  <thead><tr><th>Concept</th><th>How users find the second view</th><th>Strength</th><th>Risk</th></tr></thead>
+  <tbody>
+    <tr><td>1 Switch</td><td>A labelled control above the list</td><td>Obvious and easy to explain. Equal weight for both views.</td><td>An extra control. "Layer" may not mean anything to users.</td></tr>
+    <tr><td>2 Table is the router</td><td>Click a layer column heading</td><td>No extra control. Matches the grid of diseases and layers. Priority sits in the first column, so the score and the layers it comes from are side by side.</td><td>Hard to discover. Needs clear heading styling and accessible link text. Seven columns is wide, so small screens need a different layout.</td></tr>
+    <tr><td>3 Layer tabs lead</td><td>Tabs across the top</td><td>Layer view is a first-class route.</td><td>Dilutes priority. Empty tabs while data is not ready.</td></tr>
+  </tbody>
+</table>
+
+<div class="cols">
+  <div>
+    <h3>Tasks (first click)</h3>
+    <p class="small">Show each concept as a static screen. Ask where they would click first, then what they expect to see.</p>
+    <table class="t" style="margin-top:8px">
+      <tbody>
+        <tr><td>1</td><td>"Which disease should we act on first?"</td></tr>
+        <tr><td>2</td><td>"See how all the diseases compare on risk."</td></tr>
+        <tr><td>3</td><td>"See everything we know about Sprouting hoof disease."</td></tr>
+        <tr><td>4</td><td>"Find which diseases would have the highest impact."</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <h3>What we watch for</h3>
+    <ul class="plain">
+      <li>Does the first click go to the right place?</li>
+      <li>Can they say what the switch or the headings do before clicking?</li>
+      <li>Do they ask for the other route without being prompted?</li>
+      <li>Which describes how they work: by disease, or by layer? Record each participant's role and what they usually look at, to see whether role predicts preference.</li>
+      <li>At the end: which do they prefer, and why?</li>
+    </ul>
+  </div>
+</div>
+
+<div class="box-note">
+  <h3>Recommendation for Test 1</h3>
+  <p style="margin:0">Compare <b>Concept 1 (switch)</b> and <b>Concept 2 (table as router)</b>. Both lead with priority, which is the agreed top level, and differ only in how the second view is reached. Keep Concept 3 as a short discussion prompt at the end ("what if layers were the main navigation?"), not a full variant, to keep the test small. Rotate the order of concepts 1 and 2 across participants.</p>
+</div>
+
+<!-- ============ TEST 2 ============ -->
+<h2 id="risk"><span class="t2">Test 2:</span> Risk slice test: a disease risk page and a risk across diseases page</h2>
+<p class="lede">Yes. The risk slice is two pages. <b>Risk across diseases</b> is the layer page: every disease, its risk level and what changed. <b>Disease risk</b> is one disease through the risk layer: why it is at this level, how it has changed and where the data comes from. These are the same destination pages in every routing option, so this test can run whatever the concept test decides.</p>
+
+<div class="uf-journey">
+  <h3 class="t2">Risk slice: two pages, with variants</h3>
+  <p>A user lands on risk across diseases, picks a disease and arrives on its risk page. Each page has variants from the wireframes (options shown with their wireframe numbers).</p>
+  <ol class="uf-steps">
+    <li class="uf-step uf-step--choice"><ul class="uf-choice">
+      <li><span class="uf-number">Step 1 – choose one</span><span class="uf-pill">Cards (1A)</span>
+        <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="rcards"></div></div></li>
+      <li><span class="uf-number">or</span><span class="uf-pill">List with filter (1C)</span>
+        <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="rlist"></div></div></li>
+      <li><span class="uf-number">or</span><span class="uf-pill">Latest changes tab (1B)</span>
+        <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="rlatest"></div></div></li>
+    </ul></li>
+    <li class="uf-step uf-step--choice"><ul class="uf-choice">
+      <li><span class="uf-number">Step 2 – choose one</span><span class="uf-pill">Chart and history (2A)</span>
+        <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="detail"></div></div></li>
+      <li><span class="uf-number">or</span><span class="uf-pill">Summary first, table (2B)</span>
+        <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="dsummary"></div></div></li>
+    </ul></li>
+  </ol>
+  <p class="uf-end"><b>Step 1</b> is the risk across diseases page. <b>Step 2</b> is the disease risk page. The page title and link wording stay the same in every variant so only the layout is compared.</p>
+</div>
+
+<div class="cols">
+  <div>
+    <h3>Tasks</h3>
+    <table class="t" style="margin-top:8px">
+      <thead><tr><th>Page</th><th>Task</th></tr></thead>
+      <tbody>
+        <tr><td>Across diseases</td><td>"Which disease is highest risk right now?"</td></tr>
+        <tr><td>Across diseases</td><td>"What has changed since last month?"</td></tr>
+        <tr><td>Across diseases</td><td>"Where does this information come from? Do you trust it?"</td></tr>
+        <tr><td>Disease risk</td><td>"Why did the risk for Wing wobble go up?"</td></tr>
+        <tr><td>Disease risk</td><td>"How has it changed over the year?"</td></tr>
+        <tr><td>Disease risk</td><td>"What would you do next?"</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <h3>Questions it answers</h3>
+    <ul class="plain">
+      <li>Do text tags ("Risk increased") work better than arrows?</li>
+      <li>Is a "Latest changes" view worth having, or is sorting enough?</li>
+      <li>Do cards or a list suit comparing diseases?</li>
+      <li>Does the chart add anything beyond the table?</li>
+      <li>Do users find the reason for a change, and the source?</li>
+      <li>Can users move between the two pages without getting lost?</li>
+    </ul>
+    <p class="small">Hypotheses 1 to 5 and 7 in the <a href="/docs/design-brief">design brief</a>.</p>
+  </div>
+</div>
+
+<div class="box-note g">
+  <h3>Impact, if the data is ready</h3>
+  <p style="margin:0">The same two-page pattern works for impact: an <b>impact across diseases</b> page and a <b>disease impact</b> page (High or Very high, plus what is affected). If impact data is ready for design, add it as a stretch in this test. If not, keep the impact line on the pages as in the current wireframes, and test the pattern once it is.</p>
+</div>
+
+<!-- ============ PLAN ============ -->
+<h2 id="plan">Running both</h2>
+<p class="lede">A suggested way to fit both into the round in 5 working days. Adjust to session length and participant numbers.</p>
+
+<table class="t">
+  <thead><tr><th>Step</th><th>What</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>1 Prepare</td><td>Concept screens (3 priority views, disease page, layer page). Risk prototype with the two pages and variants.</td><td>Concept screens can be static images with click areas. The risk test needs the GOV.UK Prototype Kit.</td></tr>
+    <tr><td>2 Part 1</td><td><span class="t1"><b>Concept test</b></span>. First-click tasks on concepts 1 and 2, then the concept 3 prompt.</td><td>Suggested 10 to 15 minutes. Run it first, so the risk pages don't hint at the layer view.</td></tr>
+    <tr><td>3 Part 2</td><td><span class="t2"><b>Risk slice test</b></span>. Tasks on risk across diseases, then disease risk.</td><td>Suggested 25 to 30 minutes. Rotate the page variants across participants.</td></tr>
+    <tr><td>4 Wrap up</td><td>Preference questions, then how each person works (by disease or by layer).</td><td>Record each participant's role.</td></tr>
+  </tbody>
+</table>
+
+<h3 style="margin-top:32px">What the results would tell us</h3>
+<table class="t">
+  <thead><tr><th>If we see</th><th>Then</th></tr></thead>
+  <tbody>
+    <tr><td>Most first clicks to the layer view work with the switch but not the table headings</td><td>Use the switch (Concept 1). Revisit heading links later.</td></tr>
+    <tr><td>Users find the headings unprompted</td><td>Table as router (Concept 2) needs no extra control. Check accessibility next.</td></tr>
+    <tr><td>Some participants go straight for a layer and ask where it is</td><td>Layer view needs more weight. Consider Concept 3 or a more visible switch.</td></tr>
+    <tr><td>Users can't tell what "layer" means</td><td>Test other labels, such as "Risk, impact, preparedness" or the layer names directly.</td></tr>
+    <tr><td>Users compare diseases on risk quickly but can't say why a risk changed</td><td>Move the reason for change onto the across-diseases page.</td></tr>
+    <tr><td>Users ignore the chart and use the table</td><td>Drop the chart for now (2B).</td></tr>
+  </tbody>
+</table>
+
+<!-- ============ DECIDE ============ -->
+<h2 id="decide">Decisions needed from the team</h2>
+<ul class="plain">
+  <li><b>Which concepts go forward?</b> Proposed: concepts 1 and 2 as the comparison, concept 3 as a discussion prompt.</li>
+  <li><b>One session or two?</b> Proposed: one session with the concept test first. If they must be separate, the risk test should not run first.</li>
+  <li><b>Is impact in the risk test?</b> Only if its data is ready for design.</li>
+  <li><b>Who takes part?</b> We want people who work by disease and people who work by layer. How many, and how do we recruit for both?</li>
+  <li><b>What do we call the second view?</b> "Layer" and "slice" are team words. Users may call it something else.</li>
+  <li><b>How do we explain the illustrative data?</b> A short line at the start, so participants don't read the numbers as real.</li>
+</ul>
+<p class="small">This is a proposal for the team to challenge, not a decision.</p>
+
+</div>
+
+<script>
+// Draw the small wireframes so each screen is described once and reused.
+(function () {
+  var diseases = [
+    { rank: 1, band: 'act', risk: 1, imp: 4, c: 3, r: 2 },
+    { rank: 2, band: 'pri', risk: 2, imp: 3, c: 5, r: 4 },
+    { rank: 3, band: 'pri', risk: 2, imp: 3, c: 4, r: 6 },
+    { rank: 4, band: 'mon', risk: 3, imp: 3, c: 6, r: 7 },
+    { rank: 5, band: 'mai', risk: 3, imp: 3, c: 8, r: 9 }
+  ];
+  var gb = '<div class="gb">GOV.UK</div>';
+  function ln(cls) { return '<div class="ln ' + (cls || '') + '"></div>'; }
+  function tabs(labels, active, hl) {
+    return '<div class="tabs">' + labels.map(function (x, i) { return '<span class="' + (i === active ? 'on ' : '') + (hl ? 'hl' : '') + '">' + x + '</span>'; }).join('') + '</div>';
+  }
+  function ranked() {
+    var h = '';
+    diseases.forEach(function (d) { h += '<div class="rowf"><span class="rk">' + d.rank + '</span><div class="ln k" style="width:52%"></div><span class="band b-' + d.band + '"></span></div>'; });
+    return h;
+  }
+  var screens = {
+    ovswitch: function () {
+      return gb + '<div class="bd"><div class="tx" style="font-size:9px">Diseases by priority</div>' +
+        '<div class="switch hl"><span class="tx" style="border:0;padding:0">View by</span><span class="on">Disease</span><span>Layer</span></div>' + ranked() + '</div>';
+    },
+    ovtable: function () {
+      var h = gb + '<div class="bd"><div class="tx" style="font-size:9px">Diseases by priority</div>' +
+        '<div class="thead" style="margin-top:6px"><span>Disease</span><span style="flex:1.3">Priority</span><span class="hl">Risk</span><span class="hl">Impact</span><span class="hl">Control</span><span class="hl">Resp.</span></div>';
+      diseases.forEach(function (d) {
+        h += '<div class="trow"><div style="display:flex;gap:3px;align-items:center"><span class="rk">' + d.rank + '</span><div class="ln k" style="width:70%;margin:0"></div></div>' +
+          '<div style="flex:1.3"><span class="band b-' + d.band + '" style="width:100%;margin:0"></span></div>' +
+          '<div><div class="c m" style="width:' + (30 + 15 * (4 - d.risk)) + '%"></div></div><div><div class="c m" style="width:' + (25 + 15 * (d.imp - 2)) + '%"></div></div>' +
+          '<div><div class="c l" style="width:' + d.c * 10 + '%"></div></div><div><div class="c l" style="width:' + d.r * 10 + '%"></div></div></div>';
+      });
+      return h + '</div>';
+    },
+    ovtabs: function () {
+      return gb + '<div class="bd">' + tabs(['Priority', 'Risk', 'Impact', 'Preparedness'], 0, true) +
+        '<div class="tx" style="font-size:9px;margin:5px 0">Diseases by priority</div>' + ranked() + '</div>';
+    },
+    disease: function () {
+      return gb + '<div class="bd"><div class="crumb"></div><div class="tx" style="font-size:9px">Sprouting hoof disease</div>' +
+        '<div class="rowf" style="margin-top:3px"><span class="band b-act" style="margin:0"></span><span class="tx">75 / 140</span></div>' + ln('w80') +
+        '<div class="tiles">' +
+        '<div class="tile"><div class="tx">Risk</div><div class="tx v">Low</div>' + ln('k w50') + '</div>' +
+        '<div class="tile"><div class="tx">Impact</div><div class="tx v">Very high</div>' + ln('k w50') + '</div>' +
+        '<div class="tile"><div class="tx">Control</div><div class="tx v">3 / 10</div>' + ln('k w50') + '</div>' +
+        '<div class="tile"><div class="tx">Response</div><div class="tx v">2 / 10</div>' + ln('k w50') + '</div></div></div>';
+    },
+    layer: function () {
+      var h = gb + '<div class="bd"><div class="tx" style="font-size:9px;margin-bottom:2px">Risk: all diseases</div>' + tabs(['Priority', 'Risk', 'Impact', 'Prep.'], 1);
+      diseases.forEach(function (d) {
+        h += '<div class="rowf"><div class="ln" style="width:36%"></div><span class="cell on" style="width:' + (8 * d.risk + 4) + 'px"></span><span class="cell" style="width:14px"></span></div>';
+      });
+      return h + '</div>';
+    },
+    rcards: function () {
+      var c = [['up', 'on'], ['sm', 'on'], ['dn', 'on'], ['sm', 'on']].map(function (t) {
+        return '<div class="mcard"><div class="ln k w70"></div><div class="tag ' + t[0] + '"></div>' + ln('w50') + ln('w40') + '</div>';
+      }).join('');
+      return gb + '<div class="bd"><div class="tx" style="font-size:9px">Risk across diseases</div>' +
+        '<div class="sumrow" style="margin-top:3px"><div class="ln d" style="width:20%"></div><div class="ln d" style="width:20%"></div></div><div class="mcards">' + c + '</div></div>';
+    },
+    rlist: function () {
+      var h = gb + '<div class="bd"><div class="tx" style="font-size:9px">Risk across diseases</div><div class="sumrow" style="margin:3px 0"><div class="ln d" style="width:20%"></div><div class="ln d" style="width:20%"></div></div>' +
+        '<div class="rowf"><span class="tx m" style="font-size:6px">&#9744; Hide no change</span></div>' +
+        '<div class="thead"><span>Disease</span><span>Risk</span><span>Change</span><span>Impact</span></div>';
+      for (var i = 0; i < 5; i++) {
+        h += '<div class="trow"><div><div class="ln k w80" style="margin:0"></div></div><div><div class="c m" style="width:' + (50 + i * 8) + '%"></div></div><div><div class="c l" style="width:70%;background:' + (i === 0 ? '#f4cdc6' : i === 2 ? '#cce2d8' : '#e5e5e5') + '"></div></div><div><div class="c l" style="width:60%"></div></div></div>';
+      }
+      return h + '</div>';
+    },
+    rlatest: function () {
+      return gb + '<div class="bd"><div class="tx" style="font-size:9px">Risk across diseases</div>' + ln('w60') + tabs(['All diseases (5)', 'Latest changes (2)'], 1) +
+        '<div class="mcards one"><div class="mcard"><div class="ln k w50"></div><div class="tag up"></div>' + ln('w40') + '</div><div class="mcard"><div class="ln k w50"></div><div class="tag dn"></div>' + ln('w40') + '</div></div></div>';
+    },
+    detail: function () {
+      return gb + '<div class="bd"><div class="crumb"></div><div class="tx" style="font-size:9px">Wing wobble: risk</div>' +
+        '<div class="sumrow" style="margin-top:3px"><div class="ln d" style="width:30%"></div><div class="ln" style="width:40%"></div></div>' +
+        '<svg class="chart" viewBox="0 0 100 34" preserveAspectRatio="none" aria-hidden="true"><polyline fill="none" stroke="#0b0c0c" stroke-width="1.2" points="2,26 14,26 26,26 38,14 50,14 62,26 74,26 86,14 98,6"/></svg>' + ln() + ln('w80') + ln('w60') + '</div>';
+    },
+    dsummary: function () {
+      var rows = '';
+      for (var i = 0; i < 3; i++) rows += '<div class="trow"><div><div class="ln d w60" style="margin:0"></div></div><div><div class="c m" style="width:60%"></div></div><div><div class="c l" style="width:70%"></div></div></div>';
+      return gb + '<div class="bd"><div class="crumb"></div><div class="tx" style="font-size:9px">Wing wobble: risk</div>' +
+        '<div class="box2"><div><div class="tx">Risk</div><div class="tx v" style="font-size:8.5px">High</div>' + ln('w60') + '</div><div><div class="tx">Impact</div><div class="tx v" style="font-size:8.5px">High</div>' + ln('w60') + '</div></div>' +
+        ln() + ln('w80') + '<div style="height:3px"></div>' + rows + '</div>';
+    }
+  };
+  document.querySelectorAll('.screen').forEach(function (el) {
+    el.setAttribute('aria-hidden', 'true');
+    el.innerHTML = screens[el.dataset.screen]();
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+{% extends "layouts/design.html" %}
+
+{% set pageName = "Design brief: risk and impact prototype" %}
+{% set activeNav = "docs" %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/">Home</a></li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Design brief</li>
+  </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full app-prose">
+{% raw %}
+    <h1 class="govuk-heading-xl">Design brief: risk and impact prototype</h1><div class="govuk-inset-text app-status-note"><p class="govuk-body">This is an earlier document. It was written for a test of risk and impact on their own, which the team has replaced with a test of the priority view (see the <a class="govuk-link" href="/docs/priority-view-test-plan">priority view test plan</a>). Where it describes impact, it uses earlier labels. The agreed impact areas are Public health, Animal welfare, Wider economy and society, and International trade.</p></div>
+    <p class="govuk-body"><strong>Project:</strong> APHA incubator – exotic animal disease early warning
+    <strong>Status:</strong> Draft for team review · <strong>Test round:</strong> 5 working days
+    <strong>Design system:</strong> GOV.UK Design System only (alpha phase banner, standard header and footer)</p>
+    <h2 class="govuk-heading-l">Problem</h2>
+    <p class="govuk-body">Subject matter experts (SMEs) get disease information from separate sources, such as the International Disease Monitoring (IDM) monthly report, then rework it by hand. They can't quickly see which threats matter, what has changed and why. We want to test whether one trusted view answers this.</p>
+    <p class="govuk-body">The early warning framework combines four layers into one priority score per disease: risk of incursion, impact, control measures and response options. Risk is ready and impact is being gathered. Preparedness (control measures and response options) comes later, so the design must be able to grow into it.</p>
+    <h2 class="govuk-heading-l">Users</h2>
+    <p class="govuk-body">SMEs and policy/operational leads who prioritise threats and plan responses.</p>
+    <h2 class="govuk-heading-l">Needs we will test (🔥 on the mural)</h2>
+    <table class="govuk-table">
+    <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+    <th class="govuk-table__header" scope="col">Need</th>
+    <th class="govuk-table__header" scope="col">Question the prototype must answer</th>
+    </tr>
+    </thead>
+    <tbody class="govuk-table__body">
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">UN1</td>
+    <td class="govuk-table__cell">Is this a trusted, formal source?</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">UN2</td>
+    <td class="govuk-table__cell">Has the risk changed, and in which direction?</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">UN4</td>
+    <td class="govuk-table__cell">Which threats are likely to reach the UK, and when?</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">UN5</td>
+    <td class="govuk-table__cell">Which threats matter least? (Fully answered only by the priority score, a design-team option for now.)</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">UN10</td>
+    <td class="govuk-table__cell">Can I get a short operational summary?</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">UN13</td>
+    <td class="govuk-table__cell">Is this the single, up-to-date source?</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">UN14</td>
+    <td class="govuk-table__cell">How is the risk changing over time?</td>
+    </tr>
+    </tbody>
+    </table>
+    <h2 class="govuk-heading-l">Goal and success signals</h2>
+    <p class="govuk-body">Users can say, within a minute and unprompted: which disease is highest risk, which changed most recently, which has the greatest impact, and where the information came from.
+    - Users find the latest changes without help.
+    - Users tell risk and impact apart, and see that a low risk can still have a very high impact.
+    - Users say what they'd do next ("so what").</p>
+    <h2 class="govuk-heading-l">Scope</h2>
+    <p class="govuk-body"><strong>Test round:</strong> risk and impact. Two screens: (1) disease overview, (2) disease detail with risk history. Illustrative data for five fictional diseases.
+    <strong>Design team only:</strong> how the design grows to the priority score and all four layers (wireframe options 1D and 2C).
+    <strong>Out:</strong> preparedness data in the test, real disease names, map view, geographic risk.</p>
+    <h2 class="govuk-heading-l">Hypotheses to test</h2>
+    <ol class="govuk-list govuk-list--number">
+    <li>Coloured text tags ("Risk increased") work better than arrows.</li>
+    <li>A "Latest changes" view helps more than sorting alone.</li>
+    <li>Sorting by risk beats A–Z.</li>
+    <li>Stating the source once, with a link, builds enough trust.</li>
+    <li>The change history with reasons answers "why?".</li>
+    <li>Users read risk and impact as two separate things.</li>
+    <li>Cards and list views suit different tasks.</li>
+    </ol>
+    <h2 class="govuk-heading-l">Constraints and risks</h2>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>GOV.UK components only. The risk meter and line chart aren't standard components, so each needs a text alternative, a data table alternative and accessibility testing.</li>
+    <li>Data is illustrative. Risk means likelihood of incursion and ignores geography. State both so users don't read them as real.</li>
+    <li><strong>Scales don't match yet.</strong> The workshop used five risk levels, but the scoring framework uses three (Low, Medium, High). Impact is High or Very high, plus what is affected. Preparedness is scored 0 to 10. Needs SME agreement.</li>
+    <li>Colour: an increase is bad for risk and impact but good for preparedness. Priority bands (Act now, Prioritise, Monitor, Maintain) carry colour; change tags stay simple.</li>
+    <li>Hiding "no change" diseases could hide a high risk. Test it, don't assume.</li>
+    </ul>
+    <h2 class="govuk-heading-l">Disease names (illustrative)</h2>
+    <p class="govuk-body">Sprouting hoof disease · Himalayan Dragon Pox · Rainbow tail disease · Fuzzy fox flu · Wing wobble</p>
+    <h2 class="govuk-heading-l">Open questions</h2>
+    <ul class="govuk-list govuk-list--bullet">
+    <li>Can all users open the IDM report link?</li>
+    <li>How do five IDM risk levels map to the framework's three?</li>
+    <li>Does impact change over time, or is it fixed until reassessed?</li>
+    <li>Who writes the plain-language "so what" for each disease, and how often?</li>
+    <li>Is there more than one risk source (e.g. WOAH)?</li>
+    </ul>
+{% endraw %}
+  </div>
+</div>
+{% endblock %}

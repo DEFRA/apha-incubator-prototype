@@ -4,3 +4,43 @@
 // 
 
 // Add extra styles here
+
+// Design resource pages
+.app-prose p,
+.app-prose li,
+.app-prose .govuk-inset-text {
+  max-width: 40em;
+}
+
+.app-prose .govuk-table {
+  table-layout: auto;
+}
+
+.app-status-note {
+  margin-bottom: 30px;
+}
+
+.app-doc-list {
+  table-layout: fixed;
+}
+
+.app-doc-list .govuk-table__header:first-child {
+  width: 30%;
+}
+
+.app-doc-list .govuk-table__header:last-child {
+  width: 18%;
+}
+
+.app-doc-list .govuk-tag {
+  white-space: nowrap;
+}
+
+.app-doc-list .govuk-table__cell,
+.app-doc-list .govuk-table__header {
+  vertical-align: top;
+}
+
+.govuk-main-wrapper h2.govuk-heading-l {
+  margin-top: 40px;
+}

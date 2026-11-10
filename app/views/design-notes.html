@@ -1,0 +1,329 @@
+{% extends "layouts/design.html" %}
+
+{% set pageName = "Design notes" %}
+{% set activeNav = "design-notes" %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/">Home</a></li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Design notes</li>
+  </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Design notes</h1>
+    <p class="govuk-body-l">
+      The decisions we have made, the directions we are taking and what is still open. Update this page when a decision changes.
+    </p>
+    <p class="govuk-body">
+      All data is illustrative and the disease names are fictional. Last updated 10 November 2026.
+    </p>
+
+    <h2 class="govuk-heading-m">On this page</h2>
+    <ul class="govuk-list">
+      <li><a class="govuk-link" href="#where-we-are">Where we are</a></li>
+      <li><a class="govuk-link" href="#decisions">Decisions made</a></li>
+      <li><a class="govuk-link" href="#directions">Directions we are taking</a></li>
+      <li><a class="govuk-link" href="#open-questions">Open questions</a></li>
+      <li><a class="govuk-link" href="#next">What happens next</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-l" id="where-we-are">Where we are</h2>
+    <p class="govuk-body">
+      We are designing an early warning service for exotic animal diseases. It brings four kinds of evidence together
+      for each disease: risk of incursion, impact, control measures and response options. Together they give a priority
+      score, so subject matter experts can see which threats need action first.
+    </p>
+    <p class="govuk-body">
+      The team decided not to test the risk page on its own. We will test the <strong>priority view</strong> first. It
+      is the top-level page, so people meet risk and impact as part of it. We will then use the same sessions to learn
+      what people want from risk, impact and preparedness, and build those pages from what they say.
+    </p>
+    <p class="govuk-body">Where each part has got to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Priority view:</strong> in design. Three options are prototyped, and we recommend testing option C. See the <a class="govuk-link" href="/public/design/priority-view/options.html">priority view options</a>.</li>
+      <li><strong>Risk page and disease page:</strong> early ideas only, in the <a class="govuk-link" href="/public/design/risk-wireframes/index.html">wireframes</a>.</li>
+      <li><strong>Impact and preparedness pages:</strong> not explored yet.</li>
+    </ul>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h2 class="govuk-heading-l" id="decisions">Decisions made</h2>
+    <p class="govuk-body">
+      <strong class="govuk-tag govuk-tag--green">Decided</strong> means the team has agreed it.
+      <strong class="govuk-tag govuk-tag--blue">Recommended</strong> means it is our recommendation and the team still needs to confirm it.
+      The <a class="govuk-link" href="/docs/priority-view-test-plan">test plan</a> has the detail.
+    </p>
+
+    <h3 class="govuk-heading-m">Test approach</h3>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">Decisions about the test approach</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Decision</th>
+          <th scope="col" class="govuk-table__header">Why</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Test the priority view first, not the risk page on its own</th>
+          <td class="govuk-table__cell">Priority is the top level. People meet risk and impact as parts of it, which is closer to how they would use the service</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Use the test to find out what people want from risk</th>
+          <td class="govuk-table__cell">The priority view is a conversation starter. About a third of each session is discovery: what they would want to know, and what they would decide from it</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Use fictional disease names and illustrative data</th>
+          <td class="govuk-table__cell">So people do not read made-up numbers as real. The page and the moderator both say so</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Test option C with everyone, starting half on the table and half on cards</th>
+          <td class="govuk-table__cell">Option C holds both A and B, so every person sees both. Six people split across three pages is too few. The cost is that C cannot isolate A against B</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Recommended</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="govuk-heading-m">Content and scoring</h3>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">Decisions about content and scoring</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Decision</th>
+          <th scope="col" class="govuk-table__header">Why</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Show the summary at the top, before the table or cards, in every option</th>
+          <td class="govuk-table__cell">People need the position quickly, and can go deeper if they choose</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Do not repeat the source at the top of the page</th>
+          <td class="govuk-table__cell">It is in &quot;Where this information comes from&quot; at the bottom. The test checks whether people find it</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Show impact as four areas: Public health, Animal welfare, Wider economy and society, International trade</th>
+          <td class="govuk-table__cell">These are the areas the team gave. A disease can have more than one, so they show as a short list. Which disease has which area is made up for the prototype</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Show change on the priority view for priority only</th>
+          <td class="govuk-table__cell">A &quot;What has changed&quot; line in the summary, and an outlined &quot;Score increased&quot; or &quot;Score decreased&quot; tag with the old score under the score. Diseases that have not changed show nothing. Changes in risk, impact and preparedness belong on their own pages. The previous scores are worked out for the prototype, not real</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Use the agreed scoring model to rank diseases</th>
+          <td class="govuk-table__cell">Priority is (risk + impact) × (20 − control measures − response options), out of 140, in four bands: Act now, Prioritise, Monitor and Maintain. Because preparedness is multiplied, a well-prepared disease scores low even when the threat is high. The test is of the page, not of the model</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey">Given</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="govuk-heading-m">Layout and visual design</h3>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">Decisions about layout and visual design</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Decision</th>
+          <th scope="col" class="govuk-table__header">Why</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Keep one page, and use a wider container (1,200px) for the table</th>
+          <td class="govuk-table__cell">The first table felt cramped. Priority is the top level, so it should not be a click away, and five rows fit on a wide page. Text stays at two-thirds width. Revisit if there are more than about 8 to 10 diseases</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Recommended</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Use one header row on the table</th>
+          <td class="govuk-table__cell">The double header was visually busy and added cognitive load. A sentence above the table explains the threat and preparedness groups, and a rule separates them. The test checks whether people miss the group headings</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Give the sorted column a light tint</th>
+          <td class="govuk-table__cell">A subtle way to show which column the list is sorted by. The arrow and the screen reader state say the same thing, so colour is not the only cue</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Links in the table do not change colour once visited</th>
+          <td class="govuk-table__cell">Visited colours across a table of links are a distraction. Hover and focus still change</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Drop the matrix with diseases across the top</th>
+          <td class="govuk-table__cell">It is not how people think about the problem, and it pushed the summary down the page</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Use a white page background, with grey panels</th>
+          <td class="govuk-table__cell">An earlier pale green was an approximation of a Defra theme value, not a brand-approved colour</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Recommended</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="govuk-heading-m">Navigation and flow</h3>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">Decisions about navigation and flow</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Decision</th>
+          <th scope="col" class="govuk-table__header">Why</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Give two routes out of the priority view</th>
+          <td class="govuk-table__cell">Some people want more on one disease, and others want to compare one measure across every disease. Disease names link to a disease page. Risk, Impact and Preparedness are in the top navigation and in a &quot;Look in more detail&quot; line</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Column headings only sort</th>
+          <td class="govuk-table__cell">One control should not do two jobs. If people miss the routes in the test, we try headings as links with a &quot;Sort by&quot; select</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Recommended</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Call the pages Risk, Impact and Preparedness, not &quot;layer&quot; or &quot;slice&quot;</th>
+          <td class="govuk-table__cell">&quot;Layer&quot; and &quot;slice&quot; are team words. We watch what people call them</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Recommended</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Let people cross between a disease and a measure, and always get back to Priority</th>
+          <td class="govuk-table__cell">From a measure page you can open a disease. From a disease page you can compare every disease on one measure. &quot;Priority&quot; in the top navigation gets you back. These pages are not designed yet</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Recommended</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="govuk-heading-m">Accessibility and colour</h3>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">Decisions about accessibility and colour</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Decision</th>
+          <th scope="col" class="govuk-table__header">Why</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Colour is never the only cue</th>
+          <td class="govuk-table__cell">Every band, risk level, impact level and change has a text label, and rank and score are printed</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Use Defra green for borders and accents only</th>
+          <td class="govuk-table__cell">White text on it is 3.33:1, which fails the 4.5:1 needed. Link green and the Maintain band use darker greens that pass</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Use black text on the Prioritise band</th>
+          <td class="govuk-table__cell">White on that orange is 2.78:1 and fails. Black is 7.04:1</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Show preparedness bars in one colour, with the number always printed</th>
+          <td class="govuk-table__cell">A high preparedness score is good but a high risk is bad, so red to green would send mixed signals and fails for red-green colour blindness. The test checks this</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="govuk-body">
+      Not checked yet: a screen reader pass, 200% zoom and text spacing, and forced colours mode. We need an accessibility review before testing with users.
+    </p>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h2 class="govuk-heading-l" id="directions">Directions we are taking</h2>
+
+    <h3 class="govuk-heading-m">Priority first, then grow outward</h3>
+    <p class="govuk-body">
+      Priority is the top level, so we test it first. What people tell us they want from risk, impact and
+      preparedness shapes those pages, rather than our assumptions.
+    </p>
+
+    <h3 class="govuk-heading-m">One page, two ways to read it</h3>
+    <p class="govuk-body">
+      Option C puts a table and a set of cards on one page, with a switch between them. The table suits comparing one
+      measure across diseases. The cards suit &quot;what do I do next?&quot;, grouped by action. We will see which
+      people choose, when they switch and why. If one view is rarely used, we drop it.
+    </p>
+
+    <h3 class="govuk-heading-m">Two ways in, one way back</h3>
+    <p class="govuk-body">
+      People start on Priority, then go to a disease or to a measure across every disease. They can cross between the
+      two, and the top navigation always gets them back to Priority. The
+      <a class="govuk-link" href="/public/design/priority-view/options.html#option-c-flow">user flows</a> show this.
+    </p>
+
+    <h3 class="govuk-heading-m">Build on the early risk ideas</h3>
+    <p class="govuk-body">
+      The <a class="govuk-link" href="/public/design/risk-wireframes/index.html">wireframes</a> are very early
+      thinking, not designs. Options 1A to 1C could become a page showing every disease on one measure. Option 2C,
+      priority and four layers, is the closest to a disease page showing all four measures. We will shape these
+      from the test sessions.
+    </p>
+
+    <h3 class="govuk-heading-m">Prototype in this repository</h3>
+    <p class="govuk-body">
+      When the priority view design is refined, we will rebuild it here as prototype pages using GOV.UK Frontend, so
+      we can test it with users. The pages in this resource are static snapshots until then.
+    </p>
+
+    <h2 class="govuk-heading-l" id="open-questions">Open questions</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Brand.</strong> The prototype uses a Defra look: system font, green links, and a black header with a green stripe. The brief says GOV.UK only. Which do we put in front of users?</li>
+      <li><strong>Who writes the summary</strong> and the one-line reasons on the cards, and how often? The prototype shows them as written copy.</li>
+      <li><strong>&quot;Preparedness&quot; or &quot;vulnerability&quot;?</strong> The scoring framework uses &quot;vulnerability&quot;. The prototype says &quot;Preparedness&quot;. Do we test both?</li>
+      <li><strong>Do we show &quot;No change&quot;</strong> on every row? Showing only changes keeps the table calmer, but people may not tell &quot;no change&quot; from &quot;not assessed&quot;.</li>
+      <li><strong>Real or fictional disease names</strong> in the test? Fictional names avoid distraction, but experts may find it harder to judge whether the results are plausible.</li>
+      <li><strong>Which participants</strong>, and how do we recruit people who work by disease and by measure?</li>
+      <li><strong>How do people reach a measure page?</strong> If they miss both the navigation and the &quot;Look in more detail&quot; line, we try column headings as links.</li>
+      <li><strong>Sections or pages?</strong> Is each of risk, impact and preparedness a separate page or a section of one page? Does impact need its own page? Is there one preparedness page or two?</li>
+      <li><strong>Scales.</strong> How do the five risk levels in the monthly report map to Low, Medium and High in the scoring framework? Does impact change over time, or is it fixed until reassessed?</li>
+      <li><strong>Real data.</strong> Which diseases have which impact areas, and what were last month&rsquo;s scores? Both are made up in the prototype.</li>
+    </ul>
+
+    <h2 class="govuk-heading-l" id="next">What happens next</h2>
+    <ol class="govuk-list govuk-list--number">
+      <li>Agree the options and the open questions above as a team.</li>
+      <li>Do an accessibility review before any testing with users.</li>
+      <li>Recruit participants and pilot the session with one person.</li>
+      <li>Run the sessions, then group what we learn into issues and wants.</li>
+      <li>Use what we learn to shape the Risk, Impact and Preparedness pages.</li>
+      <li>Rebuild the refined design as prototype pages in this repository.</li>
+    </ol>
+
+  </div>
+</div>
+
+{% endblock %}
