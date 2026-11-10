@@ -82,7 +82,7 @@
     <!-- ===== Table view ===== -->
     <div id="view-table">
       <p class="app-view-label">Option C, table view</p>      <h2 class="govuk-heading-m" id="table-heading">Priority 1 diseases, ranked 1 to 5</h2>
-      <p class="govuk-body" id="table-desc">Priority is worked out from the threat (risk of incursion and impact) and how prepared we are (control measures and response options). Every score is out of 5. For risk and impact, a higher score is worse. For control measures and response options, a higher score means we are better prepared. Changes in priority since the last assessment are shown under the score.</p>
+      <p class="govuk-body" id="table-desc">Priority is worked out from the threat (risk of incursion and impact) and how prepared we are (control measures and response options). Every score is out of 5, from very low (1) to very high (5). For risk and impact, a higher score is worse. For control measures and response options, a higher score means we are better prepared. Changes in priority since the last assessment are shown under the score.</p>
       <p class="govuk-hint app-sort-note">Sorting is not available on small screens. Diseases are shown in priority order.</p>
 
       <div class="app-scroll" tabindex="0" role="region" aria-label="Priority table, scrolls sideways on narrow screens">
@@ -177,7 +177,7 @@
     <!-- ===== Cards view ===== -->
     <div id="view-cards" hidden>
       <p class="app-view-label">Option C, cards view</p>      <h2 class="govuk-heading-m" id="cards-heading">Priority 1 diseases, grouped by what to do</h2>
-      <p class="govuk-body" id="cards-desc">Priority is worked out from the threat (risk of incursion and impact) and how prepared we are (control measures and response options). Every score is out of 5. For risk and impact, a higher score is worse. For control measures and response options, a higher score means we are better prepared. Changes in priority since the last assessment are shown under the score.</p>
+      <p class="govuk-body" id="cards-desc">Priority is worked out from the threat (risk of incursion and impact) and how prepared we are (control measures and response options). Every score is out of 5, from very low (1) to very high (5). For risk and impact, a higher score is worse. For control measures and response options, a higher score means we are better prepared. Changes in priority since the last assessment are shown under the score.</p>
 
       <section class="app-band-section" aria-labelledby="band-act">
         <div class="app-band-section__head">
@@ -428,5 +428,6 @@
     }
   })();
 </script>
+<script src="score-labels.js"></script>
 </body>
 </html>
