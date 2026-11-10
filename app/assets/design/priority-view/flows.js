@@ -33,10 +33,10 @@
       tabs(0) +
       '<div class="tx" style="font-size:9px">Diseases by priority</div>' +
       '<div class="switch"><span' +
-      (cards ? '' : ' class="on"') +
-      '>Table</span><span' +
       (cards ? ' class="on"' : '') +
-      '>Cards</span></div>'
+      '>Cards</span><span' +
+      (cards ? '' : ' class="on"') +
+      '>Table</span></div>'
     if (cards) {
       h +=
         '<div class="cards">' +
