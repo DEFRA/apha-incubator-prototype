@@ -23,12 +23,13 @@
   <main class="govuk-main-wrapper" id="main-content">
     <p class="govuk-body-s"><a class="govuk-link" href="/docs/priority-view-test-plan">Test plan</a> · For the design team, not for participants</p>
     <h1 class="govuk-heading-xl">Priority view: three design options</h1>
-    <p class="govuk-body-l">All three use the same data, bands, wording and colours. Only the structure changes, so we can see which structure helps people answer "what should we act on first?"</p>
+    <p class="govuk-body-l">Three structures for the same question: "what should we act on first?" A is a table, B is cards grouped by action, and C lets people switch between the two.</p>
+    <p class="govuk-body"><strong>Option C is the version we developed further in the 11 November 2026 design session.</strong> Options A and B still reflect the earlier design. They have not changed, so they no longer match C. They keep the earlier scores out of 5, ranks and wording, and will be brought into line with C later. Until then, differences between A, B and C are about more than structure.</p>
 
     <div class="opt">
       <div>
         <h2 class="govuk-heading-l">Option A: ranked table</h2>
-        <p class="govuk-body"><a class="govuk-link" href="index.html">Open option A</a></p>
+        <p class="govuk-body"><a class="govuk-link" href="index.html">Open option A</a> <span class="uf-badge uf-badge--none">Earlier design</span></p>
         <p class="govuk-body">One row per disease, in priority order. Priority comes first, then the four measures: risk and impact (threat), then control measures and response options (preparedness). Rules separate the three groups. Column headings sort.</p>
         <h3 class="govuk-heading-s">Best for</h3>
         <ul class="govuk-list govuk-list--bullet">
@@ -44,7 +45,7 @@
       </div>
       <div>
         <h2 class="govuk-heading-l">Option B: grouped by action</h2>
-        <p class="govuk-body"><a class="govuk-link" href="option-b.html">Open option B</a></p>
+        <p class="govuk-body"><a class="govuk-link" href="option-b.html">Open option B</a> <span class="uf-badge uf-badge--none">Earlier design</span></p>
         <p class="govuk-body">Diseases are grouped under Act now, Prioritise, Monitor and Maintain. Each disease is a card with a one-line reason, then the four measures. No table, so the standard page width works.</p>
         <h3 class="govuk-heading-s">Best for</h3>
         <ul class="govuk-list govuk-list--bullet">
@@ -64,8 +65,21 @@
     <div class="opt">
       <div>
         <h2 class="govuk-heading-l">Option C: table or cards, your choice</h2>
-        <p class="govuk-body"><a class="govuk-link" href="option-c.html">Open option C</a></p>
-        <p class="govuk-body">One page with a "View as" switch: Cards (option B) or Table (option A). The navigation and "Look in more detail" stay in place. The choice is kept in the address (<code>?view=cards</code>), and sorting is kept when you switch. On small screens it starts on cards. To print or save both views as a PDF, open <a class="govuk-link" href="option-c.html?view=both">option-c.html?view=both</a>. See <a class="govuk-link" href="#option-c-flow">how people move around</a> between priority, each measure and each disease.</p>
+        <p class="govuk-body"><a class="govuk-link" href="option-c.html">Open option C</a> <span class="uf-badge">Developed further</span></p>
+        <p class="govuk-body">One page with a "View as" switch: Cards (the grouped idea from option B) or Table (the idea from option A). The choice is kept in the address (<code>?view=cards</code>), and sorting is kept when you switch. On small screens it starts on cards. To print or save both views as a PDF, open <a class="govuk-link" href="option-c.html?view=both">option-c.html?view=both</a>. See <a class="govuk-link" href="#option-c-flow">how people move around</a> between priority, each measure and each disease.</p>
+        <p class="govuk-body">What is different from A and B:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>The priority score is risk × impact, out of 25. Control measures and response options do not change it.</li>
+          <li>The table has six columns: Disease, Priority, Risk of incursion, Impact, Control measures and Response options. Nothing is ranked or numbered. The list is sorted by priority score, highest first.</li>
+          <li>Risk and impact show matrix names (for example "Almost certain" and "Major") and not numbers.</li>
+          <li>Control measures and response options are checklists. Each shows "N of M need review" and a bar with red segments for the items to review. There is no 1 to 5 score.</li>
+          <li>The four priority actions are Act now (15 or more), Prioritise (10 to 14), Monitor (4 to 9) and Maintain (1 to 3). Tags are in sentence case.</li>
+          <li>Every score has a "Changed" date. When a score moved, the table says "Up from" or "Down from" and the cards say "Previous score" with a "Score increased" or "Score decreased" tag.</li>
+          <li>Disease names are plain text. A "More details" link sits under the name in the table and after the summary on each card. For the two Act now diseases it reads "Act now: see why this is a priority".</li>
+          <li>A key at the bottom explains the priority actions and the four measures. It replaces the hints on the cards.</li>
+          <li>There is a sixth fictional disease, Scaly claw fever, with a "Confirmed in the UK" state.</li>
+          <li>The "Look in more detail" section, the summary and the explainer paragraph are gone. The measure pages are reached from the service navigation.</li>
+        </ul>
         <h3 class="govuk-heading-s">Best for</h3>
         <ul class="govuk-list govuk-list--bullet">
           <li>Letting people choose how they work: compare across diseases, or read by action</li>
@@ -74,20 +88,36 @@
         <h3 class="govuk-heading-s">Watch for</h3>
         <ul class="govuk-list govuk-list--bullet">
           <li>An extra control to notice and understand</li>
-          <li>Sorting only applies to the table. Cards are grouped by band</li>
+          <li>Sorting only applies to the table. Cards are grouped by priority action</li>
           <li>Two views to build, check and keep in step</li>
+          <li>It now differs from A and B in scoring and wording, so a comparison with them is not like for like yet</li>
+          <li>Control measures and response options no longer change the score. We do not yet know how preparedness should link into priority</li>
+          <li>Several figures are assumed: the number of checklist items, how often scores change and the cut-offs for each priority action</li>
         </ul>
       </div>
       <div>
         <h2 class="govuk-heading-l">What C tells us</h2>
-        <p class="govuk-body">A and B each test one structure. C tests whether people need a choice at all.</p>
+        <p class="govuk-body">A and B each test one structure. C tests whether people need a choice at all. It also lets us test the new wording and layout.</p>
         <ul class="govuk-list govuk-list--bullet">
           <li>Which view do they land on, and do they switch?</li>
           <li>Do they switch for a reason, such as comparing one measure or briefing a colleague?</li>
           <li>Do they notice the switch without being told?</li>
           <li>Does having both make the page feel more helpful, or more complicated?</li>
+          <li>Is "N of M need review" read as good or bad news?</li>
+          <li>Does "Changed" with a date mean the score changed, or that it was last checked?</li>
+          <li>Do people expect the "Act now" link to give actions, and do they try to select the plain-text name?</li>
         </ul>
         <p class="govuk-body">If one view is rarely used, drop the other and keep the page simpler.</p>
+
+        <h3 class="govuk-heading-m" id="option-c-decisions">Decisions made on option C</h3>
+        <p class="govuk-body">Each page sets out the options we looked at and the decision.</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a class="govuk-link" href="priority-cell-options.html">Arranging the priority cell</a>: how to show a change in score without splitting the text. We chose a small arrow at the end of the "Up from" or "Down from" line</li>
+          <li><a class="govuk-link" href="checklist-cell-options.html">Showing checklist progress in a cell</a>: "N of M need review" with red segments, for control measures and response options</li>
+          <li><a class="govuk-link" href="risk-impact-bars-options.html">Bars under the risk and impact levels</a>: whether risk and impact keep their grey bars. We removed them, to test</li>
+          <li><a class="govuk-link" href="card-hint-options.html">Showing the hint text on the cards</a>: why the hints were replaced by a key at the bottom and "More details" links</li>
+          <li><a class="govuk-link" href="score-change-options.html">Showing when a priority score changed</a>: a "Changed" date under every score, chosen over a "Last changed" column or a comparison over a period</li>
+        </ul>
       </div>
     </div>
 
@@ -97,12 +127,12 @@
       <p class="govuk-body"><span class="uf-badge">In design</span> The Priority page, with its table and cards views and its links.<br><span class="uf-badge uf-badge--idea">Early ideas</span> The disease page and the Risk page. These are very early thinking in the <a class="govuk-link" href="../risk-wireframes/index.html#compare">risk and impact wireframes</a>, not designs yet.<br><span class="uf-badge uf-badge--none">Not yet explored</span> The Impact, Control measures and Response options pages. Dashed thumbnails mean the screen is not designed. Desktop only.</p>
 
       <div class="uf-journey">
-        <h3>1. Look at the ranking</h3>
+        <h3>1. Look at the priority list</h3>
         <p>People land on Priority. The "View as" switch changes how the same list is shown. It never leaves the page, and the sort is kept when you switch.</p>
         <ol class="uf-steps">
           <li class="uf-step"><span class="uf-number">Step 1 <span class="uf-badge">In design</span></span><span class="uf-pill">Priority, table view</span>
             <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="priority" data-view="table"></div></div>
-            <p class="uf-note">Ranked, sortable, compare across measures</p></li>
+            <p class="uf-note">Sorted by priority score, sortable, compare across measures</p></li>
           <li class="uf-step"><span class="uf-number">Step 2 <span class="uf-badge">In design</span></span><span class="uf-pill">Priority, cards view</span>
             <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="priority" data-view="cards"></div></div>
             <p class="uf-note">Grouped by what to do. Switch back at any time</p></li>
@@ -112,11 +142,11 @@
 
       <div class="uf-journey">
         <h3>2. Start with one disease</h3>
-        <p>A disease name links from the table or a card. The disease page shows all four measures together, then links out to each measure for every disease.</p>
+        <p>A "More details" link under the disease name in the table, or on a card, goes to the disease page. The disease page shows all four measures together, then links out to each measure for every disease.</p>
         <ol class="uf-steps">
           <li class="uf-step"><span class="uf-number">Step 1 <span class="uf-badge">In design</span></span><span class="uf-pill">Priority</span>
             <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="priority" data-view="table"></div></div>
-            <p class="uf-note">User selects a disease name</p></li>
+            <p class="uf-note">User selects "More details" for a disease</p></li>
           <li class="uf-step"><span class="uf-number">Step 2 <span class="uf-badge uf-badge--idea">Early ideas</span></span><span class="uf-pill">Disease page</span>
             <div class="desktop desktop--idea"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="disease"></div></div>
             <p class="uf-note">Priority, then all four measures. Links: "See all diseases on risk, impact, control measures or response options"</p></li>
@@ -131,12 +161,12 @@
               <div class="desktop desktop--none"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="measure" data-kind="response"></div></div></li>
           </ul></li>
         </ol>
-        <p class="uf-end"><b>To get back to the ranking,</b> the user selects "Priority" in the top navigation, on any page.</p>
+        <p class="uf-end"><b>To get back to the priority list,</b> the user selects "Priority" in the service navigation, on any page.</p>
       </div>
 
       <div class="uf-journey">
         <h3>3. Start with one measure</h3>
-        <p>Risk, Impact, Control measures and Response options are in the top navigation and in "Look in more detail". Each page shows every disease, and a disease name opens that disease.</p>
+        <p>Risk, Impact, Control measures and Response options are in the service navigation. Each page shows every disease, and each disease links to its own page.</p>
         <ol class="uf-steps">
           <li class="uf-step"><span class="uf-number">Step 1 <span class="uf-badge">In design</span></span><span class="uf-pill">Priority</span>
             <div class="desktop"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="priority" data-view="cards"></div></div>
@@ -153,9 +183,9 @@
           </ul></li>
           <li class="uf-step"><span class="uf-number">Step 3 <span class="uf-badge uf-badge--idea">Early ideas</span></span><span class="uf-pill">Disease page</span>
             <div class="desktop desktop--idea"><div class="chrome"><b></b><b></b><b></b></div><div class="screen" data-screen="disease"></div></div>
-            <p class="uf-note">User selects a disease name on any measure page</p></li>
+            <p class="uf-note">User selects a disease on any measure page</p></li>
         </ol>
-        <p class="uf-end"><b>To compare another measure,</b> the user selects its tab in the top navigation. Disease names, bands and colours stay the same, so they know where they are.</p>
+        <p class="uf-end"><b>To compare another measure,</b> the user selects its tab in the service navigation. Disease names, priority actions and colours stay the same, so they know where they are.</p>
       </div>
 
       <h3 class="govuk-heading-m">Early ideas these steps can build on</h3>
@@ -190,20 +220,20 @@
         <tbody class="govuk-table__body">
           <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">See what to act on first</th><td class="govuk-table__cell">Priority. Table or Cards, no click needed</td><td class="govuk-table__cell">0</td><td class="govuk-table__cell">T1 to T3</td></tr>
           <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Change how I see the list</th><td class="govuk-table__cell">Priority, "View as" Table or Cards, or sort a column</td><td class="govuk-table__cell">1, stays on page</td><td class="govuk-table__cell">T4, T5</td></tr>
-          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Learn more about one disease</th><td class="govuk-table__cell">Priority, then the disease name</td><td class="govuk-table__cell">1</td><td class="govuk-table__cell">T9</td></tr>
+          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Learn more about one disease</th><td class="govuk-table__cell">Priority, then "More details" under the disease name</td><td class="govuk-table__cell">1</td><td class="govuk-table__cell">T9</td></tr>
           <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Compare every disease on one measure</th><td class="govuk-table__cell">Priority, then Risk, Impact, Control measures or Response options</td><td class="govuk-table__cell">1</td><td class="govuk-table__cell">T10</td></tr>
-          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Find out why a score changed</th><td class="govuk-table__cell">Priority, then the disease name or a measure page. Changes in risk, impact, control measures and response options are on those pages</td><td class="govuk-table__cell">1 to 2</td><td class="govuk-table__cell">T12</td></tr>
+          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Find out why a score changed</th><td class="govuk-table__cell">Priority, where each score has a "Changed" date and "Up from" or "Down from" when it moved. For the reasons, "More details" or a measure page. Changes in risk, impact, control measures and response options are on those pages</td><td class="govuk-table__cell">1 to 2</td><td class="govuk-table__cell">T12</td></tr>
           <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Go from one disease to how all diseases compare</th><td class="govuk-table__cell">Disease page, then "See all diseases on…"</td><td class="govuk-table__cell">1</td><td class="govuk-table__cell">T13</td></tr>
-          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Go from a measure to one disease</th><td class="govuk-table__cell">Risk, Impact, Control measures or Response options, then the disease name</td><td class="govuk-table__cell">1</td><td class="govuk-table__cell">T13</td></tr>
-          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Get back to the ranking</th><td class="govuk-table__cell">"Priority" in the top navigation, from any page</td><td class="govuk-table__cell">1</td><td class="govuk-table__cell">T13</td></tr>
+          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Go from a measure to one disease</th><td class="govuk-table__cell">Risk, Impact, Control measures or Response options, then the link to the disease</td><td class="govuk-table__cell">1</td><td class="govuk-table__cell">T13</td></tr>
+          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Get back to the priority list</th><td class="govuk-table__cell">"Priority" in the service navigation, from any page</td><td class="govuk-table__cell">1</td><td class="govuk-table__cell">T13</td></tr>
         </tbody>
       </table>
 
       <h3 class="govuk-heading-m">Rules that make it work</h3>
       <ul class="govuk-list govuk-list--bullet">
-        <li>The top navigation is on every page and marks the current page in text as well as style (<code>aria-current="page"</code>).</li>
-        <li>A disease name is always a link to the same disease page, wherever it appears.</li>
-        <li>Each measure page uses the same disease names, bands and colours as Priority, so people recognise where they are.</li>
+        <li>The service navigation is on every page and marks the current page in text as well as style (<code>aria-current="page"</code>).</li>
+        <li>Every link to a disease goes to the same disease page, wherever it appears. On Priority the disease name is plain text and "More details" is the link.</li>
+        <li>Each measure page uses the same disease names, priority actions and colours as Priority, so people recognise where they are.</li>
         <li>Table and Cards stay on Priority. The "View as" switch never takes you to another page.</li>
         <li>Column headings only sort. Routes to other pages are names and navigation, so one control never does two jobs.</li>
       </ul>
@@ -214,6 +244,7 @@
         <li>Do they understand that Risk, Impact, Control measures and Response options each show every disease?</li>
         <li>Do they cross between a disease and a measure, or go back to Priority each time?</li>
         <li>Should the disease page repeat all four measures, or only link to them?</li>
+        <li>Is there content behind the "Act now" link, and does it match "see why this is a priority"?</li>
         <li>The wireframes ask two questions this flow depends on: is each layer a section on one page or a separate page (2C), and do the risk views stay as a "View" switch or get replaced (1D)? This flow assumes separate pages.</li>
       </ul>
     </section>
@@ -234,22 +265,24 @@
       </div>
       <div>
         <h2 class="govuk-heading-l">Decisions so far</h2>
+        <p class="govuk-body">These were made earlier and describe A and B. Where option C has moved on, it says so. The latest decisions are listed under <a class="govuk-link" href="#option-c-decisions">Decisions made on option C</a>.</p>
         <ul class="govuk-list govuk-list--bullet">
-          <li><strong>There is no summary at the top of the page.</strong> It had to cover every section, so it was too long. Each card keeps a one-line reason. There is also no paragraph explaining the scores above the list, because it repeated the band key.</li>
+          <li><strong>There is no summary at the top of the page.</strong> It had to cover every section, so it was too long. Each card keeps a one-line reason. There is also no paragraph explaining the scores above the list, because it repeated the band key. Option C has a key at the bottom instead.</li>
           <li><strong>Source is not repeated at the top.</strong> It is in "Where this information comes from" at the bottom.</li>
           <li><strong>One header row on the table.</strong> The Threat and Preparedness group headings were removed. A sentence above the table explains the grouping, and rules separate priority, threat and preparedness. Test whether people miss it.</li>
           <li><strong>The sorted column has a light tint.</strong> The arrow and the screen reader state say the same thing, so colour is not the only cue.</li>
           <li><strong>Links in the table don't change colour once visited.</strong> Hover and focus still change.</li>
           <li><strong>The matrix option was dropped.</strong> People don't think disease-first across the top, and it pushed the content down.</li>
-          <li><strong>Two routes out.</strong> Disease names link to a disease page. Risk, Impact, Control measures and Response options are in the top navigation and in a "Look in more detail" line. Column headings only sort.</li>
-          <li><strong>Change is shown for priority only.</strong> An outlined tag ("Score increased" or "Score decreased") with "from 4.4" under the score, in the table and the cards. Text only, no arrows. Unchanged diseases show nothing. Changes in risk, impact, control measures and response options belong on their own pages.</li>
+          <li><strong>Two routes out.</strong> In options A and B, disease names link to a disease page. Risk, Impact, Control measures and Response options are in the top navigation and in a "Look in more detail" line. Column headings only sort. Option C has dropped "Look in more detail" and made the disease name plain text with a "More details" link.</li>
+          <li><strong>Change is shown for priority only.</strong> In options A and B, an outlined tag ("Score increased" or "Score decreased") with "from 4.4" under the score, text only, no arrows. Unchanged diseases show nothing. Option C has moved on: every score has a "Changed" date, the table has a small arrow after "Up from" or "Down from", and the cards keep the tag. Changes in risk, impact, control measures and response options belong on their own pages.</li>
           <li><strong>Impact shows the four areas:</strong> Public health, Animal welfare, Wider economy and society, International trade. A disease can have more than one, shown as a short list.</li>
         </ul>
       </div>
     </div>
 
     <h2 class="govuk-heading-l">How we'd test them</h2>
-    <p class="govuk-body"><strong>Recommended: use option C for everyone.</strong> It holds both A and B, so every participant can see both structures. Start half on the table and half on cards (<code>option-c.html?view=cards</code>). Watch whether they switch, when, and why, then ask which they prefer. Six participants split across three separate pages is too few, and C gives six people's reactions to both.</p>
+    <p class="govuk-body"><strong>Recommended: use option C for everyone.</strong> Its table and cards hold the structures of both A and B, so every participant can see both. Start half on the table and half on cards (<code>option-c.html?view=cards</code>). Watch whether they switch, when, and why, then ask which they prefer. Six participants split across three separate pages is too few, and C gives six people's reactions to both.</p>
+    <p class="govuk-body">Option C now has newer scoring and wording than A and B, so it cannot stand in for them as they are. Bring A and B into line with C before using them in a like-for-like comparison.</p>
     <p class="govuk-body">The cost is that C can't isolate A against B, because people see both and the first view biases what they do next. If the team needs a clean comparison, run A and B as separate pages, alternating across participants, and show the other for 2 minutes at the end. Even then, 3 per option can spot big differences in the first-look and T1 to T3 results, but not declare a winner.</p>
   </main>
 </div>

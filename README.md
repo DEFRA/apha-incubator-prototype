@@ -36,6 +36,27 @@ The home page is a design resource for the team. It holds our design notes (deci
 view options, early wireframes and the test plan. All data is illustrative and the disease names are fictional. When
 the design is refined, the agreed pages will be built here as prototype pages for user research.
 
+The priority view has three options. Option C (table or cards, with a "View as" switch) is the version developed
+furthest. Options A and B still reflect the earlier design and will be brought into line with C later. In option C:
+
+- the priority score is risk × impact, out of 25, and control measures and response options do not change it
+- the priority actions are Act now (15 or more), Prioritise (10 to 14), Monitor (4 to 9) and Maintain (1 to 3)
+- risk and impact show matrix names (for example "Almost certain" and "Major"), not numbers
+- control measures and response options are checklists ("N of M need review"), not 1 to 5 scores
+- the list is sorted by priority score, with no rank, and every score shows a "Changed" date
+
+The design decisions made on option C each have a page in `app/assets/design/priority-view/` (served at
+`/public/design/priority-view/`). They are linked from the home page and from the options page
+(`options.html`):
+
+| Page                            | Decision                                                                       |
+| ------------------------------- | ------------------------------------------------------------------------------ |
+| `priority-cell-options.html`    | Arranging the priority cell, and the arrow beside "Up from" and "Down from"    |
+| `checklist-cell-options.html`   | Showing checklist progress for control measures and response options           |
+| `risk-impact-bars-options.html` | Whether risk and impact keep the grey bars under their levels                  |
+| `card-hint-options.html`        | Showing the hint text on the cards, replaced by a key and "More details"       |
+| `score-change-options.html`     | Showing when a priority score changed, with a "Changed" date under every score |
+
 | Where                           | What                                                                                             |
 | ------------------------------- | ------------------------------------------------------------------------------------------------ |
 | `app/views/index.html`          | Design resource home page                                                                        |

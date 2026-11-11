@@ -16,7 +16,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full app-prose">
 {% raw %}
-    <h1 class="govuk-heading-xl">Prototype spec: risk and impact, screen by screen</h1><div class="govuk-inset-text app-status-note"><p class="govuk-body">This is an earlier document. It was written for a test of risk and impact on their own, which the team has replaced with a test of the priority view (see the <a class="govuk-link" href="/docs/priority-view-test-plan">priority view test plan</a>). Where it describes impact, it uses earlier labels. The agreed impact areas are Public health, Animal welfare, Wider economy and society, and International trade. Its scoring formula and score out of 140 have also been replaced: priority and each of the four measures are now scores out of 5.</p></div>
+    <h1 class="govuk-heading-xl">Prototype spec: risk and impact, screen by screen</h1><div class="govuk-inset-text app-status-note"><p class="govuk-body">This is an earlier document. It was written for a test of risk and impact on their own, which the team has replaced with a test of the priority view (see the <a class="govuk-link" href="/docs/priority-view-test-plan">priority view test plan</a>). Where it describes impact, it uses earlier labels. The agreed impact areas are Public health, Animal welfare, Wider economy and society, and International trade. Its scoring formula and score out of 140 have also been replaced. Priority is now risk × impact, out of 25, and control measures and response options are checklists that do not change the score. The final design is option C of the priority view (see the test plan). Sections 2, 3 and 6 are updated to match.</p></div>
     <p class="govuk-body">Companion to <a class="govuk-link" href="/docs/design-brief">design brief</a> and <a class="govuk-link" href="/public/design/risk-wireframes/index.html">risk and impact wireframes</a>. Sources: Concept collaboration workshop and the journeys and mapping board (5 Nov 2026).
     All data is <strong>illustrative</strong>. Diseases are fictional so real names don't distract users.</p>
     <p class="govuk-body">The <strong>test round</strong> covers risk and impact only. Options marked <strong>design team only</strong> (1D, 2C) show how the design grows to the priority score and all four layers. They are not part of the test.</p>
@@ -44,34 +44,34 @@
     <tr class="govuk-table__row">
     <td class="govuk-table__cell">1 Risk of incursion</td>
     <td class="govuk-table__cell">Threat</td>
-    <td class="govuk-table__cell">Low 1, Medium 2, High 3</td>
+    <td class="govuk-table__cell">1 to 5, shown as a name: Rare, Unlikely, Moderate, Likely, Almost certain. A disease already in the UK shows "Confirmed in the UK"</td>
     <td class="govuk-table__cell">IDM monthly report, Risk ID report</td>
     </tr>
     <tr class="govuk-table__row">
     <td class="govuk-table__cell">2 Impact</td>
     <td class="govuk-table__cell">Threat</td>
-    <td class="govuk-table__cell">High 3, Very high 4, plus what is affected (animal health, economy)</td>
+    <td class="govuk-table__cell">1 to 5, shown as a name: Insignificant, Minor, Significant, Major, Severe. Plus what is affected (Public health, Animal welfare, Wider economy and society, International trade)</td>
     <td class="govuk-table__cell">D2R2 data, disease modelling, impact scoring</td>
     </tr>
     <tr class="govuk-table__row">
     <td class="govuk-table__cell">3 Control measures</td>
-    <td class="govuk-table__cell">Vulnerability (preparedness)</td>
-    <td class="govuk-table__cell">0 to 10, 10 = excellent. How well we can prevent entry</td>
+    <td class="govuk-table__cell">Preparedness (does not change the score)</td>
+    <td class="govuk-table__cell">A checklist of 10 items (assumed). Shows "N of 10 need review" and a bar with red segments for the items to review. How well we can prevent entry</td>
     <td class="govuk-table__cell">Preparedness indices</td>
     </tr>
     <tr class="govuk-table__row">
     <td class="govuk-table__cell">4 Response options</td>
-    <td class="govuk-table__cell">Vulnerability (preparedness)</td>
-    <td class="govuk-table__cell">0 to 10, 10 = excellent. How well we can respond</td>
+    <td class="govuk-table__cell">Preparedness (does not change the score)</td>
+    <td class="govuk-table__cell">A checklist of 8 items (assumed). Shows "N of 8 need review" and a bar with red segments. How well we can respond</td>
     <td class="govuk-table__cell">Preparedness indices</td>
     </tr>
     </tbody>
     </table>
-    <p class="govuk-body"><strong>Priority = (Risk + Impact) × (20 − Control − Response)</strong>, out of 140, ranked 1 to 5.
-    Bands: <strong>Act now</strong> 70+ · <strong>Prioritise</strong> 45–69 · <strong>Monitor</strong> 20–44 · <strong>Maintain</strong> under 20.</p>
-    <p class="govuk-body">Because preparedness is multiplied, a well-prepared disease scores low even when its threat is high. A poorly prepared one stays near the top even when unlikely to enter.</p>
+    <p class="govuk-body"><strong>Priority score = risk × impact</strong>, out of 25. Risk and impact are each rated 1 to 5. Control measures and response options do not change the score. Nothing is ranked or numbered. Diseases are sorted by score, highest first.
+    Priority actions: <strong>Act now</strong> 15 or more · <strong>Prioritise</strong> 10 to 14 · <strong>Monitor</strong> 4 to 9 · <strong>Maintain</strong> 1 to 3. The cut-offs, the checklist totals and the update cadences are assumed.</p>
+    <p class="govuk-body">Because preparedness sits beside the score, a poorly prepared disease with a low threat stays low. How preparedness should link into priority is an open question.</p>
     <h2 class="govuk-heading-l">3. Dummy data</h2>
-    <p class="govuk-body">Risk report: <strong>IDM monthly assessment report, October 2026</strong>.</p>
+    <p class="govuk-body">Risk report: <strong>IDM monthly assessment report, October 2026</strong>. This first table is the earlier risk-only data. The priority view (option C) uses the table that follows it.</p>
     <table class="govuk-table">
     <thead class="govuk-table__head">
     <tr class="govuk-table__row">
@@ -138,64 +138,86 @@
     </tr>
     </tbody>
     </table>
-    <p class="govuk-body"><strong>Design team only (priority):</strong></p>
+    <p class="govuk-body"><strong>Design team only (priority, option C):</strong> control measures and response options show items to review, out of 10 and out of 8. Risk and impact are 1 to 5 and show as names.</p>
     <table class="govuk-table">
     <thead class="govuk-table__head">
     <tr class="govuk-table__row">
     <th class="govuk-table__header" scope="col">Disease</th>
+    <th class="govuk-table__header" scope="col">Risk</th>
+    <th class="govuk-table__header" scope="col">Impact</th>
     <th class="govuk-table__header" scope="col">Control</th>
     <th class="govuk-table__header" scope="col">Response</th>
-    <th class="govuk-table__header" scope="col">Priority</th>
-    <th class="govuk-table__header" scope="col">Band</th>
-    <th class="govuk-table__header" scope="col">Rank</th>
+    <th class="govuk-table__header" scope="col">Score</th>
+    <th class="govuk-table__header" scope="col">Priority action</th>
+    <th class="govuk-table__header" scope="col">Changed</th>
     </tr>
     </thead>
     <tbody class="govuk-table__body">
     <tr class="govuk-table__row">
     <td class="govuk-table__cell">Sprouting hoof disease</td>
-    <td class="govuk-table__cell">3/10</td>
-    <td class="govuk-table__cell">2/10</td>
-    <td class="govuk-table__cell">75</td>
+    <td class="govuk-table__cell">5 Almost certain</td>
+    <td class="govuk-table__cell">4 Major</td>
+    <td class="govuk-table__cell">9 of 10 need review</td>
+    <td class="govuk-table__cell">7 of 8 need review</td>
+    <td class="govuk-table__cell">20</td>
     <td class="govuk-table__cell">Act now</td>
-    <td class="govuk-table__cell">1</td>
+    <td class="govuk-table__cell">6 Oct 2026</td>
+    </tr>
+    <tr class="govuk-table__row">
+    <td class="govuk-table__cell">Scaly claw fever</td>
+    <td class="govuk-table__cell">Confirmed in the UK since 3 Nov 2026, 2 premises</td>
+    <td class="govuk-table__cell">3 Significant</td>
+    <td class="govuk-table__cell">8 of 10 need review</td>
+    <td class="govuk-table__cell">5 of 8 need review</td>
+    <td class="govuk-table__cell">15, up from 12</td>
+    <td class="govuk-table__cell">Act now</td>
+    <td class="govuk-table__cell">3 Nov 2026</td>
     </tr>
     <tr class="govuk-table__row">
     <td class="govuk-table__cell">Himalayan Dragon Pox</td>
-    <td class="govuk-table__cell">5/10</td>
-    <td class="govuk-table__cell">4/10</td>
-    <td class="govuk-table__cell">55</td>
+    <td class="govuk-table__cell">3 Moderate</td>
+    <td class="govuk-table__cell">4 Major</td>
+    <td class="govuk-table__cell">6 of 10 need review</td>
+    <td class="govuk-table__cell">6 of 8 need review</td>
+    <td class="govuk-table__cell">12, down from 16</td>
     <td class="govuk-table__cell">Prioritise</td>
-    <td class="govuk-table__cell">2</td>
+    <td class="govuk-table__cell">5 Nov 2026</td>
     </tr>
     <tr class="govuk-table__row">
     <td class="govuk-table__cell">Rainbow tail disease</td>
-    <td class="govuk-table__cell">4/10</td>
-    <td class="govuk-table__cell">6/10</td>
-    <td class="govuk-table__cell">50</td>
+    <td class="govuk-table__cell">2 Unlikely</td>
+    <td class="govuk-table__cell">5 Severe</td>
+    <td class="govuk-table__cell">7 of 10 need review</td>
+    <td class="govuk-table__cell">4 of 8 need review</td>
+    <td class="govuk-table__cell">10</td>
     <td class="govuk-table__cell">Prioritise</td>
-    <td class="govuk-table__cell">3</td>
+    <td class="govuk-table__cell">12 May 2026</td>
     </tr>
     <tr class="govuk-table__row">
     <td class="govuk-table__cell">Fuzzy fox flu</td>
-    <td class="govuk-table__cell">6/10</td>
-    <td class="govuk-table__cell">7/10</td>
-    <td class="govuk-table__cell">42</td>
+    <td class="govuk-table__cell">4 Likely</td>
+    <td class="govuk-table__cell">2 Minor</td>
+    <td class="govuk-table__cell">5 of 10 need review</td>
+    <td class="govuk-table__cell">2 of 8 need review</td>
+    <td class="govuk-table__cell">8</td>
     <td class="govuk-table__cell">Monitor</td>
-    <td class="govuk-table__cell">4</td>
+    <td class="govuk-table__cell">7 Sep 2026</td>
     </tr>
     <tr class="govuk-table__row">
     <td class="govuk-table__cell">Wing wobble</td>
-    <td class="govuk-table__cell">8/10</td>
-    <td class="govuk-table__cell">9/10</td>
-    <td class="govuk-table__cell">18</td>
+    <td class="govuk-table__cell">1 Rare</td>
+    <td class="govuk-table__cell">2 Minor</td>
+    <td class="govuk-table__cell">2 of 10 need review</td>
+    <td class="govuk-table__cell">0 of 8 need review</td>
+    <td class="govuk-table__cell">2, up from 1</td>
     <td class="govuk-table__cell">Maintain</td>
-    <td class="govuk-table__cell">5</td>
+    <td class="govuk-table__cell">29 Oct 2026</td>
     </tr>
     </tbody>
     </table>
-    <p class="govuk-body">Check: Sprouting hoof disease = (1 + 4) × (20 − 3 − 2) = 75.</p>
-    <p class="govuk-body">Risk levels shown in the test: <strong>High · Medium · Low · Very low · Negligible</strong> (APHA standard). Only High, Medium and Low appear in the data. How these map to the framework's three levels is an open question.</p>
-    <p class="govuk-body">Default sort: highest risk first. Ties: most recent change first. Impact uses the framework's High and Very high.</p>
+    <p class="govuk-body">Check: Sprouting hoof disease = 5 × 4 = 20. The score of 15 for Scaly claw fever is made up, and how a confirmed case is rated is not decided.</p>
+    <p class="govuk-body">Risk levels shown in the risk-only test: <strong>High · Medium · Low · Very low · Negligible</strong> (APHA standard). Only High, Medium and Low appear in the data. How these map to the framework's levels is an open question. Option C of the priority view uses the five matrix names instead.</p>
+    <p class="govuk-body">Default sort: highest risk first. Ties: most recent change first. Impact uses the framework's High and Very high in the risk-only test. Option C uses the five impact names.</p>
     <p class="govuk-body"><strong>Wing wobble</strong> is the example on screen 2 and has 12 months of risk history (Nov 2025 → Oct 2026): Low, Low, Low, Medium, Medium, Low, Low, Low, Medium, Medium, Medium, High. Reasons for change are fictional but read like real ones. No bracketed placeholders appear in the test prototype. Reasons: Feb 2026 "Cases reported in a country with direct trade links"; Apr 2026 "Outbreak declared over in the affected country"; Jul 2026 "New cases reported in two further countries"; Oct 2026 "Outbreaks reported in neighbouring countries". Impact statement: "High. An outbreak would mainly affect the economy through trade restrictions."</p>
     <p class="govuk-body">Impact has no change history in the data we have, so the test shows it as a level and a statement only.</p>
     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
@@ -370,32 +392,34 @@
     </ul>
     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
     <h2 class="govuk-heading-l">6. Design team only: growing to priority and all four layers</h2>
-    <p class="govuk-body">Wireframes: <strong>1D Ranked by priority</strong> and <strong>2C Priority and four layers</strong>. Not part of the test.</p>
+    <p class="govuk-body">Wireframes: <strong>1D Ranked by priority</strong> and <strong>2C Priority and four layers</strong>. Not part of the test. The priority overview is now built as <a class="govuk-link" href="/public/design/priority-view/option-c.html">option C</a> of the priority view. The bullets below describe option C. The wireframe names are kept so they can be found. Options A and B of the priority view are not updated and are out of line with C.</p>
     <h3 class="govuk-heading-m">1D Overview</h3>
     <ul class="govuk-list govuk-list--bullet">
-    <li>H1 "Diseases by priority". Priority is the default sort.</li>
-    <li>Each row: rank, disease name (link), priority band (tag-style, text and colour) and score "75 / 140".</li>
-    <li>One plain-language sentence per disease explains the "so what" (e.g. "Unlikely to enter the UK, but the greatest impact and we are least prepared.").</li>
-    <li>One line under it: the four layers, e.g. "Risk Low · Impact Very high · Control 3/10 · Response 2/10".</li>
-    <li>"How the score works" link to the formula and bands.</li>
-    <li>Cards and list (1A to 1C) could sit behind a "View" switch as the layers view.</li>
+    <li>H1 "Diseases by priority". One page with a "View as" switch between a table and cards. Sorted by priority score, highest first. Nothing is ranked or numbered.</li>
+    <li>Table columns: Disease, Priority, Risk of incursion, Impact, Control measures and Response options. Each heading has a short hint (for example "Risk × impact, out of 25").</li>
+    <li>Disease name is plain text, with a "More details" link under it. For the two Act now diseases the link reads "Act now: see why this is a priority".</li>
+    <li>Priority cell: a priority action tag in sentence case, "Score 20", for a change "Up from 12" or "Down from 16" with a small arrow at the end of the line, and "Changed [date]" on every row.</li>
+    <li>Risk and impact show as names (for example Almost certain, Major). A disease already in the UK shows a purple "Confirmed in the UK" tag with the date and the number of premises.</li>
+    <li>Control measures and response options show "N of M need review" and a bar with red segments. There is no colour block and no score.</li>
+    <li>Cards sit two across at 64em and wider, grouped by priority action. Each shows "Priority score 20 out of 25", "Previous score" and "Changed [date]" with an outlined "Score increased" or "Score decreased" tag for a change, a one-line reason (e.g. "Unlikely to arrive, but the impact would be severe."), a "More details" link and the four measures, each with its own "More details" link.</li>
+    <li>At the bottom: a key ("What the priority actions mean" and "What the four measures mean"), then how the priority score is worked out and where the information comes from. There is no summary at the top and no "Look in more detail" section.</li>
     </ul>
     <h3 class="govuk-heading-m">2C Detail</h3>
     <ul class="govuk-list govuk-list--bullet">
-    <li>Priority headline: band, score, rank, then the plain sentence.</li>
-    <li>"How the score is made": two groups, <strong>Threat</strong> (risk, impact) and <strong>Vulnerability (preparedness)</strong> (control measures, response options). Each layer links to its own history or detail, which reuses the 2A or 2B pattern.</li>
-    <li>Details: "How the score works" with the worked formula.</li>
+    <li>Priority headline: priority action, score out of 25, any change and the date, then the plain sentence.</li>
+    <li>"How the score is made": <strong>risk</strong> and <strong>impact</strong>, which make the score. Beside it, <strong>control measures</strong> and <strong>response options</strong>, which do not change it. Each links to its own history or detail, which reuses the 2A or 2B pattern.</li>
+    <li>Details: "How the priority score is worked out" with the formula.</li>
     </ul>
     <h3 class="govuk-heading-m">Decisions to make before building beyond risk</h3>
     <ul class="govuk-list govuk-list--bullet">
-    <li><strong>Scales:</strong> the workshop used five risk levels, the framework three. Agree one.</li>
-    <li><strong>Colour:</strong> priority bands carry colour. Change tags stay neutral, because an increase is bad for risk and impact but good for preparedness.</li>
-    <li><strong>Preparedness display:</strong> it is scored so higher is better, but vulnerability is 20 minus it. Show the gap or the score, as a number, a bar or both.</li>
+    <li><strong>Scales:</strong> option C uses five levels for risk and impact, shown as matrix names. Agree them with the framework owners.</li>
+    <li><strong>Colour:</strong> priority actions carry colour. Change arrows and tags are for priority only, where an increase is worse, so up is red and down is green. Changes in the checklists need a rule when they are designed.</li>
+    <li><strong>Preparedness display:</strong> chosen. Checklists with "N of M need review" and red segments, with no score. How preparedness links into priority, now that it does not change the score, is still open.</li>
     <li><strong>Per layer:</strong> its own scale definition, source, last-assessed date, reason for change and "what this means". Don't assume monthly IDM reporting.</li>
-    <li><strong>Priority history:</strong> does the score have its own history over time?</li>
+    <li><strong>Priority history:</strong> does the score have its own history over time? What does "Changed" mean: the score changed, or the inputs were last checked?</li>
     <li><strong>Ownership:</strong> who writes the plain sentence, and how often.</li>
     <li><strong>Naming:</strong> keep "Diseases" as the page name so it doesn't need renaming later.</li>
-    <li><strong>Not confirmed:</strong> impact and preparedness scales and data. All values here are invented.</li>
+    <li><strong>Not confirmed:</strong> impact and preparedness scales and data, the checklist totals, the priority action cut-offs and the update cadences. All values here are invented.</li>
     </ul>
     <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible"/>
     <h2 class="govuk-heading-l">7. Test plan summary (5 working days)</h2>

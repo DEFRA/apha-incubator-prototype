@@ -53,9 +53,17 @@
     </p>
     <p class="govuk-body">Where each part has got to:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li><strong>Priority view:</strong> in design. Three options are prototyped, and we recommend testing option C. See the <a class="govuk-link" href="/public/design/priority-view/options.html">priority view options</a>.</li>
+      <li><strong>Priority view:</strong> in design. Three options are prototyped, and we recommend testing option C. Option C has been developed further than A and B, which still show the earlier design and will be brought into line later. See the <a class="govuk-link" href="/public/design/priority-view/options.html">priority view options</a>.</li>
       <li><strong>Risk page and disease page:</strong> early ideas only, in the <a class="govuk-link" href="/public/design/risk-wireframes/index.html">wireframes</a>.</li>
       <li><strong>Impact, control measures and response options pages:</strong> not explored yet.</li>
+    </ul>
+    <p class="govuk-body">Decision pages for option C. Each compares the choices we looked at and records which one we chose:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a class="govuk-link" href="/public/design/priority-view/priority-cell-options.html">Arranging the priority cell</a></li>
+      <li><a class="govuk-link" href="/public/design/priority-view/checklist-cell-options.html">Showing control measures and response options as checklists</a></li>
+      <li><a class="govuk-link" href="/public/design/priority-view/risk-impact-bars-options.html">Bars under the risk and impact levels</a></li>
+      <li><a class="govuk-link" href="/public/design/priority-view/card-hint-options.html">Explaining the measures on the cards</a></li>
+      <li><a class="govuk-link" href="/public/design/priority-view/score-change-options.html">Showing when a priority score changed</a></li>
     </ul>
 
     <h2 class="govuk-heading-l" id="how-we-got-here">How we got here</h2>
@@ -201,7 +209,7 @@
         </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Do not explain the scores in a paragraph above the list</th>
-          <td class="govuk-table__cell">The paragraph under the list heading repeated the priority band key (&quot;Act now: score of 4.5 or more…&quot;) and the details panel on how the score is worked out. We removed it on 11 November, with the visible heading, so the list starts straight after the view switch. The heading is still there for screen readers. The band key, the very low to very high words beside each score, and the details panel now carry the explanation. One thing to watch: the paragraph also said a high risk or impact is bad and a high control measures or response options score is good. The test checks whether people still get that (H6)</td>
+          <td class="govuk-table__cell">The paragraph under the list heading repeated the priority actions key and the details panel on how the score is worked out. We removed it on 11 November, with the visible heading, so the list starts straight after the view switch. The heading is still there for screen readers. The key at the bottom, the level names beside risk and impact, and the details panel now carry the explanation. One thing to watch: the paragraph also said how to read each measure. The key at the bottom covers that now, and the test checks whether people still get it (H6)</td>
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
         </tr>
         <tr class="govuk-table__row">
@@ -215,14 +223,49 @@
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
         </tr>
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Show change on the priority view for priority only</th>
-          <td class="govuk-table__cell">An outlined &quot;Score increased&quot; or &quot;Score decreased&quot; tag with the old score under the score. Diseases that have not changed show nothing. With the summary removed, there is no &quot;What has changed&quot; line, so nothing says that no rank or band changed. Changes in risk, impact, control measures and response options belong on their own pages. The previous scores are worked out for the prototype, not real</td>
+          <th scope="row" class="govuk-table__header">Show change on the priority view for priority only, with a date on every row</th>
+          <td class="govuk-table__cell">In the table, a changed score shows &quot;Up from 12&quot; or &quot;Down from 16&quot; with a small arrow at the end of that line. On the cards it shows &quot;Previous score 16&quot; and an outlined &quot;Score increased&quot; or &quot;Score decreased&quot; tag underneath, because cards have more room and the arrow looked odd there. Every row also says &quot;Changed [date]&quot;, so a score that has been stable for months can be told from one nobody has checked. We chose a date under every score over a separate sortable column and over a compare-over-a-period control. The earlier &quot;no arrows&quot; decision is reversed for the table, and the words Up and Down are always written, so shape and colour are never the only cue. Changes in risk, impact, control measures and response options belong on their own pages. The previous scores and dates are made up for the prototype. See <a class="govuk-link" href="/public/design/priority-view/score-change-options.html">showing when a priority score changed</a></td>
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
         </tr>
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Score priority and each of the four measures out of 5</th>
-          <td class="govuk-table__cell">Priority, risk, impact, control measures and response options are each a score out of 5, shown with a bar and the number. The four measures also get a word: 1 is very low, 2 low, 3 medium, 4 high and 5 very high. Priority is in four bands: Act now, Prioritise, Monitor and Maintain. The earlier formula and its score out of 140 were fictional, so we dropped them to avoid research questions about the model. The test is of the page, not of the model</td>
-          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--grey">Given</strong></td>
+          <th scope="row" class="govuk-table__header">Priority is risk &times; impact, out of 25, in four priority actions</th>
+          <td class="govuk-table__cell">Risk and impact are each rated 1 to 5. Act now is 15 or more, Prioritise is 10 to 14, Monitor is 4 to 9 and Maintain is 1 to 3. We call them priority actions, not bands, because &quot;band&quot; is a word we made up. Tags are sentence case, not capitals, because capitals are harder to read. Control measures and response options do not change the score. The earlier out of 5 scores and the score out of 140 were fictional and are gone. This is the prototype&rsquo;s model, not the real one, and the real link from preparedness to priority is an open question</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Show risk and impact as group names, not numbers</th>
+          <td class="govuk-table__cell">Risk is Rare, Unlikely, Moderate, Likely or Almost certain. Impact is Insignificant, Minor, Significant, Major or Severe. These are the words people already use with the risk matrix. The 1 to 5 number is still behind them. A key at the bottom of the page lists all five levels. The test checks that &quot;Minor&quot; reads as the second of five levels and not as a minor concern</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Show control measures and response options as checklists, not scores</th>
+          <td class="govuk-table__cell">Each shows one line, &quot;7 of 8 need review&quot;, and a segmented bar with red segments for the items still to review. There is no colour block and no 1 to 5 score. We chose this over a score, a count with a colour block, and a plain count. We assumed 10 control items and 8 response items, and the real totals are not known. See <a class="govuk-link" href="/public/design/priority-view/checklist-cell-options.html">checklist options</a></td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Take the grey bars off the risk and impact levels</th>
+          <td class="govuk-table__cell">With a level name on a colour block, the bars said the same thing twice. We removed them to test whether anyone misses them. See <a class="govuk-link" href="/public/design/priority-view/risk-impact-bars-options.html">bars under risk and impact</a></td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Recommended</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Show a &quot;Confirmed in the UK&quot; state for a disease that has arrived</th>
+          <td class="govuk-table__cell">A disease already here is a different state, not a higher level of risk. It has a purple tag (8.7:1 contrast), which sits outside the green to red scale, with the date and number of premises. Scaly claw fever is the example</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Remove the rank. Sort by priority score, highest first</th>
+          <td class="govuk-table__cell">A rank number gave false precision and made a tie look like a difference. The order is still by score, and nothing is numbered</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Explain the four measures in a key at the bottom, not as hints on the cards</th>
+          <td class="govuk-table__cell">Hints under every label made the cards busy. We tried a hover tooltip (fails WCAG 1.4.13), a toggletip, a details panel on each card and one panel at the top. All were repetitive or sat too far from the cards. The key &quot;What the four measures mean&quot; lists all five levels of risk and impact, what control measures and response options mean, and how to read the red bars. See <a class="govuk-link" href="/public/design/priority-view/card-hint-options.html">card hint options</a></td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Set the priority cell as plain lines under the tag</th>
+          <td class="govuk-table__cell">The cell reads &quot;Score 12&quot;, &quot;Down from 16&quot; and &quot;Changed 5 November 2026&quot; as plain lines in one style, under the tag. The date is at the bottom of the cell in smaller text (16px) so each row ends in the same place. See <a class="govuk-link" href="/public/design/priority-view/priority-cell-options.html">priority cell options</a></td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
         </tr>
       </tbody>
     </table>
@@ -273,6 +316,26 @@
           <td class="govuk-table__cell">An earlier pale green was an approximation of a Defra theme value, not a brand-approved colour</td>
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Recommended</strong></td>
         </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Show the cards two across, with more space, and a More details link after each measure</th>
+          <td class="govuk-table__cell">The cards felt busy. At 64em and wider they sit two across, with more padding, bold dark labels and no hints. A &quot;More details&quot; link follows each of the four measures, lined up across cards, and its hidden text names the measure and the disease. Cards that were full width looked too much like the table rows</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Disease names are plain titles. A More details link goes to the disease page</th>
+          <td class="govuk-table__cell">The link sits under the name in the table, and after the summary on each card. For the two Act now diseases it reads &quot;Act now: see why this is a priority&quot;, to encourage action without promising content we may not have. &quot;See what to do&quot; and &quot;View disease details&quot; were rejected: we are not sure a &quot;what to do now&quot; page exists, and &quot;disease details&quot; reads as facts about the disease. The test checks what people expect behind each link, and whether they click the plain-text name</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Recommended</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Keep the Disease column wide enough for the longest name</th>
+          <td class="govuk-table__cell">A wrapped disease name was hard to read in one of the most important columns. The column now has a minimum width, the sortable headings can wrap, and the page container stays at 1,200px. The cost is that the Risk, Control measures and Response options columns are narrower, and &quot;need review&quot; wraps to a second line. We looked at abbreviating months in the date line to give some width back</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Remove the &quot;Look in more detail&quot; section from option C</th>
+          <td class="govuk-table__cell">The More details links and the top navigation now do the same job. Options A and B still have it</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
       </tbody>
     </table>
 
@@ -289,7 +352,7 @@
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Give two routes out of the priority view</th>
-          <td class="govuk-table__cell">Some people want more on one disease, and others want to compare one measure across every disease. Disease names link to a disease page. Risk, Impact, Control measures and Response options are in the top navigation and in a &quot;Look in more detail&quot; line</td>
+          <td class="govuk-table__cell">Some people want more on one disease, and others want to compare one measure across every disease. Disease names are plain titles, with a &quot;More details&quot; link to a disease page. Risk, Impact, Control measures and Response options are in the top navigation. Options A and B still have a &quot;Look in more detail&quot; line as well</td>
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
         </tr>
         <tr class="govuk-table__row">
@@ -323,7 +386,7 @@
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Colour is never the only cue</th>
-          <td class="govuk-table__cell">Every band, risk level, impact level and change has a text label, and rank and score are printed</td>
+          <td class="govuk-table__cell">Every priority action, risk level, impact level and change has a text label, and the score is printed. The checklist bar always sits under its &quot;N of M need review&quot; count, and the arrow is always paired with the words Up or Down</td>
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
         </tr>
         <tr class="govuk-table__row">
@@ -337,13 +400,23 @@
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
         </tr>
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Lead with a muted colour block in the table: Very low to Very high, then the number</th>
-          <td class="govuk-table__cell">The word comes first and the number follows. The blocks use the same scale for all four measures (green for very low, through yellow, to red for very high). They are paler than the priority bands so priority stays the loudest thing on the page. One thing to watch: for control measures and response options a high score is good, but it is shown in red. The test checks whether this confuses people</td>
+          <th scope="row" class="govuk-table__header">Lead with a muted colour block in the table for risk and impact: the level name, with the number hidden</th>
+          <td class="govuk-table__cell">The blocks use the same scale for both measures (green for the lowest level, through yellow, to red for the highest). They are paler than the priority actions so priority stays the loudest thing on the page. Contrast is 5.7 to 7.8:1. Control measures and response options do not use the scale at all, because a high count of items needing review is bad and a high risk is also bad, so the two no longer pull in different directions</td>
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
         </tr>
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Show preparedness bars in green and threat bars in grey, with the number always printed</th>
-          <td class="govuk-table__cell">A high preparedness score is good but a high risk is bad, so red to green would send mixed signals and fails for red-green colour blindness. Bars are a plain fill and the number carries the meaning. The test checks this</td>
+          <th scope="row" class="govuk-table__header">Show the items needing review in dark red segments, with the count always printed</th>
+          <td class="govuk-table__cell">Red segments (#942514) on white with a grey outline for the segments. Red against green is only 1.55:1, so a two-colour red and green bar was rejected, because it fails for colour blindness. The count carries the meaning and the bar is decoration (hidden from screen readers)</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Use sentence case for the priority tags</th>
+          <td class="govuk-table__cell">Capitals are harder to read, and GOV.UK content guidance says not to use them. The tags read Act now, Prioritise, Monitor and Maintain. This is done on option C only for now. Screen readers read the text the same either way, and contrast is unchanged</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Keep card labels as plain text, and name each More details link</th>
+          <td class="govuk-table__cell">Sending people away before they have read the card is not accessible. Every More details link has hidden text saying which measure and disease it is for. Text on the cards is 16px or more on desktop. The GOV.UK small text drops to 14px below about 640px wide, which the test plan flags</td>
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
         </tr>
       </tbody>
@@ -396,17 +469,20 @@
 
     <h2 class="govuk-heading-l" id="open-questions">Open questions</h2>
     <ul class="govuk-list govuk-list--bullet">
-      <li><strong>How does preparedness link into priority?</strong> The new formula is risk &times; impact only (11 November). Control measures and response options are checklists of items needing review, and they sit beside the priority score without changing it. So a well-prepared disease and a badly prepared one with the same risk and impact get the same priority. Is that what we want? Should the checklists lower or raise the score, set the band, or only inform what to do (the &quot;Act now&quot; and &quot;Prioritise&quot; advice)? This needs an answer from the model owners before we show how priority is worked out.</li> The prototype uses a Defra look: system font, green links, and a black header with a green stripe. The brief says GOV.UK only. Which do we put in front of users?</li>
+      <li><strong>How does preparedness link into priority?</strong> The new formula is risk &times; impact only (11 November). Control measures and response options are checklists of items needing review, and they sit beside the priority score without changing it. So a well-prepared disease and a badly prepared one with the same risk and impact get the same priority. Is that what we want? Should the checklists lower or raise the score, set the band, or only inform what to do (the &quot;Act now&quot; and &quot;Prioritise&quot; advice)? This needs an answer from the model owners before we show how priority is worked out.</li>
       <li><strong>Brand.</strong> The prototype uses a Defra look: system font, green links, and a black header with a green stripe. The brief says GOV.UK only. Which do we put in front of users?</li>
-      <li><strong>Who writes the reason on each card,</strong> and how often? The prototype shows it as written copy. Does anyone also need a summary at the top of the page, what should it say, and does it need to differ by role?</li>
       <li><strong>&quot;Preparedness&quot; or &quot;vulnerability&quot;?</strong> The scoring framework uses &quot;vulnerability&quot;. The prototype says &quot;Preparedness&quot;. Do we test both?</li>
-      <li><strong>Do we show &quot;No change&quot;</strong> on every row? Showing only changes keeps the table calmer, but people may not tell &quot;no change&quot; from &quot;not assessed&quot;.</li>
+      <li><strong>Who writes the reason on each card,</strong> and how often? The prototype shows it as written copy. Does anyone also need a summary at the top of the page, what should it say, and does it need to differ by role?</li>
+      <li><strong>What does &quot;Changed [date]&quot; mean?</strong> The prototype shows the date a priority score last changed, on every row. Does it mean the score value changed, or that risk and impact were last checked, even if the score stayed the same? The second is probably better for trust, but harder to explain. Do we need a rule for how long a change tag stays, and do we have the dates and previous scores for every disease?</li>
       <li><strong>Real or fictional disease names</strong> in the test? Fictional names avoid distraction, but experts may find it harder to judge whether the results are plausible.</li>
       <li><strong>Which participants</strong>, and how do we recruit people who work by disease and by measure?</li>
-      <li><strong>How do people reach a measure page?</strong> If they miss both the navigation and the &quot;Look in more detail&quot; line, we try column headings as links.</li>
+      <li><strong>How do people reach a measure page?</strong> Option C has no &quot;Look in more detail&quot; line now, so they rely on the top navigation. If they miss it, we try column headings as links.</li>
       <li><strong>Sections or pages?</strong> Is each of risk, impact, control measures and response options a separate page or a section of one page? Does impact need its own page?</li>
-      <li><strong>Scales.</strong> The prototype shows each measure out of 5 with a word (very low to very high), which should line up with the five risk levels in the monthly report. Do they? Does impact change over time, or is it fixed until reassessed?</li>
-      <li><strong>Real data.</strong> Which diseases have which impact areas, and what were last month&rsquo;s scores? Both are made up in the prototype.</li>
+      <li><strong>Levels and checklists.</strong> The prototype shows risk and impact as five named levels, which should line up with the five risk levels in the monthly report. Do they? Does impact change over time, or is it fixed until reassessed? The checklist totals (10 control items and 8 response items), how often each is updated and the priority cut-offs (15, 10 and 4) are all assumed. We need the real ones.</li>
+      <li><strong>Is there a &quot;what to do now&quot; page behind &quot;Act now: see why this is a priority&quot;?</strong> The wording promises the reason for the priority, not actions. If the disease page has actions, we can say so. If not, it stays as it is.</li>
+      <li><strong>Should the Disease cell also carry a short summary?</strong> It fits (the card text at 16px) but makes the table about 20% taller. The name cell is the row header, so a screen reader would read the whole summary on each cell of the row. It is not added. The same is true of the More details link in that cell, which the test should check.</li>
+      <li><strong>Real data.</strong> Which diseases have which impact areas, and what were the previous scores and change dates? Both are made up in the prototype.</li>
+      <li><strong>Internal source names.</strong> The prototype names internal data sources (IDM, D2R2, Risk ID and the preparedness indices) in &quot;Where this information comes from&quot;. This is a public repository. Is that fine, or should we generalise them before the next push?</li>
     </ul>
 
     <h2 class="govuk-heading-l" id="next">What happens next</h2>

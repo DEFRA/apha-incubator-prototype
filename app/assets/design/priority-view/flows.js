@@ -1,12 +1,29 @@
 // Draws the small wireframes in the user flow diagrams, so each screen is described once and reused.
 ;(function () {
+  // Illustrative data in the order of Option C: sorted by priority score out of 25. c and r are items still to review, out of 10 and 8.
   var diseases = [
-    { band: 'act', rank: 1, risk: 1, imp: 5, c: 2, r: 1 },
-    { band: 'pri', rank: 2, risk: 3, imp: 4, c: 3, r: 2 },
-    { band: 'pri', rank: 3, risk: 3, imp: 4, c: 2, r: 3 },
-    { band: 'mon', rank: 4, risk: 4, imp: 4, c: 3, r: 4 },
-    { band: 'mai', rank: 5, risk: 4, imp: 4, c: 4, r: 5 }
+    { band: 'act', score: 20, risk: 'Almost certain', imp: 'Major', c: 9, r: 7 },
+    { band: 'act', score: 15, prev: 12, risk: 'Confirmed in the UK', confirmed: true, imp: 'Significant', c: 8, r: 5 },
+    { band: 'pri', score: 12, prev: 16, risk: 'Moderate', imp: 'Major', c: 6, r: 6 },
+    { band: 'pri', score: 10, risk: 'Unlikely', imp: 'Severe', c: 7, r: 4 },
+    { band: 'mon', score: 8, risk: 'Likely', imp: 'Minor', c: 5, r: 2 }
   ]
+  var CONTROL_TOTAL = 10,
+    RESPONSE_TOTAL = 8
+  function seg(out, total) {
+    return (
+      '<span class="seg" style="--n:' + total + ';--out:' + out + '"></span>'
+    )
+  }
+    function risk(d, short) {
+    return (
+      '<div class="tx s' +
+      (d.confirmed ? ' ptag' : '') +
+      '">' +
+      (d.confirmed && short ? 'In UK' : d.risk) +
+      '</div>'
+    )
+  }
   var header = '<div class="gb">Animal and Plant Health Agency</div>'
   function ln(cls) {
     return '<div class="ln ' + (cls || '') + '"></div>'
@@ -46,9 +63,19 @@
               '<div class="card ' +
               d.band +
               '">' +
-              ln('k w80') +
-              ln('w50') +
-              ln('w70') +
+              ln('d w80') +
+              ln('k w50') +
+              '<div class="tx s">Score ' +
+              d.score +
+              ' out of 25</div>' +
+              (d.prev ? '<div class="tx s m">Previous score ' + d.prev + '</div>' : '') +
+              ln('w60') +
+              risk(d) +
+              '<div class="tx s">' +
+              d.imp +
+              '</div>' +
+              seg(d.c, CONTROL_TOTAL) +
+              seg(d.r, RESPONSE_TOTAL) +
               '</div>'
             )
           })
@@ -57,14 +84,25 @@
     } else {
       diseases.forEach(function (d) {
         h +=
-          '<div class="rowf"><span class="rk">' +
-          d.rank +
-          '</span><div class="ln k" style="width:40%"></div><span class="band b-' +
+          '<div class="rowf top"><div class="c1">' +
+          ln('d w80') +
+          ln('k w60') +
+          '</div><div class="c2"><span class="band b-' +
           d.band +
-          '"></span>' +
-          '<div class="bar" style="width:16%;margin:0"><i style="width:' +
-          d.c * 20 +
-          '%"></i></div></div>'
+          '"></span><div class="tx s">' +
+          d.score +
+          '/25</div>' +
+          (d.prev ? ln('w60') : '') +
+          ln('w50') +
+          '</div><div class="c3">' +
+          risk(d, true) +
+          '</div><div class="c4"><div class="tx s">' +
+          d.imp +
+          '</div></div><div class="c5">' +
+          seg(d.c, CONTROL_TOTAL) +
+          '</div><div class="c6">' +
+          seg(d.r, RESPONSE_TOTAL) +
+          '</div></div>'
       })
     }
     el.innerHTML = h + '</div>'
@@ -75,12 +113,17 @@
       '<div class="bd">' +
       tabs(-1) +
       '<div class="tx" style="font-size:9px">Sprouting hoof disease</div>' +
-      '<div class="rowf" style="margin-top:3px"><span class="band b-act"></span><span class="tx">4.8 / 5</span></div>' +
+      '<div class="rowf" style="margin-top:3px"><span class="band b-act"></span><span class="tx s">Priority score 20 out of 25</span></div>' +
+      ln('w50') +
       '<div class="tiles">' +
-      '<div class="tile"><div class="tx">Risk</div><div class="tx v">1 / 5</div></div>' +
-      '<div class="tile"><div class="tx">Impact</div><div class="tx v">5 / 5</div></div>' +
-      '<div class="tile"><div class="tx">Control</div><div class="tx v">2 / 5</div></div>' +
-      '<div class="tile"><div class="tx">Response</div><div class="tx v">1 / 5</div></div>' +
+      '<div class="tile"><div class="tx s m">Risk</div><div class="tx s">Almost certain</div></div>' +
+      '<div class="tile"><div class="tx s m">Impact</div><div class="tx s">Major</div></div>' +
+      '<div class="tile"><div class="tx s m">Control</div><div class="tx s">9 of 10 to review</div>' +
+      seg(9, CONTROL_TOTAL) +
+      '</div>' +
+      '<div class="tile"><div class="tx s m">Response</div><div class="tx s">7 of 8 to review</div>' +
+      seg(7, RESPONSE_TOTAL) +
+      '</div>' +
       '</div><div class="xlinks"><div class="ln k w70"></div><div class="ln k w60"></div></div></div>'
   }
   function measure(el) {
@@ -88,14 +131,17 @@
       idx = { risk: 1, impact: 2, control: 3, response: 4 }[k]
     var h = header + '<div class="bd">' + tabs(idx)
     diseases.forEach(function (d) {
-      var score = { risk: d.risk, impact: d.imp, control: d.c, response: d.r }[
-        k
-      ]
+      var value = {
+        risk: risk(d),
+        impact: '<div class="tx s">' + d.imp + '</div>',
+        control: seg(d.c, CONTROL_TOTAL),
+        response: seg(d.r, RESPONSE_TOTAL)
+      }[k]
       h +=
-        '<div class="rowf"><div class="ln k" style="width:36%"></div>' +
-        '<div class="bar" style="width:40%;margin:0"><i style="width:' +
-        score * 20 +
-        '%"></i></div></div>'
+        '<div class="rowf"><div class="ln d" style="width:36%"></div>' +
+        '<div style="width:40%">' +
+        value +
+        '</div></div>'
     })
     el.innerHTML = h + '</div>'
   }

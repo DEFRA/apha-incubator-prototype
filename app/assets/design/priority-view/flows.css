@@ -44,7 +44,6 @@ p.govuk-body > .uf-badge { margin-left: 0; }
 .uf-journey .tx.m { font-weight: 400; color: var(--mid); }
 .uf-journey .rowf { display: flex; align-items: center; gap: 4px; margin-bottom: 4px; }
 .uf-journey .rowf .ln { margin: 0; }
-.uf-journey .rk { width: 8px; font: 700 7px/8px Arial, sans-serif; flex: none; }
 .uf-journey .band { display: block; height: 7px; width: 22px; flex: none; }
 .uf-journey .b-act { background: #d4351c; } .uf-journey .b-pri { background: #f47738; } .uf-journey .b-mon { background: #ffdd00; } .uf-journey .b-mai { background: var(--green); }
 .uf-journey .tabs { display: flex; gap: 2px; margin: 4px 0 5px; }
@@ -61,10 +60,19 @@ p.govuk-body > .uf-badge { margin-left: 0; }
 .uf-journey .card { border: 1px solid var(--line); border-top-width: 3px; padding: 3px 4px 1px; }
 .uf-journey .card.act { border-top-color: #d4351c; } .uf-journey .card.pri { border-top-color: #f47738; }
 .uf-journey .card.mon { border-top-color: #ffdd00; } .uf-journey .card.mai { border-top-color: var(--green); }
-.uf-journey .bar { height: 4px; background: #e5e5e5; margin: 2px 0 3px; }
-.uf-journey .bar i { display: block; height: 100%; background: var(--accent); }
-.uf-journey .cell { flex: none; height: 6px; background: #d8d8d8; }
-.uf-journey .cell.on { background: var(--accent); }
+.uf-journey .tx.s { font: 400 5.5px/6.5px Arial, sans-serif; }
+.uf-journey .tx.s.m { color: var(--mid); }
+.uf-journey .tx.ptag { display: table; background: #dbd5e9; color: #3d2375; font-weight: 700; padding: 0 2px; }
+.uf-journey .rowf.top { align-items: flex-start; margin-bottom: 5px; gap: 2px; }
+.uf-journey .rowf > div { min-width: 0; }
+.uf-journey .c1 { flex: 10 1 0; } .uf-journey .c2 { flex: 15 1 0; white-space: nowrap; } .uf-journey .c3 { flex: 24 1 0; }
+.uf-journey .c4 { flex: 24 1 0; } .uf-journey .c5 { flex: 13 1 0; } .uf-journey .c6 { flex: 13 1 0; }
+.uf-journey .c2 .band { width: 14px; }
+.uf-journey .c2 .band { height: 5px; width: 18px; margin-bottom: 1px; }
+.uf-journey .seg { display: block; height: 4px; margin: 2px 0 2px; border: 1px solid var(--line);
+  background:
+    repeating-linear-gradient(90deg, transparent 0, transparent calc(100% / var(--n) - 1px), #fff calc(100% / var(--n) - 1px), #fff calc(100% / var(--n))),
+    linear-gradient(90deg, #942514 calc(var(--out) / var(--n) * 100%), #fff 0); }
 .uf-journey .crumb { height: 2.5px; width: 45%; background: var(--link); margin-bottom: 4px; }
 .uf-journey .xlinks { margin-top: 5px; border-top: 1px solid #d8d8d8; padding-top: 3px; }
 .uf-journey .chart { display: block; width: 100%; height: 34px; margin: 3px 0 4px; }
