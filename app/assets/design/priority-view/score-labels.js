@@ -18,7 +18,7 @@
     if (cell) return cell.getAttribute('data-label')
     var item = score.closest('div')
     var term = item && item.querySelector('dt')
-    return term ? term.textContent.trim() : ''
+    return term ? term.firstChild.textContent.trim() : ''
   }
 
   document.querySelectorAll('.app-score').forEach(function (score) {
