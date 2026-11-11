@@ -64,6 +64,8 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .app-band--prioritise { background: #f47738; color: #0b0c0c; } /* 7.04:1. White would fail at 2.78:1 */
 .app-band--monitor { background: #ffdd00; color: #0b0c0c; }    /* 14.55:1 */
 .app-band--maintain { background: #00703c; color: #fff; }      /* 6.21:1. Defra green #00a33b would fail at 3.33:1 */
+/* Sentence case for the priority tags: capitals are harder to read. Used on Option C for now. */
+.app-sentence-case .app-band { text-transform: none; letter-spacing: 0; }
 
 .app-priority__detail { white-space: nowrap; display: block; margin-top: 8px; color: var(--secondary); }
 
