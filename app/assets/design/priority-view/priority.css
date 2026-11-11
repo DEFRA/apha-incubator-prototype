@@ -104,17 +104,15 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .app-score--after-tag small { font-size: 1rem; }
 
 /* Control measures and response options are checklists, not scores: how many items still need review.
-   More is worse, the same direction as risk and impact, so the block uses the level colours by share of items still
-   to review: up to 20% green, up to 40% yellow-green, up to 60% yellow, up to 80% light red, above 80% deeper red.
-   The bar is a progress bar for the items already done, one segment per item, so 7 of 8 needing review shows 1 segment filled.
-   --n is the number of items and --done the number completed. */
-.app-review { display: block; color: var(--secondary); }
-.app-done { display: block; margin-top: 12px; color: var(--secondary); }
-.app-done + .app-progress { margin-top: 4px; }
+   More is worse, the same direction as risk and impact, so the items still to review are red segments that fill
+   from the left, one segment per item. Filled against empty carries the meaning, so it holds up in greyscale and for
+   colour blindness: red on white is 8.3:1. The count is always written. --n is the number of items, --out the number to review. */
+.app-checklist { display: block; color: var(--secondary); }
+.app-checklist strong { color: #0b0c0c; }
 .app-progress { display: block; width: 100%; max-width: 120px; height: 10px; margin-top: 10px; border: 1px solid var(--track-outline);
   background:
     repeating-linear-gradient(90deg, transparent 0, transparent calc(100% / var(--n) - 2px), #fff calc(100% / var(--n) - 2px), #fff calc(100% / var(--n))),
-    linear-gradient(90deg, var(--defra-link) calc(var(--done) / var(--n) * 100%), #e5e6e7 0); }
+    linear-gradient(90deg, #942514 calc(var(--out) / var(--n) * 100%), #fff 0); }
 .app-card .app-progress { max-width: 100%; }
 .app-bar { display: block; width: 100%; max-width: 120px; height: 10px; margin-top: 10px; background: #e5e6e7; border: 1px solid var(--track-outline); }
 .app-bar > span { display: block; height: 100%; background: var(--defra-link); }
