@@ -67,6 +67,16 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 
 .app-priority__detail { white-space: nowrap; display: block; margin-top: 8px; color: var(--secondary); }
 
+/* The date a score last changed sits at the bottom of the Priority cell, in smaller text, so every row ends in the same place.
+   The cell has a 1px height so the box can fill the row. Only used where the table is a table. */
+.app-changed { display: block; font-size: 1rem; line-height: 1.25; color: var(--secondary); white-space: nowrap; }
+.app-priority__box { margin-top: 0; }
+.app-priority__box > .app-changed { margin-top: 12px; }
+@media (min-width: 40.0625em) {
+  .app-table--rows td.app-priority { height: 1px; }
+  .app-priority__box { display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+}
+
 /* Priority score and its change. Plain lines of text in one style, with the arrow at the end of the "Up from" or
    "Down from" line, so nothing changes style between the values and the text always starts at the left edge, level with the band.
    The words Up and Down are always written, so shape and colour are never the only cue.
@@ -129,7 +139,7 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 
 /* Option A: table */
 .app-table th, .app-table td { vertical-align: top; padding: 20px 15px; }
-.app-table th[aria-sort] a { display: inline-block; white-space: nowrap; }
+.app-table th[aria-sort] a { display: inline; }
 .app-table th[aria-sort] a::after { content: ""; display: inline-block; margin-left: 5px; vertical-align: middle; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 5px solid currentcolor; opacity: 0.45; }
 .app-table th[aria-sort="descending"] a::after { border-bottom: 0; border-top: 5px solid currentcolor; opacity: 1; }
 .app-table th[aria-sort="ascending"] a::after { opacity: 1; }
@@ -144,12 +154,13 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .app-table .app-sorted { background: var(--sorted-tint); }
 
 .app-table--rows { min-width: 1000px; }
-.app-table--rows thead th:nth-child(1) { width: 19%; }
-.app-table--rows thead th:nth-child(2) { width: 13%; }
-.app-table--rows thead th:nth-child(3) { width: 16%; }
-.app-table--rows thead th:nth-child(4) { width: 19%; }
-.app-table--rows thead th:nth-child(5) { width: 16.5%; }
-.app-table--rows thead th:nth-child(6) { width: 16.5%; }
+/* Cell padding is added to min-width, so 13.5rem keeps "Sprouting hoof disease" on one line. */
+.app-table--rows thead th:nth-child(1) { width: 20%; min-width: 13.5rem; }
+.app-table--rows thead th:nth-child(2) { width: 21.5%; }
+.app-table--rows thead th:nth-child(3) { width: 14.5%; }
+.app-table--rows thead th:nth-child(4) { width: 18%; }
+.app-table--rows thead th:nth-child(5) { width: 13.5%; }
+.app-table--rows thead th:nth-child(6) { width: 12.5%; }
 .app-table--rows thead th:nth-child(3),
 .app-table--rows tbody td:nth-child(3),
 .app-table--rows thead th:nth-child(5),
