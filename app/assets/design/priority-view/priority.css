@@ -59,9 +59,6 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 
 .app-priority__detail { white-space: nowrap; display: block; margin-top: 8px; color: var(--secondary); }
 
-/* Disease cell in the table: the name, then the priority band. */
-.app-disease .app-band { display: block; width: max-content; margin-top: 12px; }
-
 /* Disease already confirmed in the UK. A state, not a level, so it uses its own hue (purple, 8.7:1) outside the green to red scale. */
 .app-confirmed { display: inline-block; padding: 2px 8px; background: #dbd5e9; color: #3d2375; font-size: 1rem; font-weight: 700; line-height: 1.25; }
 .app-confirmed__detail { display: block; margin-top: 8px; color: var(--secondary); }
@@ -116,12 +113,7 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .app-table .app-sorted { background: var(--sorted-tint); }
 
 .app-table--rows { min-width: 1000px; }
-.app-table--rows thead th:nth-child(1) { width: 23%; }
-.app-table--rows thead th:nth-child(2) { width: 12%; }
-.app-table--rows thead th:nth-child(3) { width: 15%; }
-.app-table--rows thead th:nth-child(4) { width: 18%; }
-.app-table--rows thead th:nth-child(5) { width: 16%; }
-.app-table--rows thead th:nth-child(6) { width: 16%; }
+.app-table--rows thead th:nth-child(1) { width: 20%; }
 .app-table--rows thead th:nth-child(3),
 .app-table--rows tbody td:nth-child(3),
 .app-table--rows thead th:nth-child(5),
