@@ -94,9 +94,12 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .app-areas li { margin: 0 0 3px; }
 .app-hint { display: block; font-weight: 400; color: var(--secondary); margin-top: 3px; }
 
-/* One shared explanation of the four measures above the cards, so the hints are not repeated on every card. */
-.app-measures-help { margin-bottom: 30px; }
-.app-measures-help__list { margin: 0; }
+/* An explanation of the four measures at the bottom of each card, closed until opened. */
+.app-card__help { margin: 35px 0 0; border-top: 1px solid var(--divider); padding-top: 20px; }
+.app-card .app-measures-help__list { display: block; margin: 0; padding: 0; border: 0; gap: 0; }
+.app-card .app-measures-help__list dt { margin: 0 0 2px; }
+.app-card .app-measures-help__list dd { margin: 0 0 12px; }
+.app-card .app-measures-help__list dd:last-child { margin-bottom: 0; }
 .app-measures-help__list dt { font-weight: 700; margin: 0 0 2px; }
 .app-measures-help__list dd { margin: 0 0 12px; color: var(--secondary); }
 .app-measures-help__list dd:last-child { margin-bottom: 0; }
