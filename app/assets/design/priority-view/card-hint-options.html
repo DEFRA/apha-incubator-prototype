@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+<head>
+<meta charset="utf-8">
+<title>Design decision: showing the hint text on the cards</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="govuk-frontend.min.css">
+<link rel="stylesheet" href="priority.css">
+<style>
+  .app-hub-bar { background: #0b0c0c; color: #b1b4b6; font: 16px/1.3 Arial, sans-serif; padding: 10px 20px; }
+  .app-hub-bar a { color: #fff; font-weight: 700; margin-right: 16px; }
+  .app-hub-bar a:focus { outline: 3px solid #ffdd00; background: #ffdd00; color: #0b0c0c; }
+
+  .ht-opt { margin: 0 0 60px; padding-top: 20px; border-top: 5px solid #0b0c0c; }
+  .ht-card { max-width: 585px; margin: 20px 0; }
+  .ht-card .app-cards { grid-template-columns: minmax(0, 1fr); }
+  .ht-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 30px; }
+  .ht-cols h3 { margin-top: 0; }
+  @media (max-width: 48em) { .ht-cols { grid-template-columns: 1fr; } }
+
+  /* Option 2: a button beside the label opens the hint in a bubble (a "toggletip") */
+  .ht-tip { position: relative; display: inline-block; vertical-align: middle; margin-left: 6px; }
+  .ht-tip__button { width: 28px; height: 28px; padding: 0; border: 2px solid #505a5f; border-radius: 50%; background: #fff; color: #0b0c0c; font: 700 16px/1 Arial, sans-serif; cursor: pointer; }
+  .ht-tip__button:hover { background: #f3f2f1; }
+  .ht-tip__button:focus { outline: 3px solid transparent; background: #ffdd00; border-color: #0b0c0c; box-shadow: 0 0 0 2px #ffdd00, 0 4px 0 2px #0b0c0c; }
+  .ht-tip__live { position: absolute; z-index: 2; left: 0; top: 36px; }
+  .ht-tip__bubble { display: block; width: 15em; padding: 10px 14px; background: #0b0c0c; color: #fff; font-weight: 400; font-size: 1rem; line-height: 1.3; }
+
+  /* Option 3: a native disclosure, so it works without JavaScript */
+  .app-card dt { display: flex; flex-wrap: wrap; align-items: center; }
+  .ht-details { display: contents; }
+  .ht-details summary { list-style: none; cursor: pointer; width: 28px; height: 28px; margin-left: 8px; border: 2px solid #505a5f; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; background: #fff; color: #0b0c0c; }
+  .ht-details summary::-webkit-details-marker { display: none; }
+  .ht-details summary:focus { outline: 3px solid transparent; background: #ffdd00; border-color: #0b0c0c; box-shadow: 0 0 0 2px #ffdd00, 0 4px 0 2px #0b0c0c; }
+  .ht-details[open] summary { background: #0b0c0c; color: #fff; }
+  .ht-details p { flex-basis: 100%; margin: 6px 0 0; font-weight: 400; color: var(--secondary); }
+
+  /* Option 4: one shared explanation above the cards */
+  .ht-shared dl { margin: 0; }
+  .ht-shared dt { display: block; margin: 0 0 2px; }
+  .ht-shared dd { margin: 0 0 12px; color: var(--secondary); }
+
+  .ht-plain .app-card dt { display: block; }
+</style>
+</head>
+<body class="govuk-template__body">
+<div class="app-hub-bar"><a href="/">Back to the design resource home</a><span>Design decision in progress. Illustrative data, fictional disease names.</span></div>
+<div class="govuk-width-container app-wide">
+  <main class="govuk-main-wrapper" id="main-content">
+    <p class="govuk-body-s"><a class="govuk-link" href="option-c.html">Option C</a> · For the design team, not for participants</p>
+    <h1 class="govuk-heading-xl">Showing the hint text on the cards</h1>
+    <p class="govuk-body-l">Each card label has a hint under it, such as "Chance of arriving in the UK". It is repeated on every card, and it makes the cards look busy. This page compares ways to keep the hint available without showing it all the time.</p>
+    <div class="govuk-inset-text">
+      <p class="govuk-body">Option C is unchanged for now and still shows the hints. The options 2 and 3 buttons work, so try them with a mouse, a keyboard and a screen reader.</p>
+    </div>
+
+    <h2 class="govuk-heading-l">What "accessible" needs here</h2>
+    <p class="govuk-body">A tooltip that appears on hover only is not accessible. Keyboard, touch and screen reader users cannot get to it. The GOV.UK Design System has no tooltip component. An accessible version has to meet these:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Works from the keyboard.</strong> It is a button, reached with Tab, and opened with Enter or Space.</li>
+      <li><strong>Works on touch.</strong> It opens on tap, not hover, and the target is at least 24px (WCAG 2.2 target size). These are 28px.</li>
+      <li><strong>Can be dismissed.</strong> Escape closes it, and so does moving focus away or tapping elsewhere (WCAG 1.4.13).</li>
+      <li><strong>Stays put.</strong> It does not vanish while someone is reading it, and it does not cover the thing it explains.</li>
+      <li><strong>Is announced.</strong> A screen reader reads the hint out when it opens, using a status region.</li>
+      <li><strong>Has a name.</strong> The button says what it is for, such as "More information about Risk of incursion", not just "?".</li>
+      <li><strong>Colour is not the only cue.</strong> The button has a visible border and a "?" or "i" shape, and a focus style that is not only colour.</li>
+      <li><strong>The hint is not the only place.</strong> Anything important must also be on the page, because some people will never open it.</li>
+    </ul>
+
+    <!-- Option 1 -->
+    <section class="ht-opt" aria-labelledby="o1">
+      <h2 class="govuk-heading-l" id="o1">Option 1: always show the hint</h2>
+      <p class="govuk-body">What Option C has now. The hint is plain text under every label, so nothing is hidden.</p>
+      <div class="ht-card ht-plain"><div data-demo="shown"></div></div>
+      <div class="ht-cols">
+        <div><h3 class="govuk-heading-m">Good for</h3><ul class="govuk-list govuk-list--bullet"><li>Nothing to find or open, and it works for everyone</li><li>No JavaScript</li></ul></div>
+        <div><h3 class="govuk-heading-m">Watch for</h3><ul class="govuk-list govuk-list--bullet"><li>The same four hints repeat on every card. Six cards means 24 lines of repeated text</li><li>It is the busy version you want to move away from</li></ul></div>
+      </div>
+    </section>
+
+    <!-- Option 2 -->
+    <section class="ht-opt" aria-labelledby="o2">
+      <h2 class="govuk-heading-l" id="o2">Option 2: a "?" button that opens the hint (a toggletip)</h2>
+      <p class="govuk-body">A small button beside the label. Selecting it opens the hint in a bubble underneath. Escape, a second press, or moving away closes it. Try it.</p>
+      <div class="ht-card ht-plain"><div data-demo="tip"></div></div>
+      <div class="ht-cols">
+        <div><h3 class="govuk-heading-m">Good for</h3><ul class="govuk-list govuk-list--bullet"><li>The card is cleaner, and the hint is one press away, next to the label it explains</li><li>The pattern is well known, and fully keyboard and screen reader friendly</li><li>The bubble sits over blank space, so it hides nothing important</li></ul></div>
+        <div><h3 class="govuk-heading-m">Watch for</h3><ul class="govuk-list govuk-list--bullet"><li><strong>24 buttons on the page</strong> (4 on each of 6 cards). That is more to tab through, and more small icons to look at</li><li>It needs JavaScript, so it should fall back to showing the hint if the script does not run</li><li>People may never open it, so the label has to make sense alone</li><li>The bubble covers whatever sits under the label, as in the screenshot of the Control measures button: it hides the count and part of the bar while it is open</li></ul></div>
+      </div>
+    </section>
+
+    <!-- Option 3 -->
+    <section class="ht-opt" aria-labelledby="o3">
+      <h2 class="govuk-heading-l" id="o3">Option 3: a "?" that opens the hint in place (a disclosure)</h2>
+      <p class="govuk-body">The same button, but the hint opens inline under the label and pushes the content down. It uses the browser's own details element, so it works without JavaScript.</p>
+      <div class="ht-card ht-plain"><div data-demo="details"></div></div>
+      <div class="ht-cols">
+        <div><h3 class="govuk-heading-m">Good for</h3><ul class="govuk-list govuk-list--bullet"><li>The simplest accessible build. No script, and the browser handles keyboard and screen readers</li><li>Nothing can cover other content</li></ul></div>
+        <div><h3 class="govuk-heading-m">Watch for</h3><ul class="govuk-list govuk-list--bullet"><li>The same 24 buttons as option 2</li><li>Opening one moves everything below it, and unevens the two cards in a row</li><li>The hint stays open until you close it, so a card can end up with four open</li></ul></div>
+      </div>
+    </section>
+
+    <!-- Option 4 -->
+    <section class="ht-opt" aria-labelledby="o4">
+      <h2 class="govuk-heading-l" id="o4">Option 4: explain the four measures once, above the cards</h2>
+      <p class="govuk-body">The cards carry just the label. One "What do these measures mean?" panel above the list holds all four hints. It mirrors the table, where the hints appear once in the column headings, not on every row.</p>
+      <div class="ht-card ht-plain">
+        <details class="govuk-details ht-shared">
+          <summary class="govuk-details__summary"><span class="govuk-details__summary-text">What do these four measures mean?</span></summary>
+          <div class="govuk-details__text">
+            <dl>
+              <dt>Risk of incursion</dt><dd>Chance of arriving in the UK</dd>
+              <dt>Impact</dt><dd>Harm caused if it arrives</dd>
+              <dt>Control measures</dt><dd>Preventing a disease from arriving</dd>
+              <dt>Response options</dt><dd>Responding if it arrives</dd>
+            </dl>
+          </div>
+        </details>
+        <div data-demo="none"></div>
+      </div>
+      <div class="ht-cols">
+        <div><h3 class="govuk-heading-m">Good for</h3><ul class="govuk-list govuk-list--bullet"><li>The cleanest cards, with no repeated text and no extra buttons</li><li>One control instead of 24, and it uses the standard GOV.UK details component</li><li>No JavaScript, and it matches how the table works</li><li>The level key at the bottom of the page already works this way</li></ul></div>
+        <div><h3 class="govuk-heading-m">Watch for</h3><ul class="govuk-list govuk-list--bullet"><li>It is not next to the label, so people need to remember it or scroll back</li><li>Closed by default, so many people will not open it. The labels have to make sense without it</li><li>It could sit open by default, or the hints could go in the intro text instead</li></ul></div>
+      </div>
+    </section>
+
+    <h2 class="govuk-heading-l">One more, to avoid</h2>
+    <p class="govuk-body"><strong>A hover-only tooltip</strong>, including the browser's <code>title</code> attribute. It does not appear on keyboard focus or touch, many screen readers ignore it, and it can disappear when the pointer moves. It fails WCAG 1.4.13 and is not an accessible way to show required information.</p>
+
+    <h2 class="govuk-heading-l">Side by side</h2>
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-visually-hidden">The four ways compared</caption>
+      <thead class="govuk-table__head"><tr class="govuk-table__row">
+        <th scope="col" class="govuk-table__header"></th>
+        <th scope="col" class="govuk-table__header">1. Always shown</th>
+        <th scope="col" class="govuk-table__header">2. Toggletip</th>
+        <th scope="col" class="govuk-table__header">3. Disclosure in place</th>
+        <th scope="col" class="govuk-table__header">4. Once, above the cards</th>
+      </tr></thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Visual clutter on the card</th><td class="govuk-table__cell">Highest</td><td class="govuk-table__cell">Medium: 4 small buttons</td><td class="govuk-table__cell">Medium: 4 small buttons</td><td class="govuk-table__cell">Lowest</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Next to its label</th><td class="govuk-table__cell">Yes</td><td class="govuk-table__cell">Yes</td><td class="govuk-table__cell">Yes</td><td class="govuk-table__cell">No</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Controls on the page</th><td class="govuk-table__cell">0</td><td class="govuk-table__cell">24</td><td class="govuk-table__cell">24</td><td class="govuk-table__cell">1</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Needs JavaScript</th><td class="govuk-table__cell">No</td><td class="govuk-table__cell">Yes</td><td class="govuk-table__cell">No</td><td class="govuk-table__cell">No</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Moves the layout</th><td class="govuk-table__cell">n/a</td><td class="govuk-table__cell">No, floats over</td><td class="govuk-table__cell">Yes</td><td class="govuk-table__cell">Once, at the top</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Everyone sees the hint</th><td class="govuk-table__cell">Yes</td><td class="govuk-table__cell">Only if opened</td><td class="govuk-table__cell">Only if opened</td><td class="govuk-table__cell">Only if opened</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Accessible</th><td class="govuk-table__cell">Yes</td><td class="govuk-table__cell">Yes, if built as above</td><td class="govuk-table__cell">Yes</td><td class="govuk-table__cell">Yes</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-l">Suggestion</h2>
+    <p class="govuk-body"><strong>Option 4, with the table headings as they are.</strong> The repetition is the problem. The table shows each hint once, in the column heading, and the cards can do the same with one panel. It removes 24 lines of text without adding 24 buttons, which options 2 and 3 do. It also needs no script.</p>
+    <p class="govuk-body">If research shows people need the hint right beside the label, <strong>option 2</strong> is the one to build, with a fallback that shows the hint as plain text when JavaScript is off. Option 3 is simpler to build, but its in-place expansion uneven the cards.</p>
+
+    <h2 class="govuk-heading-l">Still to decide</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Which option.</strong> Not decided. Option C still shows the hints.</li>
+      <li><strong>Open by default.</strong> If we use option 4, is the panel open or closed to begin with?</li>
+      <li><strong>Test it.</strong> Ask what "Control measures" means before showing any hint, then see whether people look for the explanation, and where.</li>
+    </ul>
+  </main>
+</div>
+
+<script>
+// Builds the same card in each mode, so only the way the hint is shown differs.
+var measures = [
+  { name: 'Risk of incursion', hint: 'Chance of arriving in the UK', value: '<span class="app-score">5</span>' },
+  { name: 'Impact', hint: 'Harm caused if it arrives', value: '<span class="app-score">4</span><ul class="app-areas"><li>Animal welfare</li><li>International trade</li><li>Wider economy and society</li></ul>' },
+  { name: 'Control measures', hint: 'Preventing a disease from arriving', value: '<span class="app-checklist"><strong>9 of 10</strong> need review</span><span class="app-progress" style="--n:10;--out:9" aria-hidden="true"></span>' },
+  { name: 'Response options', hint: 'Responding if it arrives', value: '<span class="app-checklist"><strong>7 of 8</strong> need review</span><span class="app-progress" style="--n:8;--out:7" aria-hidden="true"></span>' }
+]
+
+function label(m, mode) {
+  if (mode === 'shown') return m.name + '<span class="app-hint">' + m.hint + '</span>'
+  if (mode === 'tip') {
+    return m.name + '<span class="ht-tip"><button type="button" class="ht-tip__button" data-hint="' + m.hint + '">?<span class="govuk-visually-hidden"> More information about ' + m.name + '</span></button><span class="ht-tip__live" role="status"></span></span>'
+  }
+  if (mode === 'details') {
+    return m.name + '<details class="ht-details"><summary><span aria-hidden="true">?</span><span class="govuk-visually-hidden">What does ' + m.name + ' mean?</span></summary><p>' + m.hint + '</p></details>'
+  }
+  return m.name
+}
+
+document.querySelectorAll('[data-demo]').forEach(function (host) {
+  var mode = host.getAttribute('data-demo')
+  var items = measures.map(function (m) {
+    return '<div><dt class="govuk-body-s">' + label(m, mode) + '</dt><dd>' + m.value + '<a class="govuk-link app-more" href="not-in-test.html">More details<span class="govuk-visually-hidden"> about ' + m.name.toLowerCase() + ' for Sprouting hoof disease</span></a></dd></div>'
+  }).join('')
+  host.innerHTML = '<ul class="app-cards"><li class="app-card app-card--act"><h4 class="govuk-heading-m"><a class="govuk-link" href="not-in-test.html">Sprouting hoof disease</a></h4><p class="govuk-body app-card__meta"><span class="app-trend app-trend--none"><span class="app-trend__text"><span>Score 20 out of 25</span></span></span></p><p class="govuk-body app-card__why">Almost certain to arrive, and the impact would be major. Most of our control measures and response options need review.</p><dl>' + items + '</dl></li></ul>'
+})
+
+// Toggletip: the text is added to a status region on press, so a screen reader announces it.
+function closeTips(except) {
+  document.querySelectorAll('.ht-tip__live').forEach(function (live) {
+    if (live !== except) live.textContent = ''
+  })
+}
+document.addEventListener('click', function (e) {
+  var button = e.target.closest('.ht-tip__button')
+  if (!button) { closeTips(); return }
+  var live = button.parentNode.querySelector('.ht-tip__live')
+  var open = live.textContent !== ''
+  closeTips(live)
+  live.textContent = ''
+  if (!open) {
+    var bubble = document.createElement('span')
+    bubble.className = 'ht-tip__bubble'
+    bubble.textContent = button.getAttribute('data-hint')
+    live.appendChild(bubble)
+  }
+})
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeTips() })
+document.addEventListener('focusin', function (e) {
+  var tip = e.target.closest('.ht-tip')
+  document.querySelectorAll('.ht-tip__live').forEach(function (live) {
+    if (!tip || live.parentNode !== tip) live.textContent = ''
+  })
+})
+</script>
+<script src="score-labels.js"></script>
+</body>
+</html>
