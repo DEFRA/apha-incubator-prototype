@@ -465,18 +465,6 @@
     }
   })();
 </script>
-<script>
-// Prototype only: the card labels are links that go nowhere, so we can see where people expect them to lead.
-document.querySelectorAll('.app-card dt').forEach(function (dt) {
-  var label = dt.firstChild
-  var link = document.createElement('a')
-  link.className = 'govuk-link'
-  link.href = '#'
-  link.textContent = label.textContent
-  link.addEventListener('click', function (e) { e.preventDefault() })
-  label.replaceWith(link)
-})
-</script>
 <script src="score-labels.js"></script>
 </body>
 </html>
