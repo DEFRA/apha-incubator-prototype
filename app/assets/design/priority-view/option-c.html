@@ -465,6 +465,22 @@
     }
   })();
 </script>
+<script>
+// Adds a "More details" link after each measure on the cards. The hidden text says which measure and disease it is for,
+// so the links make sense one at a time, for example when a screen reader lists the links on the page.
+document.querySelectorAll('.app-card').forEach(function (card) {
+  var title = card.querySelector('h4 a')
+  var slug = new URLSearchParams(title.search).get('disease')
+  card.querySelectorAll('dl > div').forEach(function (item) {
+    var measure = item.querySelector('dt').firstChild.textContent.trim()
+    var link = document.createElement('a')
+    link.className = 'govuk-link app-more'
+    link.href = 'not-in-test.html?page=disease&disease=' + slug + '&measure=' + encodeURIComponent(measure.toLowerCase())
+    link.innerHTML = 'More details<span class="govuk-visually-hidden"> about ' + measure.toLowerCase() + ' for ' + title.textContent + '</span>'
+    item.querySelector('dd').appendChild(link)
+  })
+})
+</script>
 <script src="score-labels.js"></script>
 </body>
 </html>

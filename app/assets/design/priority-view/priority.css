@@ -174,6 +174,7 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .app-card dl { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 25px; border-top: 1px solid var(--divider); padding-top: 20px; }
 .app-card dt { color: #0b0c0c; font-weight: 700; margin-bottom: 8px; }
 .app-card dd { margin: 0; }
+.app-more { display: inline-block; margin-top: 10px; }
 .app-card dd .app-bar { max-width: 100%; }
 
 .app-key { list-style: none; padding: 0; margin: 0 0 30px; }
