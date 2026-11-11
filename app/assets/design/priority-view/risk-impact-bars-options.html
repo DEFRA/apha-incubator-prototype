@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+<head>
+<meta charset="utf-8">
+<title>Design decision: bars under the risk and impact levels</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="govuk-frontend.min.css">
+<link rel="stylesheet" href="priority.css">
+<style>
+  .app-hub-bar { background: #0b0c0c; color: #b1b4b6; font: 16px/1.3 Arial, sans-serif; padding: 10px 20px; }
+  .app-hub-bar a { color: #fff; font-weight: 700; margin-right: 16px; }
+  .app-hub-bar a:focus { outline: 3px solid #ffdd00; background: #ffdd00; color: #0b0c0c; }
+
+  .bb-opt { margin: 0 0 60px; padding-top: 20px; border-top: 5px solid #0b0c0c; }
+  .bb-cards { grid-template-columns: minmax(0, 360px); margin: 20px 0 0; }
+  .bb-cards .app-card h4 { margin: 0 0 5px; }
+  .bb-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 30px; }
+  .bb-cols h3 { margin-top: 0; }
+  @media (max-width: 48em) { .bb-cols { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body class="govuk-template__body">
+<div class="app-hub-bar"><a href="/">Back to the design resource home</a><span>Design decision in progress. Illustrative data, fictional disease names.</span></div>
+<div class="govuk-width-container app-wide">
+  <main class="govuk-main-wrapper" id="main-content">
+    <p class="govuk-body-s"><a class="govuk-link" href="option-c.html">Option C</a> · For the design team, not for participants</p>
+    <h1 class="govuk-heading-xl">Bars under the risk and impact levels</h1>
+    <p class="govuk-body-l">Risk of incursion and impact each show a level word in a colour block, and a grey bar under it. Now there is also a key for all five levels at the bottom of the page. This page compares the table with the bars and without them, to see whether the bars are still needed.</p>
+    <div class="govuk-inset-text">
+      <p class="govuk-body">Option C is unchanged for now, and still has the bars. The checklist columns (control measures and response options) keep their red segment bars in both versions, because they show something different: how many items need review.</p>
+    </div>
+
+    <h2 class="govuk-heading-l">What the bar adds, and what it repeats</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>It repeats the word and the colour.</strong> "Major" and the bar at 80% say the same thing. Both come from the same 1 to 5 rating.</li>
+      <li><strong>It does add the position on the scale.</strong> It is the only thing in the cell that shows that "Minor" is second from the bottom, and not the lowest. The key at the bottom of the page now says that too, but it is a long way from the cell.</li>
+      <li><strong>It is grey, so it has no colour of its own.</strong> The word's colour block carries the colour. The bar is hidden from screen readers, so it adds nothing for them.</li>
+      <li><strong>It makes the two columns look different from the checklist columns.</strong> Grey fill from the left, against red segments for items to review. They mean different things, but they look alike at a glance.</li>
+    </ul>
+
+    <!-- ===== With bars ===== -->
+    <section class="bb-opt" aria-labelledby="with">
+      <h2 class="govuk-heading-l" id="with">With the bars</h2>
+      <p class="govuk-body">What Option C has now.</p>
+      <div class="app-scroll" tabindex="0" role="region" aria-label="The table with bars, scrolls sideways on narrow screens">
+        <table class="govuk-table app-table app-table--rows">
+          <caption class="govuk-table__caption govuk-visually-hidden">The table with bars under the risk and impact levels</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Disease</th>
+              <th scope="col" class="govuk-table__header app-sorted">Priority<span class="app-hint">Risk × impact, out of 25</span></th>
+              <th scope="col" class="govuk-table__header">Risk of incursion<span class="app-hint">Chance of arriving</span></th>
+              <th scope="col" class="govuk-table__header">Impact<span class="app-hint">Harm if it arrives</span></th>
+              <th scope="col" class="govuk-table__header">Control measures<span class="app-hint">Preventing entry</span></th>
+              <th scope="col" class="govuk-table__header">Response options<span class="app-hint">Dealing with it</span></th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=sprouting-hoof-disease">Sprouting hoof disease</a></th>
+              <td class="govuk-table__cell app-priority app-sorted" data-label="Priority"><span class="app-band app-band--act">Act now</span><span class="app-trend app-trend--none"><span class="app-trend__text"><span>Score 20</span></span></span></td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">5</span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:100%"></span></span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">4</span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:80%"></span></span><ul class="app-areas"><li>Animal welfare</li><li>International trade</li><li>Wider economy and society</li></ul></td>
+              <td class="govuk-table__cell" data-label="Control measures"><span class="app-checklist"><strong>9 of 10</strong> need review</span><span class="app-progress" style="--n:10;--out:9" aria-hidden="true"></span></td>
+              <td class="govuk-table__cell" data-label="Response options"><span class="app-checklist"><strong>7 of 8</strong> need review</span><span class="app-progress" style="--n:8;--out:7" aria-hidden="true"></span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=scaly-claw-fever">Scaly claw fever</a></th>
+              <td class="govuk-table__cell app-priority app-sorted" data-label="Priority"><span class="app-band app-band--act">Act now</span><span class="app-trend app-trend--none"><span class="app-trend__text"><span>Score 15</span></span></span></td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><strong class="app-confirmed">Confirmed in the UK</strong><span class="app-confirmed__detail">Since 3 November 2026. 2 premises.</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">3</span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:60%"></span></span><ul class="app-areas"><li>Animal welfare</li><li>Wider economy and society</li></ul></td>
+              <td class="govuk-table__cell" data-label="Control measures"><span class="app-checklist"><strong>8 of 10</strong> need review</span><span class="app-progress" style="--n:10;--out:8" aria-hidden="true"></span></td>
+              <td class="govuk-table__cell" data-label="Response options"><span class="app-checklist"><strong>5 of 8</strong> need review</span><span class="app-progress" style="--n:8;--out:5" aria-hidden="true"></span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">Himalayan Dragon Pox</a></th>
+              <td class="govuk-table__cell app-priority app-sorted" data-label="Priority"><span class="app-band app-band--prioritise">Prioritise</span><span class="app-trend"><span class="app-arrow app-arrow--down" aria-hidden="true"></span><span class="app-trend__text"><span>Score 12</span><span>Down from 16</span></span></span></td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">3</span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:60%"></span></span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">4</span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:80%"></span></span><ul class="app-areas"><li>Animal welfare</li></ul></td>
+              <td class="govuk-table__cell" data-label="Control measures"><span class="app-checklist"><strong>6 of 10</strong> need review</span><span class="app-progress" style="--n:10;--out:6" aria-hidden="true"></span></td>
+              <td class="govuk-table__cell" data-label="Response options"><span class="app-checklist"><strong>6 of 8</strong> need review</span><span class="app-progress" style="--n:8;--out:6" aria-hidden="true"></span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=rainbow-tail-disease">Rainbow tail disease</a></th>
+              <td class="govuk-table__cell app-priority app-sorted" data-label="Priority"><span class="app-band app-band--prioritise">Prioritise</span><span class="app-trend app-trend--none"><span class="app-trend__text"><span>Score 10</span></span></span></td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">2</span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:40%"></span></span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">5</span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:100%"></span></span><ul class="app-areas"><li>Animal welfare</li><li>International trade</li></ul></td>
+              <td class="govuk-table__cell" data-label="Control measures"><span class="app-checklist"><strong>7 of 10</strong> need review</span><span class="app-progress" style="--n:10;--out:7" aria-hidden="true"></span></td>
+              <td class="govuk-table__cell" data-label="Response options"><span class="app-checklist"><strong>4 of 8</strong> need review</span><span class="app-progress" style="--n:8;--out:4" aria-hidden="true"></span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=fuzzy-fox-flu">Fuzzy fox flu</a></th>
+              <td class="govuk-table__cell app-priority app-sorted" data-label="Priority"><span class="app-band app-band--monitor">Monitor</span><span class="app-trend app-trend--none"><span class="app-trend__text"><span>Score 8</span></span></span></td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">4</span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:80%"></span></span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">2</span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:40%"></span></span><ul class="app-areas"><li>Public health</li></ul></td>
+              <td class="govuk-table__cell" data-label="Control measures"><span class="app-checklist"><strong>5 of 10</strong> need review</span><span class="app-progress" style="--n:10;--out:5" aria-hidden="true"></span></td>
+              <td class="govuk-table__cell" data-label="Response options"><span class="app-checklist"><strong>2 of 8</strong> need review</span><span class="app-progress" style="--n:8;--out:2" aria-hidden="true"></span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=wing-wobble">Wing wobble</a></th>
+              <td class="govuk-table__cell app-priority app-sorted" data-label="Priority"><span class="app-band app-band--maintain">Maintain</span><span class="app-trend"><span class="app-arrow app-arrow--up" aria-hidden="true"></span><span class="app-trend__text"><span>Score 2</span><span>Up from 1</span></span></span></td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">1</span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:20%"></span></span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">2</span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:40%"></span></span><ul class="app-areas"><li>International trade</li></ul></td>
+              <td class="govuk-table__cell" data-label="Control measures"><span class="app-checklist"><strong>2 of 10</strong> need review</span><span class="app-progress" style="--n:10;--out:2" aria-hidden="true"></span></td>
+              <td class="govuk-table__cell" data-label="Response options"><span class="app-checklist"><strong>0 of 8</strong> need review</span><span class="app-progress" style="--n:8;--out:0" aria-hidden="true"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="govuk-heading-s">On a card</h3>
+      <ul class="app-cards bb-cards">
+        <li class="app-card app-card--act">
+          <h4 class="govuk-heading-m"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=sprouting-hoof-disease">Sprouting hoof disease</a></h4>
+          <p class="govuk-body app-card__meta"><span class="app-trend app-trend--none"><span class="app-trend__text"><span>Score 20 out of 25</span></span></span></p>
+          <dl>
+            <div><dt class="govuk-body-s">Risk of incursion</dt><dd><span class="app-score">5</span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:100%"></span></span></dd></div>
+            <div><dt class="govuk-body-s">Impact</dt><dd><span class="app-score">4</span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:80%"></span></span><ul class="app-areas"><li>Animal welfare</li><li>International trade</li><li>Wider economy and society</li></ul></dd></div>
+            <div><dt class="govuk-body-s">Control measures</dt><dd><span class="app-checklist"><strong>9 of 10</strong> need review</span><span class="app-progress" style="--n:10;--out:9" aria-hidden="true"></span></dd></div>
+            <div><dt class="govuk-body-s">Response options</dt><dd><span class="app-checklist"><strong>7 of 8</strong> need review</span><span class="app-progress" style="--n:8;--out:7" aria-hidden="true"></span></dd></div>
+          </dl>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== Without bars ===== -->
+    <section class="bb-opt" aria-labelledby="without">
+      <h2 class="govuk-heading-l" id="without">Without the bars</h2>
+      <p class="govuk-body">Risk of incursion and impact show only the level word in its colour block. The impact areas stay under it.</p>
+      <div class="app-scroll" tabindex="0" role="region" aria-label="The table without bars, scrolls sideways on narrow screens">
+        <table class="govuk-table app-table app-table--rows">
+          <caption class="govuk-table__caption govuk-visually-hidden">The table without bars under the risk and impact levels</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Disease</th>
+              <th scope="col" class="govuk-table__header app-sorted">Priority<span class="app-hint">Risk × impact, out of 25</span></th>
+              <th scope="col" class="govuk-table__header">Risk of incursion<span class="app-hint">Chance of arriving</span></th>
+              <th scope="col" class="govuk-table__header">Impact<span class="app-hint">Harm if it arrives</span></th>
+              <th scope="col" class="govuk-table__header">Control measures<span class="app-hint">Preventing entry</span></th>
+              <th scope="col" class="govuk-table__header">Response options<span class="app-hint">Dealing with it</span></th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=sprouting-hoof-disease">Sprouting hoof disease</a></th>
+              <td class="govuk-table__cell app-priority app-sorted" data-label="Priority"><span class="app-band app-band--act">Act now</span><span class="app-trend app-trend--none"><span class="app-trend__text"><span>Score 20</span></span></span></td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">5</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">4</span><ul class="app-areas"><li>Animal welfare</li><li>International trade</li><li>Wider economy and society</li></ul></td>
+              <td class="govuk-table__cell" data-label="Control measures"><span class="app-checklist"><strong>9 of 10</strong> need review</span><span class="app-progress" style="--n:10;--out:9" aria-hidden="true"></span></td>
+              <td class="govuk-table__cell" data-label="Response options"><span class="app-checklist"><strong>7 of 8</strong> need review</span><span class="app-progress" style="--n:8;--out:7" aria-hidden="true"></span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=scaly-claw-fever">Scaly claw fever</a></th>
+              <td class="govuk-table__cell app-priority app-sorted" data-label="Priority"><span class="app-band app-band--act">Act now</span><span class="app-trend app-trend--none"><span class="app-trend__text"><span>Score 15</span></span></span></td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><strong class="app-confirmed">Confirmed in the UK</strong><span class="app-confirmed__detail">Since 3 November 2026. 2 premises.</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">3</span><ul class="app-areas"><li>Animal welfare</li><li>Wider economy and society</li></ul></td>
+              <td class="govuk-table__cell" data-label="Control measures"><span class="app-checklist"><strong>8 of 10</strong> need review</span><span class="app-progress" style="--n:10;--out:8" aria-hidden="true"></span></td>
+              <td class="govuk-table__cell" data-label="Response options"><span class="app-checklist"><strong>5 of 8</strong> need review</span><span class="app-progress" style="--n:8;--out:5" aria-hidden="true"></span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">Himalayan Dragon Pox</a></th>
+              <td class="govuk-table__cell app-priority app-sorted" data-label="Priority"><span class="app-band app-band--prioritise">Prioritise</span><span class="app-trend"><span class="app-arrow app-arrow--down" aria-hidden="true"></span><span class="app-trend__text"><span>Score 12</span><span>Down from 16</span></span></span></td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">3</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">4</span><ul class="app-areas"><li>Animal welfare</li></ul></td>
+              <td class="govuk-table__cell" data-label="Control measures"><span class="app-checklist"><strong>6 of 10</strong> need review</span><span class="app-progress" style="--n:10;--out:6" aria-hidden="true"></span></td>
+              <td class="govuk-table__cell" data-label="Response options"><span class="app-checklist"><strong>6 of 8</strong> need review</span><span class="app-progress" style="--n:8;--out:6" aria-hidden="true"></span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=rainbow-tail-disease">Rainbow tail disease</a></th>
+              <td class="govuk-table__cell app-priority app-sorted" data-label="Priority"><span class="app-band app-band--prioritise">Prioritise</span><span class="app-trend app-trend--none"><span class="app-trend__text"><span>Score 10</span></span></span></td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">2</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">5</span><ul class="app-areas"><li>Animal welfare</li><li>International trade</li></ul></td>
+              <td class="govuk-table__cell" data-label="Control measures"><span class="app-checklist"><strong>7 of 10</strong> need review</span><span class="app-progress" style="--n:10;--out:7" aria-hidden="true"></span></td>
+              <td class="govuk-table__cell" data-label="Response options"><span class="app-checklist"><strong>4 of 8</strong> need review</span><span class="app-progress" style="--n:8;--out:4" aria-hidden="true"></span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=fuzzy-fox-flu">Fuzzy fox flu</a></th>
+              <td class="govuk-table__cell app-priority app-sorted" data-label="Priority"><span class="app-band app-band--monitor">Monitor</span><span class="app-trend app-trend--none"><span class="app-trend__text"><span>Score 8</span></span></span></td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">4</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">2</span><ul class="app-areas"><li>Public health</li></ul></td>
+              <td class="govuk-table__cell" data-label="Control measures"><span class="app-checklist"><strong>5 of 10</strong> need review</span><span class="app-progress" style="--n:10;--out:5" aria-hidden="true"></span></td>
+              <td class="govuk-table__cell" data-label="Response options"><span class="app-checklist"><strong>2 of 8</strong> need review</span><span class="app-progress" style="--n:8;--out:2" aria-hidden="true"></span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=wing-wobble">Wing wobble</a></th>
+              <td class="govuk-table__cell app-priority app-sorted" data-label="Priority"><span class="app-band app-band--maintain">Maintain</span><span class="app-trend"><span class="app-arrow app-arrow--up" aria-hidden="true"></span><span class="app-trend__text"><span>Score 2</span><span>Up from 1</span></span></span></td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">1</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">2</span><ul class="app-areas"><li>International trade</li></ul></td>
+              <td class="govuk-table__cell" data-label="Control measures"><span class="app-checklist"><strong>2 of 10</strong> need review</span><span class="app-progress" style="--n:10;--out:2" aria-hidden="true"></span></td>
+              <td class="govuk-table__cell" data-label="Response options"><span class="app-checklist"><strong>0 of 8</strong> need review</span><span class="app-progress" style="--n:8;--out:0" aria-hidden="true"></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="govuk-heading-s">On a card</h3>
+      <ul class="app-cards bb-cards">
+        <li class="app-card app-card--act">
+          <h4 class="govuk-heading-m"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=sprouting-hoof-disease">Sprouting hoof disease</a></h4>
+          <p class="govuk-body app-card__meta"><span class="app-trend app-trend--none"><span class="app-trend__text"><span>Score 20 out of 25</span></span></span></p>
+          <dl>
+            <div><dt class="govuk-body-s">Risk of incursion</dt><dd><span class="app-score">5</span></dd></div>
+            <div><dt class="govuk-body-s">Impact</dt><dd><span class="app-score">4</span><ul class="app-areas"><li>Animal welfare</li><li>International trade</li><li>Wider economy and society</li></ul></dd></div>
+            <div><dt class="govuk-body-s">Control measures</dt><dd><span class="app-checklist"><strong>9 of 10</strong> need review</span><span class="app-progress" style="--n:10;--out:9" aria-hidden="true"></span></dd></div>
+            <div><dt class="govuk-body-s">Response options</dt><dd><span class="app-checklist"><strong>7 of 8</strong> need review</span><span class="app-progress" style="--n:8;--out:7" aria-hidden="true"></span></dd></div>
+          </dl>
+        </li>
+      </ul>
+    </section>
+
+    <h2 class="govuk-heading-l">The key, for both</h2>
+    <p class="govuk-body">This is the key that sits at the bottom of Option C, so you can judge whether it does the bar's job.</p>
+    <ul class="app-levels">
+      <li>
+        <span class="app-levels__name">Risk of incursion</span>
+        <span class="app-levels__order">Chance of arriving, lowest first</span>
+        <span class="app-levels__tags">
+          <strong class="govuk-tag app-level-tag app-level-tag--1">Rare</strong>
+          <strong class="govuk-tag app-level-tag app-level-tag--2">Unlikely</strong>
+          <strong class="govuk-tag app-level-tag app-level-tag--3">Moderate</strong>
+          <strong class="govuk-tag app-level-tag app-level-tag--4">Likely</strong>
+          <strong class="govuk-tag app-level-tag app-level-tag--5">Almost certain</strong>
+        </span>
+      </li>
+      <li>
+        <span class="app-levels__name">Impact</span>
+        <span class="app-levels__order">Harm if it arrives, lowest first</span>
+        <span class="app-levels__tags">
+          <strong class="govuk-tag app-level-tag app-level-tag--1">Insignificant</strong>
+          <strong class="govuk-tag app-level-tag app-level-tag--2">Minor</strong>
+          <strong class="govuk-tag app-level-tag app-level-tag--3">Significant</strong>
+          <strong class="govuk-tag app-level-tag app-level-tag--4">Major</strong>
+          <strong class="govuk-tag app-level-tag app-level-tag--5">Severe</strong>
+        </span>
+      </li>
+    </ul>
+
+    <h2 class="govuk-heading-l">Side by side</h2>
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-visually-hidden">With and without the bars compared</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header"></th>
+          <th scope="col" class="govuk-table__header">With the bars</th>
+          <th scope="col" class="govuk-table__header">Without the bars</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Position on the scale</th><td class="govuk-table__cell">In the cell. "Minor" is visibly low but not the lowest</td><td class="govuk-table__cell">Only in the key at the bottom, which people have to find and match up</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Cues in the cell</th><td class="govuk-table__cell">Three: the word, the colour and the bar length</td><td class="govuk-table__cell">Two: the word and the colour</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Visual weight</th><td class="govuk-table__cell">A grey bar in each cell, in four columns with bars</td><td class="govuk-table__cell">Lighter. The red checklist bars are then the only bars in the table</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Repetition</th><td class="govuk-table__cell">The bar repeats the word</td><td class="govuk-table__cell">None</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Row height</th><td class="govuk-table__cell">Taller, because the bar sits above the impact areas</td><td class="govuk-table__cell">Shorter</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Screen readers</th><td class="govuk-table__cell">The bar is hidden, so no difference</td><td class="govuk-table__cell">No difference</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Looks like the checklist columns</th><td class="govuk-table__cell">Both have a bar, but they mean different things</td><td class="govuk-table__cell">Clearly different: words for ratings, bars for counts</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-l">Which to choose</h2>
+    <div class="bb-cols">
+      <div>
+        <h3 class="govuk-heading-m">The case for removing them</h3>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>The word and the colour already carry the level, and the bar says it a third time</li>
+          <li>The table is busy, and this is the easiest thing to take out without losing information</li>
+          <li>It gives each kind of column its own look: words for ratings, bars for counts</li>
+          <li>It follows the earlier steer of "less is more"</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="govuk-heading-m">The case for keeping them</h3>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>The bar is the only thing in the cell that shows where the level sits on the scale</li>
+          <li>The key does the same job, but it is at the bottom, so people must scroll to it and then match words across</li>
+          <li>The concern that started the key was that people do not know "Minor" is not the lowest level</li>
+        </ul>
+      </div>
+    </div>
+    <p class="govuk-body"><strong>Where I lean: remove them, and test it.</strong> The key now covers the scale, and the cell is calmer without a third cue. The thing to check in research is whether people read "Minor" or "Likely" as the lowest or highest level. If they do, the options are to move the key closer to the table, or to bring the bars back.</p>
+
+    <h2 class="govuk-heading-l">Still to decide</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Which version.</strong> Not decided yet. Option C still has the bars.</li>
+      <li><strong>Where the key sits.</strong> It is under the band key at the moment. If the bars go, a key nearer the table, or a link from the column headings, may be needed.</li>
+      <li><strong>Test it.</strong> Ask someone where "Minor" sits, without showing them the key.</li>
+    </ul>
+  </main>
+</div>
+<script src="score-labels.js"></script>
+</body>
+</html>
