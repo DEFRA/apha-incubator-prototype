@@ -28,8 +28,8 @@
     </ol>
     <p class="govuk-body">The second job is the main one. Spend roughly a third of each session on it.</p>
     <h2 class="govuk-heading-l">What we are testing</h2>
-    <p class="govuk-body">The page shows five fictional priority 1 diseases. Each disease shows priority (band, rank, score out of 5), then threat (risk of incursion, impact) and preparedness (control measures, response options), each scored out of 5 and labelled very low, low, medium, high or very high. There is no summary at the top and no written reason on each disease, so people read the answer from the bands, ranks and scores. Below are the band key, how the score works and where the information comes from. The source is deliberately not repeated at the top, so T6 tests whether people find it at the bottom.</p>
-    <p class="govuk-body"><strong>In scope:</strong> reading and comparing, the priority band and score, the four layers, sorting, source and trust.
+    <p class="govuk-body">The page shows five fictional priority 1 diseases. Each disease shows priority (band, rank, score out of 5), then threat (risk of incursion, impact) and preparedness (control measures, response options), each scored out of 5 and labelled very low, low, medium, high or very high. There is no summary at the top of the page. In the cards view each disease has a one-line reason. Below are the band key, how the score works and where the information comes from. The source is deliberately not repeated at the top, so T6 tests whether people find it at the bottom.</p>
+    <p class="govuk-body"><strong>In scope:</strong> reading and comparing, the priority band and score, the four layers, the reason on each card, sorting, source and trust.
     <strong>Out of scope:</strong> the disease page, the layer pages and how users route to them (the concept test). Clicks on those links land on a "This page is not part of the test" page. <strong>Record every one of them as a first click.</strong> They show where people expect to go next, which feeds the routing decision.
     <strong>Not being tested:</strong> whether the scores are right. All five scores are illustrative and out of 5, with no formula shown, so there is less to challenge. If SMEs question how a score is made, capture it, but don't debate it. See "Risks".</p>
     <p class="govuk-body"><strong>What has changed:</strong> the priority view shows change in <strong>priority only</strong>. Changes in risk, impact, control measures and response options belong on their own pages, which are not designed yet. The priority view shows change through an outlined tag ("Score increased", "Score decreased") with "from 4.4" under the score for diseases that changed. Unchanged diseases show nothing. There is no summary line, so nothing on the page says that no disease changed rank or band.</p>
@@ -38,9 +38,9 @@
     <h2 class="govuk-heading-l">Design options</h2>
     <p class="govuk-body">Three versions are designed as prototypes with the same data and wording. See <a class="govuk-link" href="/public/design/priority-view/options.html">priority view options</a>. An earlier matrix with diseases across the top was dropped: it isn't how people think about the problem and it pushed the content down.
     - <strong>A: ranked table</strong> (<a class="govuk-link" href="/public/design/priority-view/index.html">open option A</a>). Best for comparing one measure across diseases.
-    - <strong>B: grouped by action</strong> (<a class="govuk-link" href="/public/design/priority-view/option-b.html">open option B</a>). Best for "what do I do?", with the diseases grouped by band.
+    - <strong>B: grouped by action</strong> (<a class="govuk-link" href="/public/design/priority-view/option-b.html">open option B</a>). Best for "what do I do?", with a one-line reason for each disease.
     - <strong>C: table or cards</strong> (<a class="govuk-link" href="/public/design/priority-view/option-c.html">open option C</a>). One page with a "View as" switch between A and B. The choice is kept in the address (<code>?view=cards</code>), sorting is kept when switching, and it starts on cards on small screens.</p>
-    <p class="govuk-body">The page has no summary and no written reasons in all three. The table has one header row, a light tint on the sorted column, and links that don't change colour once visited. Test the group labels in the "What we watch for" section.</p>
+    <p class="govuk-body">The page has no summary at the top in any of the three, and no paragraph explaining the scores above the list. The table has one header row, a light tint on the sorted column, and links that don't change colour once visited. Test the group labels in the "What we watch for" section.</p>
     <p class="govuk-body"><strong>How to run them (recommended): use C for everyone.</strong> It contains A and B, so all 6 participants see both. Start half on the table and half on cards. Watch whether they switch, when and why, then ask which they prefer. The cost is that C can't isolate A against B, because the first view colours what people do next. If the team needs a clean comparison, run A and B as separate pages, alternating across participants, and show the other for about 2 minutes at the end. Treat the preference answers as evidence, not a vote.
     <strong>Extra things to watch:</strong> in C, which view do they land on, do they find the switch without help, and do they switch for a reason (comparing a measure, briefing someone)? If one view is rarely used, drop the other. In B, do people open a card or just read the band? In A, is sorting found, and does the tint help them see which column is sorted? Sorting only applies to the table.
     <strong>Width:</strong> A uses a 1,200px container because six columns need about 1,000px. B uses the standard 960px. Test on a laptop first. A scrolls sideways below about 1,050px.</p>
@@ -197,7 +197,7 @@
     <tr class="govuk-table__row">
     <td class="govuk-table__cell">T7</td>
     <td class="govuk-table__cell">"You've got two minutes with your director. What would you say?"</td>
-    <td class="govuk-table__cell">A short, correct summary in their own words, built from the bands, ranks and scores. Record what they leave out and whether they look for a written summary</td>
+    <td class="govuk-table__cell">A short, correct summary. Reuses the card reasons, or builds their own from the bands, ranks and scores. Record which, and whether they look for a summary at the top</td>
     <td class="govuk-table__cell">RQ1, UN8</td>
     </tr>
     <tr class="govuk-table__row">
@@ -273,7 +273,7 @@
     - "What does a score of 4.1 out of 5 mean?" Do they open "How the priority score is worked out"? Do they find it helpful or too much?
     - "What is the difference between 'control measures' and 'response options'?"
     - "Is anything missing that you'd need before you trusted the order?"
-    - "Would a short written summary help you? What would it need to say for your role?" (Ask last, so it doesn't prompt them earlier.)</p>
+    - "Would a short summary at the top of the page help you? What would it need to say for your role?" (Ask last, so it doesn't prompt them earlier.)</p>
     <h2 class="govuk-heading-l">Discovery: understanding what people want from risk</h2>
     <p class="govuk-body">Use these after the tasks. Probe with "why?" and "how would you use that?".</p>
     <ol class="govuk-list govuk-list--number">
@@ -314,9 +314,9 @@
     | H1 | One ranked table answers "which disease first?" faster than the current way of working | T1 in under a minute without help |
     | H2 | Band label plus rank plus score is clear without colour | Correct answers from users who don't mention colour |
     | H3 | Risk and impact are read as separate things | T4 is answered from the impact column, not the risk column |
-    | H4 | People can build their own short summary from the bands, ranks and scores, so the page needs no written summary | T7 is answered correctly and quickly, and nobody asks for a summary |
+    | H4 | A one-line reason on each card is enough, so the page needs no summary at the top | T7 is answered correctly and quickly, and nobody asks for a summary at the top |
     | H5 | A source in the details at the bottom is enough for trust | T6 found without help, and users don't ask for more |
-    | H6 | The preparedness scale (high is good) causes confusion beside risk (high is bad) | Errors or hesitation on the probe |
+    | H6 | The preparedness scale (high is good) causes confusion beside risk (high is bad). The paragraph that explained this above the list was removed | Errors or hesitation on the probe |
     | H7 | Users want more than a snapshot, especially change over time | The card sort puts change, reasons and history in "must have" |
     | H10 | A text tag with "from 4.4" under the score shows a change in priority clearly, without arrows or colour alone | T11 answered quickly and correctly. Nobody asks what the tag means |
     | H11 | A change in score can look more important than it is. A tag alone could over-state it | T12: people say it is still Prioritise, rather than asking for action |
@@ -482,7 +482,7 @@
     <h2 class="govuk-heading-l">Open decisions for the team</h2>
     <ol class="govuk-list govuk-list--number">
     <li><strong>Brand mode.</strong> The prototype uses Defra mode (system font, green links, text header) rather than GOV.UK mode (GDS Transport, crown header). The brief says GOV.UK only and the page title pattern ends "– GOV.UK". Which do we want in front of users?</li>
-    <li><strong>Does anyone need a written summary?</strong> We removed the summary and the one-line reasons because one summary can't be both short and right for everyone. Listen for who asks for one, what role they have and what they would want it to say. If they do, it may need to be per role.</li>
+    <li><strong>Does anyone also need a summary at the top of the page?</strong> We removed it because it had to cover every section, so it was too long, and one summary can't be both short and right for everyone. The card reasons stay. Listen for who asks for a top summary, what role they have and what they would want it to say. If they do, it may need to be per role. Also ask who would write the card reasons, and how often. The prototype shows them as written copy.</li>
     <li><strong>"Preparedness" or "vulnerability".</strong> The board says "vulnerability (preparedness)". The prototype says "Preparedness". Do we test both?</li>
     <li><strong>Change is shown for priority only</strong>, as tags under the score (changed diseases only). Do we also show "No change" on every row? Showing only changes keeps the table calmer. The risk is that people can't tell "no change" from "not assessed". Risk, impact, control measures and response options changes, with reasons, belong on their own pages. Those pages aren't designed yet, so T12 will show where people expect to find the cause.</li>
     <li><strong>Real or fictional disease names.</strong> The prototype uses fictional names, as the brief decided. SMEs may find it harder to judge plausibility.</li>

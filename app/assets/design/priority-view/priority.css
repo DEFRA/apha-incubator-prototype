@@ -131,7 +131,8 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .app-card--monitor { border-top-color: #ffdd00; }
 .app-card--maintain { border-top-color: #00703c; }
 .app-card h3 { margin: 0 0 5px; }
-.app-card__meta { color: var(--secondary); margin: 0 0 20px; }
+.app-card__meta { color: var(--secondary); margin: 0 0 15px; }
+.app-card__why { margin: 0 0 20px; }
 .app-card dl { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 25px; border-top: 1px solid var(--divider); padding-top: 20px; }
 .app-card dt { color: var(--secondary); margin-bottom: 8px; }
 .app-card dd { margin: 0; }

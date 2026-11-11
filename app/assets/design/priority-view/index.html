@@ -61,11 +61,10 @@
     <p class="govuk-visually-hidden" id="sort-status" role="status" aria-live="polite"></p>
     <p class="govuk-hint app-sort-note">Sorting is not available on small screens. Diseases are shown in priority order.</p>
 
-    <h2 class="govuk-heading-m" id="table-heading">Priority 1 diseases, ranked 1 to 5</h2>
-    <p class="govuk-body" id="table-desc">Priority is worked out from the threat (risk of incursion and impact) and how prepared we are (control measures and response options). Every score is out of 5, from very low (1) to very high (5). For risk and impact, a higher score is worse. For control measures and response options, a higher score means we are better prepared. Changes in priority since the last assessment are shown under the score.</p>
+    <h2 class="govuk-visually-hidden" id="table-heading">Priority 1 diseases, ranked 1 to 5</h2>
 
     <div class="app-scroll" tabindex="0" role="region" aria-label="Priority table, scrolls sideways on narrow screens">
-    <table class="govuk-table app-table app-table--rows" id="priority-table" aria-labelledby="table-heading" aria-describedby="table-desc" data-module="app-sortable-table">
+    <table class="govuk-table app-table app-table--rows" id="priority-table" aria-labelledby="table-heading" data-module="app-sortable-table">
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header" aria-sort="none" data-key="disease" data-first="ascending"><a class="govuk-link" href="?sort=disease&amp;order=ascending">Disease</a></th>

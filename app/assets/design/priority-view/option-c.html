@@ -70,12 +70,11 @@
 
     <!-- ===== Table view ===== -->
     <div id="view-table">
-      <p class="app-view-label">Option C, table view</p>      <h2 class="govuk-heading-m" id="table-heading">Priority 1 diseases, ranked 1 to 5</h2>
-      <p class="govuk-body" id="table-desc">Priority is worked out from the threat (risk of incursion and impact) and how prepared we are (control measures and response options). Every score is out of 5, from very low (1) to very high (5). For risk and impact, a higher score is worse. For control measures and response options, a higher score means we are better prepared. Changes in priority since the last assessment are shown under the score.</p>
+      <p class="app-view-label">Option C, table view</p>      <h2 class="govuk-visually-hidden" id="table-heading">Priority 1 diseases, ranked 1 to 5</h2>
       <p class="govuk-hint app-sort-note">Sorting is not available on small screens. Diseases are shown in priority order.</p>
 
       <div class="app-scroll" tabindex="0" role="region" aria-label="Priority table, scrolls sideways on narrow screens">
-      <table class="govuk-table app-table app-table--rows" id="priority-table" aria-labelledby="table-heading" aria-describedby="table-desc">
+      <table class="govuk-table app-table app-table--rows" id="priority-table" aria-labelledby="table-heading">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header" aria-sort="none" data-key="disease" data-first="ascending"><a class="govuk-link" href="?sort=disease&amp;order=ascending">Disease</a></th>
@@ -165,8 +164,7 @@
 
     <!-- ===== Cards view ===== -->
     <div id="view-cards" hidden>
-      <p class="app-view-label">Option C, cards view</p>      <h2 class="govuk-heading-m" id="cards-heading">Priority 1 diseases, grouped by what to do</h2>
-      <p class="govuk-body" id="cards-desc">Priority is worked out from the threat (risk of incursion and impact) and how prepared we are (control measures and response options). Every score is out of 5, from very low (1) to very high (5). For risk and impact, a higher score is worse. For control measures and response options, a higher score means we are better prepared. Changes in priority since the last assessment are shown under the score.</p>
+      <p class="app-view-label">Option C, cards view</p>      <h2 class="govuk-visually-hidden" id="cards-heading">Priority 1 diseases, grouped by what to do</h2>
 
       <section class="app-band-section" aria-labelledby="band-act">
         <div class="app-band-section__head">
@@ -177,6 +175,7 @@
           <li class="app-card app-card--act">
             <h4 class="govuk-heading-m"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=sprouting-hoof-disease">Sprouting hoof disease</a></h4>
             <p class="govuk-body app-card__meta"><span class="app-rank">Rank 1</span> · score 4.8 out of 5</p>
+            <p class="govuk-body app-card__why">Unlikely to arrive, but it would have the greatest impact and we are least prepared for it.</p>
             <dl>
               <div><dt class="govuk-body-s">Risk of incursion</dt><dd><span class="app-score">1<small> out of 5</small></span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:20%"></span></span></dd></div>
               <div><dt class="govuk-body-s">Impact</dt><dd><span class="app-score">5<small> out of 5</small></span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:100%"></span></span><ul class="app-areas"><li>Animal welfare</li><li>International trade</li><li>Wider economy and society</li></ul></dd></div>
@@ -196,6 +195,7 @@
           <li class="app-card app-card--prioritise">
             <h4 class="govuk-heading-m"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">Himalayan Dragon Pox</a></h4>
             <p class="govuk-body app-card__meta"><span class="app-rank">Rank 2</span> · score 4.1 out of 5<span class="app-change"><strong class="app-change__tag app-change__tag--down">Score decreased</strong><span class="app-change__from">from 4.4</span></span></p>
+            <p class="govuk-body app-card__why">A moderate chance of arriving and high impact. Neither our control measures nor our response options are strong.</p>
             <dl>
               <div><dt class="govuk-body-s">Risk of incursion</dt><dd><span class="app-score">3<small> out of 5</small></span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:60%"></span></span></dd></div>
               <div><dt class="govuk-body-s">Impact</dt><dd><span class="app-score">4<small> out of 5</small></span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:80%"></span></span><ul class="app-areas"><li>Animal welfare</li></ul></dd></div>
@@ -206,6 +206,7 @@
           <li class="app-card app-card--prioritise">
             <h4 class="govuk-heading-m"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=rainbow-tail-disease">Rainbow tail disease</a></h4>
             <p class="govuk-body app-card__meta"><span class="app-rank">Rank 3</span> · score 3.9 out of 5</p>
+            <p class="govuk-body app-card__why">A moderate chance of arriving and high impact. Control measures need the most work.</p>
             <dl>
               <div><dt class="govuk-body-s">Risk of incursion</dt><dd><span class="app-score">3<small> out of 5</small></span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:60%"></span></span></dd></div>
               <div><dt class="govuk-body-s">Impact</dt><dd><span class="app-score">4<small> out of 5</small></span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:80%"></span></span><ul class="app-areas"><li>Animal welfare</li></ul></dd></div>
@@ -225,6 +226,7 @@
           <li class="app-card app-card--monitor">
             <h4 class="govuk-heading-m"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=fuzzy-fox-flu">Fuzzy fox flu</a></h4>
             <p class="govuk-body app-card__meta"><span class="app-rank">Rank 4</span> · score 3.0 out of 5</p>
+            <p class="govuk-body app-card__why">Likely to arrive and high impact, but we are reasonably well prepared. Keep watching.</p>
             <dl>
               <div><dt class="govuk-body-s">Risk of incursion</dt><dd><span class="app-score">4<small> out of 5</small></span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:80%"></span></span></dd></div>
               <div><dt class="govuk-body-s">Impact</dt><dd><span class="app-score">4<small> out of 5</small></span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:80%"></span></span><ul class="app-areas"><li>Public health</li><li>Wider economy and society</li></ul></dd></div>
@@ -244,6 +246,7 @@
           <li class="app-card app-card--maintain">
             <h4 class="govuk-heading-m"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=wing-wobble">Wing wobble</a></h4>
             <p class="govuk-body app-card__meta"><span class="app-rank">Rank 5</span> · score 1.4 out of 5<span class="app-change"><strong class="app-change__tag app-change__tag--up">Score increased</strong><span class="app-change__from">from 1.2</span></span></p>
+            <p class="govuk-body app-card__why">Likely to arrive, but we are well prepared, so we only need to maintain that readiness.</p>
             <dl>
               <div><dt class="govuk-body-s">Risk of incursion</dt><dd><span class="app-score">4<small> out of 5</small></span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:80%"></span></span></dd></div>
               <div><dt class="govuk-body-s">Impact</dt><dd><span class="app-score">4<small> out of 5</small></span><span class="app-bar app-bar--threat" aria-hidden="true"><span style="width:80%"></span></span><ul class="app-areas"><li>International trade</li></ul></dd></div>
