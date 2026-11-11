@@ -90,7 +90,6 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 /* One colour, length carries the value. The number is always visible text. */
 .app-score { display: block; font-weight: 700; font-size: 1.5rem; line-height: 1; }
 .app-score small { font-size: 1rem; font-weight: 400; color: var(--secondary); }
-.app-level { display: block; margin-top: 4px; font-size: 1rem; line-height: 1.2; }
 
 /* Muted level blocks, so they stand out less than the priority bands. Text on fill: 5.7 to 7.8:1.
    The word is always shown, so colour is never the only cue. */
@@ -100,8 +99,6 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .app-level-tag--3 { background: #fff7bf; color: #594d00; }
 .app-level-tag--4 { background: #f4cdc6; color: #942514; }
 .app-level-tag--5 { background: #e6a69b; color: #6b1a0e; }
-.app-score--after-tag { font-size: 1.1875rem; }
-.app-score--after-tag small { font-size: 1rem; }
 
 /* Control measures and response options are checklists, not scores: how many items still need review.
    More is worse, the same direction as risk and impact, so the items still to review are red segments that fill
