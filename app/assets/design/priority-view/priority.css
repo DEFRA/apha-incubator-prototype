@@ -59,6 +59,17 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 
 .app-priority__detail { white-space: nowrap; display: block; margin-top: 8px; color: var(--secondary); }
 
+/* Priority score and its change. Two lines of plain text in one style, with the arrow after them, so nothing
+   changes style between the two values and the text always starts at the left edge, level with the band.
+   The words Up and Down are always written, so shape and colour are never the only cue.
+   Arrow colours on the light grey tint: up 7.4:1, down 7.5:1. */
+.app-trend { display: flex; width: max-content; align-items: center; gap: 10px; margin-top: 8px; }
+.app-trend__text span { display: block; color: var(--secondary); white-space: nowrap; }
+.app-arrow { order: 2; flex: none; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; }
+.app-arrow--up { border-bottom: 12px solid #942514; }
+.app-arrow--down { border-top: 12px solid #005a30; }
+.app-card__meta .app-trend { margin-top: 0; }
+
 /* Disease already confirmed in the UK. A state, not a level, so it uses its own hue (purple, 8.7:1) outside the green to red scale. */
 .app-confirmed { display: inline-block; padding: 2px 8px; background: #dbd5e9; color: #3d2375; font-size: 1rem; font-weight: 700; line-height: 1.25; }
 .app-confirmed__detail { display: block; margin-top: 8px; color: var(--secondary); }

@@ -2,7 +2,7 @@
 <html lang="en" class="govuk-template">
 <head>
 <meta charset="utf-8">
-<title>Temporary: arranging the priority cell</title>
+<title>Design decision: arranging the priority cell</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="govuk-frontend.min.css">
@@ -32,12 +32,11 @@
   .pc-line { display: block; margin-top: 8px; color: var(--secondary); }
   .pc-labels .app-change { margin-top: 8px; }
 
-  /* Option 2: a small arrow in its own column, so the text reads as one block */
-  .pc-gutter { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
-  .pc-gutter--none { padding-left: 24px; }
+  /* Option 2: two plain lines in one style, with a small arrow after them */
+  .pc-gutter { display: flex; width: max-content; align-items: center; gap: 10px; margin-top: 8px; }
   .pc-gutter__text { display: block; }
   .pc-gutter__text span { display: block; color: var(--secondary); white-space: nowrap; }
-  .pc-arrow { flex: none; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; }
+  .pc-arrow { order: 2; flex: none; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; }
   .pc-arrow--up { border-bottom: 12px solid #942514; }
   .pc-arrow--down { border-top: 12px solid #005a30; }
 
@@ -48,15 +47,18 @@
 </style>
 </head>
 <body class="govuk-template__body">
-<div class="app-hub-bar"><a href="/">Back to the design resource home</a><span>Temporary page for the design session. Illustrative data, fictional disease names. Delete when decided.</span></div>
+<div class="app-hub-bar"><a href="/">Back to the design resource home</a><span>Design decision, 11 November 2026. Illustrative data, fictional disease names.</span></div>
 <div class="govuk-width-container app-wide">
   <main class="govuk-main-wrapper" id="main-content">
     <p class="govuk-body-s"><a class="govuk-link" href="option-c.html">Option C</a> · For the design team, not for participants</p>
     <h1 class="govuk-heading-xl">Arranging the priority cell</h1>
-    <p class="govuk-body-l">Three ways to show a change in the priority score without splitting the text. Only the Priority cell and the card change. Nothing is added to the other columns.</p>
+    <p class="govuk-body-l">Three ways we looked at to show a change in the priority score without splitting the text. Only the Priority cell and the card change. Nothing is added to the other columns.</p>
+    <div class="govuk-inset-text">
+      <p class="govuk-body"><strong class="govuk-tag govuk-tag--green">Decided</strong> We chose <a class="govuk-link" href="#opt2">option 2, an arrow beside the text</a> on 11 November 2026. It is in <a class="govuk-link" href="option-c.html">Option C</a>. Options 1 and 3 are kept here as the alternatives we considered.</p>
+    </div>
 
     <h2 class="govuk-heading-l">The problem</h2>
-    <p class="govuk-body">At the moment the cell reads like this, top to bottom:</p>
+    <p class="govuk-body">Before this decision, the cell read like this, top to bottom:</p>
     <div class="pc-show">
       <div>
         <div class="app-scroll">
@@ -172,8 +174,8 @@
 
     <!-- ===== Option 2 ===== -->
     <section class="pc-opt" aria-labelledby="opt2">
-      <h2 class="govuk-heading-l" id="opt2">Option 2: an arrow in its own column</h2>
-      <p class="govuk-body">A small arrow sits to the left of the text, in a gutter of its own. The text is two plain lines in one style: "Score 4.1" and "Down from 4.4". Rows without a change keep the empty gutter, so the text lines up down the column.</p>
+      <h2 class="govuk-heading-l" id="opt2">Option 2: an arrow beside the text <strong class="govuk-tag govuk-tag--green">Chosen</strong></h2>
+      <p class="govuk-body">The text is two plain lines in one style: "Score 4.1" and "Down from 4.4". A small arrow sits to the right of them. Rows without a change show just the score. The mock-ups show the final layout. The first version had the arrow on the left, and it was changed after we tried it (see below).</p>
       <div class="pc-show">
         <div>
           <div class="app-scroll" tabindex="0" role="region" aria-label="Option 2 table mock-up">
@@ -249,6 +251,8 @@
           </ul>
         </div>
       </div>
+      <h3 class="govuk-heading-m">What changed after trying it</h3>
+      <p class="govuk-body">The first version put the arrow on the left, in a column of its own, and kept that column empty on rows with no change so the text lined up. In Option C the empty column looked like stray padding, and the score no longer lined up with the band tag above it. We moved the arrow to the right of the text. The text now starts at the same left edge as the band tag, and unchanged rows need no spacing at all.</p>
     </section>
 
     <!-- ===== Option 3 ===== -->
@@ -338,7 +342,7 @@
         <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header"></th>
           <th scope="col" class="govuk-table__header">1. Labels together</th>
-          <th scope="col" class="govuk-table__header">2. Arrow in a column</th>
+          <th scope="col" class="govuk-table__header">2. Arrow beside the text</th>
           <th scope="col" class="govuk-table__header">3. Text only</th>
         </tr>
       </thead>
@@ -351,15 +355,17 @@
       </tbody>
     </table>
 
-    <h2 class="govuk-heading-l">Suggestion</h2>
-    <p class="govuk-body"><strong>Option 2.</strong> It keeps the summary as one plain block, which is what was wrong with the tag, and the arrow tells you which rows changed and which way without any reading. It is also quieter than the tag it replaces. Pair every arrow with the words "Up" or "Down", and test that people read "up" as "more urgent".</p>
-    <p class="govuk-body">If the team would rather not bring arrows back, <strong>option 3</strong> is the calmest fallback. The cost is that a change is easier to miss.</p>
+    <h2 class="govuk-heading-l">Decision</h2>
+    <p class="govuk-body"><strong>Option 2.</strong> It keeps the summary as one plain block, which was what was wrong with the tag, and the arrow tells you which rows changed and which way without any reading. It is also quieter than the tag it replaces. Every arrow is paired with the word "Up" or "Down", and the research should check that people read "up" as "more urgent".</p>
+    <p class="govuk-body">This reverses the earlier decision of "text only, no arrows". The outlined "Score increased" and "Score decreased" tags have gone from the Option C table and cards. Options A and B still show the old tag, until they are brought into line.</p>
+    <p class="govuk-body">We kept <strong>option 3</strong> (text only) as the fallback if the arrow tests badly. The cost is that a change is easier to miss.</p>
 
-    <h2 class="govuk-heading-l">To decide</h2>
+    <h2 class="govuk-heading-l">Still open</h2>
+    <p class="govuk-body">These are set as shown in Option C for now, and can change.</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li><strong>Arrow colour.</strong> Red up and green down, or neutral grey?</li>
-      <li><strong>Wording.</strong> "Up from 4.4" and "Down from 4.4", or "Increased" and "Decreased"?</li>
-      <li><strong>Unchanged rows.</strong> Show nothing, as here, or a quiet "No change"?</li>
+      <li><strong>Arrow colour.</strong> Red for up and green for down at the moment. Neutral grey is the alternative, if the colour suggests a judgement.</li>
+      <li><strong>Wording.</strong> "Up from 4.4" and "Down from 4.4" at the moment, rather than "Increased" and "Decreased".</li>
+      <li><strong>Unchanged rows.</strong> They show just the score. A quiet "No change" is the alternative.</li>
     </ul>
   </main>
 </div>
