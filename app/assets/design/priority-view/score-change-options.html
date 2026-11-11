@@ -23,7 +23,8 @@
   .sc-mock thead th:nth-child(1) { width: 24%; }
   .sc-mock thead th:nth-child(2) { width: 26%; }
   .sc-line { display: block; margin-top: 8px; color: var(--secondary); white-space: nowrap; }
-  .sc-trend-line { display: block; white-space: nowrap; color: var(--secondary); }
+  /* Option 1: the arrow sits at the end of the "Up from" or "Down from" line, not beside the whole block */
+  .sc-mock .app-trend__text span.app-arrow { display: inline-block; margin-left: 10px; vertical-align: middle; position: relative; top: -1px; }
   .sc-period { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 15px; margin: 0 0 10px; }
   .sc-period .app-toggle { margin: 0; flex-wrap: wrap; gap: 10px 0; }
   .sc-period .app-toggle__button { padding: 8px 14px; }
@@ -96,7 +97,7 @@
               <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=scaly-claw-fever">Scaly claw fever</a></th>
               <td class="govuk-table__cell app-priority" data-label="Priority">
                 <span class="app-band app-band--act">Act now</span>
-                <span class="app-trend"><span class="app-trend__text"><span>Score 15</span><span>Up from 12</span><span>Last changed 3 November 2026</span></span><span class="app-arrow app-arrow--up" aria-hidden="true"></span></span>
+                <span class="app-trend"><span class="app-trend__text"><span>Score 15</span><span>Up from 12<span class="app-arrow app-arrow--up" aria-hidden="true"></span></span><span>Last changed 3 November 2026</span></span></span>
               </td>
               <td class="govuk-table__cell" data-label="Risk of incursion"><strong class="app-confirmed">Confirmed in the UK</strong><span class="app-confirmed__detail">Since 3 November 2026. 2 premises.</span></td>
               <td class="govuk-table__cell" data-label="Impact"><span class="app-score">3</span></td>
@@ -105,7 +106,7 @@
               <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">Himalayan Dragon Pox</a></th>
               <td class="govuk-table__cell app-priority" data-label="Priority">
                 <span class="app-band app-band--prioritise">Prioritise</span>
-                <span class="app-trend"><span class="app-trend__text"><span>Score 12</span><span>Down from 16</span><span>Last changed 5 November 2026</span></span><span class="app-arrow app-arrow--down" aria-hidden="true"></span></span>
+                <span class="app-trend"><span class="app-trend__text"><span>Score 12</span><span>Down from 16<span class="app-arrow app-arrow--down" aria-hidden="true"></span></span><span>Last changed 5 November 2026</span></span></span>
               </td>
               <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">3</span></td>
               <td class="govuk-table__cell" data-label="Impact"><span class="app-score">4</span></td>
@@ -132,7 +133,7 @@
               <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=wing-wobble">Wing wobble</a></th>
               <td class="govuk-table__cell app-priority" data-label="Priority">
                 <span class="app-band app-band--maintain">Maintain</span>
-                <span class="app-trend"><span class="app-trend__text"><span>Score 2</span><span>Up from 1</span><span>Last changed 29 October 2026</span></span><span class="app-arrow app-arrow--up" aria-hidden="true"></span></span>
+                <span class="app-trend"><span class="app-trend__text"><span>Score 2</span><span>Up from 1<span class="app-arrow app-arrow--up" aria-hidden="true"></span></span><span>Last changed 29 October 2026</span></span></span>
               </td>
               <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">1</span></td>
               <td class="govuk-table__cell" data-label="Impact"><span class="app-score">2</span></td>
