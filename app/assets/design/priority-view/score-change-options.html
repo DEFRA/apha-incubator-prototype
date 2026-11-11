@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+<head>
+<meta charset="utf-8">
+<title>Design options: showing when a priority score changed</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="govuk-frontend.min.css">
+<link rel="stylesheet" href="priority.css">
+<style>
+  .app-hub-bar { background: #0b0c0c; color: #b1b4b6; font: 16px/1.3 Arial, sans-serif; padding: 10px 20px; }
+  .app-hub-bar a { color: #fff; font-weight: 700; margin-right: 16px; }
+  .app-hub-bar a:focus { outline: 3px solid #ffdd00; background: #ffdd00; color: #0b0c0c; }
+
+  .sc-opt { margin: 0 0 60px; padding-top: 20px; border-top: 5px solid #0b0c0c; }
+  .sc-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 30px; margin-top: 20px; }
+  .sc-cols h3 { margin-top: 0; }
+  @media (max-width: 48em) { .sc-cols { grid-template-columns: 1fr; } }
+
+  .sc-mock { margin: 20px 0; }
+  .sc-mock table { min-width: 760px; }
+  .sc-mock tbody th, .sc-mock tbody td { vertical-align: top; }
+  .sc-mock thead th:nth-child(1) { width: 24%; }
+  .sc-mock thead th:nth-child(2) { width: 26%; }
+  .sc-line { display: block; margin-top: 8px; color: var(--secondary); white-space: nowrap; }
+  .sc-trend-line { display: block; white-space: nowrap; color: var(--secondary); }
+  .sc-period { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 15px; margin: 0 0 10px; }
+  .sc-period .app-toggle { margin: 0; flex-wrap: wrap; gap: 10px 0; }
+  .sc-period .app-toggle__button { padding: 8px 14px; }
+  .sc-note { color: var(--secondary); margin: 0 0 20px; }
+  .sc-cards { grid-template-columns: minmax(0, 420px); margin: 20px 0; }
+  .sc-cards .app-card h4 { margin: 0 0 5px; }
+  .sc-cadence th, .sc-cadence td { vertical-align: top; }
+</style>
+</head>
+<body class="govuk-template__body">
+<div class="app-hub-bar"><a href="/">Back to the design resource home</a><span>Design options, 11 November 2026. Illustrative data, fictional disease names.</span></div>
+<div class="govuk-width-container app-wide">
+  <main class="govuk-main-wrapper" id="main-content">
+    <p class="govuk-body-s"><a class="govuk-link" href="option-c.html">Option C</a> · For the design team, not for participants</p>
+    <h1 class="govuk-heading-xl">Showing when a priority score changed</h1>
+    <p class="govuk-body-l">Today a changed score gets a tag and the old score ("Score decreased, previous score 16"). It does not say when it changed. A score that has not changed says nothing at all, so a score that has not moved for 6 months looks the same as one that was checked yesterday.</p>
+
+    <h2 class="govuk-heading-l">What we need to show</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>When</strong> a changed score changed, and what it was before.</li>
+      <li><strong>When</strong> an unchanged score last changed, so people can tell "stable" from "not looked at".</li>
+      <li><strong>What moved</strong>, if we can. Now the score is risk × impact, only those two inputs can move it. Control measures and response options sit beside the score and do not change it.</li>
+    </ul>
+
+    <h2 class="govuk-heading-l">Why a single date is not simple</h2>
+    <p class="govuk-body">The two inputs that move the score update at different rates. These rates are assumptions for this page, so please correct them.</p>
+    <div class="govuk-inset-text">
+      <table class="govuk-table sc-cadence">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Input</th>
+            <th scope="col" class="govuk-table__header">How often it changes (assumed)</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Risk of incursion</th><td class="govuk-table__cell">Monthly, and straight away if a case is confirmed in the UK</td></tr>
+          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Impact</th><td class="govuk-table__cell">About every 6 months, or sooner if new evidence arrives</td></tr>
+          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Priority score</th><td class="govuk-table__cell">Recalculated whenever risk or impact changes</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="govuk-body">So "last changed" depends on which input moved, and a slow input can leave a score looking old when it is simply stable. Every mock-up below uses the same six diseases and dates, and today is 11 November 2026. Each shows a change tag only for changes in the last 30 days, which is also an assumption. Option 1 and Option 2 apply that rule. Option 3 replaces it with a window the person picks.</p>
+
+    <!-- ===== Option 1 ===== -->
+    <section class="sc-opt" aria-labelledby="opt1">
+      <h2 class="govuk-heading-l" id="opt1">Option 1: a date under every score</h2>
+      <p class="govuk-body">Every row gets a date line in the Priority cell. Changed scores read "Changed 5 November 2026" and keep the tag and previous score. Unchanged scores read "Last changed 12 May 2026". The pattern is the same in the table and on the cards, and no new column is needed.</p>
+
+      <div class="sc-mock app-scroll" tabindex="0" role="region" aria-label="Option 1 table mock-up, scrolls sideways on narrow screens">
+        <table class="govuk-table app-table app-table--rows">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Disease</th>
+              <th scope="col" class="govuk-table__header">Priority<span class="app-hint">Risk × impact, out of 25</span></th>
+              <th scope="col" class="govuk-table__header">Risk of incursion</th>
+              <th scope="col" class="govuk-table__header">Impact</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=sprouting-hoof-disease">Sprouting hoof disease</a></th>
+              <td class="govuk-table__cell app-priority" data-label="Priority">
+                <span class="app-band app-band--act">Act now</span>
+                <span class="app-trend app-trend--none"><span class="app-trend__text"><span>Score 20</span><span>Last changed 6 October 2026</span></span></span>
+              </td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">5</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">4</span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=scaly-claw-fever">Scaly claw fever</a></th>
+              <td class="govuk-table__cell app-priority" data-label="Priority">
+                <span class="app-band app-band--act">Act now</span>
+                <span class="app-trend"><span class="app-trend__text"><span>Score 15</span><span>Up from 12</span><span>Changed 3 November 2026</span></span><span class="app-arrow app-arrow--up" aria-hidden="true"></span></span>
+              </td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><strong class="app-confirmed">Confirmed in the UK</strong><span class="app-confirmed__detail">Since 3 November 2026. 2 premises.</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">3</span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">Himalayan Dragon Pox</a></th>
+              <td class="govuk-table__cell app-priority" data-label="Priority">
+                <span class="app-band app-band--prioritise">Prioritise</span>
+                <span class="app-trend"><span class="app-trend__text"><span>Score 12</span><span>Down from 16</span><span>Changed 5 November 2026</span></span><span class="app-arrow app-arrow--down" aria-hidden="true"></span></span>
+              </td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">3</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">4</span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=rainbow-tail-disease">Rainbow tail disease</a></th>
+              <td class="govuk-table__cell app-priority" data-label="Priority">
+                <span class="app-band app-band--prioritise">Prioritise</span>
+                <span class="app-trend app-trend--none"><span class="app-trend__text"><span>Score 10</span><span>Last changed 12 May 2026</span></span></span>
+              </td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">2</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">5</span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=fuzzy-fox-flu">Fuzzy fox flu</a></th>
+              <td class="govuk-table__cell app-priority" data-label="Priority">
+                <span class="app-band app-band--monitor">Monitor</span>
+                <span class="app-trend app-trend--none"><span class="app-trend__text"><span>Score 8</span><span>Last changed 7 September 2026</span></span></span>
+              </td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">4</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">2</span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=wing-wobble">Wing wobble</a></th>
+              <td class="govuk-table__cell app-priority" data-label="Priority">
+                <span class="app-band app-band--maintain">Maintain</span>
+                <span class="app-trend"><span class="app-trend__text"><span>Score 2</span><span>Up from 1</span><span>Changed 29 October 2026</span></span><span class="app-arrow app-arrow--up" aria-hidden="true"></span></span>
+              </td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">1</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">2</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="govuk-heading-m">On the cards</h3>
+      <p class="govuk-body">The cards use the outlined tag, so the date goes with the two score lines and the tag stays underneath.</p>
+      <ul class="app-cards sc-cards">
+        <li class="app-card app-card--prioritise">
+          <h4 class="govuk-heading-m"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">Himalayan Dragon Pox</a></h4>
+          <p class="govuk-body app-card__meta"><span class="app-trend"><span class="app-trend__text"><span>Priority score 12 out of 25</span><span>Previous score 16</span><span>Changed 5 November 2026</span></span></span><span class="app-change"><strong class="app-change__tag app-change__tag--down">Score decreased</strong></span></p>
+        </li>
+        <li class="app-card app-card--prioritise">
+          <h4 class="govuk-heading-m"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=rainbow-tail-disease">Rainbow tail disease</a></h4>
+          <p class="govuk-body app-card__meta"><span class="app-trend app-trend--none"><span class="app-trend__text"><span>Priority score 10 out of 25</span><span>Last changed 12 May 2026</span></span></span></p>
+        </li>
+      </ul>
+
+      <div class="sc-cols">
+        <div>
+          <h3 class="govuk-heading-m">Good for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Answering both questions in one place, for changed and unchanged scores</li>
+            <li>The smallest change to Option C, with no new column and no new control</li>
+            <li>Telling "stable for months" from "changed this week" at a glance</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="govuk-heading-m">Watch for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>The priority cell gets taller, and every row now has a third line</li>
+            <li>It does not say what moved, only when. The reason would be on the disease page</li>
+            <li>The date can't be sorted, so "show me what changed recently" is not possible</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Option 2 ===== -->
+    <section class="sc-opt" aria-labelledby="opt2">
+      <h2 class="govuk-heading-l" id="opt2">Option 2: a "Last changed" column, with what moved</h2>
+      <p class="govuk-body">A separate column gives the date of the last change and says which input moved. It works for every row, changed or not. People can sort by it to bring recent changes to the top. The Priority cell keeps its tag and previous score for recent changes, and has no date.</p>
+
+      <div class="sc-mock app-scroll" tabindex="0" role="region" aria-label="Option 2 table mock-up, scrolls sideways on narrow screens">
+        <table class="govuk-table app-table app-table--rows">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Disease</th>
+              <th scope="col" class="govuk-table__header">Priority<span class="app-hint">Risk × impact, out of 25</span></th>
+              <th scope="col" class="govuk-table__header"><a class="govuk-link" href="#opt2">Priority last changed</a><span class="app-hint">Newest first</span></th>
+              <th scope="col" class="govuk-table__header">Risk of incursion</th>
+              <th scope="col" class="govuk-table__header">Impact</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=sprouting-hoof-disease">Sprouting hoof disease</a></th>
+              <td class="govuk-table__cell app-priority" data-label="Priority">
+                <span class="app-band app-band--act">Act now</span>
+                <span class="app-trend app-trend--none"><span class="app-trend__text"><span>Score 20</span></span></span>
+              </td>
+              <td class="govuk-table__cell" data-label="Priority last changed">6 October 2026<span class="sc-line">Risk of incursion went up</span></td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">5</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">4</span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=scaly-claw-fever">Scaly claw fever</a></th>
+              <td class="govuk-table__cell app-priority" data-label="Priority">
+                <span class="app-band app-band--act">Act now</span>
+                <span class="app-trend"><span class="app-trend__text"><span>Score 15</span><span>Up from 12</span></span><span class="app-arrow app-arrow--up" aria-hidden="true"></span></span>
+              </td>
+              <td class="govuk-table__cell" data-label="Priority last changed">3 November 2026<span class="sc-line">Case confirmed in the UK</span></td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><strong class="app-confirmed">Confirmed in the UK</strong></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">3</span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">Himalayan Dragon Pox</a></th>
+              <td class="govuk-table__cell app-priority" data-label="Priority">
+                <span class="app-band app-band--prioritise">Prioritise</span>
+                <span class="app-trend"><span class="app-trend__text"><span>Score 12</span><span>Down from 16</span></span><span class="app-arrow app-arrow--down" aria-hidden="true"></span></span>
+              </td>
+              <td class="govuk-table__cell" data-label="Priority last changed">5 November 2026<span class="sc-line">Risk of incursion went down</span></td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">3</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">4</span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=rainbow-tail-disease">Rainbow tail disease</a></th>
+              <td class="govuk-table__cell app-priority" data-label="Priority">
+                <span class="app-band app-band--prioritise">Prioritise</span>
+                <span class="app-trend app-trend--none"><span class="app-trend__text"><span>Score 10</span></span></span>
+              </td>
+              <td class="govuk-table__cell" data-label="Priority last changed">12 May 2026<span class="sc-line">Impact went up</span></td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">2</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">5</span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=fuzzy-fox-flu">Fuzzy fox flu</a></th>
+              <td class="govuk-table__cell app-priority" data-label="Priority">
+                <span class="app-band app-band--monitor">Monitor</span>
+                <span class="app-trend app-trend--none"><span class="app-trend__text"><span>Score 8</span></span></span>
+              </td>
+              <td class="govuk-table__cell" data-label="Priority last changed">7 September 2026<span class="sc-line">Risk of incursion went up</span></td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">4</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">2</span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=wing-wobble">Wing wobble</a></th>
+              <td class="govuk-table__cell app-priority" data-label="Priority">
+                <span class="app-band app-band--maintain">Maintain</span>
+                <span class="app-trend"><span class="app-trend__text"><span>Score 2</span><span>Up from 1</span></span><span class="app-arrow app-arrow--up" aria-hidden="true"></span></span>
+              </td>
+              <td class="govuk-table__cell" data-label="Priority last changed">29 October 2026<span class="sc-line">Impact went up</span></td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">1</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">2</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="govuk-body sc-note">The mock-up is not sorted, so you can read down the rows in priority order. When someone sorts by the new column, the order becomes 5 November, 3 November, 29 October, 6 October, 7 September, 12 May.</p>
+
+      <div class="sc-cols">
+        <div>
+          <h3 class="govuk-heading-m">Good for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Answering "what changed recently?" by sorting</li>
+            <li>Saying what moved, so people don't have to work it out from the risk and impact columns</li>
+            <li>Keeping the Priority cell short</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="govuk-heading-m">Watch for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>A seventh column in a table that was already cramped. It would mean narrower columns or sideways scrolling</li>
+            <li>The cards have no column, so they would still need a date line, as in Option 1</li>
+            <li>The reason text needs writing, or generating from the data in a consistent form</li>
+            <li>The date sits apart from the score it describes</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Option 3 ===== -->
+    <section class="sc-opt" aria-labelledby="opt3">
+      <h2 class="govuk-heading-l" id="opt3">Option 3: compare over a period you choose</h2>
+      <p class="govuk-body">People choose what to compare with, such as last month, last quarter or last 6 months. Each score shows its net change over that period, and the start date is stated above the table. Scores that have not changed say so for that period, and no date is shown on them.</p>
+
+      <div class="sc-period">
+        <div class="app-toggle" role="group" aria-label="Compare with (mock-up, the buttons don't work)">
+          <span class="app-toggle__label">Compare with</span>
+          <button type="button" class="app-toggle__button" aria-pressed="false">Last month</button>
+          <button type="button" class="app-toggle__button" aria-pressed="true">Last quarter</button>
+          <button type="button" class="app-toggle__button" aria-pressed="false">Last 6 months</button>
+        </div>
+      </div>
+      <p class="govuk-body sc-note">Showing changes since 11 August 2026.</p>
+
+      <div class="sc-mock app-scroll" tabindex="0" role="region" aria-label="Option 3 table mock-up, scrolls sideways on narrow screens">
+        <table class="govuk-table app-table app-table--rows">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Disease</th>
+              <th scope="col" class="govuk-table__header">Priority<span class="app-hint">Risk × impact, out of 25</span></th>
+              <th scope="col" class="govuk-table__header">Risk of incursion</th>
+              <th scope="col" class="govuk-table__header">Impact</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=sprouting-hoof-disease">Sprouting hoof disease</a></th>
+              <td class="govuk-table__cell app-priority" data-label="Priority">
+                <span class="app-band app-band--act">Act now</span>
+                <span class="app-trend"><span class="app-trend__text"><span>Score 20</span><span>Up from 16</span></span><span class="app-arrow app-arrow--up" aria-hidden="true"></span></span>
+              </td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">5</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">4</span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=scaly-claw-fever">Scaly claw fever</a></th>
+              <td class="govuk-table__cell app-priority" data-label="Priority">
+                <span class="app-band app-band--act">Act now</span>
+                <span class="app-trend"><span class="app-trend__text"><span>Score 15</span><span>Up from 12</span></span><span class="app-arrow app-arrow--up" aria-hidden="true"></span></span>
+              </td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><strong class="app-confirmed">Confirmed in the UK</strong></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">3</span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">Himalayan Dragon Pox</a></th>
+              <td class="govuk-table__cell app-priority" data-label="Priority">
+                <span class="app-band app-band--prioritise">Prioritise</span>
+                <span class="app-trend"><span class="app-trend__text"><span>Score 12</span><span>Down from 16</span></span><span class="app-arrow app-arrow--down" aria-hidden="true"></span></span>
+              </td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">3</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">4</span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=rainbow-tail-disease">Rainbow tail disease</a></th>
+              <td class="govuk-table__cell app-priority" data-label="Priority">
+                <span class="app-band app-band--prioritise">Prioritise</span>
+                <span class="app-trend app-trend--none"><span class="app-trend__text"><span>Score 10</span><span>No change in this period</span></span></span>
+              </td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">2</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">5</span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=fuzzy-fox-flu">Fuzzy fox flu</a></th>
+              <td class="govuk-table__cell app-priority" data-label="Priority">
+                <span class="app-band app-band--monitor">Monitor</span>
+                <span class="app-trend"><span class="app-trend__text"><span>Score 8</span><span>Up from 6</span></span><span class="app-arrow app-arrow--up" aria-hidden="true"></span></span>
+              </td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">4</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">2</span></td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=wing-wobble">Wing wobble</a></th>
+              <td class="govuk-table__cell app-priority" data-label="Priority">
+                <span class="app-band app-band--maintain">Maintain</span>
+                <span class="app-trend"><span class="app-trend__text"><span>Score 2</span><span>Up from 1</span></span><span class="app-arrow app-arrow--up" aria-hidden="true"></span></span>
+              </td>
+              <td class="govuk-table__cell" data-label="Risk of incursion"><span class="app-score">1</span></td>
+              <td class="govuk-table__cell" data-label="Impact"><span class="app-score">2</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sc-cols">
+        <div>
+          <h3 class="govuk-heading-m">Good for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>No arbitrary "30 days" rule. People pick the window that matches what they care about</li>
+            <li>"Since when?" is always stated, so there is no ambiguity about what the tag compares with</li>
+            <li>The same table works for a monthly check and a quarterly review</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="govuk-heading-m">Watch for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>It adds a control, and people have to choose before they see anything useful</li>
+            <li>It shows only the net change. A score that went up and then back down looks unchanged</li>
+            <li>An unchanged score gets no date. Rainbow tail disease just says "no change in this period", and does not say it last changed in May</li>
+            <li>The window would need to be remembered between visits, and shown clearly on the cards too</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <h2 class="govuk-heading-l">Suggested next step</h2>
+    <p class="govuk-body">Try <strong>Option 1</strong> in Option C first. It is the smallest change, it works the same in the table and on the cards, and it covers both parts of the question. Keep Option 2's "what moved" wording and the sortable column as a follow-up, if participants ask what changed rather than when.</p>
+
+    <h2 class="govuk-heading-l">Questions for the team</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>What does "last changed" mean?</strong> The last time the score value changed, or the last time risk and impact were checked, even if the score stayed the same? The second is probably more useful for trust, but is harder to explain.</li>
+      <li><strong>How long should the tag stay?</strong> This page assumes 30 days. A slow input, such as impact, could leave a changed score looking old, and a monthly input would show the tag all month.</li>
+      <li><strong>Do we have the dates?</strong> Every option needs the date of each input's last change, and the previous score, for every disease.</li>
+      <li><strong>Do control measures and response options need dates too?</strong> They don't move the score, so they are kept out of this page. They could carry their own "last reviewed" date, and that is a separate question.</li>
+    </ul>
+
+    <h2 class="govuk-heading-l">Probes for the test</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>"Which of these scores changed most recently?" Does the date answer this without prompting?</li>
+      <li>"Do you trust a score that last changed in May?" Does the date make it look stale, or stable?</li>
+      <li>"What would you want to know about a change?" Do they ask for the reason, the date, or both?</li>
+    </ul>
+    <p class="govuk-body"><a class="govuk-link" href="option-c.html">Back to Option C</a></p>
+  </main>
+</div>
+<script src="score-labels.js"></script>
+</body>
+</html>
