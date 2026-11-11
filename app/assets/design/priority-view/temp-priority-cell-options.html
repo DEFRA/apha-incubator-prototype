@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+<head>
+<meta charset="utf-8">
+<title>Temporary: arranging the priority cell</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="govuk-frontend.min.css">
+<link rel="stylesheet" href="priority.css">
+<style>
+  .app-hub-bar { background: #0b0c0c; color: #b1b4b6; font: 16px/1.3 Arial, sans-serif; padding: 10px 20px; }
+  .app-hub-bar a { color: #fff; font-weight: 700; margin-right: 16px; }
+  .app-hub-bar a:focus { outline: 3px solid #ffdd00; background: #ffdd00; color: #0b0c0c; }
+
+  .pc-opt { margin: 0 0 60px; padding-top: 20px; border-top: 5px solid #0b0c0c; }
+  .pc-show { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 30px; margin: 20px 0; align-items: start; }
+  .pc-show h3 { margin-top: 0; }
+  .pc-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 30px; }
+  .pc-cols h3 { margin-top: 0; }
+  @media (max-width: 48em) { .pc-show, .pc-cols { grid-template-columns: 1fr; } }
+
+  /* A small table, so only the Priority cell is on show */
+  .pc-table { min-width: 0; margin: 0; }
+  .pc-table thead th:nth-child(1) { width: 45%; }
+  .pc-table tbody th, .pc-table tbody td { vertical-align: top; }
+  .pc-table .app-priority { background: var(--sorted-tint); }
+  .pc-cards { grid-template-columns: 1fr; }
+  .pc-cards .app-card h4 { margin: 0 0 5px; }
+  .pc-cards .app-card__meta { margin-bottom: 15px; }
+
+  /* Option 1: both labels together, then the summary as one plain line */
+  .pc-line { display: block; margin-top: 8px; color: var(--secondary); }
+  .pc-labels .app-change { margin-top: 8px; }
+
+  /* Option 2: a small arrow in its own column, so the text reads as one block */
+  .pc-gutter { display: flex; align-items: center; gap: 10px; margin-top: 8px; }
+  .pc-gutter--none { padding-left: 24px; }
+  .pc-gutter__text { display: block; }
+  .pc-gutter__text span { display: block; color: var(--secondary); white-space: nowrap; }
+  .pc-arrow { flex: none; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; }
+  .pc-arrow--up { border-bottom: 12px solid #942514; }
+  .pc-arrow--down { border-top: 12px solid #005a30; }
+
+  /* Option 3: text only, with the first word of the second line in bold */
+  .pc-text span { display: block; color: var(--secondary); white-space: nowrap; }
+  .pc-text strong { color: #0b0c0c; }
+  .pc-text span + span { margin-top: 2px; }
+</style>
+</head>
+<body class="govuk-template__body">
+<div class="app-hub-bar"><a href="/">Back to the design resource home</a><span>Temporary page for the design session. Illustrative data, fictional disease names. Delete when decided.</span></div>
+<div class="govuk-width-container app-wide">
+  <main class="govuk-main-wrapper" id="main-content">
+    <p class="govuk-body-s"><a class="govuk-link" href="option-c.html">Option C</a> · For the design team, not for participants</p>
+    <h1 class="govuk-heading-xl">Arranging the priority cell</h1>
+    <p class="govuk-body-l">Three ways to show a change in the priority score without splitting the text. Only the Priority cell and the card change. Nothing is added to the other columns.</p>
+
+    <h2 class="govuk-heading-l">The problem</h2>
+    <p class="govuk-body">At the moment the cell reads like this, top to bottom:</p>
+    <div class="pc-show">
+      <div>
+        <div class="app-scroll">
+          <table class="govuk-table app-table app-table--rows pc-table">
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+                <th scope="col" class="govuk-table__header">Disease</th>
+                <th scope="col" class="govuk-table__header">Priority<span class="app-hint">Score out of 5</span></th>
+              </tr>
+            </thead>
+            <tbody class="govuk-table__body">
+              <tr class="govuk-table__row">
+                <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">Himalayan Dragon Pox</a></th>
+                <td class="govuk-table__cell app-priority" data-label="Priority">
+                  <span class="app-band app-band--prioritise">Prioritise</span>
+                  <span class="app-priority__detail">Score 4.1</span>
+                  <span class="app-change"><strong class="app-change__tag app-change__tag--down">Score decreased</strong><span class="app-change__from">from 4.4</span></span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <p class="govuk-body">The summary is "Score 4.1 … from 4.4". The outlined tag sits in the middle of it, and changes the style mid-sentence. That makes the two values hard to read as one thought.</p>
+        <p class="govuk-body">All three options below keep the two values together, and put the signal of the change before or beside them, never between them.</p>
+      </div>
+    </div>
+    <p class="govuk-body">All three also drop the outlined tag. That makes the table calmer, because it is one less coloured box in the column, and the priority band stays the loudest thing. The words "up" and "down" or "increased" and "decreased" are always written, so colour and shape are never the only cue.</p>
+
+    <!-- ===== Option 1 ===== -->
+    <section class="pc-opt" aria-labelledby="opt1">
+      <h2 class="govuk-heading-l" id="opt1">Option 1: labels together, then the summary</h2>
+      <p class="govuk-body">The band and the change label sit together at the top, as two labels. The score and the old score follow as one plain line underneath.</p>
+      <div class="pc-show">
+        <div>
+          <div class="app-scroll" tabindex="0" role="region" aria-label="Option 1 table mock-up">
+            <table class="govuk-table app-table app-table--rows pc-table pc-labels">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header">Disease</th>
+                  <th scope="col" class="govuk-table__header">Priority<span class="app-hint">Score out of 5</span></th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=sprouting-hoof-disease">Sprouting hoof disease</a></th>
+                  <td class="govuk-table__cell app-priority" data-label="Priority">
+                    <span class="app-band app-band--act">Act now</span>
+                    <span class="pc-line">Score 4.8</span>
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">Himalayan Dragon Pox</a></th>
+                  <td class="govuk-table__cell app-priority" data-label="Priority">
+                    <span class="app-band app-band--prioritise">Prioritise</span>
+                    <span class="app-change"><strong class="app-change__tag app-change__tag--down">Decreased</strong></span>
+                    <span class="pc-line">Score 4.1, was 4.4</span>
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=rainbow-tail-disease">Rainbow tail disease</a></th>
+                  <td class="govuk-table__cell app-priority" data-label="Priority">
+                    <span class="app-band app-band--prioritise">Prioritise</span>
+                    <span class="pc-line">Score 3.9</span>
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=wing-wobble">Wing wobble</a></th>
+                  <td class="govuk-table__cell app-priority" data-label="Priority">
+                    <span class="app-band app-band--maintain">Maintain</span>
+                    <span class="app-change"><strong class="app-change__tag app-change__tag--up">Increased</strong></span>
+                    <span class="pc-line">Score 1.4, was 1.2</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3 class="govuk-heading-s">On a card</h3>
+          <ul class="app-cards pc-cards">
+            <li class="app-card app-card--prioritise">
+              <h4 class="govuk-heading-m"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">Himalayan Dragon Pox</a></h4>
+              <p class="govuk-body app-card__meta pc-labels">
+                <span class="app-change"><strong class="app-change__tag app-change__tag--down">Decreased</strong></span>
+                <span class="pc-line">Score 4.1 out of 5, was 4.4</span>
+              </p>
+              <p class="govuk-body app-card__why">A moderate chance of arriving and high impact. Neither our control measures nor our response options are strong.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="pc-cols">
+        <div>
+          <h3 class="govuk-heading-m">Good for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Keeping the summary to one plain line</li>
+            <li>The change label is easy to find, and it is the same shape as before</li>
+            <li>A screen reader says "Decreased. Score 4.1, was 4.4"</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="govuk-heading-m">Watch for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Two boxes stacked in the cell, so the cell is still busy</li>
+            <li>The change label is separated from the old score it refers to</li>
+            <li>Only changed rows have a second label, so rows have different heights</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Option 2 ===== -->
+    <section class="pc-opt" aria-labelledby="opt2">
+      <h2 class="govuk-heading-l" id="opt2">Option 2: an arrow in its own column</h2>
+      <p class="govuk-body">A small arrow sits to the left of the text, in a gutter of its own. The text is two plain lines in one style: "Score 4.1" and "Down from 4.4". Rows without a change keep the empty gutter, so the text lines up down the column.</p>
+      <div class="pc-show">
+        <div>
+          <div class="app-scroll" tabindex="0" role="region" aria-label="Option 2 table mock-up">
+            <table class="govuk-table app-table app-table--rows pc-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header">Disease</th>
+                  <th scope="col" class="govuk-table__header">Priority<span class="app-hint">Score out of 5</span></th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=sprouting-hoof-disease">Sprouting hoof disease</a></th>
+                  <td class="govuk-table__cell app-priority" data-label="Priority">
+                    <span class="app-band app-band--act">Act now</span>
+                    <span class="pc-gutter pc-gutter--none"><span class="pc-gutter__text"><span>Score 4.8</span></span></span>
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">Himalayan Dragon Pox</a></th>
+                  <td class="govuk-table__cell app-priority" data-label="Priority">
+                    <span class="app-band app-band--prioritise">Prioritise</span>
+                    <span class="pc-gutter"><span class="pc-arrow pc-arrow--down" aria-hidden="true"></span><span class="pc-gutter__text"><span>Score 4.1</span><span>Down from 4.4</span></span></span>
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=rainbow-tail-disease">Rainbow tail disease</a></th>
+                  <td class="govuk-table__cell app-priority" data-label="Priority">
+                    <span class="app-band app-band--prioritise">Prioritise</span>
+                    <span class="pc-gutter pc-gutter--none"><span class="pc-gutter__text"><span>Score 3.9</span></span></span>
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=wing-wobble">Wing wobble</a></th>
+                  <td class="govuk-table__cell app-priority" data-label="Priority">
+                    <span class="app-band app-band--maintain">Maintain</span>
+                    <span class="pc-gutter"><span class="pc-arrow pc-arrow--up" aria-hidden="true"></span><span class="pc-gutter__text"><span>Score 1.4</span><span>Up from 1.2</span></span></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3 class="govuk-heading-s">On a card</h3>
+          <ul class="app-cards pc-cards">
+            <li class="app-card app-card--prioritise">
+              <h4 class="govuk-heading-m"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">Himalayan Dragon Pox</a></h4>
+              <p class="govuk-body app-card__meta">
+                <span class="pc-gutter" style="margin-top:0"><span class="pc-arrow pc-arrow--down" aria-hidden="true"></span><span class="pc-gutter__text"><span>Score 4.1 out of 5</span><span>Down from 4.4</span></span></span>
+              </p>
+              <p class="govuk-body app-card__why">A moderate chance of arriving and high impact. Neither our control measures nor our response options are strong.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="pc-cols">
+        <div>
+          <h3 class="govuk-heading-m">Good for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>The text is one block, so it reads as a single summary</li>
+            <li>Quick to scan: the arrows show which rows changed, and which way, without reading</li>
+            <li>No coloured box, so the column is calmer</li>
+            <li>A screen reader says "Score 4.1. Down from 4.4", and ignores the arrow</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="govuk-heading-m">Watch for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>It reverses the earlier decision of "text only, no arrows". The earlier worry was that an arrow's direction could be mistaken for "better" or "worse". Here the word "Up" or "Down" sits beside it, and for priority, up means more urgent. Test it</li>
+            <li>The arrow colour (red up, green down) suggests a judgement. It could be neutral grey</li>
+            <li>A small shape to build, and to make sure it prints</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Option 3 ===== -->
+    <section class="pc-opt" aria-labelledby="opt3">
+      <h2 class="govuk-heading-l" id="opt3">Option 3: text only, one word in bold</h2>
+      <p class="govuk-body">No tag and no arrow. The change is a second plain line, "<strong>Decreased</strong> from 4.4", and the first word is bold. The bold word comes first, so nothing changes style in the middle of the sentence.</p>
+      <div class="pc-show">
+        <div>
+          <div class="app-scroll" tabindex="0" role="region" aria-label="Option 3 table mock-up">
+            <table class="govuk-table app-table app-table--rows pc-table">
+              <thead class="govuk-table__head">
+                <tr class="govuk-table__row">
+                  <th scope="col" class="govuk-table__header">Disease</th>
+                  <th scope="col" class="govuk-table__header">Priority<span class="app-hint">Score out of 5</span></th>
+                </tr>
+              </thead>
+              <tbody class="govuk-table__body">
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=sprouting-hoof-disease">Sprouting hoof disease</a></th>
+                  <td class="govuk-table__cell app-priority" data-label="Priority">
+                    <span class="app-band app-band--act">Act now</span>
+                    <span class="pc-line pc-text"><span>Score 4.8</span></span>
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">Himalayan Dragon Pox</a></th>
+                  <td class="govuk-table__cell app-priority" data-label="Priority">
+                    <span class="app-band app-band--prioritise">Prioritise</span>
+                    <span class="pc-line pc-text"><span>Score 4.1</span><span><strong>Decreased</strong> from 4.4</span></span>
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=rainbow-tail-disease">Rainbow tail disease</a></th>
+                  <td class="govuk-table__cell app-priority" data-label="Priority">
+                    <span class="app-band app-band--prioritise">Prioritise</span>
+                    <span class="pc-line pc-text"><span>Score 3.9</span></span>
+                  </td>
+                </tr>
+                <tr class="govuk-table__row">
+                  <th scope="row" class="govuk-table__header"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=wing-wobble">Wing wobble</a></th>
+                  <td class="govuk-table__cell app-priority" data-label="Priority">
+                    <span class="app-band app-band--maintain">Maintain</span>
+                    <span class="pc-line pc-text"><span>Score 1.4</span><span><strong>Increased</strong> from 1.2</span></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3 class="govuk-heading-s">On a card</h3>
+          <ul class="app-cards pc-cards">
+            <li class="app-card app-card--prioritise">
+              <h4 class="govuk-heading-m"><a class="govuk-link" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">Himalayan Dragon Pox</a></h4>
+              <p class="govuk-body app-card__meta">
+                <span class="pc-text"><span>Score 4.1 out of 5</span><span><strong>Decreased</strong> from 4.4</span></span>
+              </p>
+              <p class="govuk-body app-card__why">A moderate chance of arriving and high impact. Neither our control measures nor our response options are strong.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="pc-cols">
+        <div>
+          <h3 class="govuk-heading-m">Good for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>The calmest of the three, with no extra box or shape</li>
+            <li>The cell is one block of text, so it reads like a sentence</li>
+            <li>Nothing new to build, and nothing to explain. A screen reader says "Score 4.1. Decreased from 4.4"</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="govuk-heading-m">Watch for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>The weakest signal. A change is easy to miss when scanning a long list</li>
+            <li>The bold word is the only thing that sets a changed row apart</li>
+            <li>It doesn't show direction at a glance. You have to read the word</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <h2 class="govuk-heading-l">Side by side</h2>
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-visually-hidden">The three arrangements compared</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header"></th>
+          <th scope="col" class="govuk-table__header">1. Labels together</th>
+          <th scope="col" class="govuk-table__header">2. Arrow in a column</th>
+          <th scope="col" class="govuk-table__header">3. Text only</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Splits the summary?</th><td class="govuk-table__cell">No</td><td class="govuk-table__cell">No</td><td class="govuk-table__cell">No</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Spotting a change</th><td class="govuk-table__cell">Easy</td><td class="govuk-table__cell">Easy, and direction is clear</td><td class="govuk-table__cell">Harder</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Visual weight</th><td class="govuk-table__cell">Medium. A second box</td><td class="govuk-table__cell">Low. A small shape</td><td class="govuk-table__cell">Lowest</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Earlier decision</th><td class="govuk-table__cell">Keeps the outlined tag</td><td class="govuk-table__cell">Reverses "no arrows"</td><td class="govuk-table__cell">Drops the tag</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Colour is not the only cue</th><td class="govuk-table__cell">Yes, a word</td><td class="govuk-table__cell">Yes, a word beside the arrow</td><td class="govuk-table__cell">Yes, a word</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-l">Suggestion</h2>
+    <p class="govuk-body"><strong>Option 2.</strong> It keeps the summary as one plain block, which is what was wrong with the tag, and the arrow tells you which rows changed and which way without any reading. It is also quieter than the tag it replaces. Pair every arrow with the words "Up" or "Down", and test that people read "up" as "more urgent".</p>
+    <p class="govuk-body">If the team would rather not bring arrows back, <strong>option 3</strong> is the calmest fallback. The cost is that a change is easier to miss.</p>
+
+    <h2 class="govuk-heading-l">To decide</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Arrow colour.</strong> Red up and green down, or neutral grey?</li>
+      <li><strong>Wording.</strong> "Up from 4.4" and "Down from 4.4", or "Increased" and "Decreased"?</li>
+      <li><strong>Unchanged rows.</strong> Show nothing, as here, or a quiet "No change"?</li>
+    </ul>
+  </main>
+</div>
+</body>
+</html>
