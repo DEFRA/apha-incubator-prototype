@@ -130,7 +130,7 @@
 
 <!-- ============ SCREEN 1 ============ -->
 <h2 id="s1">Screen 1: Disease overview</h2>
-<p class="lede">Needs: UN1 trusted source, UN2 risk changes, UN5 deprioritise, UN10 summary, UN13 single source.</p>
+<p class="lede">Needs: UN1 One trusted source, UN2 Early warning signal, UN4 Highest-priority diseases, UN8 Right level of detail.</p>
 
 <!-- 1A -->
 <section class="option">
@@ -235,7 +235,7 @@
   <h3>1C List with filter <span class="badge test">Test</span></h3>
   <p class="small">A table for comparing, with an optional filter instead of hiding diseases.</p>
   <h4>Tests</h4>
-  <ul><li>List vs cards for comparing diseases.</li><li>Does the filter help or hide things that matter (UN5)?</li></ul>
+  <ul><li>List vs cards for comparing diseases.</li><li>Does the filter help or hide things that matter (UN4)?</li></ul>
   <h4>Design team questions</h4>
   <ul><li>Hiding no-change diseases could hide a high risk. Should the filter default to off?</li><li>Test with 1A as the control.</li></ul>
 </div>
@@ -268,7 +268,7 @@
   <h3>1D Ranked by priority <span class="badge dt">Design team only</span></h3>
   <p class="small">Shows how the overview grows once all four layers exist. Priority becomes the default sort.</p>
   <h4>Shows</h4>
-  <ul><li>Rank, band and score lead. The four layers sit underneath as one line.</li><li>One plain sentence per disease explains the "so what" (UN10).</li><li>Colour belongs to the priority band, so change tags stay neutral.</li></ul>
+  <ul><li>Rank, band and score lead. The four layers sit underneath as one line.</li><li>One plain sentence per disease explains the "so what" (UN8).</li><li>Colour belongs to the priority band, so change tags stay neutral.</li></ul>
   <h4>Design team questions</h4>
   <ul><li>Who writes the sentence and how often?</li><li>Do users trust a combined score or need to see the working first?</li><li>Do we show the 0 to 10 scores as numbers, bars or both?</li><li>How do the five IDM risk levels map to the framework's Low, Medium, High?</li><li>Keep 1A to 1C as the layers view behind a "View" switch, or replace them?</li></ul>
 </div>
@@ -276,7 +276,7 @@
 
 <!-- ============ SCREEN 2 ============ -->
 <h2 id="s2">Screen 2: Disease detail</h2>
-<p class="lede">Needs: UN2 risk changes, UN4 horizons, UN10 summary, UN14 change over time.</p>
+<p class="lede">Needs: UN2 Early warning signal, UN3 Where it's spreading, UN6 Early enough to prepare, UN8 Right level of detail.</p>
 
 <!-- 2A -->
 <section class="option">
@@ -361,7 +361,7 @@
   <h3>2B Summary first, table only <span class="badge test">Test</span></h3>
   <p class="small">No chart. The "so what" leads. Risk and impact sit side by side.</p>
   <h4>Tests</h4>
-  <ul><li>Do users need a chart at all?</li><li>Is "so what" first better for UN10?</li></ul>
+  <ul><li>Do users need a chart at all?</li><li>Is "so what" first better for UN8?</li></ul>
   <h4>Design team questions</h4>
   <ul><li>Side by side boxes make risk and impact equal. Is that right when risk is the live data?</li><li>A table is simpler to make accessible than a chart.</li></ul>
 </div>
@@ -459,9 +459,9 @@
     <tr><td><b>1A</b> Cards</td><td>Test</td><td>Simple. Control for the others.</td><td>Changes can be missed.</td></tr>
     <tr><td><b>1B</b> Latest changes tab</td><td>Test</td><td>Puts change (UN2) first.</td><td>Tab can hide diseases.</td></tr>
     <tr><td><b>1C</b> List with filter</td><td>Test</td><td>Fast to compare.</td><td>Filter could hide a high risk.</td></tr>
-    <tr><td><b>1D</b> Ranked by priority</td><td>Design team</td><td>Answers "what do I act on?" (UN5). Scales to all four layers.</td><td>Needs agreed scales, data and a trusted score.</td></tr>
-    <tr><td><b>2A</b> Chart and history</td><td>Test</td><td>Shows trend (UN14) and reasons.</td><td>Custom chart needs accessibility work.</td></tr>
-    <tr><td><b>2B</b> Summary first, table</td><td>Test</td><td>"So what" first (UN10). Simple to build.</td><td>Trend is harder to see.</td></tr>
+    <tr><td><b>1D</b> Ranked by priority</td><td>Design team</td><td>Answers "what do I act on?" (UN4). Scales to all four layers.</td><td>Needs agreed scales, data and a trusted score.</td></tr>
+    <tr><td><b>2A</b> Chart and history</td><td>Test</td><td>Shows trend (UN2) and reasons.</td><td>Custom chart needs accessibility work.</td></tr>
+    <tr><td><b>2B</b> Summary first, table</td><td>Test</td><td>"So what" first (UN8). Simple to build.</td><td>Trend is harder to see.</td></tr>
     <tr><td><b>2C</b> Priority and four layers</td><td>Design team</td><td>Shows the working behind the score.</td><td>Page may get long without a clear layer pattern.</td></tr>
   </tbody>
 </table>
