@@ -183,7 +183,10 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .app-card--maintain { border-top-color: #00703c; }
 .app-card h3 { margin: 0 0 5px; }
 .app-card__meta { color: var(--secondary); margin: 0 0 20px; }
-.app-card__why { margin: 0 0 30px; }
+.app-card__why { margin: 0 0 14px; }
+.app-card .app-more-summary { display: block; width: fit-content; margin: 0 0 30px; }
+/* In the table the name is plain text, so the link sits under it in smaller, regular-weight text */
+.app-table .app-more-row { display: block; width: fit-content; margin-top: 8px; font-size: 1rem; font-weight: 400; line-height: 1.25; white-space: nowrap; }
 .app-card dl { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 40px 35px; border-top: 1px solid var(--divider); padding-top: 30px; }
 .app-card dt { color: #0b0c0c; font-weight: 700; margin-bottom: 14px; }
 .app-card dd { margin: 0; }
