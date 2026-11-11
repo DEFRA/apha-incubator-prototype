@@ -39,6 +39,14 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .app-toggle__button:focus { outline: 3px solid transparent; background: #ffdd00; color: #0b0c0c; border-color: #0b0c0c; box-shadow: 0 3px 0 #0b0c0c; position: relative; z-index: 1; }
 
 .app-section { margin-top: 50px; }
+
+/* Key for the risk and impact levels, so every level is shown even when the table does not use it. */
+.app-levels { list-style: none; padding: 0; margin: 0 0 30px; }
+.app-levels li { margin-bottom: 20px; }
+.app-levels__name { display: block; font-weight: 700; }
+.app-levels__order { display: block; margin: 0 0 8px; color: var(--secondary); }
+.app-levels__tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.app-levels .app-level-tag { margin: 0; }
 .app-section-heading { margin-top: 40px; }
 
 /* Service navigation in the Defra theme: green links, and a green current-page marker (4.8:1 on the grey bar) */
