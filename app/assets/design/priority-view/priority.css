@@ -28,11 +28,8 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .govuk-width-container.app-wide { max-width: 1200px; }
 
 .app-scope { margin-bottom: 30px; }
-.app-focus { border-left: 10px solid var(--defra-brand); background: #f3f2f1; padding: 20px 25px; margin: 0 0 40px; }
-.app-focus p { margin: 0; max-width: 40em; }
-.app-focus p + p { margin-top: 15px; }
 /* View toggle: two buttons, one pressed. The pressed one has a dark fill, white bold text and aria-pressed, so it differs in lightness and weight, not just hue. */
-.app-toggle { display: flex; align-items: center; margin: 0 0 30px; }
+.app-toggle { display: flex; align-items: center; margin: 40px 0 30px; }
 .app-toggle[hidden] { display: none; }
 .app-toggle__label { font-weight: 700; margin-right: 15px; }
 .app-toggle__button { font-size: 1.1875rem; line-height: 1.25; padding: 8px 20px; margin: 0; cursor: pointer; background: #f3f2f1; color: #0b0c0c; border: 2px solid #0b0c0c; }
@@ -134,8 +131,7 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .app-card--monitor { border-top-color: #ffdd00; }
 .app-card--maintain { border-top-color: #00703c; }
 .app-card h3 { margin: 0 0 5px; }
-.app-card__meta { color: var(--secondary); margin: 0 0 15px; }
-.app-card__why { margin: 0 0 20px; }
+.app-card__meta { color: var(--secondary); margin: 0 0 20px; }
 .app-card dl { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 25px; border-top: 1px solid var(--divider); padding-top: 20px; }
 .app-card dt { color: var(--secondary); margin-bottom: 8px; }
 .app-card dd { margin: 0; }
