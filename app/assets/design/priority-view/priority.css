@@ -93,7 +93,13 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .app-areas { list-style: none; margin: 8px 0 0; padding: 0; color: var(--secondary); }
 .app-areas li { margin: 0 0 3px; }
 .app-hint { display: block; font-weight: 400; color: var(--secondary); margin-top: 3px; }
-.app-card dt .app-hint { font-weight: 400; color: var(--secondary); line-height: 1.3; margin-top: 4px; }
+
+/* One shared explanation of the four measures above the cards, so the hints are not repeated on every card. */
+.app-measures-help { margin-bottom: 30px; }
+.app-measures-help__list { margin: 0; }
+.app-measures-help__list dt { font-weight: 700; margin: 0 0 2px; }
+.app-measures-help__list dd { margin: 0 0 12px; color: var(--secondary); }
+.app-measures-help__list dd:last-child { margin-bottom: 0; }
 .app-rank { font-weight: 700; }
 
 /* One colour, length carries the value. The number is always visible text. */
@@ -189,7 +195,6 @@ html.govuk-template, .govuk-template__body { background: #fff; }
   .app-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
   .app-card { padding: 30px 35px 35px; }
   .app-card dl { gap: 40px 40px; }
-  .app-card dt .app-hint { max-width: 9.9em; }
 }
 
 .app-key { list-style: none; padding: 0; margin: 0 0 30px; }
