@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+<head>
+<meta charset="utf-8">
+<title>Design decision: showing checklist progress in a cell</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="govuk-frontend.min.css">
+<link rel="stylesheet" href="priority.css">
+<style>
+  .app-hub-bar { background: #0b0c0c; color: #b1b4b6; font: 16px/1.3 Arial, sans-serif; padding: 10px 20px; }
+  .app-hub-bar a { color: #fff; font-weight: 700; margin-right: 16px; }
+  .app-hub-bar a:focus { outline: 3px solid #ffdd00; background: #ffdd00; color: #0b0c0c; }
+
+  .cc-grid { min-width: 1100px; table-layout: fixed; }
+  .cc-grid th, .cc-grid td { vertical-align: top; padding: 15px 12px; }
+  .cc-grid thead th { border-bottom: 2px solid #0b0c0c; }
+  .cc-grid thead th small { display: block; margin-top: 6px; font-weight: 400; color: var(--secondary); }
+  .cc-grid tbody th { width: 11%; }
+  .cc-grid td + td { border-left: 1px solid var(--divider); }
+
+  /* Page-only versions of the bar, so every option can be set side by side */
+  .cc-bar { display: block; width: 100%; max-width: 120px; height: 10px; margin-top: 10px; border: 1px solid #6f777b;
+    background:
+      repeating-linear-gradient(90deg, transparent 0, transparent calc(100% / var(--n) - 2px), #fff calc(100% / var(--n) - 2px), #fff calc(100% / var(--n))),
+      linear-gradient(90deg, var(--c) calc(var(--k) / var(--n) * 100%), var(--t) 0); }
+  .cc-bar--done { --c: #0f7a52; --t: #e5e6e7; }
+  .cc-bar--red { --c: #942514; --t: #fff; }
+  .cc-bar--two { --c: #942514; --t: #0f7a52; }
+  .cc-line { display: block; }
+  .cc-strong { display: block; color: #0b0c0c; }
+
+  .cc-sim { display: inline-block; }
+  .cc-note { color: var(--secondary); }
+  .cc-sims th, .cc-sims td { vertical-align: middle; }
+  .cc-sims td { padding-right: 30px; }
+</style>
+</head>
+<body class="govuk-template__body">
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+  <!-- Colour blindness simulations (Machado et al. 2009, full severity) -->
+  <filter id="cc-protan" color-interpolation-filters="linearRGB"><feColorMatrix type="matrix" values="0.152286 1.052583 -0.204868 0 0  0.114503 0.786281 0.099216 0 0  -0.003882 -0.048116 1.051998 0 0  0 0 0 1 0"/></filter>
+  <filter id="cc-deutan" color-interpolation-filters="linearRGB"><feColorMatrix type="matrix" values="0.367322 0.860646 -0.227968 0 0  0.280085 0.672501 0.047413 0 0  -0.011820 0.042940 0.968881 0 0  0 0 0 1 0"/></filter>
+  <filter id="cc-tritan" color-interpolation-filters="linearRGB"><feColorMatrix type="matrix" values="1.255528 -0.076749 -0.178779 0 0  -0.078411 0.930809 0.147602 0 0  0.004733 0.691367 0.303900 0 0  0 0 0 1 0"/></filter>
+</svg>
+<div class="app-hub-bar"><a href="/">Back to the design resource home</a><span>Design decision in progress. Illustrative data, fictional disease names.</span></div>
+<div class="govuk-width-container app-wide">
+  <main class="govuk-main-wrapper" id="main-content">
+    <p class="govuk-body-s"><a class="govuk-link" href="option-c.html">Option C</a> · For the design team, not for participants</p>
+    <h1 class="govuk-heading-xl">Showing checklist progress in a cell</h1>
+    <p class="govuk-body-l">Control measures and response options are checklists. Some items are done, and some still need review. This page compares ways to show that in one cell, without saying the same thing twice.</p>
+    <div class="govuk-inset-text">
+      <p class="govuk-body">Option C is unchanged for now. At the moment it uses <a class="govuk-link" href="#opt3">option 3, both numbers</a>.</p>
+    </div>
+
+    <h2 class="govuk-heading-l">What the cell needs to do</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Say one thing once.</strong> "7 of 8 need review" and "1 of 8 done" are the same fact, so showing both is repetition.</li>
+      <li><strong>Match the other columns.</strong> A higher number is worse, and worse is red. Risk of incursion and impact already work this way.</li>
+      <li><strong>Be clear what the bar shows.</strong> It should not be read as "the amount that needs review" when it shows what is done, or the other way round.</li>
+      <li><strong>Work for colour blindness.</strong> Colour is never the only cue, and shapes next to each other differ in lightness by at least 3:1.</li>
+      <li><strong>Fit the cell and the card.</strong> The cell is about 150px wide.</li>
+    </ul>
+
+    <h2 class="govuk-heading-l">Six options, side by side</h2>
+    <p class="govuk-body">The same four examples in every option. The checklists have 10 items for control measures and 8 for response options (assumed).</p>
+    <div class="app-scroll" tabindex="0" role="region" aria-label="The six options side by side, scrolls sideways on narrow screens">
+      <table class="govuk-table app-table cc-grid">
+        <caption class="govuk-table__caption govuk-visually-hidden">The same four examples shown in six ways</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header"></th>
+            <th scope="col" class="govuk-table__header">1. Done only<small>"1 of 10 done" and a green bar</small></th>
+            <th scope="col" class="govuk-table__header">2. Review only<small>The count and colour block, no bar</small></th>
+            <th scope="col" class="govuk-table__header" id="opt3">3. Both<small>The current design</small></th>
+            <th scope="col" class="govuk-table__header">4. Red segments, with block<small>Count once, bar shows what is outstanding</small></th>
+            <th scope="col" class="govuk-table__header">5. Red segments, text only<small>No colour block</small></th>
+            <th scope="col" class="govuk-table__header">6. Red and green segments<small>Outstanding red, done green</small></th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Most still to review<br><span class="cc-note">9 of 10</span></th>
+            <td class="govuk-table__cell"><span class="cc-line">1 of 10 done</span><span class="cc-bar cc-bar--done" style="--n:10;--k:1" aria-hidden="true"></span></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--5">9 of 10</strong><span class="app-review">need review</span></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--5">9 of 10</strong><span class="app-review">need review</span><span class="app-done">1 of 10 done</span><span class="cc-bar cc-bar--done" style="--n:10;--k:1;margin-top:4px" aria-hidden="true"></span></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--5">9 of 10</strong><span class="app-review">need review</span><span class="cc-bar cc-bar--red" style="--n:10;--k:9" aria-hidden="true"></span></td>
+            <td class="govuk-table__cell"><span class="cc-line"><strong>9 of 10</strong> need review</span><span class="cc-bar cc-bar--red" style="--n:10;--k:9" aria-hidden="true"></span></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--5">9 of 10</strong><span class="app-review">need review</span><span class="cc-bar cc-bar--two" style="--n:10;--k:9" aria-hidden="true"></span></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">About half<br><span class="cc-note">6 of 10</span></th>
+            <td class="govuk-table__cell"><span class="cc-line">4 of 10 done</span><span class="cc-bar cc-bar--done" style="--n:10;--k:4" aria-hidden="true"></span></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--3">6 of 10</strong><span class="app-review">need review</span></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--3">6 of 10</strong><span class="app-review">need review</span><span class="app-done">4 of 10 done</span><span class="cc-bar cc-bar--done" style="--n:10;--k:4;margin-top:4px" aria-hidden="true"></span></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--3">6 of 10</strong><span class="app-review">need review</span><span class="cc-bar cc-bar--red" style="--n:10;--k:6" aria-hidden="true"></span></td>
+            <td class="govuk-table__cell"><span class="cc-line"><strong>6 of 10</strong> need review</span><span class="cc-bar cc-bar--red" style="--n:10;--k:6" aria-hidden="true"></span></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--3">6 of 10</strong><span class="app-review">need review</span><span class="cc-bar cc-bar--two" style="--n:10;--k:6" aria-hidden="true"></span></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Nearly done<br><span class="cc-note">2 of 10</span></th>
+            <td class="govuk-table__cell"><span class="cc-line">8 of 10 done</span><span class="cc-bar cc-bar--done" style="--n:10;--k:8" aria-hidden="true"></span></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--1">2 of 10</strong><span class="app-review">need review</span></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--1">2 of 10</strong><span class="app-review">need review</span><span class="app-done">8 of 10 done</span><span class="cc-bar cc-bar--done" style="--n:10;--k:8;margin-top:4px" aria-hidden="true"></span></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--1">2 of 10</strong><span class="app-review">need review</span><span class="cc-bar cc-bar--red" style="--n:10;--k:2" aria-hidden="true"></span></td>
+            <td class="govuk-table__cell"><span class="cc-line"><strong>2 of 10</strong> need review</span><span class="cc-bar cc-bar--red" style="--n:10;--k:2" aria-hidden="true"></span></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--1">2 of 10</strong><span class="app-review">need review</span><span class="cc-bar cc-bar--two" style="--n:10;--k:2" aria-hidden="true"></span></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">All done<br><span class="cc-note">0 of 8</span></th>
+            <td class="govuk-table__cell"><span class="cc-line">8 of 8 done</span><span class="cc-bar cc-bar--done" style="--n:8;--k:8" aria-hidden="true"></span></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--1">0 of 8</strong><span class="app-review">need review</span></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--1">0 of 8</strong><span class="app-review">need review</span><span class="app-done">8 of 8 done</span><span class="cc-bar cc-bar--done" style="--n:8;--k:8;margin-top:4px" aria-hidden="true"></span></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--1">0 of 8</strong><span class="app-review">need review</span><span class="cc-bar cc-bar--red" style="--n:8;--k:0" aria-hidden="true"></span></td>
+            <td class="govuk-table__cell"><span class="cc-line"><strong>0 of 8</strong> need review</span><span class="cc-bar cc-bar--red" style="--n:8;--k:0" aria-hidden="true"></span></td>
+            <td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--1">0 of 8</strong><span class="app-review">need review</span><span class="cc-bar cc-bar--two" style="--n:8;--k:0" aria-hidden="true"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="govuk-heading-l">What each one does</h2>
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-visually-hidden">Notes on each option</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Option</th>
+          <th scope="col" class="govuk-table__header">Good for</th>
+          <th scope="col" class="govuk-table__header">Watch for</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">1. Done only</th>
+          <td class="govuk-table__cell">One number, and a plain progress bar that everyone already understands</td>
+          <td class="govuk-table__cell"><strong>The wrong way round.</strong> A low number is bad here, but a high number is bad in risk and impact. Nothing is red, so it loses the signal that something is worse</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">2. Review only</th>
+          <td class="govuk-table__cell">One number, once. A high number is worse and red, like the other columns. The simplest cell</td>
+          <td class="govuk-table__cell">No picture of the proportion. People have to compare "7 of 8" and "6 of 10" in their head. The colour block helps, but it is only five steps</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">3. Both (current)</th>
+          <td class="govuk-table__cell">Everything is there, and the bar has its own label</td>
+          <td class="govuk-table__cell"><strong>Repetition.</strong> Two numbers say the same thing, and the cell has four lines. The bar's green fills up as the red count goes down, which is two directions in one cell</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">4. Red segments, with block</th>
+          <td class="govuk-table__cell">One number, once. The bar shows what is outstanding, in red, filling from the left like the risk and impact bars. More red is worse in every column. The cell keeps the same block as the other columns</td>
+          <td class="govuk-table__cell">Red appears twice, in the block and in the bar. Even 2 red segments look alarming, although the block says it is fine. The block and bar colours can disagree</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">5. Red segments, text only</th>
+          <td class="govuk-table__cell">The quietest option with a picture. One line of text and one bar, with no block</td>
+          <td class="govuk-table__cell">The two checklist columns no longer have the muted block that the other four columns have, so the row looks less consistent. Fewer levels of colour, because the bar is always red</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">6. Red and green segments</th>
+          <td class="govuk-table__cell">Shows done and outstanding in two colours, so it reads without a caption</td>
+          <td class="govuk-table__cell"><strong>Fails for red-green colour blindness.</strong> Red and green are 1.55:1, so the two colours look almost the same. See below. It would need a pattern as well, which adds clutter</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-l">Contrast and colour blindness</h2>
+    <p class="govuk-body">Segments that sit next to each other must differ by at least 3:1 in lightness, so that the difference does not depend on hue. Red against green is the classic problem, because they can be the same lightness.</p>
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-visually-hidden">Contrast between the colours used in the segments</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Pair</th>
+          <th scope="col" class="govuk-table__header">Contrast</th>
+          <th scope="col" class="govuk-table__header">Result for 3:1</th>
+          <th scope="col" class="govuk-table__header">Used in</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row"><td class="govuk-table__cell">Red <code>#942514</code> segment next to an empty white segment</td><td class="govuk-table__cell">8.29:1</td><td class="govuk-table__cell">Pass</td><td class="govuk-table__cell">4 and 5</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">Empty segment outline <code>#6f777b</code> on white</td><td class="govuk-table__cell">4.56:1</td><td class="govuk-table__cell">Pass</td><td class="govuk-table__cell">All</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">Green <code>#0f7a52</code> segment on white</td><td class="govuk-table__cell">5.35:1</td><td class="govuk-table__cell">Pass</td><td class="govuk-table__cell">1 and 3</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">Green on the grey track <code>#e5e6e7</code></td><td class="govuk-table__cell">4.28:1</td><td class="govuk-table__cell">Pass</td><td class="govuk-table__cell">1 and 3</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">Red next to green</td><td class="govuk-table__cell">1.55:1</td><td class="govuk-table__cell"><strong>Fail</strong></td><td class="govuk-table__cell">6</td></tr>
+      </tbody>
+    </table>
+    <p class="govuk-body">Options 4 and 5 pass because the two states are <strong>filled and empty</strong>, not red and green. The difference is dark against white, so it survives any kind of colour blindness. This is a simulation of 7 of 8 items needing review (1 done):</p>
+    <div class="app-scroll" tabindex="0" role="region" aria-label="Colour blindness simulations, scrolls sideways on narrow screens">
+      <table class="govuk-table cc-sims">
+        <caption class="govuk-table__caption govuk-visually-hidden">The same bar under different kinds of colour blindness</caption>
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">As seen by</th>
+            <th scope="col" class="govuk-table__header">3. Both: green done</th>
+            <th scope="col" class="govuk-table__header">4 and 5. Red outstanding</th>
+            <th scope="col" class="govuk-table__header">6. Red and green</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Typical colour vision</th>
+            <td class="govuk-table__cell"><span class="cc-sim"><span class="cc-bar cc-bar--done" style="--n:8;--k:1;width:120px" aria-hidden="true"></span></span></td>
+            <td class="govuk-table__cell"><span class="cc-sim"><span class="cc-bar cc-bar--red" style="--n:8;--k:7;width:120px" aria-hidden="true"></span></span></td>
+            <td class="govuk-table__cell"><span class="cc-sim"><span class="cc-bar cc-bar--two" style="--n:8;--k:7;width:120px" aria-hidden="true"></span></span></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Protanopia (no red)</th>
+            <td class="govuk-table__cell"><span class="cc-sim" style="filter:url(#cc-protan)"><span class="cc-bar cc-bar--done" style="--n:8;--k:1;width:120px" aria-hidden="true"></span></span></td>
+            <td class="govuk-table__cell"><span class="cc-sim" style="filter:url(#cc-protan)"><span class="cc-bar cc-bar--red" style="--n:8;--k:7;width:120px" aria-hidden="true"></span></span></td>
+            <td class="govuk-table__cell"><span class="cc-sim" style="filter:url(#cc-protan)"><span class="cc-bar cc-bar--two" style="--n:8;--k:7;width:120px" aria-hidden="true"></span></span></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Deuteranopia (no green)</th>
+            <td class="govuk-table__cell"><span class="cc-sim" style="filter:url(#cc-deutan)"><span class="cc-bar cc-bar--done" style="--n:8;--k:1;width:120px" aria-hidden="true"></span></span></td>
+            <td class="govuk-table__cell"><span class="cc-sim" style="filter:url(#cc-deutan)"><span class="cc-bar cc-bar--red" style="--n:8;--k:7;width:120px" aria-hidden="true"></span></span></td>
+            <td class="govuk-table__cell"><span class="cc-sim" style="filter:url(#cc-deutan)"><span class="cc-bar cc-bar--two" style="--n:8;--k:7;width:120px" aria-hidden="true"></span></span></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">Tritanopia (no blue)</th>
+            <td class="govuk-table__cell"><span class="cc-sim" style="filter:url(#cc-tritan)"><span class="cc-bar cc-bar--done" style="--n:8;--k:1;width:120px" aria-hidden="true"></span></span></td>
+            <td class="govuk-table__cell"><span class="cc-sim" style="filter:url(#cc-tritan)"><span class="cc-bar cc-bar--red" style="--n:8;--k:7;width:120px" aria-hidden="true"></span></span></td>
+            <td class="govuk-table__cell"><span class="cc-sim" style="filter:url(#cc-tritan)"><span class="cc-bar cc-bar--two" style="--n:8;--k:7;width:120px" aria-hidden="true"></span></span></td>
+          </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">No colour at all (greyscale)</th>
+            <td class="govuk-table__cell"><span class="cc-sim" style="filter:grayscale(1)"><span class="cc-bar cc-bar--done" style="--n:8;--k:1;width:120px" aria-hidden="true"></span></span></td>
+            <td class="govuk-table__cell"><span class="cc-sim" style="filter:grayscale(1)"><span class="cc-bar cc-bar--red" style="--n:8;--k:7;width:120px" aria-hidden="true"></span></span></td>
+            <td class="govuk-table__cell"><span class="cc-sim" style="filter:grayscale(1)"><span class="cc-bar cc-bar--two" style="--n:8;--k:7;width:120px" aria-hidden="true"></span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="govuk-body cc-note">These are simulations on screen, and a guide, not a test with people. The text always carries the number, so the bar never has to be read by colour alone.</p>
+
+    <h2 class="govuk-heading-l">Suggestion</h2>
+    <p class="govuk-body"><strong>Option 4: show the review count once, with red segments for what is outstanding.</strong> It removes the repetition, because the number is "7 of 8 need review" and the bar is the same thing as a picture. It matches the rest of the table, where more is worse and worse is red, and the bar fills from the left like the risk and impact bars. Filled and empty segments are the cue, so it works in greyscale and for every kind of colour blindness.</p>
+    <p class="govuk-body"><strong>Option 5 is the leaner fallback.</strong> If the cell still feels busy, drop the colour block and keep one line of text and the red bar. The cost is that the two checklist columns look different from the other four.</p>
+    <p class="govuk-body">Avoid option 6, because red and green cannot be told apart by lightness. Avoid option 1, because it reverses the direction. Option 3 is what we have now, and it is the one with the repetition.</p>
+
+    <h2 class="govuk-heading-l">Still to decide</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Segment colour.</strong> Always red, as shown, or the colour of the block (green when few are outstanding)? The second avoids a few red segments looking alarming, but it brings the red and green problem back.</li>
+      <li><strong>Words.</strong> "need review" or "to review"? Would "outstanding" be clearer?</li>
+      <li><strong>All done.</strong> An empty bar with "0 of 8 need review" could read as "no data". A tick or "All done" could be clearer.</li>
+      <li><strong>Test it.</strong> Ask what the bar shows, and whether more red means better or worse.</li>
+    </ul>
+  </main>
+</div>
+</body>
+</html>
