@@ -69,7 +69,7 @@ The design decisions made on option C each have a page in `app/assets/design/pri
 | `risk-impact-bars-options.html` | Whether risk and impact keep the grey bars under their levels                  |
 | `card-hint-options.html`        | Showing the hint text on the cards, replaced by a key and "More details"       |
 | `score-change-options.html`     | Showing when a priority score changed, with a "Changed" date under every score |
-| `priority-signal-options.html`  | Seven ways to signal priority without prescribing action. To review            |
+| `priority-signal-options.html`  | Eight ways to signal priority without prescribing action. To review            |
 
 | Where                           | What                                                                                             |
 | ------------------------------- | ------------------------------------------------------------------------------------------------ |

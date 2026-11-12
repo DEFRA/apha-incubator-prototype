@@ -36,6 +36,16 @@
   .sg-toggle { margin: 20px 0 10px; flex-wrap: wrap; gap: 10px 0; }
   .sg-toggle .app-toggle__button { padding: 8px 14px; }
   .sg-compare th, .sg-compare td { vertical-align: top; }
+  /* Option 8: the score is styled with the band colour, and carries no name. The number is always printed. */
+  .sg-score { display: inline-block; min-width: 2.6em; padding: 4px 10px; text-align: center; font-size: 1.5rem; font-weight: 700; line-height: 1.2; }
+  .sg-score--small { font-size: 1rem; min-width: 7em; }
+  .sg-score--1 { background: #d4351c; color: #fff; }
+  .sg-score--2 { background: #f47738; color: #0b0c0c; }
+  .sg-score--3 { background: #ffdd00; color: #0b0c0c; }
+  .sg-score--4 { background: #00703c; color: #fff; }
+  .sg-cards { grid-template-columns: minmax(0, 420px); margin: 20px 0; }
+  .sg-range { margin: 0 0 8px; color: var(--secondary); font-weight: 700; }
+  .sg-cards .app-card .app-card__meta { margin-bottom: 0; }
 </style>
 </head>
 <body class="govuk-template__body app-sentence-case">
@@ -89,6 +99,7 @@
       <li><a class="govuk-link" href="#o5">5. Show what is driving the score</a></li>
       <li><a class="govuk-link" href="#o6">6. A marker for leadership attention</a></li>
       <li><a class="govuk-link" href="#o7">7. A view for your role</a></li>
+      <li><a class="govuk-link" href="#o8">8. Just the score, styled by band</a></li>
       <li><a class="govuk-link" href="#compare">How they compare, and ways to combine them</a></li>
     </ul>
 
@@ -354,11 +365,65 @@
       </div>
     </section>
 
+    <!-- ===== Option 8 ===== -->
+    <section class="sg-opt" aria-labelledby="o8">
+      <h2 class="govuk-heading-l" id="o8">Option 8: just the score, styled by band</h2>
+      <p class="govuk-body">Use no categorisation language at all. Each disease shows only its score. Behind the scenes the scores still fall into groups, but the groups only change how the score is styled: a colour on the score itself. We don&rsquo;t name the groups. We ask users what they would call them, and what they would group by, and let the language come from them.</p>
+      <p class="govuk-body">This is different from option 3. The score is the signal in both, but here the groups still exist, so a leader can see the top group at a glance, and the colours are the only grouping we offer.</p>
+      <div class="sg-mock app-scroll" tabindex="0" role="region" aria-label="Option 8 mock-up">
+        <table class="govuk-table">
+          <thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Disease</th><th scope="col" class="govuk-table__header">Priority</th></tr></thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Sprouting hoof disease</th><td class="govuk-table__cell app-priority"><span class="sg-score sg-score--1">45</span><span class="sg-line">Score out of 60</span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Himalayan Dragon Pox</th><td class="govuk-table__cell app-priority"><span class="sg-score sg-score--2">27</span><span class="sg-line">Score out of 60</span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Rainbow tail disease</th><td class="govuk-table__cell app-priority"><span class="sg-score sg-score--2">24</span><span class="sg-line">Score out of 60</span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Fuzzy fox flu</th><td class="govuk-table__cell app-priority"><span class="sg-score sg-score--3">14</span><span class="sg-line">Score out of 60</span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Wing wobble</th><td class="govuk-table__cell app-priority"><span class="sg-score sg-score--4">2</span><span class="sg-line">Score out of 60</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="govuk-body">The key lists score ranges, with no names:</p>
+      <ul class="app-key">
+        <li><span class="sg-score sg-score--1 sg-score--small">30 to 60</span></li>
+        <li><span class="sg-score sg-score--2 sg-score--small">20 to 29</span></li>
+        <li><span class="sg-score sg-score--3 sg-score--small">8 to 19</span></li>
+        <li><span class="sg-score sg-score--4 sg-score--small">1 to 7</span></li>
+      </ul>
+      <p class="govuk-body">On the cards view, the groups can be headed with their score range, with no name:</p>
+      <ul class="app-cards sg-cards">
+        <li class="app-card app-card--act">
+          <p class="govuk-body-s sg-range">Scores of 30 to 60</p>
+          <h4 class="govuk-heading-m">Sprouting hoof disease</h4>
+          <p class="govuk-body app-card__meta"><span class="sg-score sg-score--1">45</span> <span class="sg-line">Priority score out of 60</span></p>
+        </li>
+      </ul>
+      <div class="sg-cols">
+        <div>
+          <h3 class="govuk-heading-m">Good for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>No categorisation language to get wrong. Users give us the words, rather than us choosing them</li>
+            <li>Still catches a leader&rsquo;s eye, because the colour on the top group stands out</li>
+            <li>Nobody is told to do anything, and the score stays the most important thing</li>
+            <li>Easy to add words later, once research tells us what people call the groups</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="govuk-heading-m">Watch for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Colour carries the grouping, and there is no text label, so the number has to do the work for people who can&rsquo;t tell the colours apart. The key lists the ranges for the same reason</li>
+            <li>People may ask &quot;is 24 high?&quot;, since a score alone has no meaning until they learn the scale</li>
+            <li>The group lines (30, 20 and 8) are made up, and they decide who gets noticed</li>
+            <li>It uses the existing band colours, so people may still read red and orange as &quot;act&quot;</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <!-- ===== Compare ===== -->
     <h2 class="govuk-heading-l" id="compare">How they compare</h2>
-    <div class="app-scroll" tabindex="0" role="region" aria-label="Comparison of the seven options, scrolls sideways on narrow screens">
+    <div class="app-scroll" tabindex="0" role="region" aria-label="Comparison of the eight options, scrolls sideways on narrow screens">
     <table class="govuk-table sg-compare">
-      <caption class="govuk-table__caption govuk-visually-hidden">Comparison of the seven options</caption>
+      <caption class="govuk-table__caption govuk-visually-hidden">Comparison of the eight options</caption>
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header">Option</th>
@@ -375,6 +440,7 @@
         <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">5. Show what is driving the score</th><td class="govuk-table__cell">Weak on its own</td><td class="govuk-table__cell">Yes</td><td class="govuk-table__cell">A rule for &quot;driver&quot;</td></tr>
         <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">6. A marker for leadership attention</th><td class="govuk-table__cell">Strong, and says who it is for</td><td class="govuk-table__cell">Yes, but it names a role</td><td class="govuk-table__cell">Agreement on who organises action</td></tr>
         <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">7. A view for your role</th><td class="govuk-table__cell">Strong, for the right role</td><td class="govuk-table__cell">Yes</td><td class="govuk-table__cell">The real roles, from research, and more build</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">8. Just the score, styled by band</th><td class="govuk-table__cell">Good. The colour on the top group stands out</td><td class="govuk-table__cell">Yes. No names at all</td><td class="govuk-table__cell">Ranges for the groups, and research to find the words people use</td></tr>
       </tbody>
     </table>
     </div>
@@ -385,6 +451,8 @@
       <li><strong>1 or 2, with 5.</strong> A neutral level label for the whole list, with the drivers underneath.</li>
       <li><strong>3 and 6.</strong> A score bar for the whole list, with the leadership marker only where it is needed.</li>
       <li><strong>6 now, 7 later.</strong> Start with the marker, and move to a role view if research shows several roles need different signals.</li>
+      <li><strong>8 and 5.</strong> The score styled by band, with the drivers underneath. No names for the groups, and each role still sees its own part. We add words once research tells us what people call the groups.</li>
+      <li><strong>8 first, words later.</strong> Test with only the styled score, ask users what they would call the groups and what they would group by, then choose from options 1 and 2 using their words.</li>
     </ul>
 
     <h2 class="govuk-heading-l">Questions for the team</h2>
@@ -402,6 +470,7 @@
     </p>
     <ul class="govuk-list govuk-list--bullet">
       <li>Do people read a priority label as an instruction to them? Does the wording change that?</li>
+      <li>What would people call the groups of scores, if we gave them none? What would they group by? (Option 8 is built for this.)</li>
       <li>What does a leader look for first, and does the signal find it?</li>
       <li>Do people in other roles feel the page is talking to them when it is not, or miss something that is for them?</li>
       <li>What would each role want the Priority column to tell them?</li>
