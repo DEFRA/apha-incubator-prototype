@@ -1,0 +1,256 @@
+/* Defra theme layer over GOV.UK Frontend (brand mode "defra"), plus the priority view components.
+   Theme values follow defra-design/defra-frontend settings. They are placeholders until the Defra brand audit. */
+:root {
+  --defra-link: #0f7a52;        /* 5.35:1 on white */
+  --defra-link-hover: #0a5c3d;  /* 7.57:1 on white */
+  --defra-brand: #00a33b;       /* 3.33:1 with white text: borders and accents only, never small text */
+  --track-outline: #6f777b;     /* 4.56:1 on white */
+  --secondary: #505a5f;         /* 7.07:1 on white */
+  --divider: #b1b4b6;
+  --sorted-tint: #f3f2f1;       /* GOV.UK light grey, 1.12:1 against white */
+}
+html, body, body * { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", arial, sans-serif !important; }
+html.govuk-template, .govuk-template__body { background: #fff; }
+.govuk-link:link, .govuk-link:visited { color: var(--defra-link); }
+.govuk-link:visited { color: #4c2c92; }
+.govuk-link:hover { color: var(--defra-link-hover); }
+.govuk-link:focus { color: #0b0c0c; }
+.govuk-details__summary { color: var(--defra-link); }
+.govuk-details__summary:hover { color: var(--defra-link-hover); }
+.govuk-details__summary:focus { color: #0b0c0c; }
+.govuk-header { border-bottom-color: var(--defra-brand); }
+.govuk-header__container { border-bottom: 10px solid var(--defra-brand); }
+.govuk-header__logotype-text { font-weight: 700; color: #fff; text-decoration: none; }
+.govuk-footer { border-top-color: var(--defra-brand); }
+.govuk-tag { white-space: nowrap; }
+
+/* A wider container for pages with a wide table. Prose is kept to two-thirds so lines stay readable. */
+.govuk-width-container.app-wide { max-width: 1200px; }
+
+.app-scope { margin-bottom: 30px; }
+/* View toggle: two buttons, one pressed. The pressed one has a dark fill, white bold text and aria-pressed, so it differs in lightness and weight, not just hue. */
+.app-toggle { display: flex; align-items: center; margin: 40px 0 30px; }
+.app-toggle[hidden] { display: none; }
+.app-toggle__label { font-weight: 700; margin-right: 15px; }
+.app-toggle__button { font-size: 1.1875rem; line-height: 1.25; padding: 8px 20px; margin: 0; cursor: pointer; background: #f3f2f1; color: #0b0c0c; border: 2px solid #0b0c0c; }
+.app-toggle__button + .app-toggle__button { margin-left: -2px; }
+.app-toggle__button[aria-pressed="true"] { background: var(--defra-link); border-color: var(--defra-link); color: #fff; font-weight: 700; position: relative; z-index: 1; outline: 4px solid #0b0c0c; outline-offset: 0; }
+.app-toggle__button:hover:not([aria-pressed="true"]) { background: #e5e6e7; }
+.app-toggle__button:focus { outline: 3px solid transparent; background: #ffdd00; color: #0b0c0c; border-color: #0b0c0c; box-shadow: 0 3px 0 #0b0c0c; position: relative; z-index: 1; }
+
+.app-section { margin-top: 50px; }
+
+/* Key for the risk and impact levels, so every level is shown even when the table does not use it. */
+.app-levels { list-style: none; padding: 0; margin: 0 0 30px; }
+.app-levels li { margin-bottom: 20px; }
+.app-levels__name { display: block; font-weight: 700; }
+.app-levels__order { display: block; margin: 0 0 8px; color: var(--secondary); }
+.app-levels__tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.app-levels .app-level-tag { margin: 0; }
+.app-section-heading { margin-top: 40px; }
+
+/* Service navigation in the Defra theme: green links, and a green current-page marker (4.8:1 on the grey bar) */
+.app-nav .govuk-service-navigation__link:link,
+.app-nav .govuk-service-navigation__link:visited,
+.app-nav .govuk-service-navigation__link:not(:hover):not(:focus) { color: var(--defra-link); }
+.app-nav .govuk-service-navigation__link:hover { color: var(--defra-link-hover); }
+.app-nav .govuk-service-navigation__link:focus { color: #0b0c0c; }
+.app-nav .govuk-service-navigation__item--active { border-color: var(--defra-link); }
+.app-nav .govuk-service-navigation__item--active .govuk-service-navigation__link { color: #0b0c0c; }
+
+/* Priority bands. Every pair has at least 4.5:1 for text. Colour is never the only cue: the label is always shown. */
+.app-band { display: inline-block; padding: 4px 10px; font-weight: 700; font-size: 1rem; line-height: 1.25; text-transform: uppercase; letter-spacing: 0.02em; white-space: nowrap; }
+.app-band--act { background: #d4351c; color: #fff; }          /* 4.86:1 */
+.app-band--prioritise { background: #f47738; color: #0b0c0c; } /* 7.04:1. White would fail at 2.78:1 */
+.app-band--monitor { background: #ffdd00; color: #0b0c0c; }    /* 14.55:1 */
+.app-band--maintain { background: #00703c; color: #fff; }      /* 6.21:1. Defra green #00a33b would fail at 3.33:1 */
+/* Sentence case for the priority tags: capitals are harder to read. Used on Option C for now. */
+.app-sentence-case .app-band { text-transform: none; letter-spacing: 0; }
+
+.app-priority__detail { white-space: nowrap; display: block; margin-top: 8px; color: var(--secondary); }
+
+/* The date a score last changed sits at the bottom of the Priority cell, in smaller text, so every row ends in the same place.
+   The cell has a 1px height so the box can fill the row. Only used where the table is a table. */
+.app-changed { display: block; font-size: 1rem; line-height: 1.25; color: var(--secondary); white-space: nowrap; }
+.app-priority__box { margin-top: 0; }
+.app-priority__box > .app-changed { margin-top: 12px; }
+@media (min-width: 40.0625em) {
+  .app-table--rows td.app-priority { height: 1px; }
+  .app-priority__box { display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
+}
+
+/* Priority score and its change. Plain lines of text in one style, with the arrow at the end of the "Up from" or
+   "Down from" line, so nothing changes style between the values and the text always starts at the left edge, level with the band.
+   The words Up and Down are always written, so shape and colour are never the only cue.
+   Arrow colours on the light grey tint: up 7.4:1, down 7.5:1. */
+.app-trend { display: flex; width: max-content; align-items: center; gap: 10px; margin-top: 8px; }
+.app-trend__text span { display: block; color: var(--secondary); white-space: nowrap; }
+.app-arrow { order: 2; flex: none; width: 0; height: 0; border-left: 7px solid transparent; border-right: 7px solid transparent; }
+/* The arrow sits at the end of the "Up from" or "Down from" line, next to the value it describes */
+.app-trend__text span.app-arrow { display: inline-block; margin-left: 10px; vertical-align: middle; position: relative; top: -1px; }
+.app-arrow--up { border-bottom: 12px solid #942514; }
+.app-arrow--down { border-top: 12px solid #005a30; }
+.app-card__meta .app-trend { margin-top: 0; }
+
+/* Disease already confirmed in the UK. A state, not a level, so it uses its own hue (purple, 8.7:1) outside the green to red scale. */
+.app-confirmed { display: inline-block; padding: 2px 8px; background: #dbd5e9; color: #3d2375; font-size: 1rem; font-weight: 700; line-height: 1.25; }
+.app-confirmed__detail { display: block; margin-top: 8px; color: var(--secondary); }
+
+/* Change in risk since the last assessment. Outlined, so it reads differently from the filled level tags.
+   Text colours on white: increased 8.29:1, decreased 8.0:1. The wording carries the meaning, not the colour. */
+.app-change { display: block; margin-top: 10px; }
+.app-change__tag { display: inline-block; background: #fff; border: 2px solid; padding: 1px 8px; font-weight: 700; font-size: 1rem; line-height: 1.25; white-space: nowrap; }
+.app-change__tag--up { color: #942514; border-color: #942514; }
+.app-change__tag--down { color: #005a30; border-color: #005a30; }
+.app-change__from { display: block; margin-top: 5px; color: var(--secondary); }
+.app-affects { display: block; margin-top: 8px; color: var(--secondary); }
+.app-areas { list-style: none; margin: 8px 0 0; padding: 0; color: var(--secondary); }
+.app-areas li { margin: 0 0 3px; }
+.app-hint { display: block; font-weight: 400; color: var(--secondary); margin-top: 3px; }
+
+.app-rank { font-weight: 700; }
+
+/* One colour, length carries the value. The number is always visible text. */
+.app-score { display: block; font-weight: 700; font-size: 1.5rem; line-height: 1; }
+.app-score small { font-size: 1rem; font-weight: 400; color: var(--secondary); }
+
+/* Muted level blocks, so they stand out less than the priority bands. Text on fill: 5.7 to 7.8:1.
+   The word is always shown, so colour is never the only cue. */
+.app-level-tag { display: inline-block; margin-bottom: 6px; padding: 2px 8px; font-size: 1rem; font-weight: 700; line-height: 1.25; }
+.app-level-tag--1 { background: #cce2d8; color: #005a30; }
+.app-level-tag--2 { background: #e6f0c8; color: #3b5400; }
+.app-level-tag--3 { background: #fff7bf; color: #594d00; }
+.app-level-tag--4 { background: #f4cdc6; color: #942514; }
+.app-level-tag--5 { background: #e6a69b; color: #6b1a0e; }
+
+/* Control measures and response options are checklists, not scores: how many items still need review.
+   More is worse, the same direction as risk and impact, so the items still to review are red segments that fill
+   from the left, one segment per item. Filled against empty carries the meaning, so it holds up in greyscale and for
+   colour blindness: red on white is 8.3:1. The count is always written. --n is the number of items, --out the number to review. */
+.app-checklist { display: block; color: var(--secondary); }
+.app-checklist strong { color: #0b0c0c; }
+.app-progress { display: block; width: 100%; max-width: 120px; height: 10px; margin-top: 10px; border: 1px solid var(--track-outline);
+  background:
+    repeating-linear-gradient(90deg, transparent 0, transparent calc(100% / var(--n) - 2px), #fff calc(100% / var(--n) - 2px), #fff calc(100% / var(--n))),
+    linear-gradient(90deg, #942514 calc(var(--out) / var(--n) * 100%), #fff 0); }
+.app-card .app-progress { max-width: 100%; }
+.app-bar { display: block; width: 100%; max-width: 120px; height: 10px; margin-top: 10px; background: #e5e6e7; border: 1px solid var(--track-outline); }
+.app-bar > span { display: block; height: 100%; background: var(--defra-link); }
+/* Risk and impact are threats: a higher score is worse. Preparedness is the opposite, so threats use a neutral fill, not red or green. */
+.app-bar--threat > span { background: var(--secondary); }
+
+/* Option A: table */
+.app-table th, .app-table td { vertical-align: top; padding: 20px 15px; }
+.app-table th[aria-sort] a { display: inline; }
+.app-table th[aria-sort] a::after { content: ""; display: inline-block; margin-left: 5px; vertical-align: middle; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 5px solid currentcolor; opacity: 0.45; }
+.app-table th[aria-sort="descending"] a::after { border-bottom: 0; border-top: 5px solid currentcolor; opacity: 1; }
+.app-table th[aria-sort="ascending"] a::after { opacity: 1; }
+
+/* Links in the table and cards keep the same colour once visited, so repeat visits don't turn the names purple.
+   Hover and focus are unchanged. */
+.app-table .govuk-link:visited, .app-card .govuk-link:visited { color: var(--defra-link); }
+.app-table .govuk-link:visited:hover, .app-card .govuk-link:visited:hover { color: var(--defra-link-hover); }
+.app-table .govuk-link:visited:focus, .app-card .govuk-link:visited:focus { color: #0b0c0c; }
+
+/* The sorted column. Text stays at least 4.5:1 on this tint (link 4.78:1). The arrow and aria-sort also carry the state. */
+.app-table .app-sorted { background: var(--sorted-tint); }
+
+.app-table--rows { min-width: 1000px; }
+/* Cell padding is added to min-width, so 13.5rem keeps "Sprouting hoof disease" on one line. */
+.app-table--rows thead th:nth-child(1) { width: 20%; min-width: 13.5rem; }
+.app-table--rows thead th:nth-child(2) { width: 21.5%; }
+.app-table--rows thead th:nth-child(3) { width: 14.5%; }
+.app-table--rows thead th:nth-child(4) { width: 18%; }
+.app-table--rows thead th:nth-child(5) { width: 13.5%; }
+.app-table--rows thead th:nth-child(6) { width: 12.5%; }
+.app-table--rows thead th:nth-child(3),
+.app-table--rows tbody td:nth-child(3),
+.app-table--rows thead th:nth-child(5),
+.app-table--rows tbody td:nth-child(5) { padding-left: 25px; border-left: 1px solid var(--divider); }
+
+/* The scroll region sits 15px outside the text column, so the tinted cells' padding lines up with the page text */
+.app-scroll { overflow-x: auto; margin: 0 -15px; }
+.app-scroll:focus { outline: 3px solid #ffdd00; outline-offset: 0; }
+
+/* Option B: action-first cards, grouped by band */
+.app-band-section { margin-top: 40px; }
+.app-band-section__head { display: flex; flex-wrap: wrap; gap: 5px 20px; align-items: baseline; margin-bottom: 20px; }
+.app-band-section__head h2 { margin: 0; }
+.app-band-section__head p { margin: 0; color: var(--secondary); }
+.app-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 30px; list-style: none; padding: 0; margin: 0; }
+.app-card { border: 1px solid var(--divider); border-top-width: 8px; padding: 30px 30px 35px; background: #fff; }
+.app-card--act { border-top-color: #d4351c; }
+.app-card--prioritise { border-top-color: #f47738; }
+.app-card--monitor { border-top-color: #ffdd00; }
+.app-card--maintain { border-top-color: #00703c; }
+.app-card h3 { margin: 0 0 5px; }
+.app-card__meta { color: var(--secondary); margin: 0 0 20px; }
+.app-card__why { margin: 0 0 14px; }
+.app-card .app-more-summary { display: block; width: fit-content; margin: 0 0 30px; }
+/* In the table the name is plain text, so the link sits under it in smaller, regular-weight text */
+.app-table .app-more-row { display: block; width: fit-content; margin-top: 8px; font-size: 1rem; font-weight: 400; line-height: 1.25; }
+.app-card dl { margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 40px 35px; border-top: 1px solid var(--divider); padding-top: 30px; }
+.app-card dt { color: #0b0c0c; font-weight: 700; margin-bottom: 14px; }
+.app-card dd { margin: 0; }
+.app-more { display: block; width: fit-content; margin-top: 14px; }
+.app-card dd .app-bar { max-width: 100%; }
+
+/* Each measure is a column, so "More details" sits at the bottom of its block. Blocks in the same row of the
+   2 x 2 grid stretch to the same height, so the two links in a row line up. */
+.app-card dl > div { display: flex; flex-direction: column; }
+.app-card dd { display: flex; flex-direction: column; align-items: flex-start; flex: 1; }
+.app-card dd .app-progress { align-self: stretch; }
+.app-card .app-more { margin-top: auto; padding-top: 16px; }
+
+/* Wide screens: two cards per row, each about 590px wide, so the measures have room to breathe. */
+@media (min-width: 64em) {
+  .app-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px; }
+  .app-card { padding: 30px 35px 35px; }
+  .app-card dl { gap: 40px 40px; }
+}
+
+.app-key { list-style: none; padding: 0; margin: 0 0 30px; }
+.app-key li { margin-bottom: 12px; display: flex; gap: 15px; align-items: baseline; }
+.app-key .app-band { min-width: 9.5em; text-align: center; }
+
+/* Small screens: a table becomes a block per disease, with a label on each value */
+@media (max-width: 40.0525em) {
+  .app-table--rows { min-width: 0; }
+  .app-table--rows thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .app-table--rows, .app-table--rows tbody, .app-table--rows tr, .app-table--rows th, .app-table--rows td { display: block; }
+  .app-table--rows caption { display: block; }
+  .app-scroll { margin: 0; }
+  .app-table .app-sorted { background: none; }
+  .app-table--rows tr { border: 1px solid var(--divider); margin-bottom: 15px; padding: 10px 15px; }
+  .app-table--rows th, .app-table--rows td, .app-table--rows tbody td:nth-child(3), .app-table--rows tbody td:nth-child(5) { border: 0; padding: 8px 0; }
+  .app-table--rows td[data-label]::before { content: attr(data-label); display: block; font-weight: 700; margin-bottom: 5px; }
+  .app-card dl { grid-template-columns: 1fr; }
+  .app-cards { grid-template-columns: 1fr; }
+  .app-sort-note { display: block; }
+}
+@media (min-width: 40.0625em) { .app-sort-note { display: none; } }
+
+@media print {
+  @page { size: A4 landscape; margin: 10mm; }
+  html { zoom: 0.62; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .govuk-header, .govuk-footer, .govuk-phase-banner, .app-nav { display: none; }
+  .govuk-width-container.app-wide { max-width: 1600px; margin: 0 auto; }
+  .app-key { columns: 2; column-gap: 40px; break-inside: avoid; }
+  .govuk-main-wrapper { padding-top: 0; }
+  .app-scroll { overflow: visible; }
+  .app-card, .app-table tr, .app-band-section { break-inside: avoid; }
+  .app-both #view-table, .app-both #view-cards { break-before: page; }
+
+  /* Cards, printed as four columns: one per band, left to right from most to least urgent */
+  .app-both #view-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 24px; align-items: start; zoom: 0.85; }
+  .app-both #view-cards > .app-view-label, .app-both #view-cards > h2, .app-both #view-cards > p { grid-column: 1 / -1; }
+  .app-both #view-cards .app-cards { grid-template-columns: 1fr; }
+  .app-both #view-cards .app-band-section { margin-top: 10px; }
+  .app-both #view-cards .app-band-section__head { flex-direction: column; gap: 8px; align-items: flex-start; }
+}
+
+/* Only shown when printing both views (option-c.html?view=both) */
+.app-view-label { display: none; }
+.app-both .app-view-label { display: block; margin: 0 0 20px; padding: 5px 10px; background: #0b0c0c; color: #fff; font-weight: 700; width: fit-content; }
+@media print { .app-both .app-view-label { margin-top: 0; } }

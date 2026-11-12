@@ -1,5 +1,5 @@
 {#
-Layout for the design resource pages (home, design notes, documents).
+Layout for the design resource pages (home, round 1, design log, design notes, documents).
 The prototype pages themselves should extend layouts/main.html instead.
 #}
 
@@ -15,7 +15,8 @@ The prototype pages themselves should extend layouts/main.html instead.
     serviceUrl: "/",
     navigation: [
       { href: "/", text: "Home", active: activeNav == "home" },
-      { href: "/design-notes", text: "Design notes", active: activeNav == "design-notes" }
+      { href: "/round-1", text: "Round 1", active: activeNav == "round-1" },
+      { href: "/design-log", text: "Design log", active: activeNav == "design-log" }
     ]
   }) }}
 {% endblock %}

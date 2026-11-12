@@ -32,9 +32,21 @@ This service belongs to the APHA incubator. We are exploring animal diseases and
 
 ## Design resource
 
-The home page is a design resource for the team. It holds our design notes (decisions and directions), the priority
-view options, early wireframes and notes for the user researcher. All data is illustrative and the disease names are fictional. When
-the design is refined, the agreed pages will be built here as prototype pages for user research.
+The home page is a design resource for the team, kept minimal. It leads to:
+
+- **Round 1** (`/round-1`): the first round of user research, in two parts. The priority view design test has the
+  prototype, notes for the user researcher and open questions. The risk exploration has the early ideas and what we
+  want to learn.
+- **Design log** (`/design-log`): the journey, what we have learned and every version, across all rounds.
+
+Each research round has its own page. Each prototype version is a frozen copy in its own folder, so what a round tested
+stays as it was. The first is `app/assets/prototype/round-1/priority-view/v1.0/` (served at
+`/public/prototype/round-1/priority-view/v1.0/`). To tweak a prototype during a round, copy the folder to the next
+version (for example `v1.1`), make the change there, and add a row to the round page saying what changed and why. Never
+edit a version that has been tested.
+
+All data is illustrative and the disease names are fictional. When the design is refined, the agreed pages will be built
+here as prototype pages for user research.
 
 The priority view has three options. Option C (table or cards, with a "View as" switch) is the version developed
 furthest. Options A and B still reflect the earlier design and will be brought into line with C later. In option C:
@@ -46,7 +58,7 @@ furthest. Options A and B still reflect the earlier design and will be brought i
 - the list is sorted by priority score, with no rank, and every score shows a "Changed" date
 
 The design decisions made on option C each have a page in `app/assets/design/priority-view/` (served at
-`/public/design/priority-view/`). They are linked from the home page and from the options page
+`/public/design/priority-view/`). They are linked from the options page and the priority view design test page
 (`options.html`):
 
 | Page                            | Decision                                                                       |
@@ -59,11 +71,14 @@ The design decisions made on option C each have a page in `app/assets/design/pri
 
 | Where                           | What                                                                                             |
 | ------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `app/views/index.html`          | Design resource home page                                                                        |
-| `app/views/design-notes.html`   | Design notes: decisions made, directions, open questions                                         |
-| `app/views/docs/`               | Earlier documents: design brief and prototype spec                                               |
+| `app/views/index.html`          | Design resource home page, kept minimal                                                          |
+| `app/views/round-1/`            | Round 1: overview, priority view design test and risk exploration                                |
+| `app/views/design-log.html`     | Design log: the journey, learnings, versions and wider open questions                            |
+| `app/views/design-notes.html`   | Priority view design decisions and directions                                                    |
+| `app/views/docs/`               | Earlier documents: design brief and prototype spec (not linked from the home page)               |
 | `app/views/layouts/design.html` | Layout for the design resource pages. Prototype pages should use `layouts/main.html`             |
-| `app/assets/design/`            | Static design snapshots (served at `/public/design/`): priority view options, wireframes, images |
+| `app/assets/prototype/`         | Frozen prototype versions by round (served at `/public/prototype/`)                              |
+| `app/assets/design/`            | Static design history (served at `/public/design/`): priority view options, wireframes, images   |
 
 > [!CAUTION]
 > This repository is public. Do not add research recordings, participant details, named individuals or internal

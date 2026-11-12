@@ -1,0 +1,94 @@
+{% extends "layouts/design.html" %}
+
+{% set pageName = "Round 1" %}
+{% set activeNav = "round-1" %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/">Home</a></li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Round 1</li>
+  </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Round 1: priority view and risk exploration</h1>
+    <p class="govuk-body-l">
+      The first round of user research for the incubator&rsquo;s 100 days. It has two parts: a design test of the
+      priority view, and an exploration of risk.
+    </p>
+    <p class="govuk-body">
+      All data is illustrative and the disease names are fictional. Last updated 12 November 2026.
+    </p>
+
+    <h2 class="govuk-heading-l">The two parts</h2>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">The two parts of round 1</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Part</th>
+          <th scope="col" class="govuk-table__header">What we want to learn</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/round-1/priority-view">Priority view design test</a></td>
+          <td class="govuk-table__cell">Can people tell which diseases need action first, and what would they want from the pages behind it? Prototype v1.0 is ready</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Ready to test</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/round-1/risk-exploration">Risk exploration</a></td>
+          <td class="govuk-table__cell">What do people want from risk, and how should they move between diseases and risk? No prototype yet, only early ideas</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--purple">Early ideas</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-l">Open the prototype</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a class="govuk-link" href="/public/prototype/round-1/priority-view/v1.0/index.html?view=cards">Priority view v1.0, cards view</a></li>
+      <li><a class="govuk-link" href="/public/prototype/round-1/priority-view/v1.0/index.html?view=table">Priority view v1.0, table view</a></li>
+    </ul>
+    <p class="govuk-body">
+      Either view can be the first one. Which to start on is for the user researcher and the wider team to decide.
+      Pages that are not part of the round show a short &quot;not part of the test&quot; page.
+    </p>
+
+    <h2 class="govuk-heading-l">Versions in this round</h2>
+    <p class="govuk-body">
+      Each version is a frozen copy of the prototype in its own folder, so what we tested stays as it was. If we tweak
+      the prototype during the round, we copy the folder to a new version (for example v1.1) and add a row here with
+      what changed and why.
+    </p>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">Prototype versions in round 1</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Version</th>
+          <th scope="col" class="govuk-table__header">What it is</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/public/prototype/round-1/priority-view/v1.0/index.html?view=table">Priority view v1.0</a></td>
+          <td class="govuk-table__cell">12 November 2026. The first version for round 1: a frozen copy of the design at the end of the 11 November session. A table and cards on one page</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Ready to test</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-l">Wider learnings and the journey</h2>
+    <p class="govuk-body">
+      What we learn across rounds, how the design has changed and where each version is kept are in the
+      <a class="govuk-link" href="/design-log">design log</a>.
+    </p>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,13 +1,15 @@
 {% extends "layouts/design.html" %}
 
-{% set pageName = "Design notes" %}
-{% set activeNav = "design-notes" %}
+{% set pageName = "Priority view design decisions" %}
+{% set activeNav = "round-1" %}
 
 {% block beforeContent %}
 <div class="govuk-breadcrumbs">
   <ol class="govuk-breadcrumbs__list">
     <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/">Home</a></li>
-    <li class="govuk-breadcrumbs__list-item" aria-current="page">Design notes</li>
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/round-1">Round 1</a></li>
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/round-1/priority-view">Priority view design test</a></li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Design decisions</li>
   </ol>
 </div>
 {% endblock %}
@@ -16,24 +18,22 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h1 class="govuk-heading-xl">Design notes</h1>
+    <h1 class="govuk-heading-xl">Priority view design decisions</h1>
     <p class="govuk-body-l">
-      The decisions we have made, the directions we are taking and what is still open. Update this page when a decision changes.
+      The decisions behind priority view prototype v1.0, and the directions we are taking. Update this page when a decision changes.
     </p>
     <p class="govuk-body">
-      All data is illustrative and the disease names are fictional. Last updated 11 November 2026.
+      All data is illustrative and the disease names are fictional. Last updated 12 November 2026. The journey so far
+      and what we have learned are in the <a class="govuk-link" href="/design-log">design log</a>. Notes for the user
+      researcher and the open questions are on the <a class="govuk-link" href="/round-1/priority-view">priority view design test</a> page.
     </p>
 
     <h2 class="govuk-heading-m">On this page</h2>
     <ul class="govuk-list">
       <li><a class="govuk-link" href="#where-we-are">Where we are</a></li>
-      <li><a class="govuk-link" href="#how-we-got-here">How we got here</a></li>
-      <li><a class="govuk-link" href="#user-needs">How we went from 12 needs to 9</a></li>
       <li><a class="govuk-link" href="#decisions">Decisions made</a></li>
-      <li><a class="govuk-link" href="#researcher-notes">Notes for the user researcher</a></li>
       <li><a class="govuk-link" href="#directions">Directions we are taking</a></li>
-      <li><a class="govuk-link" href="#open-questions">Open questions</a></li>
-      <li><a class="govuk-link" href="#next">What happens next</a></li>
+      <li><a class="govuk-link" href="#open-questions">Open questions and what happens next</a></li>
     </ul>
   </div>
 </div>
@@ -48,14 +48,15 @@
       score, so subject matter experts can see which threats need action first.
     </p>
     <p class="govuk-body">
-      The team decided not to test the risk page on its own. We will test the <strong>priority view</strong> first. It
-      is the top-level page, so people meet risk and impact as part of it. We will then use the same sessions to learn
-      what people want from risk, impact, control measures and response options, and build those pages from what they say.
+      The team decided not to test the risk page on its own. Round 1 of user research starts with the
+      <strong>priority view</strong>. It is the top-level page, so people meet risk and impact as part of it. Round 1
+      also explores what people want from risk, impact, control measures and response options, so we can build those
+      pages from what they say.
     </p>
     <p class="govuk-body">Where each part has got to:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li><strong>Priority view:</strong> in design. Three options are prototyped, and we recommend testing option C. Option C has been developed further than A and B, which still show the earlier design and will be brought into line later. See the <a class="govuk-link" href="/public/design/priority-view/options.html">priority view options</a>.</li>
-      <li><strong>Risk page and disease page:</strong> early ideas only, in the <a class="govuk-link" href="/public/design/risk-wireframes/index.html">wireframes</a>.</li>
+      <li><strong>Priority view:</strong> prototype v1.0 is ready for round 1. It is option C, a table and cards on one page. Options A and B are earlier designs, not updated with the later changes and not planned for testing. See the <a class="govuk-link" href="/round-1/priority-view">priority view design test</a> and the <a class="govuk-link" href="/public/design/priority-view/options.html">priority view options</a>.</li>
+      <li><strong>Risk page and disease page:</strong> early ideas only, in the <a class="govuk-link" href="/public/design/risk-wireframes/index.html">wireframes</a>. See <a class="govuk-link" href="/round-1/risk-exploration">risk exploration</a>.</li>
       <li><strong>Impact, control measures and response options pages:</strong> not explored yet.</li>
     </ul>
     <p class="govuk-body">Decision pages for option C. Each compares the choices we looked at and records which one we chose:</p>
@@ -67,80 +68,9 @@
       <li><a class="govuk-link" href="/public/design/priority-view/score-change-options.html">Showing when a priority score changed</a></li>
     </ul>
 
-    <h2 class="govuk-heading-l" id="how-we-got-here">How we got here</h2>
     <p class="govuk-body">
-      Our thinking has changed direction a few times. This is the path, with the documents from each stage.
+      How our thinking changed direction and what we have learned are in the <a class="govuk-link" href="/design-log">design log</a>.
     </p>
-    <ol class="govuk-list govuk-list--number">
-      <li>
-        <strong>We set out to test the risk slice.</strong> The first brief was to prepare a user test of the risk
-        &quot;slice&quot;. We had not defined exactly which screens that meant.
-      </li>
-      <li>
-        <strong>We tried ideas for risk.</strong> We toyed with a few, including which way people should enter risk,
-        and which perspectives to view it from: by disease, by layer, or both. See the
-        <a class="govuk-link" href="/public/design/risk-wireframes/index.html">wireframes</a> and the
-        <a class="govuk-link" href="/public/design/structure-options.html">structure options</a>.
-      </li>
-      <li>
-        <strong>We saw that we needed to test the wider concept first.</strong> Before going deep on risk, we needed
-        to know whether the overall concept works for people. So we changed to concept testing alongside risk.
-      </li>
-      <li>
-        <strong>We chose the priority view to test the concept.</strong> Further discussion suggested that designing
-        and testing the priority view would make the concept more tangible. People can react to something concrete,
-        and we can build outwards from what they understand and tell us. See the
-        <a class="govuk-link" href="#researcher-notes">notes for the user researcher</a>.
-      </li>
-    </ol>
-    <p class="govuk-body">
-      That is why the priority view comes first, and why the risk, impact, control measures and response options pages will be shaped by
-      what we learn from it.
-    </p>
-
-    <h2 class="govuk-heading-l" id="user-needs">How we went from 12 needs to 9</h2>
-    <p class="govuk-body">
-      The user needs we agreed on 26 October 2026 were twelve, in three themes. On 9 November we combined three
-      pairs that overlapped, giving nine needs in the same three themes. The notes for the researcher and the early ideas now
-      use the nine. The evidence behind each need is held by the user research team and is not published here.
-    </p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>
-        <strong>UN1 One trusted source</strong> combines the earlier &quot;One trusted source&quot; and &quot;One
-        shared source&quot;. Both described one place everyone trusts that tells them when something changes.
-      </li>
-      <li>
-        <strong>UN2 Early warning signal</strong> combines &quot;When risk changes&quot; and &quot;Agreed trigger
-        point&quot;. The signal is in scope. Agreeing what happens when it changes, and who acts, is organisational,
-        so that part sits with governance.
-      </li>
-      <li>
-        <strong>UN8 Right level of detail</strong> combines &quot;Short operational summary&quot; and &quot;Right
-        level of detail&quot;. Both were about getting information at the depth each role needs.
-      </li>
-    </ul>
-    <p class="govuk-body">The other six carry across unchanged and are renumbered.</p>
-
-    <table class="govuk-table">
-      <caption class="govuk-table__caption govuk-table__caption--m">The nine user needs</caption>
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Need</th>
-          <th scope="col" class="govuk-table__header">Theme</th>
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row"><td class="govuk-table__cell">UN1 One trusted source</td><td class="govuk-table__cell">Knowing what&rsquo;s coming</td></tr>
-        <tr class="govuk-table__row"><td class="govuk-table__cell">UN2 Early warning signal</td><td class="govuk-table__cell">Knowing what&rsquo;s coming</td></tr>
-        <tr class="govuk-table__row"><td class="govuk-table__cell">UN3 Where it&rsquo;s spreading</td><td class="govuk-table__cell">Knowing what&rsquo;s coming</td></tr>
-        <tr class="govuk-table__row"><td class="govuk-table__cell">UN4 Highest-priority diseases</td><td class="govuk-table__cell">Deciding what matters most</td></tr>
-        <tr class="govuk-table__row"><td class="govuk-table__cell">UN5 Likely impact</td><td class="govuk-table__cell">Deciding what matters most</td></tr>
-        <tr class="govuk-table__row"><td class="govuk-table__cell">UN6 Early enough to prepare</td><td class="govuk-table__cell">Deciding what matters most</td></tr>
-        <tr class="govuk-table__row"><td class="govuk-table__cell">UN7 Evidence for policy decisions</td><td class="govuk-table__cell">Deciding what matters most</td></tr>
-        <tr class="govuk-table__row"><td class="govuk-table__cell">UN8 Right level of detail</td><td class="govuk-table__cell">Information I can use</td></tr>
-        <tr class="govuk-table__row"><td class="govuk-table__cell">UN9 Preparedness next to risk</td><td class="govuk-table__cell">Information I can use</td></tr>
-      </tbody>
-    </table>
 
   </div>
 </div>
@@ -188,7 +118,7 @@
         </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Which view people see first: cards, table, or alternating between them</th>
-          <td class="govuk-table__cell">Cards first suits a &quot;what do I act on?&quot; start. Alternating spreads the effect of what people see first across participants. This is for the user researcher and the wider team to decide. See the <a class="govuk-link" href="#researcher-notes">notes for the user researcher</a></td>
+          <td class="govuk-table__cell">Cards first suits a &quot;what do I act on?&quot; start. Alternating spreads the effect of what people see first across participants. This is for the user researcher and the wider team to decide. See the <a class="govuk-link" href="/round-1/priority-view#start-view">notes for the user researcher</a></td>
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">To decide</strong></td>
         </tr>
       </tbody>
@@ -428,98 +358,9 @@
       Not checked yet: a screen reader pass, 200% zoom and text spacing, and forced colours mode. We need an accessibility review before testing with users.
     </p>
 
-    <h2 class="govuk-heading-l" id="researcher-notes">Notes for the user researcher</h2>
     <p class="govuk-body">
-      These notes are from the design team, to help you plan the research. They are not a test plan. The method, tasks,
-      participants, session structure and analysis are for you and the wider team to decide.
-    </p>
-
-    <h3 class="govuk-heading-m">What is ready to test</h3>
-    <p class="govuk-body">
-      Option C of the priority view: one page with a switch between a
-      <a class="govuk-link" href="/public/design/priority-view/option-c.html?view=table">table</a> and
-      <a class="govuk-link" href="/public/design/priority-view/option-c.html?view=cards">cards</a>.
-      Options A and B have not had the design changes made to C, so they are not planned for testing.
-      All data is illustrative and the disease names are fictional.
-    </p>
-
-    <h3 class="govuk-heading-m">Which view people see first</h3>
-    <p class="govuk-body">This is for you and the wider team to decide: cards first, table first, or alternating between them. Some things that may help:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>Cards lead with a short reason for each disease and group the diseases by priority action. The table suits comparing one measure across diseases, and can be sorted.</li>
-      <li>The view people see first may shape what they do next. Alternating spreads that across participants, but needs enough people on each starting view.</li>
-      <li>Either view opens directly from a link, and the choice is kept in the address, so a link shares the view.</li>
-    </ul>
-
-    <h3 class="govuk-heading-m">What we would like to learn</h3>
-    <p class="govuk-body">These are the design team&rsquo;s questions. Use, change or replace them.</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>Can people tell which diseases need action first, and why?</li>
-      <li>Do they read the level names, the &quot;need review&quot; checklists and the &quot;Changed&quot; date the way we intend?</li>
-      <li>What would they want from risk, impact, control measures and response options pages? The priority view is a starting point for that conversation.</li>
-      <li>Which view do they use, do they switch, and why?</li>
-      <li>What do they expect to find behind each &quot;More details&quot; link?</li>
-    </ul>
-
-    <h3 class="govuk-heading-m">Things in the design to watch</h3>
-    <table class="govuk-table app-doc-list">
-      <caption class="govuk-table__caption govuk-visually-hidden">Things in the design to watch during research</caption>
-      <thead class="govuk-table__head">
-        <tr class="govuk-table__row">
-          <th scope="col" class="govuk-table__header">Thing</th>
-          <th scope="col" class="govuk-table__header">What to look for</th>
-        </tr>
-      </thead>
-      <tbody class="govuk-table__body">
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Impact level names</th>
-          <td class="govuk-table__cell">Does &quot;Minor&quot; read as the second of five levels, or as a minor concern?</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">&quot;Control measures&quot; and &quot;Response options&quot;</th>
-          <td class="govuk-table__cell">Do the names make sense without the key at the bottom of the page?</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">&quot;7 of 8 need review&quot; and the red bar</th>
-          <td class="govuk-table__cell">Is it read as good or bad? Is &quot;more red is worse&quot; clear?</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">&quot;Changed [date]&quot;</th>
-          <td class="govuk-table__cell">Is it read as the score changing, or the score being checked?</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">&quot;Act now: see why this is a priority&quot;</th>
-          <td class="govuk-table__cell">Do people expect actions behind it? What do they expect from &quot;More details&quot;?</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Plain-text disease names</th>
-          <td class="govuk-table__cell">Do people try to click the name?</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">A summary at the top of the page</th>
-          <td class="govuk-table__cell">Does anyone ask for one? What would it say for their role?</td>
-        </tr>
-        <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Screen readers and small screens</th>
-          <td class="govuk-table__cell">The name cell also holds the &quot;More details&quot; link, so it may be read on every cell of the row. Small text drops to 14px below about 640px wide</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <h3 class="govuk-heading-m">What is made up</h3>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>The scores, change dates and previous scores, and which disease has which impact areas.</li>
-      <li>The model: priority is risk &times; impact out of 25, with cut-offs at 15, 10 and 4. Control measures and response options do not change the score.</li>
-      <li>The checklist totals (10 control items and 8 response items), and how often risk and impact are updated.</li>
-    </ul>
-
-    <h3 class="govuk-heading-m">Before testing with users</h3>
-    <p class="govuk-body">
-      Colour contrast was checked as we designed, and every pair passes 4.5:1 for text. An accessibility review is still
-      needed, and the automated contrast check should be run again on the latest version. See
-      <a class="govuk-link" href="#open-questions">the open questions</a> and the
-      <a class="govuk-link" href="/public/design/priority-view/options.html#option-c-decisions">decisions made on option C</a>
-      for what is still undecided.
+      Notes for the user researcher, including what is not yet checked for accessibility, are on the
+      <a class="govuk-link" href="/round-1/priority-view">priority view design test</a> page.
     </p>
 
   </div>
@@ -564,30 +405,18 @@
       we can test it with users. The pages in this resource are static snapshots until then.
     </p>
 
-    <h2 class="govuk-heading-l" id="open-questions">Open questions</h2>
-    <ul class="govuk-list govuk-list--bullet">
-      <li><strong>How does preparedness link into priority?</strong> The new formula is risk &times; impact only (11 November). Control measures and response options are checklists of items needing review, and they sit beside the priority score without changing it. So a well-prepared disease and a badly prepared one with the same risk and impact get the same priority. Is that what we want? Should the checklists lower or raise the score, set the band, or only inform what to do (the &quot;Act now&quot; and &quot;Prioritise&quot; advice)? This needs an answer from the model owners before we show how priority is worked out.</li>
-      <li><strong>Brand.</strong> The prototype uses a Defra look: system font, green links, and a black header with a green stripe. The brief says GOV.UK only. Which do we put in front of users?</li>
-      <li><strong>&quot;Preparedness&quot; or &quot;vulnerability&quot;?</strong> The scoring framework uses &quot;vulnerability&quot;. The prototype says &quot;Preparedness&quot;. Do we test both?</li>
-      <li><strong>Who writes the reason on each card,</strong> and how often? The prototype shows it as written copy. Does anyone also need a summary at the top of the page, what should it say, and does it need to differ by role?</li>
-      <li><strong>What does &quot;Changed [date]&quot; mean?</strong> The prototype shows the date a priority score last changed, on every row. Does it mean the score value changed, or that risk and impact were last checked, even if the score stayed the same? The second is probably better for trust, but harder to explain. Do we need a rule for how long a change tag stays, and do we have the dates and previous scores for every disease?</li>
-      <li><strong>Real or fictional disease names</strong> in the test? Fictional names avoid distraction, but experts may find it harder to judge whether the results are plausible.</li>
-      <li><strong>Which participants</strong>, and how do we recruit people who work by disease and by measure?</li>
-      <li><strong>How do people reach a measure page?</strong> Option C has no &quot;Look in more detail&quot; line now, so they rely on the top navigation. If they miss it, we try column headings as links.</li>
-      <li><strong>Sections or pages?</strong> Is each of risk, impact, control measures and response options a separate page or a section of one page? Does impact need its own page?</li>
-      <li><strong>Levels and checklists.</strong> The prototype shows risk and impact as five named levels, which should line up with the five risk levels in the monthly report. Do they? Does impact change over time, or is it fixed until reassessed? The checklist totals (10 control items and 8 response items), how often each is updated and the priority cut-offs (15, 10 and 4) are all assumed. We need the real ones.</li>
-      <li><strong>Is there a &quot;what to do now&quot; page behind &quot;Act now: see why this is a priority&quot;?</strong> The wording promises the reason for the priority, not actions. If the disease page has actions, we can say so. If not, it stays as it is.</li>
-      <li><strong>Should the Disease cell also carry a short summary?</strong> It fits (the card text at 16px) but makes the table about 20% taller. The name cell is the row header, so a screen reader would read the whole summary on each cell of the row. It is not added. The same is true of the More details link in that cell, which the test should check.</li>
-      <li><strong>Real data.</strong> Which diseases have which impact areas, and what were the previous scores and change dates? Both are made up in the prototype.</li>
-      <li><strong>Internal source names.</strong> The prototype names internal data sources (IDM, D2R2, Risk ID and the preparedness indices) in &quot;Where this information comes from&quot;. This is a public repository. Is that fine, or should we generalise them before the next push?</li>
-    </ul>
-
-    <h2 class="govuk-heading-l" id="next">What happens next</h2>
+    <h2 class="govuk-heading-l" id="open-questions">Open questions and what happens next</h2>
+    <p class="govuk-body">
+      The open questions are with the part they affect: the
+      <a class="govuk-link" href="/round-1/priority-view#open-questions">priority view design test</a>, the
+      <a class="govuk-link" href="/round-1/risk-exploration#open-questions">risk exploration</a> and the
+      <a class="govuk-link" href="/design-log#open-questions">design log</a> for wider ones.
+    </p>
     <ol class="govuk-list govuk-list--number">
-      <li>Agree the open questions above as a team.</li>
+      <li>Agree the open questions as a team.</li>
       <li>Do an accessibility review before any testing with users.</li>
-      <li>The user researcher plans the sessions, using the notes above as a starting point.</li>
-      <li>Run the sessions, then group what we learn into issues and wants.</li>
+      <li>The user researcher plans the sessions, using the round 1 notes as a starting point.</li>
+      <li>Run the sessions, then group what we learn into issues and wants, and add them to the design log.</li>
       <li>Use what we learn to shape the Risk, Impact, Control measures and Response options pages.</li>
       <li>Rebuild the refined design as prototype pages in this repository.</li>
     </ol>

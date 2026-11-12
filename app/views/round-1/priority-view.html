@@ -1,0 +1,193 @@
+{% extends "layouts/design.html" %}
+
+{% set pageName = "Priority view design test" %}
+{% set activeNav = "round-1" %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/">Home</a></li>
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/round-1">Round 1</a></li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Priority view design test</li>
+  </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Priority view design test</h1>
+    <p class="govuk-body">
+      <strong class="govuk-tag govuk-tag--green">Ready to test</strong>
+    </p>
+    <p class="govuk-body-l">
+      Part of round 1. The priority view is the top-level page of the early warning service. It ranks exotic animal
+      diseases by priority, so people can see which need action first.
+    </p>
+    <p class="govuk-body">
+      These notes are from the design team, to help the user researcher plan the research. They are not a test plan.
+      The method, tasks, participants, session structure and analysis are for the researcher and the wider team to
+      decide. All data is illustrative and the disease names are fictional. Last updated 12 November 2026.
+    </p>
+
+    <h2 class="govuk-heading-m">On this page</h2>
+    <ul class="govuk-list">
+      <li><a class="govuk-link" href="#prototype">The prototype</a></li>
+      <li><a class="govuk-link" href="#start-view">Which view people see first</a></li>
+      <li><a class="govuk-link" href="#learn">What we would like to learn</a></li>
+      <li><a class="govuk-link" href="#watch">Things in the design to watch</a></li>
+      <li><a class="govuk-link" href="#made-up">What is made up</a></li>
+      <li><a class="govuk-link" href="#before-testing">Before testing with users</a></li>
+      <li><a class="govuk-link" href="#decisions">Design decisions</a></li>
+      <li><a class="govuk-link" href="#open-questions">Open questions</a></li>
+    </ul>
+
+    <h2 class="govuk-heading-l" id="prototype">The prototype</h2>
+    <p class="govuk-body">
+      Priority view v1.0 is one page with a switch between a table and cards. It is a frozen copy, so it stays as it
+      is while the design moves on. If it is tweaked during the round, the changes become v1.1 and are listed on the
+      <a class="govuk-link" href="/round-1">round 1 page</a>.
+    </p>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">Priority view prototype v1.0</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Open</th>
+          <th scope="col" class="govuk-table__header">What it is</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/public/prototype/round-1/priority-view/v1.0/index.html?view=cards">Cards view</a></td>
+          <td class="govuk-table__cell">Diseases grouped by priority action, each with a short reason and its four measures</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/public/prototype/round-1/priority-view/v1.0/index.html?view=table">Table view</a></td>
+          <td class="govuk-table__cell">Every disease in one sortable table, for comparing one measure across diseases</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Images: <a class="govuk-link" href="/public/design/images/priority-view-option-c-cards.png">cards<span class="govuk-visually-hidden"> (image)</span></a> and <a class="govuk-link" href="/public/design/images/priority-view-option-c-table.png">table<span class="govuk-visually-hidden"> (image)</span></a></td>
+          <td class="govuk-table__cell">Long screenshots of each view, for sharing and viewing on a screen</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="govuk-body">
+      Links that go beyond the priority view, such as a disease page or the risk page, lead to a short &quot;this page
+      is not part of the test&quot; page that shows which route the person chose.
+    </p>
+
+    <h2 class="govuk-heading-l" id="start-view">Which view people see first</h2>
+    <p class="govuk-body">This is for the user researcher and the wider team to decide: cards first, table first, or alternating between them. Some things that may help:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Cards lead with a short reason for each disease and group the diseases by priority action. The table suits comparing one measure across diseases, and can be sorted.</li>
+      <li>The view people see first may shape what they do next. Alternating spreads that across participants, but needs enough people on each starting view.</li>
+      <li>Either view opens directly from a link, and the choice is kept in the address, so a link shares the view.</li>
+    </ul>
+    <p class="govuk-body">
+      Options A and B of the priority view have not had the design changes made to option C, so they are not planned
+      for testing.
+    </p>
+
+    <h2 class="govuk-heading-l" id="learn">What we would like to learn</h2>
+    <p class="govuk-body">These are the design team&rsquo;s questions. Use, change or replace them.</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Can people tell which diseases need action first, and why?</li>
+      <li>Do they read the level names, the &quot;need review&quot; checklists and the &quot;Changed&quot; date the way we intend?</li>
+      <li>What would they want from risk, impact, control measures and response options pages? The priority view is a starting point for that conversation.</li>
+      <li>Which view do they use, do they switch, and why?</li>
+      <li>What do they expect to find behind each &quot;More details&quot; link?</li>
+    </ul>
+
+    <h2 class="govuk-heading-l" id="watch">Things in the design to watch</h2>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">Things in the design to watch during research</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Thing</th>
+          <th scope="col" class="govuk-table__header">What to look for</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Impact level names</th>
+          <td class="govuk-table__cell">Does &quot;Minor&quot; read as the second of five levels, or as a minor concern?</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">&quot;Control measures&quot; and &quot;Response options&quot;</th>
+          <td class="govuk-table__cell">Do the names make sense without the key at the bottom of the page?</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">&quot;7 of 8 need review&quot; and the red bar</th>
+          <td class="govuk-table__cell">Is it read as good or bad? Is &quot;more red is worse&quot; clear?</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">&quot;Changed [date]&quot;</th>
+          <td class="govuk-table__cell">Is it read as the score changing, or the score being checked?</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">&quot;Act now: see why this is a priority&quot;</th>
+          <td class="govuk-table__cell">Do people expect actions behind it? What do they expect from &quot;More details&quot;?</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Plain-text disease names</th>
+          <td class="govuk-table__cell">Do people try to click the name?</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">A summary at the top of the page</th>
+          <td class="govuk-table__cell">Does anyone ask for one? What would it say for their role?</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Screen readers and small screens</th>
+          <td class="govuk-table__cell">The name cell also holds the &quot;More details&quot; link, so it may be read on every cell of the row. Small text drops to 14px below about 640px wide</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-l" id="made-up">What is made up</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>The scores, change dates and previous scores, and which disease has which impact areas.</li>
+      <li>The model: priority is risk &times; impact out of 25, with cut-offs at 15, 10 and 4. Control measures and response options do not change the score.</li>
+      <li>The checklist totals (10 control items and 8 response items), and how often risk and impact are updated.</li>
+    </ul>
+
+    <h2 class="govuk-heading-l" id="before-testing">Before testing with users</h2>
+    <p class="govuk-body">
+      Colour contrast was checked as we designed, and every pair passes 4.5:1 for text. Not checked yet: a screen
+      reader pass, 200% zoom and text spacing, forced colours mode, and an automated contrast check on this version.
+      We need an accessibility review before testing with users.
+    </p>
+
+    <h2 class="govuk-heading-l" id="decisions">Design decisions</h2>
+    <p class="govuk-body">
+      The <a class="govuk-link" href="/design-notes">design decisions</a> page lists every decision behind v1.0, with
+      the reason and whether it is decided, recommended or for the team to decide. Five decision pages compare the
+      choices we looked at:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a class="govuk-link" href="/public/design/priority-view/priority-cell-options.html">Arranging the priority cell</a></li>
+      <li><a class="govuk-link" href="/public/design/priority-view/checklist-cell-options.html">Showing control measures and response options as checklists</a></li>
+      <li><a class="govuk-link" href="/public/design/priority-view/risk-impact-bars-options.html">Bars under the risk and impact levels</a></li>
+      <li><a class="govuk-link" href="/public/design/priority-view/card-hint-options.html">Explaining the measures on the cards</a></li>
+      <li><a class="govuk-link" href="/public/design/priority-view/score-change-options.html">Showing when a priority score changed</a></li>
+    </ul>
+
+    <h2 class="govuk-heading-l" id="open-questions">Open questions</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>How does preparedness link into priority?</strong> The model is risk &times; impact only. Control measures and response options are checklists of items needing review, and they sit beside the priority score without changing it. So a well-prepared disease and a badly prepared one with the same risk and impact get the same priority. Is that what we want? Should the checklists lower or raise the score, set the priority action, or only inform what to do? This needs an answer from the model owners before we show how priority is worked out.</li>
+      <li><strong>What does &quot;Changed [date]&quot; mean?</strong> The prototype shows the date a priority score last changed, on every row. Does it mean the score value changed, or that risk and impact were last checked, even if the score stayed the same? The second is probably better for trust, but harder to explain. Do we need a rule for how long a change tag stays, and do we have the dates and previous scores for every disease?</li>
+      <li><strong>Levels and checklists.</strong> The prototype shows risk and impact as five named levels, which should line up with the five risk levels in the monthly report. Do they? Does impact change over time, or is it fixed until reassessed? The checklist totals (10 control items and 8 response items), how often each is updated and the priority cut-offs (15, 10 and 4) are all assumed. We need the real ones.</li>
+      <li><strong>Is there a &quot;what to do now&quot; page behind &quot;Act now: see why this is a priority&quot;?</strong> The wording promises the reason for the priority, not actions. If the disease page has actions, we can say so. If not, it stays as it is.</li>
+      <li><strong>Should the Disease cell also carry a short summary?</strong> It fits (the card text at 16px) but makes the table about 20% taller. The name cell is the row header, so a screen reader would read the whole summary on each cell of the row. It is not added. The same is true of the More details link in that cell, which research should check.</li>
+      <li><strong>Who writes the reason on each card,</strong> and how often? The prototype shows it as written copy. Does anyone also need a summary at the top of the page, what should it say, and does it need to differ by role?</li>
+      <li><strong>How do people reach a measure page?</strong> The prototype has no &quot;Look in more detail&quot; line, so people rely on the top navigation. If they miss it, we try column headings as links.</li>
+      <li><strong>Real or fictional disease names</strong> in the research? Fictional names avoid distraction, but experts may find it harder to judge whether the results are plausible.</li>
+      <li><strong>Which participants</strong>, and how do we recruit people who work by disease and by measure?</li>
+    </ul>
+    <p class="govuk-body">
+      Wider questions, such as brand and real data, are in the <a class="govuk-link" href="/design-log#open-questions">design log</a>.
+    </p>
+  </div>
+</div>
+
+{% endblock %}

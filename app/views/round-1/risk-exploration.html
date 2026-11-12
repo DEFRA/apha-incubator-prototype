@@ -1,0 +1,110 @@
+{% extends "layouts/design.html" %}
+
+{% set pageName = "Risk exploration" %}
+{% set activeNav = "round-1" %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/">Home</a></li>
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/round-1">Round 1</a></li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Risk exploration</li>
+  </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Risk exploration</h1>
+    <p class="govuk-body">
+      <strong class="govuk-tag govuk-tag--purple">Early ideas</strong>
+    </p>
+    <p class="govuk-body-l">
+      Part of round 1. We want to learn what people want from risk, before we design the risk page. There is no
+      prototype yet, only early ideas.
+    </p>
+    <p class="govuk-body">
+      These notes are from the design team, to help the user researcher plan the research. They are not a test plan.
+      The method, tasks and participants are for the researcher and the wider team to decide. Last updated 12 November 2026.
+    </p>
+
+    <h2 class="govuk-heading-m">On this page</h2>
+    <ul class="govuk-list">
+      <li><a class="govuk-link" href="#why">Why risk is explored this way</a></li>
+      <li><a class="govuk-link" href="#learn">What we would like to learn</a></li>
+      <li><a class="govuk-link" href="#have">What we have so far</a></li>
+      <li><a class="govuk-link" href="#prototype">Prototype versions</a></li>
+      <li><a class="govuk-link" href="#open-questions">Open questions</a></li>
+    </ul>
+
+    <h2 class="govuk-heading-l" id="why">Why risk is explored this way</h2>
+    <p class="govuk-body">
+      The team decided not to test the risk page on its own. People meet risk and impact as part of the priority
+      view, so the priority view is the way in. The same research can also ask what people want from risk, impact,
+      control measures and response options, and we build those pages from what they say.
+    </p>
+
+    <h2 class="govuk-heading-l" id="learn">What we would like to learn</h2>
+    <p class="govuk-body">These are the design team&rsquo;s questions. Use, change or replace them.</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>What do people want to know about the risk of a disease arriving, and what would they decide from it?</li>
+      <li>Which way do people want to enter risk: by disease, by layer (risk, impact, control measures, response options), or both?</li>
+      <li>Do they want to compare one measure across every disease, or look at everything about one disease?</li>
+      <li>What changes in risk do they want to see, and how quickly?</li>
+      <li>Does impact need its own page, or does it sit with risk?</li>
+    </ul>
+
+    <h2 class="govuk-heading-l" id="have">What we have so far</h2>
+    <p class="govuk-body">These are very early thinking, not designs.</p>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">Early ideas for risk</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Page</th>
+          <th scope="col" class="govuk-table__header">What it is</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/public/design/risk-wireframes/index.html">Risk and impact wireframes</a></td>
+          <td class="govuk-table__cell">Options for a page showing every disease (1A to 1D) and a page for one disease (2A to 2C)</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--purple">Early ideas</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/public/design/structure-options.html">Disease-first or layer-first?</a></td>
+          <td class="govuk-table__cell">Three ways to move between diseases and the risk, impact, control measures and response options pages, with user flows</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--purple">Early ideas</strong></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="govuk-body">
+      Options 1A to 1C could become a page showing every disease on one measure. Option 2C, priority and four
+      layers, is the closest to a disease page showing all four measures. We would shape these from what people say.
+      How people move around is in the <a class="govuk-link" href="/public/design/priority-view/options.html#option-c-flow">user flows</a>.
+    </p>
+
+    <h2 class="govuk-heading-l" id="prototype">Prototype versions</h2>
+    <p class="govuk-body">
+      None yet. When there is a risk prototype it will be a frozen copy in its own folder, listed on the
+      <a class="govuk-link" href="/round-1">round 1 page</a>. In the priority view v1.0 prototype, the Risk link in the
+      navigation leads to a &quot;this page is not part of the test&quot; page that shows what the person chose.
+    </p>
+
+    <h2 class="govuk-heading-l" id="open-questions">Open questions</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Sections or pages?</strong> Is each of risk, impact, control measures and response options a separate page or a section of one page? Does impact need its own page?</li>
+      <li><strong>Disease first or layer first?</strong> Which way do people want to enter risk, and does it depend on their role?</li>
+      <li><strong>Do the risk levels line up?</strong> The prototype shows risk as five named levels. Do they line up with the five risk levels in the monthly report?</li>
+      <li><strong>How do people reach a risk page?</strong> If they miss the navigation, we try column headings as links.</li>
+      <li><strong>Real data.</strong> What does the monthly risk report give us, and how often does it change?</li>
+    </ul>
+    <p class="govuk-body">
+      Wider questions are in the <a class="govuk-link" href="/design-log#open-questions">design log</a>.
+    </p>
+  </div>
+</div>
+
+{% endblock %}

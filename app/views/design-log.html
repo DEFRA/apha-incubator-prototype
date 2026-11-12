@@ -1,0 +1,236 @@
+{% extends "layouts/design.html" %}
+
+{% set pageName = "Design log" %}
+{% set activeNav = "design-log" %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/">Home</a></li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Design log</li>
+  </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Design log</h1>
+    <p class="govuk-body-l">
+      How the design has changed, what we have learned along the way, and where each version and research round is kept.
+    </p>
+    <p class="govuk-body">
+      All data is illustrative and the disease names are fictional. Last updated 12 November 2026.
+    </p>
+
+    <h2 class="govuk-heading-m">On this page</h2>
+    <ul class="govuk-list">
+      <li><a class="govuk-link" href="#versions">Versions and research rounds</a></li>
+      <li><a class="govuk-link" href="#journey">The journey so far</a></li>
+      <li><a class="govuk-link" href="#learnings">What we have learned from designing</a></li>
+      <li><a class="govuk-link" href="#user-needs">The nine user needs</a></li>
+      <li><a class="govuk-link" href="#open-questions">Wider open questions</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h2 class="govuk-heading-l" id="versions">Versions and research rounds</h2>
+    <p class="govuk-body">
+      Each research round has its own page. Each prototype version is a frozen copy in its own folder, so what a round
+      tested stays exactly as it was. If a prototype is tweaked during a round, it becomes a new version (for
+      example v1.1) and the round page records what changed and why.
+    </p>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">Versions and research rounds</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Round and part</th>
+          <th scope="col" class="govuk-table__header">Prototype</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/round-1/priority-view">Round 1: priority view design test</a></td>
+          <td class="govuk-table__cell">
+            v1.0, one page with a table and cards (<a class="govuk-link" href="/public/prototype/round-1/priority-view/v1.0/index.html?view=table">open</a>)
+          </td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Ready to test</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/round-1/risk-exploration">Round 1: risk exploration</a></td>
+          <td class="govuk-table__cell">None yet. Early ideas only</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--purple">Early ideas</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="govuk-body">The design history behind version 1.0, kept for reference:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a class="govuk-link" href="/design-notes">Priority view design decisions</a>: every decision made on the way to v1.0, with the reason</li>
+      <li><a class="govuk-link" href="/public/design/priority-view/options.html">Priority view options</a>: options A, B and C, how people move around, and the five decision pages. Options A and B are earlier designs and are not planned for testing</li>
+      <li><a class="govuk-link" href="/public/design/risk-wireframes/index.html">Risk and impact wireframes</a> and <a class="govuk-link" href="/public/design/structure-options.html">structure options</a>: very early ideas for the risk and disease pages</li>
+    </ul>
+
+    <h2 class="govuk-heading-l" id="journey">The journey so far</h2>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">The journey so far</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">When</th>
+          <th scope="col" class="govuk-table__header">What happened</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Early on</th>
+          <td class="govuk-table__cell">We set out to test the risk &quot;slice&quot;. We had not defined exactly which screens that meant</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Before the concept test</th>
+          <td class="govuk-table__cell">We tried ideas for risk, including which way people should enter it and which perspective to view it from: by disease, by layer, or both. See the wireframes and structure options</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">26 October 2026</th>
+          <td class="govuk-table__cell">Twelve user needs agreed, in three themes</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">5 November 2026</th>
+          <td class="govuk-table__cell">Journey mapping and concept collaboration sessions</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">9 November 2026</th>
+          <td class="govuk-table__cell">The twelve needs combined into nine, in the same three themes</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Early November 2026</th>
+          <td class="govuk-table__cell">The team decided to test the wider concept before going deep on risk. We chose the priority view to make the concept concrete, so people can react to something real and we build outwards from what they tell us. Three options were prototyped</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">11 November 2026</th>
+          <td class="govuk-table__cell">Design session on the priority view. Option C was developed furthest: a table and cards on one page, a new scoring model, checklists, a change date on every score and plain-text titles. Five decision pages record the choices</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">12 November 2026</th>
+          <td class="govuk-table__cell">Prototype v1.0 frozen and packaged as round 1: a priority view design test and a risk exploration</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-l" id="learnings">What we have learned from designing</h2>
+    <p class="govuk-body">
+      These are design learnings from making and comparing options. They are not research findings. Research learnings
+      from each round will be added under the round.
+    </p>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">Design learnings</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Learning</th>
+          <th scope="col" class="govuk-table__header">Where it led</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">One summary at the top can&rsquo;t be short and right for everyone</th>
+          <td class="govuk-table__cell">We removed the top summary and kept a one-line reason on each card</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">A rank number gave false precision</th>
+          <td class="govuk-table__cell">We removed the rank and sort by priority score</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Hints under every label made the cards busy</th>
+          <td class="govuk-table__cell">A key at the bottom of the page explains the measures once. See <a class="govuk-link" href="/public/design/priority-view/card-hint-options.html">card hint options</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Red against green fails for colour blindness, and a high risk and a high preparedness score pull in opposite directions</th>
+          <td class="govuk-table__cell">Control measures and response options show a count of items to review with dark red segments. See <a class="govuk-link" href="/public/design/priority-view/checklist-cell-options.html">checklist options</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Showing a change needs a date. Otherwise a stable score looks the same as one nobody has checked</th>
+          <td class="govuk-table__cell">Every score says when it changed. See <a class="govuk-link" href="/public/design/priority-view/score-change-options.html">showing when a score changed</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">A tag, a score and a change are too much to read as three styles</th>
+          <td class="govuk-table__cell">Plain lines in one style under the tag. See <a class="govuk-link" href="/public/design/priority-view/priority-cell-options.html">priority cell options</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">&quot;Bands&quot; is a word we made up, and capitals are harder to read</th>
+          <td class="govuk-table__cell">&quot;Priority actions&quot;, in sentence case</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Link wording promises something. &quot;Disease details&quot; reads as facts about the disease, and &quot;what to do now&quot; promises content we may not have</th>
+          <td class="govuk-table__cell">&quot;Act now: see why this is a priority&quot; for the two Act now diseases, and &quot;More details&quot; for the rest</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">A long date line squeezed the most important column, the disease name</th>
+          <td class="govuk-table__cell">The Disease column has a minimum width and the date sits at the bottom of the cell in smaller text</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-l" id="user-needs">The nine user needs</h2>
+    <p class="govuk-body">
+      The user needs we agreed on 26 October 2026 were twelve, in three themes. On 9 November we combined three pairs
+      that overlapped, giving nine needs in the same three themes. The evidence behind each need is held by the user
+      research team and is not published here.
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <strong>UN1 One trusted source</strong> combines the earlier &quot;One trusted source&quot; and &quot;One
+        shared source&quot;. Both described one place everyone trusts that tells them when something changes.
+      </li>
+      <li>
+        <strong>UN2 Early warning signal</strong> combines &quot;When risk changes&quot; and &quot;Agreed trigger
+        point&quot;. The signal is in scope. Agreeing what happens when it changes, and who acts, is organisational,
+        so that part sits with governance.
+      </li>
+      <li>
+        <strong>UN8 Right level of detail</strong> combines &quot;Short operational summary&quot; and &quot;Right
+        level of detail&quot;. Both were about getting information at the depth each role needs.
+      </li>
+    </ul>
+    <p class="govuk-body">The other six carry across unchanged and are renumbered.</p>
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">The nine user needs</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Need</th>
+          <th scope="col" class="govuk-table__header">Theme</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row"><td class="govuk-table__cell">UN1 One trusted source</td><td class="govuk-table__cell">Knowing what&rsquo;s coming</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">UN2 Early warning signal</td><td class="govuk-table__cell">Knowing what&rsquo;s coming</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">UN3 Where it&rsquo;s spreading</td><td class="govuk-table__cell">Knowing what&rsquo;s coming</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">UN4 Highest-priority diseases</td><td class="govuk-table__cell">Deciding what matters most</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">UN5 Likely impact</td><td class="govuk-table__cell">Deciding what matters most</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">UN6 Early enough to prepare</td><td class="govuk-table__cell">Deciding what matters most</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">UN7 Evidence for policy decisions</td><td class="govuk-table__cell">Deciding what matters most</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">UN8 Right level of detail</td><td class="govuk-table__cell">Information I can use</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">UN9 Preparedness next to risk</td><td class="govuk-table__cell">Information I can use</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-l" id="open-questions">Wider open questions</h2>
+    <p class="govuk-body">
+      These cut across rounds. Questions about one part are on that part&rsquo;s page:
+      <a class="govuk-link" href="/round-1/priority-view#open-questions">priority view</a> and
+      <a class="govuk-link" href="/round-1/risk-exploration#open-questions">risk exploration</a>.
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Brand.</strong> The prototype uses a Defra look: system font, green links, and a black header with a green stripe. The brief says GOV.UK only. Which do we put in front of users?</li>
+      <li><strong>&quot;Preparedness&quot; or &quot;vulnerability&quot;?</strong> The scoring framework uses &quot;vulnerability&quot;. The prototype says &quot;Preparedness&quot;. Do we test both?</li>
+      <li><strong>Real data.</strong> Which diseases have which impact areas, and what were the previous scores and change dates? All of it is made up in the prototype.</li>
+      <li><strong>Internal source names.</strong> The prototype names internal data sources (IDM, D2R2, Risk ID and the preparedness indices) in &quot;Where this information comes from&quot;. This is a public repository. Is that fine, or should we generalise them before the next push?</li>
+    </ul>
+
+  </div>
+</div>
+
+{% endblock %}
