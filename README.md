@@ -34,19 +34,19 @@ This service belongs to the APHA incubator. We are exploring animal diseases and
 
 The home page is a design resource for the team, kept minimal. It leads to:
 
-- **Round 1** (`/round-1`): the first round of user research, in two parts. The priority view design test has the
+- **Round 1** (`/round-1`): the first round of usability testing, in two parts. The priority view design test has the
   prototype, notes for the user researcher and open questions. The risk exploration has the early ideas and what we
   want to learn.
 - **Design log** (`/design-log`): the journey, what we have learned and every version, across all rounds.
 
-Each research round has its own page. Each prototype version is a frozen copy in its own folder, so what a round tested
+Each round of testing has its own page. Each prototype version is a frozen copy in its own folder, so what a round tested
 stays as it was. The first is `app/assets/prototype/round-1/priority-view/v1.0/` (served at
 `/public/prototype/round-1/priority-view/v1.0/`). To tweak a prototype during a round, copy the folder to the next
 version (for example `v1.1`), make the change there, and add a row to the round page saying what changed and why. Never
 edit a version that has been tested.
 
 All data is illustrative and the disease names are fictional. When the design is refined, the agreed pages will be built
-here as prototype pages for user research.
+here as prototype pages for usability testing.
 
 The priority view has three options. Option C (table or cards, with a "View as" switch) is the version developed
 furthest. Options A and B still reflect the earlier design and will be brought into line with C later. In option C:
