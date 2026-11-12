@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en" class="govuk-template">
+<head>
+<meta charset="utf-8">
+<title>Design options: signalling priority without prescribing action</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="govuk-frontend.min.css">
+<link rel="stylesheet" href="priority.css">
+<style>
+  .app-hub-bar { background: #0b0c0c; color: #b1b4b6; font: 16px/1.3 Arial, sans-serif; padding: 10px 20px; }
+  .app-hub-bar a { color: #fff; font-weight: 700; margin-right: 16px; }
+  .app-hub-bar a:focus { outline: 3px solid #ffdd00; background: #ffdd00; color: #0b0c0c; }
+
+  .sg-opt { margin: 0 0 60px; padding-top: 20px; border-top: 5px solid #0b0c0c; }
+  .sg-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 30px; margin-top: 20px; }
+  .sg-cols h3 { margin-top: 0; }
+  @media (max-width: 48em) { .sg-cols { grid-template-columns: 1fr; } }
+
+  /* Small mock-ups: only the disease name and the priority cell, so the signal stands out */
+  .sg-mock { margin: 20px 0; max-width: 760px; }
+  .sg-mock table { margin: 0; min-width: 0; }
+  .sg-mock th, .sg-mock td { vertical-align: top; padding: 15px; }
+  .sg-mock thead th:nth-child(1) { width: 38%; }
+  .sg-mock tbody th { font-weight: 700; color: #0b0c0c; }
+  .sg-mock .app-priority { background: var(--sorted-tint); }
+  .sg-line { display: block; margin-top: 8px; color: var(--secondary); }
+  .sg-bar { display: block; width: 170px; max-width: 100%; height: 12px; margin-top: 10px; border: 1px solid #6f777b; background: #fff; }
+  .sg-bar i { display: block; height: 100%; background: #003078; }
+  .sg-marker { display: inline-block; padding: 2px 8px; border: 2px solid #0b0c0c; background: #fff; color: #0b0c0c; font-weight: 700; line-height: 1.25; white-space: nowrap; }
+  .sg-top th { box-shadow: inset 8px 0 0 #d4351c; }
+  .sg-lens { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; margin: 20px 0; max-width: 900px; }
+  .sg-lens > div { border: 1px solid var(--divider); padding: 15px; background: #fff; }
+  .sg-lens h4 { margin: 0 0 10px; }
+  @media (max-width: 48em) { .sg-lens { grid-template-columns: 1fr; } }
+  .sg-toggle { margin: 20px 0 10px; flex-wrap: wrap; gap: 10px 0; }
+  .sg-toggle .app-toggle__button { padding: 8px 14px; }
+  .sg-compare th, .sg-compare td { vertical-align: top; }
+</style>
+</head>
+<body class="govuk-template__body app-sentence-case">
+<div class="app-hub-bar"><a href="/design-log#priority-signal">Back to the design log</a><span>Design options, 12 November 2026. Illustrative data, fictional disease names.</span></div>
+<div class="govuk-width-container app-wide">
+  <main class="govuk-main-wrapper" id="main-content">
+    <p class="govuk-body-s"><a class="govuk-link" href="/round-1/priority-view">Priority view design test</a> · For the design team, not for participants</p>
+    <h1 class="govuk-heading-xl">Signalling priority without prescribing action</h1>
+    <p class="govuk-body-l">
+      The priority column tells people to <strong>Act now</strong>, <strong>Prioritise</strong>, <strong>Monitor</strong> or <strong>Maintain</strong>. Not everyone who reads the page needs to act, so these are options for signalling priority that don&rsquo;t.
+    </p>
+    <p class="govuk-body">
+      <strong class="govuk-tag govuk-tag--blue">To review</strong>
+      Not applied to prototype v1.1, which still uses the priority actions. These are options for the team to review.
+    </p>
+
+    <h2 class="govuk-heading-l">The problem</h2>
+    <p class="govuk-body">
+      The team review raised that the priority actions are not very helpful at an individual level. Some people will need
+      to act on a disease and others won&rsquo;t, depending on their role. Telling every user to &quot;Act now&quot; wrongly
+      attributes action to everyone.
+    </p>
+    <p class="govuk-body">
+      But the column still has to get attention. The CEO does need to organise action, and the highest priorities should stand out for them.
+      So the design has to do two things at once:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Draw attention</strong> to the highest priorities, especially for a leader who organises action.</li>
+      <li><strong>Not prescribe</strong> an action that is not relevant to everyone who reads it.</li>
+    </ul>
+
+    <h2 class="govuk-heading-l">Principles for the options</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Describe where a disease sits. Don&rsquo;t say what to do about it.</li>
+      <li>Get attention through order, emphasis and size, not through commands.</li>
+      <li>Let each role find their own part, rather than guessing it for them.</li>
+      <li>Colour is never the only cue, so every option has a text label or a printed score.</li>
+      <li>The score stays visible in every option.</li>
+    </ul>
+    <p class="govuk-body">
+      The mock-ups show only the disease name and the priority cell, with the same five fictional diseases as prototype
+      v1.1. The other columns are unchanged. The score is out of 60 and the top group is 30 or more.
+    </p>
+
+    <h2 class="govuk-heading-m">The options</h2>
+    <ul class="govuk-list">
+      <li><a class="govuk-link" href="#o1">1. Say where it sits</a></li>
+      <li><a class="govuk-link" href="#o2">2. Numbered priority groups</a></li>
+      <li><a class="govuk-link" href="#o3">3. A score bar, with no category</a></li>
+      <li><a class="govuk-link" href="#o4">4. Emphasise only the top group</a></li>
+      <li><a class="govuk-link" href="#o5">5. Show what is driving the score</a></li>
+      <li><a class="govuk-link" href="#o6">6. A marker for leadership attention</a></li>
+      <li><a class="govuk-link" href="#o7">7. A view for your role</a></li>
+      <li><a class="govuk-link" href="#compare">How they compare, and ways to combine them</a></li>
+    </ul>
+
+    <!-- ===== Option 1 ===== -->
+    <section class="sg-opt" aria-labelledby="o1">
+      <h2 class="govuk-heading-l" id="o1">Option 1: say where it sits</h2>
+      <p class="govuk-body">Keep the four coloured tags, but change the words from an instruction to a position: Highest priority, High priority, Medium priority and Low priority. Same colours, same cut-offs.</p>
+      <div class="sg-mock app-scroll" tabindex="0" role="region" aria-label="Option 1 mock-up">
+        <table class="govuk-table">
+          <thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Disease</th><th scope="col" class="govuk-table__header">Priority</th></tr></thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Sprouting hoof disease</th><td class="govuk-table__cell app-priority"><span class="app-band app-band--act">Highest priority</span><span class="app-priority__detail">Score 45</span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Himalayan Dragon Pox</th><td class="govuk-table__cell app-priority"><span class="app-band app-band--prioritise">High priority</span><span class="app-priority__detail">Score 27</span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Rainbow tail disease</th><td class="govuk-table__cell app-priority"><span class="app-band app-band--prioritise">High priority</span><span class="app-priority__detail">Score 24</span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Fuzzy fox flu</th><td class="govuk-table__cell app-priority"><span class="app-band app-band--monitor">Medium priority</span><span class="app-priority__detail">Score 14</span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Wing wobble</th><td class="govuk-table__cell app-priority"><span class="app-band app-band--maintain">Low priority</span><span class="app-priority__detail">Score 2</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sg-cols">
+        <div>
+          <h3 class="govuk-heading-m">Good for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>The smallest change, because the colours, scale and layout stay as they are</li>
+            <li>Still draws the eye to the top of the list, so a leader sees it first</li>
+            <li>Says nothing about who should do what</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="govuk-heading-m">Watch for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>&quot;Highest priority&quot; may still be read as &quot;I must act&quot;</li>
+            <li>The word &quot;priority&quot; repeats in a column that is already called Priority</li>
+            <li>&quot;High&quot; and &quot;Medium&quot; are also risk levels, so they could be confused</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Option 2 ===== -->
+    <section class="sg-opt" aria-labelledby="o2">
+      <h2 class="govuk-heading-l" id="o2">Option 2: numbered priority groups</h2>
+      <p class="govuk-body">Use a neutral label, Priority group 1 to 4, with group 1 the highest. The key says what each group means in score terms, and nothing about action.</p>
+      <div class="sg-mock app-scroll" tabindex="0" role="region" aria-label="Option 2 mock-up">
+        <table class="govuk-table">
+          <thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Disease</th><th scope="col" class="govuk-table__header">Priority</th></tr></thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Sprouting hoof disease</th><td class="govuk-table__cell app-priority"><span class="app-band app-band--act">Priority group 1</span><span class="app-priority__detail">Score 45</span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Himalayan Dragon Pox</th><td class="govuk-table__cell app-priority"><span class="app-band app-band--prioritise">Priority group 2</span><span class="app-priority__detail">Score 27</span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Rainbow tail disease</th><td class="govuk-table__cell app-priority"><span class="app-band app-band--prioritise">Priority group 2</span><span class="app-priority__detail">Score 24</span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Fuzzy fox flu</th><td class="govuk-table__cell app-priority"><span class="app-band app-band--monitor">Priority group 3</span><span class="app-priority__detail">Score 14</span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Wing wobble</th><td class="govuk-table__cell app-priority"><span class="app-band app-band--maintain">Priority group 4</span><span class="app-priority__detail">Score 2</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sg-cols">
+        <div>
+          <h3 class="govuk-heading-m">Good for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Completely neutral wording, with no verb</li>
+            <li>Familiar from other prioritisation schemes, and easy to refer to in a meeting</li>
+            <li>Keeps the colours that help a leader find the top</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="govuk-heading-m">Watch for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Needs a key, and 1 is the highest while a higher score is also higher, which can confuse</li>
+            <li>Numbers can look like a rank, which we removed for giving false precision</li>
+            <li>Less meaning at a glance than a word</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Option 3 ===== -->
+    <section class="sg-opt" aria-labelledby="o3">
+      <h2 class="govuk-heading-l" id="o3">Option 3: a score bar, with no category</h2>
+      <p class="govuk-body">Drop the categories altogether. Each disease shows its score and a single-colour bar, filled in proportion to the score out of 60. The list is already sorted, so the longest bars are at the top.</p>
+      <div class="sg-mock app-scroll" tabindex="0" role="region" aria-label="Option 3 mock-up">
+        <table class="govuk-table">
+          <thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Disease</th><th scope="col" class="govuk-table__header">Priority</th></tr></thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Sprouting hoof disease</th><td class="govuk-table__cell app-priority">Score 45 out of 60<span class="sg-bar" aria-hidden="true"><i style="width:75%"></i></span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Himalayan Dragon Pox</th><td class="govuk-table__cell app-priority">Score 27 out of 60<span class="sg-bar" aria-hidden="true"><i style="width:45%"></i></span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Rainbow tail disease</th><td class="govuk-table__cell app-priority">Score 24 out of 60<span class="sg-bar" aria-hidden="true"><i style="width:40%"></i></span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Fuzzy fox flu</th><td class="govuk-table__cell app-priority">Score 14 out of 60<span class="sg-bar" aria-hidden="true"><i style="width:23.3%"></i></span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Wing wobble</th><td class="govuk-table__cell app-priority">Score 2 out of 60<span class="sg-bar" aria-hidden="true"><i style="width:3.3%"></i></span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sg-cols">
+        <div>
+          <h3 class="govuk-heading-m">Good for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>No label that sounds like an instruction, and no role is implied</li>
+            <li>Shows how far apart the scores are, which a category hides</li>
+            <li>Needs no key, and only one colour</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="govuk-heading-m">Watch for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>No clear line between &quot;needs attention&quot; and &quot;doesn&rsquo;t&quot;, so a leader has to judge it</li>
+            <li>Loses the four groups on the cards view, which are grouped by priority action today</li>
+            <li>A bar is decoration, so the printed score has to carry the meaning</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Option 4 ===== -->
+    <section class="sg-opt" aria-labelledby="o4">
+      <h2 class="govuk-heading-l" id="o4">Option 4: emphasise only the top group</h2>
+      <p class="govuk-body">Don&rsquo;t label every disease. Only the diseases in the top group (a score of 30 or more) get emphasis: a heavy red edge on the row and an outlined &quot;Highest priority&quot; label. Everything else shows just the score.</p>
+      <div class="sg-mock app-scroll" tabindex="0" role="region" aria-label="Option 4 mock-up">
+        <table class="govuk-table">
+          <thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Disease</th><th scope="col" class="govuk-table__header">Priority</th></tr></thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row sg-top"><th scope="row" class="govuk-table__header">Sprouting hoof disease</th><td class="govuk-table__cell app-priority"><span class="sg-marker">Highest priority</span><span class="app-priority__detail">Score 45</span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Himalayan Dragon Pox</th><td class="govuk-table__cell app-priority">Score 27</td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Rainbow tail disease</th><td class="govuk-table__cell app-priority">Score 24</td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Fuzzy fox flu</th><td class="govuk-table__cell app-priority">Score 14</td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Wing wobble</th><td class="govuk-table__cell app-priority">Score 2</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sg-cols">
+        <div>
+          <h3 class="govuk-heading-m">Good for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>The strongest pull on a leader&rsquo;s attention, because only the top stands out</li>
+            <li>Nobody else is told to do anything, and the lower rows stay calm</li>
+            <li>Fewer labels and less colour on the page</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="govuk-heading-m">Watch for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Unlabelled rows may look unimportant, when a role could still care about them</li>
+            <li>The line for &quot;top&quot; (30 or more) is made up, and sets who gets noticed</li>
+            <li>With one disease in the top group, there may be little to see for most people</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Option 5 ===== -->
+    <section class="sg-opt" aria-labelledby="o5">
+      <h2 class="govuk-heading-l" id="o5">Option 5: show what is driving the score</h2>
+      <p class="govuk-body">Say why a disease scores as it does, so each role can see whether it is their part. A measure counts as a driver when it is at the worse end: a high or very high risk, a major or severe impact, or slightly or not at all prepared. This does not say who should act. The reader works that out.</p>
+      <div class="sg-mock app-scroll" tabindex="0" role="region" aria-label="Option 5 mock-up">
+        <table class="govuk-table">
+          <thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Disease</th><th scope="col" class="govuk-table__header">Priority</th></tr></thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Sprouting hoof disease</th><td class="govuk-table__cell app-priority">Score 45<span class="sg-line">Driven by: very high risk, major impact, not at all prepared</span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Himalayan Dragon Pox</th><td class="govuk-table__cell app-priority">Score 27<span class="sg-line">Driven by: major impact, slightly prepared</span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Rainbow tail disease</th><td class="govuk-table__cell app-priority">Score 24<span class="sg-line">Driven by: severe impact</span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Fuzzy fox flu</th><td class="govuk-table__cell app-priority">Score 14<span class="sg-line">Driven by: high risk</span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Wing wobble</th><td class="govuk-table__cell app-priority">Score 2<span class="sg-line">Nothing at the worse end</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sg-cols">
+        <div>
+          <h3 class="govuk-heading-m">Good for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Lets different roles find their own part without us guessing it, for example risk, impact or preparedness</li>
+            <li>Explains the score, which supports trust in it</li>
+            <li>No instruction at all</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="govuk-heading-m">Watch for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Gives a leader no single attention signal, so it works better combined with another option</li>
+            <li>More text in the cell, and the cell is already busy</li>
+            <li>Needs a rule for &quot;driver&quot;, and the rule here is made up</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Option 6 ===== -->
+    <section class="sg-opt" aria-labelledby="o6">
+      <h2 class="govuk-heading-l" id="o6">Option 6: a marker for leadership attention</h2>
+      <p class="govuk-body">Keep the score neutral, and add one separate marker that says who it is for: &quot;For leadership attention&quot;. It appears on the diseases in the top group. It says that someone needs to organise action, and attributes that to leadership, not to every reader.</p>
+      <div class="sg-mock app-scroll" tabindex="0" role="region" aria-label="Option 6 mock-up">
+        <table class="govuk-table">
+          <thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Disease</th><th scope="col" class="govuk-table__header">Priority</th></tr></thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Sprouting hoof disease</th><td class="govuk-table__cell app-priority">Score 45<span class="sg-line"><span class="sg-marker">For leadership attention</span></span></td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Himalayan Dragon Pox</th><td class="govuk-table__cell app-priority">Score 27</td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Rainbow tail disease</th><td class="govuk-table__cell app-priority">Score 24</td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Fuzzy fox flu</th><td class="govuk-table__cell app-priority">Score 14</td></tr>
+            <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Wing wobble</th><td class="govuk-table__cell app-priority">Score 2</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sg-cols">
+        <div>
+          <h3 class="govuk-heading-m">Good for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>Gets the CEO&rsquo;s attention directly, and says who it is for</li>
+            <li>Other readers see it informs leadership, and are not told to act</li>
+            <li>Separates &quot;how high is the score&quot; from &quot;who needs to organise action&quot;</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="govuk-heading-m">Watch for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>It names a role, so we need to be sure that is who organises action</li>
+            <li>Could read as &quot;this is not for me&quot; to someone who does need to act</li>
+            <li>The line for the marker (30 or more) is made up</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Option 7 ===== -->
+    <section class="sg-opt" aria-labelledby="o7">
+      <h2 class="govuk-heading-l" id="o7">Option 7: a view for your role</h2>
+      <p class="govuk-body">A bigger idea. People choose a role, and the Priority column signals what matters to that role, so nobody is shown a signal that is not for them. The roles below are examples only. The real roles would come from research.</p>
+      <div class="app-toggle sg-toggle" role="group" aria-label="View for (mock-up, the buttons don't work)">
+        <span class="app-toggle__label">View for</span>
+        <button type="button" class="app-toggle__button" aria-pressed="true">All roles</button>
+        <button type="button" class="app-toggle__button" aria-pressed="false">Leadership</button>
+        <button type="button" class="app-toggle__button" aria-pressed="false">Operations</button>
+        <button type="button" class="app-toggle__button" aria-pressed="false">Policy</button>
+      </div>
+      <p class="govuk-body">What the Priority cell for Sprouting hoof disease could show for each choice:</p>
+      <div class="sg-lens">
+        <div>
+          <h4 class="govuk-heading-s">All roles</h4>
+          <p class="govuk-body">Score 45</p>
+          <p class="govuk-body govuk-!-margin-bottom-0 sg-line">No signal, just the score and the order.</p>
+        </div>
+        <div>
+          <h4 class="govuk-heading-s">Leadership</h4>
+          <p class="govuk-body">Score 45<span class="sg-line"><span class="sg-marker">For leadership attention</span></span></p>
+        </div>
+        <div>
+          <h4 class="govuk-heading-s">Operations</h4>
+          <p class="govuk-body">Score 45<span class="sg-line">Not at all prepared</span></p>
+        </div>
+      </div>
+      <div class="sg-cols">
+        <div>
+          <h3 class="govuk-heading-m">Good for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>The only option that tailors the signal, so each person sees what is relevant to them</li>
+            <li>Leaves the all-roles view completely neutral</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="govuk-heading-m">Watch for</h3>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>We don&rsquo;t know the roles, or what each needs, so research has to come first</li>
+            <li>More to build and explain, and a role choice can hide things people need</li>
+            <li>People may work across roles</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Compare ===== -->
+    <h2 class="govuk-heading-l" id="compare">How they compare</h2>
+    <div class="app-scroll" tabindex="0" role="region" aria-label="Comparison of the seven options, scrolls sideways on narrow screens">
+    <table class="govuk-table sg-compare">
+      <caption class="govuk-table__caption govuk-visually-hidden">Comparison of the seven options</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Option</th>
+          <th scope="col" class="govuk-table__header">Gets a leader&rsquo;s attention</th>
+          <th scope="col" class="govuk-table__header">Avoids prescribing action</th>
+          <th scope="col" class="govuk-table__header">What it needs</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">1. Say where it sits</th><td class="govuk-table__cell">Good</td><td class="govuk-table__cell">Mostly. &quot;Highest priority&quot; may still sound like an instruction</td><td class="govuk-table__cell">New wording only</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">2. Numbered priority groups</th><td class="govuk-table__cell">Good</td><td class="govuk-table__cell">Yes</td><td class="govuk-table__cell">New wording and a key</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">3. A score bar</th><td class="govuk-table__cell">Medium. A leader has to judge the line</td><td class="govuk-table__cell">Yes</td><td class="govuk-table__cell">A bar, and a new way to group the cards</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">4. Emphasise only the top group</th><td class="govuk-table__cell">Strong</td><td class="govuk-table__cell">Yes</td><td class="govuk-table__cell">A line for &quot;top&quot;</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">5. Show what is driving the score</th><td class="govuk-table__cell">Weak on its own</td><td class="govuk-table__cell">Yes</td><td class="govuk-table__cell">A rule for &quot;driver&quot;</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">6. A marker for leadership attention</th><td class="govuk-table__cell">Strong, and says who it is for</td><td class="govuk-table__cell">Yes, but it names a role</td><td class="govuk-table__cell">Agreement on who organises action</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">7. A view for your role</th><td class="govuk-table__cell">Strong, for the right role</td><td class="govuk-table__cell">Yes</td><td class="govuk-table__cell">The real roles, from research, and more build</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="govuk-heading-m">Ways to combine them</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>4 and 5.</strong> Emphasise the top group, and show the drivers on every row. A leader sees where to look, and each role sees whether their part is involved.</li>
+      <li><strong>1 or 2, with 5.</strong> A neutral level label for the whole list, with the drivers underneath.</li>
+      <li><strong>3 and 6.</strong> A score bar for the whole list, with the leadership marker only where it is needed.</li>
+      <li><strong>6 now, 7 later.</strong> Start with the marker, and move to a role view if research shows several roles need different signals.</li>
+    </ul>
+
+    <h2 class="govuk-heading-l">Questions for the team</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Who organises action?</strong> Is it only the CEO, or does it depend on the disease? This decides whether a marker for leadership (option 6) is right.</li>
+      <li><strong>Who else needs to find their part,</strong> and how do they find it today?</li>
+      <li><strong>Do we still want groups on the cards?</strong> The cards view groups diseases by priority action today. Options 1, 2 and 4 keep a form of grouping. Option 3 does not.</li>
+      <li><strong>Where is the line for &quot;top&quot;?</strong> The 30 or more used here is made up, and sets who gets noticed.</li>
+      <li><strong>Does the real scoring give us the drivers?</strong> Option 5 depends on being able to say which measure drives a score.</li>
+    </ul>
+
+    <h2 class="govuk-heading-l">For research</h2>
+    <p class="govuk-body">
+      The user researcher and the wider team decide how to test this. Things worth finding out:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Do people read a priority label as an instruction to them? Does the wording change that?</li>
+      <li>What does a leader look for first, and does the signal find it?</li>
+      <li>Do people in other roles feel the page is talking to them when it is not, or miss something that is for them?</li>
+      <li>What would each role want the Priority column to tell them?</li>
+    </ul>
+    <p class="govuk-body"><a class="govuk-link" href="/design-log#priority-signal">Back to the design log</a></p>
+  </main>
+</div>
+</body>
+</html>
