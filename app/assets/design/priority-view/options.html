@@ -21,7 +21,7 @@
 <style>.app-hub-bar{background:#0b0c0c;color:#b1b4b6;font:16px/1.3 Arial,sans-serif;padding:10px 20px}.app-hub-bar a{color:#fff;font-weight:700;margin-right:16px}.app-hub-bar a:focus{outline:3px solid #ffdd00;background:#ffdd00;color:#0b0c0c}@media print{.app-hub-bar{display:none}}</style>
 <div class="govuk-width-container app-wide">
   <main class="govuk-main-wrapper" id="main-content">
-    <p class="govuk-body-s"><a class="govuk-link" href="/docs/priority-view-test-plan">Test plan</a> · For the design team, not for participants</p>
+    <p class="govuk-body-s"><a class="govuk-link" href="/design-notes#researcher-notes">Notes for the user researcher</a> · For the design team, not for participants</p>
     <h1 class="govuk-heading-xl">Priority view: three design options</h1>
     <p class="govuk-body-l">Three structures for the same question: "what should we act on first?" A is a table, B is cards grouped by action, and C lets people switch between the two.</p>
     <p class="govuk-body"><strong>Option C is the version we developed further in the 11 November 2026 design session.</strong> Options A and B still reflect the earlier design. They have not changed, so they no longer match C. They keep the earlier scores out of 5, ranks and wording, and will be brought into line with C later. Until then, differences between A, B and C are about more than structure.</p>
@@ -214,18 +214,17 @@
             <th scope="col" class="govuk-table__header">I want to…</th>
             <th scope="col" class="govuk-table__header">Route</th>
             <th scope="col" class="govuk-table__header">Clicks</th>
-            <th scope="col" class="govuk-table__header">Test</th>
           </tr>
         </thead>
         <tbody class="govuk-table__body">
-          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">See what to act on first</th><td class="govuk-table__cell">Priority. Table or Cards, no click needed</td><td class="govuk-table__cell">0</td><td class="govuk-table__cell">T1 to T3</td></tr>
-          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Change how I see the list</th><td class="govuk-table__cell">Priority, "View as" Table or Cards, or sort a column</td><td class="govuk-table__cell">1, stays on page</td><td class="govuk-table__cell">T4, T5</td></tr>
-          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Learn more about one disease</th><td class="govuk-table__cell">Priority, then "More details" under the disease name</td><td class="govuk-table__cell">1</td><td class="govuk-table__cell">T9</td></tr>
-          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Compare every disease on one measure</th><td class="govuk-table__cell">Priority, then Risk, Impact, Control measures or Response options</td><td class="govuk-table__cell">1</td><td class="govuk-table__cell">T10</td></tr>
-          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Find out why a score changed</th><td class="govuk-table__cell">Priority, where each score has a "Changed" date and "Up from" or "Down from" when it moved. For the reasons, "More details" or a measure page. Changes in risk, impact, control measures and response options are on those pages</td><td class="govuk-table__cell">1 to 2</td><td class="govuk-table__cell">T12</td></tr>
-          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Go from one disease to how all diseases compare</th><td class="govuk-table__cell">Disease page, then "See all diseases on…"</td><td class="govuk-table__cell">1</td><td class="govuk-table__cell">T13</td></tr>
-          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Go from a measure to one disease</th><td class="govuk-table__cell">Risk, Impact, Control measures or Response options, then the link to the disease</td><td class="govuk-table__cell">1</td><td class="govuk-table__cell">T13</td></tr>
-          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Get back to the priority list</th><td class="govuk-table__cell">"Priority" in the service navigation, from any page</td><td class="govuk-table__cell">1</td><td class="govuk-table__cell">T13</td></tr>
+          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">See what to act on first</th><td class="govuk-table__cell">Priority. Table or Cards, no click needed</td><td class="govuk-table__cell">0</td></tr>
+          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Change how I see the list</th><td class="govuk-table__cell">Priority, "View as" Table or Cards, or sort a column</td><td class="govuk-table__cell">1, stays on page</td></tr>
+          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Learn more about one disease</th><td class="govuk-table__cell">Priority, then "More details" under the disease name</td><td class="govuk-table__cell">1</td></tr>
+          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Compare every disease on one measure</th><td class="govuk-table__cell">Priority, then Risk, Impact, Control measures or Response options</td><td class="govuk-table__cell">1</td></tr>
+          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Find out why a score changed</th><td class="govuk-table__cell">Priority, where each score has a "Changed" date and "Up from" or "Down from" when it moved. For the reasons, "More details" or a measure page. Changes in risk, impact, control measures and response options are on those pages</td><td class="govuk-table__cell">1 to 2</td></tr>
+          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Go from one disease to how all diseases compare</th><td class="govuk-table__cell">Disease page, then "See all diseases on…"</td><td class="govuk-table__cell">1</td></tr>
+          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Go from a measure to one disease</th><td class="govuk-table__cell">Risk, Impact, Control measures or Response options, then the link to the disease</td><td class="govuk-table__cell">1</td></tr>
+          <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Get back to the priority list</th><td class="govuk-table__cell">"Priority" in the service navigation, from any page</td><td class="govuk-table__cell">1</td></tr>
         </tbody>
       </table>
 
@@ -280,10 +279,10 @@
       </div>
     </div>
 
-    <h2 class="govuk-heading-l">How we'd test them</h2>
-    <p class="govuk-body"><strong>Recommended: use option C for everyone.</strong> Its table and cards hold the structures of both A and B, so every participant can see both. Start half on the table and half on cards (<code>option-c.html?view=cards</code>). Watch whether they switch, when, and why, then ask which they prefer. Six participants split across three separate pages is too few, and C gives six people's reactions to both.</p>
-    <p class="govuk-body">Option C now has newer scoring and wording than A and B, so it cannot stand in for them as they are. Bring A and B into line with C before using them in a like-for-like comparison.</p>
-    <p class="govuk-body">The cost is that C can't isolate A against B, because people see both and the first view biases what they do next. If the team needs a clean comparison, run A and B as separate pages, alternating across participants, and show the other for 2 minutes at the end. Even then, 3 per option can spot big differences in the first-look and T1 to T3 results, but not declare a winner.</p>
+    <h2 class="govuk-heading-l">Testing</h2>
+    <p class="govuk-body"><strong>We are taking option C forward to test.</strong> Its table and cards hold the structures of both A and B, so one page covers both. The way to run a session is for the user researcher and the wider team to decide. See <a class="govuk-link" href="/design-notes#researcher-notes">notes for the user researcher</a>.</p>
+    <p class="govuk-body">Options A and B have not had the design changes made to C, so they are not planned for testing as they are. If the team wants a like-for-like comparison later, bring them into line with C first.</p>
+    <p class="govuk-body">Starting on cards, starting on the table or alternating between them is for the researcher and team to decide. Either view can be opened directly: <code>option-c.html?view=cards</code> or <code>option-c.html?view=table</code>.</p>
   </main>
 </div>
 <script src="flows.js"></script>

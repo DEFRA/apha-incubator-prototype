@@ -33,7 +33,7 @@ This service belongs to the APHA incubator. We are exploring animal diseases and
 ## Design resource
 
 The home page is a design resource for the team. It holds our design notes (decisions and directions), the priority
-view options, early wireframes and the test plan. All data is illustrative and the disease names are fictional. When
+view options, early wireframes and notes for the user researcher. All data is illustrative and the disease names are fictional. When
 the design is refined, the agreed pages will be built here as prototype pages for user research.
 
 The priority view has three options. Option C (table or cards, with a "View as" switch) is the version developed
@@ -61,7 +61,7 @@ The design decisions made on option C each have a page in `app/assets/design/pri
 | ------------------------------- | ------------------------------------------------------------------------------------------------ |
 | `app/views/index.html`          | Design resource home page                                                                        |
 | `app/views/design-notes.html`   | Design notes: decisions made, directions, open questions                                         |
-| `app/views/docs/`               | Documents: test plan, design brief and prototype spec                                            |
+| `app/views/docs/`               | Earlier documents: design brief and prototype spec                                               |
 | `app/views/layouts/design.html` | Layout for the design resource pages. Prototype pages should use `layouts/main.html`             |
 | `app/assets/design/`            | Static design snapshots (served at `/public/design/`): priority view options, wireframes, images |
 
