@@ -140,6 +140,10 @@
       </thead>
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">The priority tags say where a disease sits (Highest, High, Medium or Low priority), not an action (Act now, Prioritise, Monitor, Maintain)</th>
+          <td class="govuk-table__cell">The priority actions were not helpful at an individual level, because some roles need to act and others don&rsquo;t. The team chose option 1 of <a class="govuk-link" href="/public/design/priority-view/priority-signal-options.html">signalling priority without prescribing action</a>. All the other wording that told readers what to do was removed too. See <a class="govuk-link" href="#priority-signal">signalling priority</a></td>
+        </tr>
+        <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Scaly claw fever is removed, and with it the &quot;Confirmed in the UK&quot; state</th>
           <td class="govuk-table__cell">The service will not cover diseases that are already active in the UK, so a disease that has arrived does not belong in the priority view. Five fictional diseases remain, and only one is in Act now</td>
         </tr>
@@ -170,15 +174,15 @@
       </tbody>
     </table>
     <p class="govuk-body">
-      Knock-on changes: the priority actions now use cut-offs out of 60 (30, 20 and 8), the key and the &quot;how the
+      Knock-on changes: the priority levels now use cut-offs out of 60 (30, 20 and 8), the key and the &quot;how the
       score is worked out&quot; panel were rewritten, and the reasons on the cards were reworded to match the new level
       names. The decisions are in the <a class="govuk-link" href="/design-notes">design decisions</a>.
     </p>
 
     <h2 class="govuk-heading-l" id="priority-signal">Signalling priority without prescribing action</h2>
     <p class="govuk-body">
-      <strong class="govuk-tag govuk-tag--blue">To review</strong>
-      12 November 2026. Raised in the team design review. Not applied to prototype v1.1.
+      <strong class="govuk-tag govuk-tag--green">Decided</strong>
+      12 November 2026. Raised in the team design review. The team chose option 1, and it is in prototype v1.1.
     </p>
     <p class="govuk-body">
       The priority actions (Act now, Prioritise, Monitor and Maintain) are not very helpful at an individual level. Some
@@ -231,11 +235,22 @@
       </tbody>
     </table>
     <p class="govuk-body">
-      Our view is that the options work better in pairs. 4 with 5 gets a leader&rsquo;s attention and lets each role find
-      their part, and 6 now with 7 later fits if research shows several roles need different signals. The
-      <a class="govuk-link" href="/public/design/priority-view/priority-signal-options.html#compare">comparison</a> has the
-      others. Option 8, just the score styled by band, was added because the team wants to see no categorisation
-      language at all, and to ask users what they would call any grouping. This is for the team and the user researcher to decide.
+      The team chose <strong>option 1, say where it sits</strong>. The tags now say Highest priority, High priority,
+      Medium priority and Low priority instead of Act now, Prioritise, Monitor and Maintain. The colours and the cut-offs
+      (30, 20 and 8 out of 60) are unchanged. We also removed the other wording that told readers what to do: the action
+      sentences in the key and under the card groups, &quot;Keep watching&quot; and &quot;maintain that readiness&quot; in the
+      card reasons, and &quot;need action first&quot; in the page intro. The link for the highest-priority disease now says
+      &quot;See why this is the highest priority&quot;. A higher score now means a higher priority, and says nothing about
+      who should act.
+    </p>
+    <p class="govuk-body">
+      Option 8 (just the score, styled by band) was rejected. Numbers and colour alone could confuse people who can&rsquo;t
+      see the colour, because nothing else says which way the scale runs, and they could mistake the direction of the
+      scoring. A word carries the direction without needing colour. The risk with option 1 is that &quot;Highest
+      priority&quot; may still be read as an instruction, and that &quot;High&quot; and &quot;Medium&quot; are also risk
+      levels. Research should check both. The other options are kept on the
+      <a class="govuk-link" href="/public/design/priority-view/priority-signal-options.html">options page</a>, and could be
+      added later, for example the drivers (option 5) or a marker for leadership attention (option 6).
     </p>
 
     <h2 class="govuk-heading-l" id="learnings">What we have learned from designing</h2>
@@ -286,7 +301,7 @@
         </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">A label that tells people what to do is wrong for people who don&rsquo;t need to do it</th>
-          <td class="govuk-table__cell">The priority actions are under review. Eight ways to signal priority without prescribing action are in <a class="govuk-link" href="#priority-signal">signalling priority</a></td>
+          <td class="govuk-table__cell">The priority actions were replaced by priority levels (decided). Eight ways to signal priority without prescribing action are in <a class="govuk-link" href="#priority-signal">signalling priority</a></td>
         </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Showing change needs more than a date, and we were guessing what change matters</th>

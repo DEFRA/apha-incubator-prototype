@@ -83,7 +83,7 @@
     <h2 class="govuk-heading-l" id="start-view">Which view people see first</h2>
     <p class="govuk-body">The team has decided to lead with combined preparedness, and to show the separate version only if combined preparedness is flagged as not working for people. Whether people start on cards or the table, or alternate, is for the user researcher and the wider team to decide. Some things that may help:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li>Cards lead with a short reason for each disease and group the diseases by priority action. The table suits comparing one measure across diseases, and can be sorted.</li>
+      <li>Cards lead with a short reason for each disease and group the diseases by priority level. The table suits comparing one measure across diseases, and can be sorted.</li>
       <li>The view people see first may shape what they do next. Alternating spreads that across participants, but needs enough people on each starting view.</li>
       <li>Either view opens directly from a link, and the choice is kept in the address, so a link shares the view. The link between the two preparedness versions keeps the chosen view and sort.</li>
     </ul>
@@ -139,8 +139,8 @@
           <td class="govuk-table__cell">Do people ask what has changed, since when, or why? What would they want shown, and what would they do with it?</td>
         </tr>
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">&quot;Act now: see why this is a priority&quot;</th>
-          <td class="govuk-table__cell">Do people expect actions behind it? What do they expect from &quot;More details&quot;?</td>
+          <th scope="row" class="govuk-table__header">&quot;Highest priority&quot; and the other priority levels</th>
+          <td class="govuk-table__cell">Are they read as an instruction, or as a position? Does the top level still get a leader&rsquo;s attention? What do people expect from &quot;See why this is the highest priority&quot; and from &quot;More details&quot;?</td>
         </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Plain-text disease names</th>
@@ -188,12 +188,12 @@
 
     <h2 class="govuk-heading-l" id="open-questions">Open questions</h2>
     <ul class="govuk-list govuk-list--bullet">
-      <li><strong>How do we signal priority without prescribing action?</strong> The priority actions (Act now, Prioritise, Monitor, Maintain) were raised in the team design review as not helpful at an individual level, because not everyone needs to act. The CEO does need to organise action, so the column still has to get attention. <a class="govuk-link" href="/public/design/priority-view/priority-signal-options.html">Eight options</a> are to review. v1.1 still uses the priority actions.</li>
+      <li><strong>Is &quot;Highest priority&quot; still read as an instruction?</strong> The priority actions (Act now, Prioritise, Monitor, Maintain) were replaced by priority levels (Highest, High, Medium and Low priority), because not everyone needs to act. The CEO does need to organise action, so the column still has to get attention. Research should check whether people still read the top level as an instruction, whether it gets a leader&rsquo;s attention, and whether &quot;High&quot; and &quot;Medium&quot; are confused with risk levels. Other options, such as showing what drives the score, are on <a class="govuk-link" href="/public/design/priority-view/priority-signal-options.html">the options page</a>.</li>
       <li><strong>How should preparedness feed into priority?</strong> The prototype now considers all four measures in a fictional scoring process: threat (risk &times; impact) is raised by a preparedness gap, so a badly prepared disease scores higher than a well prepared one with the same risk and impact. The real scoring is for the model owners to work out. We need to know which of the four measures should carry the most weight, and whether preparedness should raise the score or set the priority action.</li>
       <li><strong>Should preparedness be one measure or two?</strong> The test leads with one (combined). The separate version is to show if combined is flagged as not working. People may need to tell prevention (control measures) from response, or may only need an overall status. How the five statuses are worked out from the underlying items is made up and needs the real method.</li>
       <li><strong>What change do people want surfaced?</strong> We removed the change dates, previous scores and tags, because they rested on too many assumptions. Research should ask what change people want to see, why, and what they would do with it, then design from there. Earlier thinking is in <a class="govuk-link" href="/public/design/priority-view/score-change-options.html">showing when a priority score changed</a>.</li>
       <li><strong>Levels and checklists.</strong> The prototype shows risk of incursion as six levels (Negligible to Very high) and impact as five. Do these line up with the levels in the monthly report? Does impact change over time, or is it fixed until reassessed? The checklist totals (10 control items and 8 response items), how often each is updated and the priority cut-offs (30, 20 and 8 out of 60) are all assumed. We need the real ones.</li>
-      <li><strong>Is there a &quot;what to do now&quot; page behind &quot;Act now: see why this is a priority&quot;?</strong> The wording promises the reason for the priority, not actions. If the disease page has actions, we can say so. If not, it stays as it is.</li>
+      <li><strong>What is behind &quot;See why this is the highest priority&quot;?</strong> The wording promises the reason for the priority, not actions. We don&rsquo;t yet know whether the disease page has recommended actions, or for whom. Research can tell us what people expect to find there.</li>
       <li><strong>Should the Disease cell also carry a short summary?</strong> It fits (the card text at 16px) but makes the table about 20% taller. The name cell is the row header, so a screen reader would read the whole summary on each cell of the row. It is not added. The same is true of the More details link in that cell, which research should check.</li>
       <li><strong>Who writes the reason on each card,</strong> and how often? The prototype shows it as written copy. Does anyone also need a summary at the top of the page, what should it say, and does it need to differ by role?</li>
       <li><strong>How do people reach a measure page?</strong> The prototype has no &quot;Look in more detail&quot; line, so people rely on the top navigation. If they miss it, we try column headings as links.</li>
