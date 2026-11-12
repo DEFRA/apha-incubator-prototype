@@ -58,7 +58,7 @@
         <tr class="govuk-table__row">
           <td class="govuk-table__cell"><a class="govuk-link" href="/round-1/priority-view">Round 1: priority view design test</a></td>
           <td class="govuk-table__cell">
-            v1.1 after the team design review, in two versions: <a class="govuk-link" href="/public/prototype/round-1/priority-view/v1.1/index.html?view=table">separate preparedness</a> and <a class="govuk-link" href="/public/prototype/round-1/priority-view/v1.1/combined.html?view=table">combined preparedness</a>. v1.0 was replaced before testing
+            v1.1 after the team design review, in two versions: <a class="govuk-link" href="/public/prototype/round-1/priority-view/v1.1/index.html?view=table">combined preparedness</a>, which leads the test, and <a class="govuk-link" href="/public/prototype/round-1/priority-view/v1.1/separate.html?view=table">separate preparedness</a>, to show if combined is flagged as not working. v1.0 was replaced before testing
           </td>
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Ready to test</strong></td>
         </tr>
@@ -125,8 +125,9 @@
     <h2 class="govuk-heading-l" id="design-review">After the team design review</h2>
     <p class="govuk-body">
       12 November 2026. The team reviewed the priority view. These changes make priority view prototype v1.1, in two
-      versions. Every change below is in both versions. The only difference is how preparedness is shown. More updates
-      from the review will be added here.
+      versions. Every change below is in both versions. The only difference is how preparedness is shown. The test
+      leads with combined preparedness, and the separate version is to show if combined is flagged as not working for
+      people. More updates from the review will be added here.
     </p>
     <table class="govuk-table app-doc-list">
       <caption class="govuk-table__caption govuk-visually-hidden">Changes after the team design review</caption>
@@ -137,6 +138,14 @@
         </tr>
       </thead>
       <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Scaly claw fever is removed, and with it the &quot;Confirmed in the UK&quot; state</th>
+          <td class="govuk-table__cell">The service will not cover diseases that are already active in the UK, so a disease that has arrived does not belong in the priority view. Five fictional diseases remain, and only one is in Act now</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">The test leads with combined preparedness. Separate preparedness is the version to show if combined is flagged as not working</th>
+          <td class="govuk-table__cell">The team decided combined preparedness is the better starting point. The separate version stays ready as the alternative. The combined page is the main entry point (<code>index.html</code>) and the separate page is <code>separate.html</code></td>
+        </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Preparedness is tested two ways. Control measures and response options stay as two separate columns, and are also combined into one preparedness measure with five statuses: Totally prepared, Largely prepared, Moderately prepared, Slightly prepared and Not at all prepared</th>
           <td class="govuk-table__cell">We do not yet know whether people need prevention and response shown separately, or only an overall status. The combined version replaces the count of items with a status. Each is its own screen, and they link to each other</td>
