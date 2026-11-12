@@ -40,9 +40,10 @@ The home page is a design resource for the team, kept minimal. It leads to:
 - **Design log** (`/design-log`): the journey, what we have learned and every version, across all rounds.
 
 Each round of testing has its own page. Each prototype version is a frozen copy in its own folder, so what a round tested
-stays as it was. The first is `app/assets/prototype/round-1/priority-view/v1.0/` (served at
-`/public/prototype/round-1/priority-view/v1.0/`). To tweak a prototype during a round, copy the folder to the next
-version (for example `v1.1`), make the change there, and add a row to the round page saying what changed and why. Never
+stays as it was. The first, `app/assets/prototype/round-1/priority-view/v1.0/`, was replaced before testing by `v1.1`, which
+has two pages: separate preparedness measures (`index.html`) and combined preparedness (`combined.html`). It is served at
+`/public/prototype/round-1/priority-view/v1.1/`. To tweak a prototype during a round, copy the folder to the next
+version (for example `v1.2`), make the change there, and add a row to the round page saying what changed and why. Never
 edit a version that has been tested.
 
 All data is illustrative and the disease names are fictional. When the design is refined, the agreed pages will be built

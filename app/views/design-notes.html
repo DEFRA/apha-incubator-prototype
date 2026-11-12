@@ -20,7 +20,7 @@
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-xl">Priority view design decisions</h1>
     <p class="govuk-body-l">
-      The decisions behind priority view prototype v1.0, and the directions we are taking. Update this page when a decision changes.
+      The decisions behind priority view prototype v1.1 and the earlier v1.0, and the directions we are taking. Update this page when a decision changes.
     </p>
     <p class="govuk-body">
       All data is illustrative and the disease names are fictional. Last updated 12 November 2026. The journey so far
@@ -55,7 +55,7 @@
     </p>
     <p class="govuk-body">Where each part has got to:</p>
     <ul class="govuk-list govuk-list--bullet">
-      <li><strong>Priority view:</strong> prototype v1.0 is ready for round 1. It is option C, a table and cards on one page. Options A and B are earlier designs, not updated with the later changes and not planned for testing. See the <a class="govuk-link" href="/round-1/priority-view">priority view design test</a> and the <a class="govuk-link" href="/public/design/priority-view/options.html">priority view options</a>.</li>
+      <li><strong>Priority view:</strong> prototype v1.1 is ready for round 1, in two versions: separate preparedness measures and combined preparedness. It is option C, a table and cards on one page. Options A and B are earlier designs, not updated with the later changes and not planned for testing. See the <a class="govuk-link" href="/round-1/priority-view">priority view design test</a> and the <a class="govuk-link" href="/public/design/priority-view/options.html">priority view options</a>.</li>
       <li><strong>Risk page and disease page:</strong> early ideas only, in the <a class="govuk-link" href="/public/design/risk-wireframes/index.html">wireframes</a>. See <a class="govuk-link" href="/round-1/risk-exploration">risk exploration</a>.</li>
       <li><strong>Impact, control measures and response options pages:</strong> not explored yet.</li>
     </ul>
@@ -84,6 +84,50 @@
       <strong class="govuk-tag govuk-tag--blue">Recommended</strong> means it is our recommendation and the team still needs to confirm it.
       <strong class="govuk-tag govuk-tag--yellow">To decide</strong> means it is for the user researcher and the wider team.
     </p>
+
+    <h3 class="govuk-heading-m">After the team design review (v1.1)</h3>
+    <p class="govuk-body">
+      These decisions came from the team design review on 12 November 2026 and are in prototype v1.1, in both
+      preparedness versions. Where they replace an earlier decision below, the earlier one says so. More updates from the
+      review will be added. The <a class="govuk-link" href="/design-log#design-review">design log</a> records the review.
+    </p>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">Decisions after the team design review</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Decision</th>
+          <th scope="col" class="govuk-table__header">Why</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Show preparedness two ways: control measures and response options separately, and combined as one measure</th>
+          <td class="govuk-table__cell">We do not know whether people need prevention and response shown separately. Combined preparedness uses five statuses instead of a count of items: Totally prepared, Largely prepared, Moderately prepared, Slightly prepared and Not at all prepared. Red means the worse end, as for risk and impact. Which version works better is for research</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">To test</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">The priority score combines all four measures</th>
+          <td class="govuk-table__cell">The priority scoring team member said priority should combine all four columns. The prototype uses a fictional process: threat (risk of incursion 1 to 6 &times; impact 1 to 5, up to 30) multiplied by 1 plus a preparedness gap (the average share of control measure and response option items that need review). That gives a score out of 60 with priority actions at 30, 20 and 8. In the combined version, the gap sets the preparedness status. The real scoring will be worked out later. The design only needs to show all four have been considered</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Risk of incursion has six levels: Very high, High, Medium, Low, Very low and Negligible</th>
+          <td class="govuk-table__cell">These replace Rare to Almost certain. Each level has its own muted colour, so Medium is orange. Contrast is 5.7 to 7.8:1</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Remove the impact areas (Animal welfare, International trade, Wider economy and society)</th>
+          <td class="govuk-table__cell">It was not clear what they added at this level</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Remove the change display, and ask users what change they want surfaced</th>
+          <td class="govuk-table__cell">The &quot;Changed&quot; date, previous score, arrows and increased and decreased tags rested on too many assumptions. Research will ask what change people want to see, why, and what they would do with it, then we design from there</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
+        </tr>
+      </tbody>
+    </table>
 
     <h3 class="govuk-heading-m">Test approach</h3>
     <table class="govuk-table app-doc-list">
@@ -156,17 +200,17 @@
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
         </tr>
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Show change on the priority view for priority only, with a date on every row</th>
+          <th scope="row" class="govuk-table__header">Superseded in v1.1: Show change on the priority view for priority only, with a date on every row</th>
           <td class="govuk-table__cell">In the table, a changed score shows &quot;Up from 12&quot; or &quot;Down from 16&quot; with a small arrow at the end of that line. On the cards it shows &quot;Previous score 16&quot; and an outlined &quot;Score increased&quot; or &quot;Score decreased&quot; tag underneath, because cards have more room and the arrow looked odd there. Every row also says &quot;Changed [date]&quot;, so a score that has been stable for months can be told from one nobody has checked. We chose a date under every score over a separate sortable column and over a compare-over-a-period control. The earlier &quot;no arrows&quot; decision is reversed for the table, and the words Up and Down are always written, so shape and colour are never the only cue. Changes in risk, impact, control measures and response options belong on their own pages. The previous scores and dates are made up for the prototype. See <a class="govuk-link" href="/public/design/priority-view/score-change-options.html">showing when a priority score changed</a></td>
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
         </tr>
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Priority is risk &times; impact, out of 25, in four priority actions</th>
+          <th scope="row" class="govuk-table__header">Superseded in v1.1: Priority is risk &times; impact, out of 25, in four priority actions</th>
           <td class="govuk-table__cell">Risk and impact are each rated 1 to 5. Act now is 15 or more, Prioritise is 10 to 14, Monitor is 4 to 9 and Maintain is 1 to 3. We call them priority actions, not bands, because &quot;band&quot; is a word we made up. Tags are sentence case, not capitals, because capitals are harder to read. Control measures and response options do not change the score. The earlier out of 5 scores and the score out of 140 were fictional and are gone. This is the prototype&rsquo;s model, not the real one, and the real link from preparedness to priority is an open question</td>
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
         </tr>
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Show risk and impact as group names, not numbers</th>
+          <th scope="row" class="govuk-table__header">Partly superseded in v1.1 (risk now has six levels): Show risk and impact as group names, not numbers</th>
           <td class="govuk-table__cell">Risk is Rare, Unlikely, Moderate, Likely or Almost certain. Impact is Insignificant, Minor, Significant, Major or Severe. These are the words people already use with the risk matrix. The 1 to 5 number is still behind them. A key at the bottom of the page lists all five levels. The test checks that &quot;Minor&quot; reads as the second of five levels and not as a minor concern</td>
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
         </tr>
@@ -196,7 +240,7 @@
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
         </tr>
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">Set the priority cell as plain lines under the tag</th>
+          <th scope="row" class="govuk-table__header">Partly superseded in v1.1 (no change lines): Set the priority cell as plain lines under the tag</th>
           <td class="govuk-table__cell">The cell reads &quot;Score 12&quot;, &quot;Down from 16&quot; and &quot;Changed 5 November 2026&quot; as plain lines in one style, under the tag. The date is at the bottom of the cell in smaller text (16px) so each row ends in the same place. See <a class="govuk-link" href="/public/design/priority-view/priority-cell-options.html">priority cell options</a></td>
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Decided</strong></td>
         </tr>

@@ -45,12 +45,14 @@
 
     <h2 class="govuk-heading-l" id="prototype">The prototype</h2>
     <p class="govuk-body">
-      Priority view v1.0 is one page with a switch between a table and cards. It is a frozen copy, so it stays as it
-      is while the design moves on. If it is tweaked during the round, the changes become v1.1 and are listed on the
+      Priority view v1.1 was made after the team design review. It comes in two versions, so we can see how people react
+      to preparedness shown as two measures and as one. Every other change is the same in both. Each version is one page
+      with a switch between a table and cards, and the two pages link to each other. v1.0 was replaced by v1.1 before any
+      testing and is kept for reference. If v1.1 is tweaked during the round, the changes become v1.2 and are listed on the
       <a class="govuk-link" href="/round-1">round 1 page</a>.
     </p>
     <table class="govuk-table app-doc-list">
-      <caption class="govuk-table__caption govuk-visually-hidden">Priority view prototype v1.0</caption>
+      <caption class="govuk-table__caption govuk-visually-hidden">Priority view prototype v1.1</caption>
       <thead class="govuk-table__head">
         <tr class="govuk-table__row">
           <th scope="col" class="govuk-table__header">Open</th>
@@ -59,16 +61,16 @@
       </thead>
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a class="govuk-link" href="/public/prototype/round-1/priority-view/v1.0/index.html?view=cards">Cards view</a></td>
-          <td class="govuk-table__cell">Diseases grouped by priority action, each with a short reason and its four measures</td>
+          <td class="govuk-table__cell">Separate preparedness: <a class="govuk-link" href="/public/prototype/round-1/priority-view/v1.1/index.html?view=cards">cards</a> or <a class="govuk-link" href="/public/prototype/round-1/priority-view/v1.1/index.html?view=table">table</a></td>
+          <td class="govuk-table__cell">Control measures and response options are two measures, each shown as a count of items that need review</td>
         </tr>
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell"><a class="govuk-link" href="/public/prototype/round-1/priority-view/v1.0/index.html?view=table">Table view</a></td>
-          <td class="govuk-table__cell">Every disease in one sortable table, for comparing one measure across diseases</td>
+          <td class="govuk-table__cell">Combined preparedness: <a class="govuk-link" href="/public/prototype/round-1/priority-view/v1.1/combined.html?view=cards">cards</a> or <a class="govuk-link" href="/public/prototype/round-1/priority-view/v1.1/combined.html?view=table">table</a></td>
+          <td class="govuk-table__cell">One preparedness measure with five statuses: totally, largely, moderately, slightly or not at all prepared</td>
         </tr>
         <tr class="govuk-table__row">
-          <td class="govuk-table__cell">Images: <a class="govuk-link" href="/public/design/images/priority-view-option-c-cards.png">cards<span class="govuk-visually-hidden"> (image)</span></a> and <a class="govuk-link" href="/public/design/images/priority-view-option-c-table.png">table<span class="govuk-visually-hidden"> (image)</span></a></td>
-          <td class="govuk-table__cell">Long screenshots of each view, for sharing and viewing on a screen</td>
+          <td class="govuk-table__cell">Images: separate (<a class="govuk-link" href="/public/design/images/priority-view-v1.1-separate-cards.png">cards<span class="govuk-visually-hidden"> (image)</span></a>, <a class="govuk-link" href="/public/design/images/priority-view-v1.1-separate-table.png">table<span class="govuk-visually-hidden"> (image)</span></a>) and combined (<a class="govuk-link" href="/public/design/images/priority-view-v1.1-combined-cards.png">cards<span class="govuk-visually-hidden"> (image)</span></a>, <a class="govuk-link" href="/public/design/images/priority-view-v1.1-combined-table.png">table<span class="govuk-visually-hidden"> (image)</span></a>)</td>
+          <td class="govuk-table__cell">Long screenshots, for sharing and viewing on a screen</td>
         </tr>
       </tbody>
     </table>
@@ -78,11 +80,11 @@
     </p>
 
     <h2 class="govuk-heading-l" id="start-view">Which view people see first</h2>
-    <p class="govuk-body">This is for the user researcher and the wider team to decide: cards first, table first, or alternating between them. Some things that may help:</p>
+    <p class="govuk-body">This is for the user researcher and the wider team to decide: cards first, table first, or alternating between them. The same goes for which preparedness version people see first, or whether everyone sees both. Some things that may help:</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>Cards lead with a short reason for each disease and group the diseases by priority action. The table suits comparing one measure across diseases, and can be sorted.</li>
       <li>The view people see first may shape what they do next. Alternating spreads that across participants, but needs enough people on each starting view.</li>
-      <li>Either view opens directly from a link, and the choice is kept in the address, so a link shares the view.</li>
+      <li>Either view opens directly from a link, and the choice is kept in the address, so a link shares the view. The link between the two preparedness versions keeps the chosen view and sort.</li>
     </ul>
     <p class="govuk-body">
       Options A and B of the priority view have not had the design changes made to option C, so they are not planned
@@ -93,7 +95,9 @@
     <p class="govuk-body">These are the design team&rsquo;s questions. Use, change or replace them.</p>
     <ul class="govuk-list govuk-list--bullet">
       <li>Can people tell which diseases need action first, and why?</li>
-      <li>Do they read the level names, the &quot;need review&quot; checklists and the &quot;Changed&quot; date the way we intend?</li>
+      <li>Do they read the risk and impact levels, and the preparedness measures, the way we intend?</li>
+      <li>Do people prefer preparedness as two measures (control measures and response options), or as one with a status? What does each let them do, or stop them doing?</li>
+      <li>What change do people want to see surfaced, why, and what would they do with it? We removed the change display (see below), so this is a question to ask, not assume.</li>
       <li>What would they want from risk, impact, control measures and response options pages? The priority view is a starting point for that conversation.</li>
       <li>Which view do they use, do they switch, and why?</li>
       <li>What do they expect to find behind each &quot;More details&quot; link?</li>
@@ -122,8 +126,16 @@
           <td class="govuk-table__cell">Is it read as good or bad? Is &quot;more red is worse&quot; clear?</td>
         </tr>
         <tr class="govuk-table__row">
-          <th scope="row" class="govuk-table__header">&quot;Changed [date]&quot;</th>
-          <td class="govuk-table__cell">Is it read as the score changing, or the score being checked?</td>
+          <th scope="row" class="govuk-table__header">Preparedness as one measure</th>
+          <td class="govuk-table__cell">Do the five statuses (totally to not at all prepared) make sense? Do people miss the detail of control measures and response options, or the count of items?</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Six risk levels</th>
+          <td class="govuk-table__cell">Do &quot;Very high&quot; to &quot;Negligible&quot; read clearly, and is the order obvious without the key?</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">No change display</th>
+          <td class="govuk-table__cell">Do people ask what has changed, since when, or why? What would they want shown, and what would they do with it?</td>
         </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">&quot;Act now: see why this is a priority&quot;</th>
@@ -146,9 +158,9 @@
 
     <h2 class="govuk-heading-l" id="made-up">What is made up</h2>
     <ul class="govuk-list govuk-list--bullet">
-      <li>The scores, change dates and previous scores, and which disease has which impact areas.</li>
-      <li>The model: priority is risk &times; impact out of 25, with cut-offs at 15, 10 and 4. Control measures and response options do not change the score.</li>
-      <li>The checklist totals (10 control items and 8 response items), and how often risk and impact are updated.</li>
+      <li>The scores and which disease has which risk, impact and preparedness. The previous change history has been removed, because it rested on too many assumptions.</li>
+      <li>The model, which is a fictional process that considers all four measures: threat (risk of incursion 1 to 6 &times; impact 1 to 5, up to 30) multiplied by 1 plus a preparedness gap (the average share of control measure and response option items that need review). That gives a score out of 60, with cut-offs at 30, 20 and 8. The real scoring will be worked out later.</li>
+      <li>The checklist totals (10 control items and 8 response items), the thresholds that turn the gap into a preparedness status, and how often risk and impact are updated.</li>
     </ul>
 
     <h2 class="govuk-heading-l" id="before-testing">Before testing with users</h2>
@@ -160,7 +172,7 @@
 
     <h2 class="govuk-heading-l" id="decisions">Design decisions</h2>
     <p class="govuk-body">
-      The <a class="govuk-link" href="/design-notes">design decisions</a> page lists every decision behind v1.0, with
+      The <a class="govuk-link" href="/design-notes">design decisions</a> page lists every decision behind v1.1 and v1.0, with
       the reason and whether it is decided, recommended or for the team to decide. Five decision pages compare the
       choices we looked at:
     </p>
@@ -174,9 +186,10 @@
 
     <h2 class="govuk-heading-l" id="open-questions">Open questions</h2>
     <ul class="govuk-list govuk-list--bullet">
-      <li><strong>How does preparedness link into priority?</strong> The model is risk &times; impact only. Control measures and response options are checklists of items needing review, and they sit beside the priority score without changing it. So a well-prepared disease and a badly prepared one with the same risk and impact get the same priority. Is that what we want? Should the checklists lower or raise the score, set the priority action, or only inform what to do? This needs an answer from the model owners before we show how priority is worked out.</li>
-      <li><strong>What does &quot;Changed [date]&quot; mean?</strong> The prototype shows the date a priority score last changed, on every row. Does it mean the score value changed, or that risk and impact were last checked, even if the score stayed the same? The second is probably better for trust, but harder to explain. Do we need a rule for how long a change tag stays, and do we have the dates and previous scores for every disease?</li>
-      <li><strong>Levels and checklists.</strong> The prototype shows risk and impact as five named levels, which should line up with the five risk levels in the monthly report. Do they? Does impact change over time, or is it fixed until reassessed? The checklist totals (10 control items and 8 response items), how often each is updated and the priority cut-offs (15, 10 and 4) are all assumed. We need the real ones.</li>
+      <li><strong>How should preparedness feed into priority?</strong> The prototype now considers all four measures in a fictional scoring process: threat (risk &times; impact) is raised by a preparedness gap, so a badly prepared disease scores higher than a well prepared one with the same risk and impact. The real scoring is for the model owners to work out. We need to know which of the four measures should carry the most weight, and whether preparedness should raise the score or set the priority action.</li>
+      <li><strong>Should preparedness be one measure or two?</strong> The prototype shows both versions. People may need to tell prevention (control measures) from response, or may only need an overall status. How the five statuses are worked out from the underlying items is made up and needs the real method.</li>
+      <li><strong>What change do people want surfaced?</strong> We removed the change dates, previous scores and tags, because they rested on too many assumptions. Research should ask what change people want to see, why, and what they would do with it, then design from there. Earlier thinking is in <a class="govuk-link" href="/public/design/priority-view/score-change-options.html">showing when a priority score changed</a>.</li>
+      <li><strong>Levels and checklists.</strong> The prototype shows risk of incursion as six levels (Negligible to Very high) and impact as five. Do these line up with the levels in the monthly report? Does impact change over time, or is it fixed until reassessed? The checklist totals (10 control items and 8 response items), how often each is updated and the priority cut-offs (30, 20 and 8 out of 60) are all assumed. We need the real ones.</li>
       <li><strong>Is there a &quot;what to do now&quot; page behind &quot;Act now: see why this is a priority&quot;?</strong> The wording promises the reason for the priority, not actions. If the disease page has actions, we can say so. If not, it stays as it is.</li>
       <li><strong>Should the Disease cell also carry a short summary?</strong> It fits (the card text at 16px) but makes the table about 20% taller. The name cell is the row header, so a screen reader would read the whole summary on each cell of the row. It is not added. The same is true of the More details link in that cell, which research should check.</li>
       <li><strong>Who writes the reason on each card,</strong> and how often? The prototype shows it as written copy. Does anyone also need a summary at the top of the page, what should it say, and does it need to differ by role?</li>

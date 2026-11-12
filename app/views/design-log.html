@@ -28,6 +28,7 @@
     <ul class="govuk-list">
       <li><a class="govuk-link" href="#versions">Versions and rounds of testing</a></li>
       <li><a class="govuk-link" href="#journey">The journey so far</a></li>
+      <li><a class="govuk-link" href="#design-review">After the team design review</a></li>
       <li><a class="govuk-link" href="#learnings">What we have learned from designing</a></li>
       <li><a class="govuk-link" href="#user-needs">The nine user needs</a></li>
       <li><a class="govuk-link" href="#open-questions">Wider open questions</a></li>
@@ -57,7 +58,7 @@
         <tr class="govuk-table__row">
           <td class="govuk-table__cell"><a class="govuk-link" href="/round-1/priority-view">Round 1: priority view design test</a></td>
           <td class="govuk-table__cell">
-            v1.0, one page with a table and cards (<a class="govuk-link" href="/public/prototype/round-1/priority-view/v1.0/index.html?view=table">open</a>)
+            v1.1 after the team design review, in two versions: <a class="govuk-link" href="/public/prototype/round-1/priority-view/v1.1/index.html?view=table">separate preparedness</a> and <a class="govuk-link" href="/public/prototype/round-1/priority-view/v1.1/combined.html?view=table">combined preparedness</a>. v1.0 was replaced before testing
           </td>
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">Ready to test</strong></td>
         </tr>
@@ -116,10 +117,53 @@
         </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">12 November 2026</th>
-          <td class="govuk-table__cell">Prototype v1.0 frozen and packaged as round 1: a priority view design test and a risk exploration</td>
+          <td class="govuk-table__cell">Prototype v1.0 frozen and packaged as round 1: a priority view design test and a risk exploration. The team then reviewed the design, and v1.1 was made in two versions, one with separate preparedness measures and one with combined preparedness. See <a class="govuk-link" href="#design-review">after the team design review</a></td>
         </tr>
       </tbody>
     </table>
+
+    <h2 class="govuk-heading-l" id="design-review">After the team design review</h2>
+    <p class="govuk-body">
+      12 November 2026. The team reviewed the priority view. These changes make priority view prototype v1.1, in two
+      versions. Every change below is in both versions. The only difference is how preparedness is shown. More updates
+      from the review will be added here.
+    </p>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">Changes after the team design review</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Change</th>
+          <th scope="col" class="govuk-table__header">Why</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Preparedness is tested two ways. Control measures and response options stay as two separate columns, and are also combined into one preparedness measure with five statuses: Totally prepared, Largely prepared, Moderately prepared, Slightly prepared and Not at all prepared</th>
+          <td class="govuk-table__cell">We do not yet know whether people need prevention and response shown separately, or only an overall status. The combined version replaces the count of items with a status. Each is its own screen, and they link to each other</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">The priority score combines all four measures</th>
+          <td class="govuk-table__cell">The priority scoring team member said priority should reflect all four columns, not only risk &times; impact. The prototype uses a fictional process that mirrors the earlier one and adds both preparedness measures: threat (risk &times; impact) multiplied by 1 plus a preparedness gap, out of 60. The real scoring will be worked out later. The design only needs to show that all four are considered</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Risk of incursion has six levels: Very high, High, Medium, Low, Very low and Negligible</th>
+          <td class="govuk-table__cell">These replace the earlier names (Rare to Almost certain). A sixth colour, orange for Medium, was added so each level has its own</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">The impact areas are removed (Animal welfare, International trade, Wider economy and society)</th>
+          <td class="govuk-table__cell">It was not clear what they added at this level</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">The change display is removed: the &quot;Changed&quot; date, the previous score, the arrows and the increased and decreased tags</th>
+          <td class="govuk-table__cell">It rested on too many assumptions about what change matters. Research will ask what change people want to see, why, and what they would do with it, and we will design from there. The earlier options are kept on <a class="govuk-link" href="/public/design/priority-view/score-change-options.html">showing when a priority score changed</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="govuk-body">
+      Knock-on changes: the priority actions now use cut-offs out of 60 (30, 20 and 8), the key and the &quot;how the
+      score is worked out&quot; panel were rewritten, and the reasons on the cards were reworded to match the new level
+      names. The decisions are in the <a class="govuk-link" href="/design-notes">design decisions</a>.
+    </p>
 
     <h2 class="govuk-heading-l" id="learnings">What we have learned from designing</h2>
     <p class="govuk-body">
@@ -166,6 +210,10 @@
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Link wording promises something. &quot;Disease details&quot; reads as facts about the disease, and &quot;what to do now&quot; promises content we may not have</th>
           <td class="govuk-table__cell">&quot;Act now: see why this is a priority&quot; for the two Act now diseases, and &quot;More details&quot; for the rest</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Showing change needs more than a date, and we were guessing what change matters</th>
+          <td class="govuk-table__cell">After the team design review we removed it, and will ask users what change they want surfaced and why</td>
         </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">A long date line squeezed the most important column, the disease name</th>
