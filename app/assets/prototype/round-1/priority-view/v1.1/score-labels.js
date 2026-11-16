@@ -34,9 +34,6 @@
     var tag = document.createElement('strong')
     tag.className = 'govuk-tag app-level-tag app-level-tag--' + group.classes[value - 1]
     tag.textContent = group.names[value - 1]
-    // A block wrapper keeps the status on its own line when styles are removed, for example in reader mode
-    var wrap = document.createElement('div')
-    wrap.appendChild(tag)
-    score.replaceWith(wrap)
+    score.replaceWith(tag)
   })
 })()

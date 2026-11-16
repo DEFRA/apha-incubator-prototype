@@ -210,7 +210,9 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .app-card dl > div { display: flex; flex-direction: column; }
 .app-card dd { display: flex; flex-direction: column; align-items: flex-start; flex: 1; }
 .app-card dd .app-progress { align-self: stretch; }
-.app-card dd > br { display: none; }
+/* Single line breaks keep text on separate lines when styles are removed, for example in reader mode. They are hidden here,
+   because these elements are already blocks. Reader modes can drop content held in block-level divs, so we use breaks. */
+.app-card dd > br, .app-table th > br, .app-table td > br, .app-levels li > br { display: none; }
 .app-card .app-more { margin-top: auto; padding-top: 16px; }
 
 /* Wide screens: two cards per row, each about 590px wide, so the measures have room to breathe. */
