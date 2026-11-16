@@ -237,6 +237,7 @@ html.govuk-template, .govuk-template__body { background: #fff; }
   .app-table--rows tr { border: 1px solid var(--divider); margin-bottom: 15px; padding: 10px 15px; }
   .app-table--rows th, .app-table--rows td, .app-table--rows tbody td:nth-child(3), .app-table--rows tbody td:nth-child(5) { border: 0; padding: 8px 0; }
   .app-table--rows td[data-label]::before { content: attr(data-label); display: block; font-weight: 700; margin-bottom: 5px; }
+  .app-table--rows .app-cell-label { display: none; }
   .app-card dl { grid-template-columns: 1fr; }
   .app-cards { grid-template-columns: 1fr; }
   .app-sort-note { display: block; }

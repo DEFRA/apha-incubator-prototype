@@ -88,6 +88,16 @@
     })
   })
 
+  // Says which column a value belongs to at the start of each cell, for example "Risk of incursion: Medium". Screen readers
+  // that read in a straight line, and reader modes, give a cell like "Medium" with no column heading otherwise.
+  // On small screens the stacked layout already shows the label, so the hidden text is switched off there in the styles.
+  Array.prototype.forEach.call(table.querySelectorAll('tbody td[data-label]'), function (cell) {
+    var label = document.createElement('span')
+    label.className = 'govuk-visually-hidden app-cell-label'
+    label.textContent = cell.getAttribute('data-label') + ': '
+    cell.insertBefore(label, cell.firstChild)
+  })
+
   toggle.hidden = false
   keepVariantLink()
   markSorted('priority')
