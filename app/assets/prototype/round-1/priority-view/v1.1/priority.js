@@ -119,7 +119,11 @@
       link.className = 'govuk-link app-more'
       link.href = 'not-in-test.html?page=disease&disease=' + slug + '&measure=' + encodeURIComponent(measure.toLowerCase())
       link.innerHTML = 'More details<span class="govuk-visually-hidden"> about ' + measure.toLowerCase() + ' for ' + title.textContent + '</span>'
-      item.querySelector('dd').appendChild(link)
+      // A block wrapper keeps the link on its own line when styles are removed, for example in reader mode
+      var wrap = document.createElement('div')
+      wrap.className = 'app-more-wrap'
+      wrap.appendChild(link)
+      item.querySelector('dd').appendChild(wrap)
     })
   })
 })()
