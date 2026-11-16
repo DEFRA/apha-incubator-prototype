@@ -30,6 +30,7 @@
       <li><a class="govuk-link" href="#journey">The journey so far</a></li>
       <li><a class="govuk-link" href="#design-review">After the team design review</a></li>
       <li><a class="govuk-link" href="#priority-signal">Signalling priority without prescribing action</a></li>
+      <li><a class="govuk-link" href="#accessibility-review">Accessibility review before round 1</a></li>
       <li><a class="govuk-link" href="#learnings">What we have learned from designing</a></li>
       <li><a class="govuk-link" href="#user-needs">The nine user needs</a></li>
       <li><a class="govuk-link" href="#open-questions">Wider open questions</a></li>
@@ -252,6 +253,88 @@
       levels. Research should check both. The other options are kept on the
       <a class="govuk-link" href="/public/design/priority-view/priority-signal-options.html">options page</a>, and could be
       added later, for example the drivers (option 5) or a marker for leadership attention (option 6).
+    </p>
+
+    <h2 class="govuk-heading-l" id="accessibility-review">Accessibility review before round 1</h2>
+    <p class="govuk-body">
+      <strong class="govuk-tag govuk-tag--green">Reviewed</strong>
+      16 November 2026. Priority view prototype v1.1, both preparedness versions, table and cards views.
+    </p>
+    <p class="govuk-body">
+      <strong>Result:</strong> no failures in the page content, and a short list of small enhancements. The design has
+      been agreed with the team, so none of these is applied. They can go into the next round. We don&rsquo;t expect to
+      test with people who have specific access needs in this round.
+    </p>
+
+    <h3 class="govuk-heading-m">How it was checked</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Automated checks with axe-core 4.14 against WCAG 2.2 AA and best practice, on both versions, in table and cards views, at desktop (1300px) and phone (390px) widths.</li>
+      <li>Keyboard: tabbing through the whole page, checking order and focus visibility.</li>
+      <li>Reflow at 200% and 400% zoom (640px and 320px wide), text spacing, forced colours mode and link target sizes.</li>
+      <li>Not covered: a screen reader, voice control or magnification, and testing with people who have access needs. These checks do not replace them.</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">What passes</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>No automated failures</strong> in the page content. The only flags are the prototype&rsquo;s own header bar and the phase banner sitting outside a landmark.</li>
+      <li><strong>Keyboard:</strong> a logical order, a skip link, no traps, and every control shows a clear focus style. The view switch has a pressed state, and sorting is announced.</li>
+      <li><strong>Colour:</strong> every text pair is at least 4.5:1 (the secondary text on the tinted column is 6.3:1). The bar outline is 4.6:1. Colour is never the only cue, because every level has a word and every count is printed.</li>
+      <li><strong>Reflow and spacing:</strong> no horizontal scroll or lost content at 200% or 400% zoom, and nothing clipped with increased text spacing.</li>
+      <li><strong>Names and structure:</strong> a sensible heading order, a page title and language, and unique link names. Each &quot;More details&quot; link says which disease or measure it is for.</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">Enhancements for the next round</h3>
+    <p class="govuk-body">Roughly in order of value. Each is a small change, and none changes the design the team agreed.</p>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">Accessibility enhancements for the next round</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Finding</th>
+          <th scope="col" class="govuk-table__header">Enhancement</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Sortable headings are links that act as buttons. A screen reader announces &quot;link&quot;, but it sorts and doesn&rsquo;t navigate</th>
+          <td class="govuk-table__cell">Use a button inside the heading, as the MOJ sortable table does. Keep aria-sort and the live announcement</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">In forced colours (high contrast) mode the tags lose their background and outline, and the red segments of the checklist bar vanish, leaving an empty box. The sort arrow becomes a dash. Nothing is lost, because the words and counts remain, but the bar looks empty</th>
+          <td class="govuk-table__cell">Add a forced-colours style that draws the tags and bar segments with system colours and a border, and draws the sort arrow with currentcolor</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">On small screens the table turns into stacked blocks. That drops the table structure for some screen readers. We already start small screens on cards, but the Table button is still there</th>
+          <td class="govuk-table__cell">Hide the Table button on small screens, or keep the table roles on the stacked version</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">The &quot;More details&quot; links are 18 to 20px high, and the navigation and footer links are 18 to 22px. WCAG 2.2 asks for 24px, and these pass only because they are spaced apart</th>
+          <td class="govuk-table__cell">Add a little vertical padding so each link is at least 24px high</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">The key that explains the levels is at the bottom of the page. People who magnify the screen or find scales hard to hold in mind have to scroll to it</th>
+          <td class="govuk-table__cell">Add a short &quot;What the levels mean&quot; link under the view switch that jumps to the key. This also helps with the question about the key&rsquo;s position</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">The disease name cell is the row header and also holds the &quot;More details&quot; link, so a screen reader may read the link text on every cell of the row</th>
+          <td class="govuk-table__cell">Check with a screen reader first. If it is too wordy, put the link in its own cell and keep only the name in the row header</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">The table&rsquo;s scroll area is a tab stop even when the table fits and doesn&rsquo;t scroll</th>
+          <td class="govuk-table__cell">Add the tab stop only when the table is wider than its container</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">The prototype&rsquo;s header bar (links back to round 1 and to the other version) is outside the page landmarks and would distract participants</th>
+          <td class="govuk-table__cell">Hide it for participant sessions, for example with a link parameter, and keep it for the team</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">The &quot;Go back&quot; link on the page for things not in the test uses a javascript address</th>
+          <td class="govuk-table__cell">Use a button, so it works without a link target</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="govuk-body">
+      The next step, when there is time, is a manual pass with a screen reader (for example NVDA or VoiceOver), voice
+      control and magnification. It would settle the row header and sorting questions above.
     </p>
 
     <h2 class="govuk-heading-l" id="learnings">What we have learned from designing</h2>
