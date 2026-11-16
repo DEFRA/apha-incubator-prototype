@@ -119,11 +119,11 @@
       link.className = 'govuk-link app-more'
       link.href = 'not-in-test.html?page=disease&disease=' + slug + '&measure=' + encodeURIComponent(measure.toLowerCase())
       link.innerHTML = 'More details<span class="govuk-visually-hidden"> about ' + measure.toLowerCase() + ' for ' + title.textContent + '</span>'
-      // A block wrapper keeps the link on its own line when styles are removed, for example in reader mode
-      var wrap = document.createElement('div')
-      wrap.className = 'app-more-wrap'
-      wrap.appendChild(link)
-      item.querySelector('dd').appendChild(wrap)
+      // The link stays in the same cell as the status, with a line break before it, so the two read on separate lines
+      // without styles (for example in reader mode). Reader modes can drop a block that holds only a link.
+      var dd = item.querySelector('dd')
+      dd.appendChild(document.createElement('br'))
+      dd.appendChild(link)
     })
   })
 })()
