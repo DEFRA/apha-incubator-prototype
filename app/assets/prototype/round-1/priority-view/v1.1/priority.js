@@ -68,6 +68,7 @@
     views.cards.hidden = view !== 'cards'
     buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.view === view)) })
     if (announce) status.textContent = 'Showing the ' + view + ' view'
+    updateScrollRegion()
   }
 
   heads.forEach(function (th) {
@@ -97,6 +98,23 @@
     label.textContent = cell.getAttribute('data-label') + ': '
     cell.insertBefore(label, cell.firstChild)
   })
+
+  // The scroll region is only a tab stop and a landmark when the table really is wider than the space it has,
+  // for example when text is enlarged. Otherwise it would be an empty stop for keyboard and screen reader users.
+  var scrollRegion = table.parentNode
+  function updateScrollRegion () {
+    if (scrollRegion.scrollWidth > scrollRegion.clientWidth + 1) {
+      scrollRegion.setAttribute('tabindex', '0')
+      scrollRegion.setAttribute('role', 'region')
+      scrollRegion.setAttribute('aria-label', 'Priority table, scrolls sideways')
+    } else {
+      scrollRegion.removeAttribute('tabindex')
+      scrollRegion.removeAttribute('role')
+      scrollRegion.removeAttribute('aria-label')
+    }
+  }
+  updateScrollRegion()
+  window.addEventListener('resize', updateScrollRegion)
 
   toggle.hidden = false
   keepVariantLink()

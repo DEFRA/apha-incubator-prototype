@@ -26,6 +26,8 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 
 /* A wider container for pages with a wide table. Prose is kept to two-thirds so lines stay readable. */
 .govuk-width-container.app-wide { max-width: 1200px; }
+/* GOV.UK removes the side margins from 1020px, which suits its 960px container. This one is wider, so keep them until it has room. */
+@media (min-width: 63.75em) and (max-width: 78.74em) { .govuk-width-container.app-wide { margin-right: 30px; margin-left: 30px; } }
 
 .app-scope { margin-bottom: 30px; }
 /* View toggle: two buttons, one pressed. The pressed one has a dark fill, white bold text and aria-pressed, so it differs in lightness and weight, not just hue. */
@@ -74,7 +76,7 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .app-changed { display: block; font-size: 1rem; line-height: 1.25; color: var(--secondary); white-space: nowrap; }
 .app-priority__box { margin-top: 0; }
 .app-priority__box > .app-changed { margin-top: 12px; }
-@media (min-width: 40.0625em) {
+@media (min-width: 66em) {
   .app-table--rows td.app-priority { height: 1px; }
   .app-priority__box { display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
 }
@@ -226,10 +228,11 @@ html.govuk-template, .govuk-template__body { background: #fff; }
 .app-key li { margin-bottom: 12px; display: flex; gap: 15px; align-items: baseline; }
 .app-key .app-band { min-width: 9.5em; text-align: center; }
 
-/* Small screens: a table becomes a block per disease, with a label on each value */
-@media (max-width: 40.0525em) {
+/* Where the table can't fit without scrolling sideways (narrow windows, or zoom of 200% or more on a desktop screen),
+   a table becomes a block per disease, with a label on each value. The table needs about 1000px plus the page margins. */
+@media (max-width: 65.9375em) {
   .app-table--rows { min-width: 0; }
-  .app-table--rows thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .app-table--rows thead { display: none; }
   .app-table--rows, .app-table--rows tbody, .app-table--rows tr, .app-table--rows th, .app-table--rows td { display: block; }
   .app-table--rows caption { display: block; }
   .app-scroll { margin: 0; }
@@ -238,11 +241,13 @@ html.govuk-template, .govuk-template__body { background: #fff; }
   .app-table--rows th, .app-table--rows td, .app-table--rows tbody td:nth-child(3), .app-table--rows tbody td:nth-child(5) { border: 0; padding: 8px 0; }
   .app-table--rows td[data-label]::before { content: attr(data-label); display: block; font-weight: 700; margin-bottom: 5px; }
   .app-table--rows .app-cell-label { display: none; }
-  .app-card dl { grid-template-columns: 1fr; }
-  .app-cards { grid-template-columns: 1fr; }
   .app-sort-note { display: block; }
 }
-@media (min-width: 40.0625em) { .app-sort-note { display: none; } }
+@media (max-width: 40.0525em) {
+  .app-card dl { grid-template-columns: 1fr; }
+  .app-cards { grid-template-columns: 1fr; }
+}
+@media (min-width: 66em) { .app-sort-note { display: none; } }
 
 @media print {
   @page { size: A4 landscape; margin: 10mm; }
