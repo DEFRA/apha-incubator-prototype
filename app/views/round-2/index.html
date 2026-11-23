@@ -1,0 +1,67 @@
+{% extends "layouts/design.html" %}
+
+{% set pageName = "Round 2" %}
+{% set activeNav = "round-2" %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/">Home</a></li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Round 2</li>
+  </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Round 2: priority view iteration</h1>
+    <p class="govuk-body-l">
+      The second round of design and testing, iterating the priority view after round 1.
+    </p>
+    <p class="govuk-body">
+      All data is illustrative and the disease names are fictional. What we learned in round 1 is in the
+      <a class="govuk-link" href="/design-log">design log</a> and on the <a class="govuk-link" href="/round-1">round 1 page</a>.
+    </p>
+
+    <h2 class="govuk-heading-l">What we want to learn</h2>
+    <p class="govuk-body">To be added once the aims for round 2 are agreed.</p>
+
+    <h2 class="govuk-heading-l">Open the prototype</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Version 2.1, the first changes after the research debrief: <a class="govuk-link" href="/public/prototype/round-2/priority-view/v2.1/index.html?view=cards">cards view</a> or <a class="govuk-link" href="/public/prototype/round-2/priority-view/v2.1/index.html?view=table">table view</a></li>
+      <li>Version 2.0, the starting point: <a class="govuk-link" href="/public/prototype/round-2/priority-view/v2.0/index.html?view=cards">cards view</a> or <a class="govuk-link" href="/public/prototype/round-2/priority-view/v2.0/index.html?view=table">table view</a></li>
+    </ul>
+
+    <h2 class="govuk-heading-l">Versions in this round</h2>
+    <p class="govuk-body">
+      Each version is a frozen copy of the prototype in its own folder, so what we tested stays as it was. To change the
+      prototype, copy the latest version folder to a new version (for example v2.1), make the changes in the copy, and
+      add a row here with what changed and why.
+    </p>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">Prototype versions in round 2</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Version</th>
+          <th scope="col" class="govuk-table__header">What it is</th>
+          <th scope="col" class="govuk-table__header">Status</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/public/prototype/round-2/priority-view/v2.1/index.html?view=table">Priority view v2.1</a></td>
+          <td class="govuk-table__cell">23 November 2026. The first changes after the research debrief: an &ldquo;i&rdquo; beside each measure title that shows the levels in order; sorting removed and column headings linked to detail pages; preparedness as one status with a breakdown on request, shown as &ldquo;in place&rdquo; and &ldquo;still to do&rdquo;; four proof-of-concept detail pages. Table and cards are both kept</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">Draft for review</strong></td>
+        </tr>        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a class="govuk-link" href="/public/prototype/round-2/priority-view/v2.0/index.html?view=table">Priority view v2.0</a></td>
+          <td class="govuk-table__cell">23 November 2026. The starting point for round 2, copied unchanged from round 1 v1.1. Preparedness is one combined status. The separate control measures and response options version is not kept in round 2</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Starting point</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}
