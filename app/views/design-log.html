@@ -21,7 +21,7 @@
       How the design has changed, what we have learned along the way, and where each version and round of testing is kept.
     </p>
     <p class="govuk-body">
-      All data is illustrative and the disease names are fictional. Last updated 12 November 2026.
+      All data is illustrative and the disease names are fictional. Last updated 23 November 2026.
     </p>
 
     <h2 class="govuk-heading-m">On this page</h2>
@@ -31,6 +31,7 @@
       <li><a class="govuk-link" href="#design-review">After the team design review</a></li>
       <li><a class="govuk-link" href="#priority-signal">Signalling priority without prescribing action</a></li>
       <li><a class="govuk-link" href="#accessibility-review">Accessibility review before round 1</a></li>
+      <li><a class="govuk-link" href="#round-2">Round 2: what led to the changes, and the options considered (draft)</a></li>
       <li><a class="govuk-link" href="#learnings">What we have learned from designing</a></li>
       <li><a class="govuk-link" href="#user-needs">The nine user needs</a></li>
       <li><a class="govuk-link" href="#open-questions">Wider open questions</a></li>
@@ -351,6 +352,59 @@
       <li><strong>Table cells did not say which column they belong to.</strong> Found on 16 November 2026 using VoiceOver. Moving cell by cell, you hear only &quot;Medium&quot; and have to remember the column heading. Each table cell now starts with visually hidden text giving its column, for example &quot;Risk of incursion: Medium&quot; and &quot;Impact: Major&quot;. Nothing changes visually, and on small screens, where the stacked layout already shows the label, the hidden text is switched off so it is not repeated. <strong>To check:</strong> VoiceOver may now say the column twice in some reading modes, once from the table headings and once from the hidden text. If it is too wordy, the option is to keep the hidden text and accept it, or to drop it and rely on the table headings. Listen to it and decide.</li>
       <li><strong>At 200% zoom the table was cut off at the right.</strong> Found on 16 November 2026 on a desktop screen. The table needs about 1000px, but at 200% zoom a desktop window is only 640 to 960px wide in CSS pixels. The table scrolled sideways, with no sign that more was there, and keyboard and voice users could not easily reach the hidden columns. The table now becomes a block per disease, like it does on a phone, whenever the window is narrower than 1056px, so there is no sideways scroll at any width. We checked widths from 320px to 1280px. The trade-off is that sorting is not available in that layout, and the note above the table says so. We also took the invisible column headings out of that layout, because their sort links were keyboard stops that could not be seen. The scroll wrapper is now a keyboard stop and a landmark only when the table really overflows, and a 15px page-wide sideways scroll between 1020px and 1260px is fixed. <strong>To check in research:</strong> whether anyone needs to sort while zoomed in.</li>
     </ul>
+
+    <h2 class="govuk-heading-l" id="round-2">Round 2: what led to the changes, and the options considered</h2>
+    <p class="govuk-body">
+      Draft, 23 November 2026. These are the changes in <a class="govuk-link" href="/round-2">round 2</a> prototype v2.1 and what led to them, from the 20 November research debrief. They are not confirmed until the team has reviewed them.
+    </p>
+    <div class="govuk-inset-text">
+      The debrief notes and slides were both written with AI and neither has been checked. Where they differ, the changes follow the meeting notes. Which participants said what is not yet confirmed.
+    </div>
+    <table class="govuk-table app-doc-list">
+      <caption class="govuk-table__caption govuk-visually-hidden">Round 2 changes</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">What we heard in round 1</th>
+          <th scope="col" class="govuk-table__header">Why it matters</th>
+          <th scope="col" class="govuk-table__header">Change and options considered</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Labels were not clearly understood</th>
+          <td class="govuk-table__cell">Participants did not always know what a label meant or where it sat on the scale. The key that explains them was in a collapsed section at the foot of the page, which participants did not see.</td>
+          <td class="govuk-table__cell">An &ldquo;i&rdquo; beside each measure title shows the levels in order. Definitions only if people are still unsure, and rewording last. The footer key stays for now to see whether the inline version gets used.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Preparedness was not understood as a single measure</th>
+          <td class="govuk-table__cell">Participants wanted more than one score, but did not understand &ldquo;control measures&rdquo; and &ldquo;response options&rdquo;.</td>
+          <td class="govuk-table__cell">One status on the front page, with a breakdown behind &ldquo;What makes up this status&rdquo;. The two area names (&ldquo;Stopping it arriving&rdquo; and &ldquo;Responding if it arrives&rdquo;) are placeholders. Showing the breakdown by default was tried side by side and parked: it works visually but makes the table much taller, so it stays hidden until we know people find it helpful.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">A filled progress bar was read as progress</th>
+          <td class="govuk-table__cell">A mostly filled red bar for &ldquo;9 of 10 need review&rdquo; looked nearly finished.</td>
+          <td class="govuk-table__cell">Count what is in place (&ldquo;4 of 10 in place&rdquo;) with a blue progress bar, and &ldquo;6 still to do&rdquo; under it. Red bars and pie charts were considered and dropped, because red inside the visual looked wrong.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Flagging where there is more still to do than done</th>
+          <td class="govuk-table__cell">The gap needed to be noticeable without using red in the bar.</td>
+          <td class="govuk-table__cell">Three treatments were compared and are kept here for the design documentation: (1) error-style border with &ldquo;still to do&rdquo; above the bar, (2) warning text with a centred ! in a small bubble, (3) bold dark red text on a light red background. Option 3 was chosen: dark red (#942514) on light red (#f4cdc6) is 5.68:1, which meets WCAG AA, and the bright red (#d4351c) on that background fails at 3.33:1. At 50% or more in place it is plain black on white. The 50% cut-off, applied to each group, is to be confirmed.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Headings were read as links to definitions</th>
+          <td class="govuk-table__cell">Participants treated the column headings as something to click. Sorting was not clearly needed.</td>
+          <td class="govuk-table__cell">Sorting removed. The Risk of incursion, Impact and Preparedness headings link to their own pages, with the &ldquo;i&rdquo; beside them as a separate control. The top navigation items are renamed &ldquo;By risk&rdquo;, &ldquo;By impact&rdquo; and &ldquo;By preparedness&rdquo; so they are not confused with the heading links, and they go to the same pages. Whether screen reader users understand the headings has not been tested with a real screen reader.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Priority score needed explaining</th>
+          <td class="govuk-table__cell">The score and its labels were not explained next to the measure.</td>
+          <td class="govuk-table__cell">An &ldquo;i&rdquo; beside Priority says the score is out of 60, how it is made up in one sentence, and the label ranges. The wording needs checking against the real model.</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="govuk-body">
+      Parked until there is research: alerts and change history (waiting on follow-up questions to participants), gap-closure timescales, a link to the Preparedness Indices, early signs, and a governance forum. Questions still open for the team are listed in the round 2 team review document.
+    </p>
 
     <h2 class="govuk-heading-l" id="learnings">What we have learned from designing</h2>
     <p class="govuk-body">
