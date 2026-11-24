@@ -1,0 +1,71 @@
+{% extends "layouts/design.html" %}
+
+{% set pageName = "What changed in v2" %}
+{% set activeNav = "round-2" %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/">Home</a></li>
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/round-2">Round 2</a></li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">What changed in v2</li>
+  </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+{% set v = "/public/prototype/round-2/priority-view/v2/" %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">What changed in v2, and why</h1>
+    <p class="govuk-body-l">Every change since the round 1 debrief, with the reason. All of it is in v2, so round 1 v1.1 stays as the starting point. The next iteration, v2.1, comes after the team has given feedback. Items marked &ldquo;to confirm&rdquo; are built but not yet agreed by the team.</p>
+
+    <h2 class="govuk-heading-l">Reading the priority view</h2>
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-visually-hidden">Priority view changes</caption>
+      <thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Change</th><th scope="col" class="govuk-table__header">Why</th><th scope="col" class="govuk-table__header">Status</th></tr></thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row"><td class="govuk-table__cell">An &ldquo;i&rdquo; beside Priority, Risk of incursion, Impact and Preparedness, showing the levels in order. Priority explains the score and its labels.</td><td class="govuk-table__cell">Labels weren&rsquo;t clearly understood and the key sat at the foot of the page.</td><td class="govuk-table__cell">To confirm</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">Sorting removed. Column headings link to pages for risk, impact and preparedness. Navigation renamed &ldquo;By priority&rdquo;, &ldquo;By risk&rdquo;, &ldquo;By impact&rdquo; and &ldquo;By preparedness&rdquo;.</td><td class="govuk-table__cell">People read headings as links, and there was no clear need to sort.</td><td class="govuk-table__cell">To confirm</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">Preparedness stays one status, with &ldquo;What makes up this status&rdquo; for a breakdown into two groups.</td><td class="govuk-table__cell">People wanted more than one score but didn&rsquo;t understand the old split.</td><td class="govuk-table__cell">To confirm</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">The breakdown reads &ldquo;x of 10 actions complete&rdquo; and &ldquo;y actions still to do&rdquo;, with a link to what the actions are. Light red when fewer than half are complete.</td><td class="govuk-table__cell">The bare &ldquo;1 of 10&rdquo; didn&rsquo;t say what was counted, and a mostly red bar was read as progress.</td><td class="govuk-table__cell">Agreed (wording open)</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">A percentage version, opened by a link in the black bar at the top of the priority view.</td><td class="govuk-table__cell">To compare with the count, knowing neither shows effort or importance.</td><td class="govuk-table__cell">Agreed</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">The real top five diseases, with invented ratings, and an &ldquo;Illustrative data&rdquo; bar on every page.</td><td class="govuk-table__cell">More believable for participants without using restricted data.</td><td class="govuk-table__cell">Agreed</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">A visually hidden summary before the table, linked with <code>aria-describedby</code>.</td><td class="govuk-table__cell">Tables are hard for screen reader users. To test with and without it.</td><td class="govuk-table__cell">Proposed</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">The two &ldquo;What the &hellip; mean&rdquo; sections removed from the priority view. The same information is in the &ldquo;i&rdquo; buttons.</td><td class="govuk-table__cell">It repeated the &ldquo;i&rdquo; content.</td><td class="govuk-table__cell">To confirm</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">Table and cards both kept. The risk &ldquo;More details&rdquo; link for African swine fever goes to the risk page.</td><td class="govuk-table__cell">The team agreed to test both before deciding.</td><td class="govuk-table__cell">Agreed</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-l">Detail pages</h2>
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-visually-hidden">Detail page changes</caption>
+      <thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Change</th><th scope="col" class="govuk-table__header">Why</th><th scope="col" class="govuk-table__header">Status</th></tr></thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row"><td class="govuk-table__cell">The cross-disease risk, impact and preparedness pages are plain &ldquo;What would you expect to see here?&rdquo; prompts. The old topic lists are in the researcher notes.</td><td class="govuk-table__cell">To hear expectations without leading people.</td><td class="govuk-table__cell">Agreed</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell"><a class="govuk-link" href="{{ v }}disease-african-swine-fever.html">African swine fever disease page</a>: about the disease, a risk summary linking to the risk page, and plain prompts for impact and preparedness.</td><td class="govuk-table__cell">Starts with one disease, where the team thinks users begin, and shows whether a summary is enough.</td><td class="govuk-table__cell">To confirm</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell"><a class="govuk-link" href="{{ v }}risk-african-swine-fever.html">African swine fever risk page</a>, in cards: rating, where the rating comes from, how it could change, and changes to the rating.</td><td class="govuk-table__cell">Uses only confirmed topics, so it tests content rather than a wish list. Grouping shows what is missing.</td><td class="govuk-table__cell">Agreed</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">Other diseases link to a &ldquo;not part of this test&rdquo; page.</td><td class="govuk-table__cell">So nobody wonders whether the prototype is broken.</td><td class="govuk-table__cell">To confirm</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-l">Showing a change</h2>
+    <p class="govuk-body">Risk is the measure that changes, so only African swine fever&rsquo;s risk rating shows a change.</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>A blue &ldquo;Changed&rdquo; tag beside the rating, at the far right of the row on the disease and risk pages, so a change is quick to spot. On the priority view it sits under the rating, in both the table and the cards.</li>
+      <li>&ldquo;Was High until 3 November 2026&rdquo; under the rating on the disease page.</li>
+      <li>A &ldquo;Changes to this rating&rdquo; table on the risk page, with date, rating and reason. It is what makes the risk page worth opening.</li>
+      <li>No arrows. An up arrow is bad news for risk but good news for preparedness, which would confuse.</li>
+    </ul>
+    <p class="govuk-body">The options we compared are in the design workings (not published here).</p>
+
+    <h2 class="govuk-heading-l">Not changed</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Alerts: waiting on Tess&rsquo;s follow-up with participants.</li>
+      <li>Sorting and filtering: deferred until there is a clear need.</li>
+      <li>The key at the foot of the page, kept so we can see whether the inline &ldquo;i&rdquo; gets used.</li>
+      <li>The product name &ldquo;Disease threat intelligence&rdquo;. &ldquo;Dashboard&rdquo; is avoided. We will ask users what they would call it.</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

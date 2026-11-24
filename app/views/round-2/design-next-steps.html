@@ -1,0 +1,63 @@
+{% extends "layouts/design.html" %}
+
+{% set pageName = "Next steps for design" %}
+{% set activeNav = "round-2" %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/">Home</a></li>
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/round-2">Round 2</a></li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Next steps for design</li>
+  </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Next steps for design</h1>
+    <p class="govuk-body-l">What the design team does next, in and after round 2.</p>
+
+    <h2 class="govuk-heading-l">Before the next session</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Lock the view for each task.</strong> Let a link say whether to show the table or the cards, and hide the toggle, so participants stay in the view they are given.</li>
+      <li><strong>Get the ten preparedness actions</strong> from the team, so the &ldquo;What are these actions?&rdquo; link can lead somewhere (see <a class="govuk-link" href="/round-2/team-questions">questions for the team</a>).</li>
+      <li><strong>Agree the wording</strong> of the preparedness labels, the placeholder group names and the risk page card titles.</li>
+      <li><strong>Check the hosted site&rsquo;s audience</strong> before pushing, since real disease names are used.</li>
+      <li><strong>Test with a screen reader</strong> (VoiceOver or NVDA): linked headings, the &ldquo;i&rdquo; buttons, navigation and the hidden table summary.</li>
+    </ul>
+
+    <h2 class="govuk-heading-l">Card sorting exercise</h2>
+    <p class="govuk-body">To find the best labels for the &ldquo;slices&rdquo;: risk, impact and preparedness, and the two parts of preparedness.</p>
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-visually-hidden">Card sort plan</caption>
+      <thead class="govuk-table__head"><tr class="govuk-table__row"><th scope="col" class="govuk-table__header">Question</th><th scope="col" class="govuk-table__header">Notes</th></tr></thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">What goes on the cards?</th><td class="govuk-table__cell">The pieces of information people have asked for, such as time frame, source and evidence, how it spreads, current policy, and the preparedness actions. Wait for the round 2 answers to the &ldquo;What would you expect to see here?&rdquo; pages before writing them.</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Open or closed?</th><td class="govuk-table__cell">An open sort asks people to group the cards and name the groups, which finds labels we haven&rsquo;t thought of. A closed sort gives them our labels and checks them. Suggested: open first, then closed on the labels that come out of it.</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Which labels?</th><td class="govuk-table__cell">The slice names; the two preparedness groups, which are placeholders; and possibly the scale labels, including the &ldquo;not at all prepared&rdquo; question.</td></tr>
+        <tr class="govuk-table__row"><th scope="row" class="govuk-table__header">Who takes part?</th><td class="govuk-table__cell">The same kinds of people as the research sessions, including people who work with the preparedness measures. To be agreed with Tess.</td></tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-l">Possible for round 3</h2>
+    <p class="govuk-body">Depends on what round 2 shows.</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Definitions for risk, impact and preparedness levels, if people still need them.</li>
+      <li>Alerts and change history, depending on Tess&rsquo;s follow-up with participants.</li>
+      <li>Sorting and filtering, if a clear need emerges.</li>
+      <li>Impact and preparedness pages for each disease, once we know what people expect on them.</li>
+      <li>A product name, once users have said how they would describe it.</li>
+      <li>How big the preparedness gaps are and how long they take to close.</li>
+      <li>Several threats at once, early signs and a governance forum. These are for research first, not design.</li>
+    </ul>
+
+    <h2 class="govuk-heading-l">Documents still to update</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>The <a class="govuk-link" href="/design-log">design log</a>: add the decisions and questions from this round once the team has confirmed them.</li>
+      <li>The key at the foot of the priority view still says &ldquo;need review&rdquo;, which no longer matches the preparedness wording.</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

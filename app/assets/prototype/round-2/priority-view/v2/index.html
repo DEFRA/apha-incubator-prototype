@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Priority view prototype v2.0. Starting point for round 2, copied unchanged from round 1 v1.1. If it is tested, freeze it: copy this folder to a new version (for example v2.1) before changing anything, and record what changed on the round 2 page. -->
+<!-- Priority view prototype v2. Copied from round 1 v1.1 with the first round 2 changes from the research debrief. If it is tested, freeze it: copy this folder to a new version (for example v2.1) before changing anything, and record what changed on the round 2 page. -->
 <html lang="en" class="govuk-template">
 <head>
 <meta charset="utf-8">
@@ -11,7 +11,8 @@
 </head>
 <body class="govuk-template__body app-sentence-case">
 <a href="#main-content" class="govuk-skip-link" data-module="govuk-skip-link">Skip to main content</a>
-<div class="app-hub-bar"><a href="/round-2">Back to round 2</a><span>Priority view prototype v2.0. Illustrative data, fictional disease names.</span></div>
+<div class="app-hub-bar"><a href="/round-2">Back to round 2</a><span>Priority view prototype v2. Illustrative data: real disease names, invented ratings. Not real assessments.</span><a href="?preparedness=percentage" id="pct-toggle">Preparedness as a percentage</a></div>
+<script>(function(){var u=new URL(location.href),a=document.getElementById('pct-toggle');if(u.searchParams.get('preparedness')==='percentage'){u.searchParams.delete('preparedness');a.textContent='Preparedness as a count (default)'}else{u.searchParams.set('preparedness','percentage')}a.href=u.search||u.pathname})()</script>
 <style>.app-hub-bar{background:#0b0c0c;color:#b1b4b6;font:16px/1.3 Arial,sans-serif;padding:10px 20px}.app-hub-bar a{color:#fff;font-weight:700;margin-right:16px}.app-hub-bar a:focus{outline:3px solid #ffdd00;background:#ffdd00;color:#0b0c0c}.app-hub-bar a:last-child{margin-left:16px;margin-right:0}@media print{.app-hub-bar{display:none}}</style>
 
 <header class="govuk-header" data-module="govuk-header">
@@ -32,10 +33,10 @@
     <div class="govuk-service-navigation__container">
       <nav aria-label="Views" class="govuk-service-navigation__wrapper">
         <ul class="govuk-service-navigation__list" id="navigation">
-          <li class="govuk-service-navigation__item govuk-service-navigation__item--active"><a class="govuk-service-navigation__link" href="index.html" aria-current="page"><strong class="govuk-service-navigation__active-fallback">Priority</strong></a></li>
-          <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="not-in-test.html?page=layer&amp;layer=risk">Risk</a></li>
-          <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="not-in-test.html?page=layer&amp;layer=impact">Impact</a></li>
-          <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="not-in-test.html?page=layer&amp;layer=preparedness">Preparedness</a></li>
+          <li class="govuk-service-navigation__item govuk-service-navigation__item--active"><a class="govuk-service-navigation__link" href="index.html" aria-current="page"><strong class="govuk-service-navigation__active-fallback">By priority</strong></a></li>
+          <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="risk.html">By risk</a></li>
+          <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="impact.html">By impact</a></li>
+          <li class="govuk-service-navigation__item"><a class="govuk-service-navigation__link" href="preparedness.html">By preparedness</a></li>
         </ul>
       </nav>
     </div>
@@ -51,7 +52,7 @@
   </div>
 
   <main class="govuk-main-wrapper app-main" id="main-content">
-    <p class="app-view-label">Priority view prototype v2.0, with control measures and response options combined as preparedness</p>
+    <p class="app-view-label">Priority view prototype v2, with preparedness as one measure and its breakdown on request</p>
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <h1 class="govuk-heading-xl">Diseases by priority</h1>
@@ -71,31 +72,32 @@
     <!-- ===== Table view ===== -->
     <div id="view-table">
       <p class="app-view-label">Table view</p>      <h2 class="govuk-visually-hidden" id="table-heading">Diseases, highest priority score first</h2>
-      <p class="govuk-hint app-sort-note">Sorting is not available on narrow screens or when zoomed in. Diseases are shown in priority order.</p>
+      <p class="govuk-hint">Diseases are shown in priority order.</p>
+      <p class="govuk-visually-hidden" id="table-summary">Each row is a disease, in priority order. Each disease shows its priority, then its risk of incursion, impact and preparedness, and the column headings lead to more information about each measure.</p>
 
       <div class="app-scroll">
-      <table class="govuk-table app-table app-table--rows app-table--five" id="priority-table" aria-labelledby="table-heading">
+      <table class="govuk-table app-table app-table--rows app-table--five" id="priority-table" aria-labelledby="table-heading" aria-describedby="table-summary">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header" aria-sort="none" data-key="disease" data-first="ascending"><a class="govuk-link" href="?sort=disease&amp;order=ascending">Disease</a><br><span class="app-hint">A to Z</span></th>
-            <th scope="col" class="govuk-table__header" aria-sort="descending" data-key="priority" data-first="descending"><a class="govuk-link" href="?sort=priority&amp;order=ascending">Priority</a><br><span class="app-hint">Score out of 60</span></th>
-            <th scope="col" class="govuk-table__header" aria-sort="none" data-key="risk" data-first="descending"><a class="govuk-link" href="?sort=risk&amp;order=descending">Risk of incursion</a><br><span class="app-hint">Chance of arriving in the UK</span></th>
-            <th scope="col" class="govuk-table__header" aria-sort="none" data-key="impact" data-first="descending"><a class="govuk-link" href="?sort=impact&amp;order=descending">Impact</a><br><span class="app-hint">Harm caused if it arrives</span></th>
-            <th scope="col" class="govuk-table__header" aria-sort="none" data-key="preparedness" data-first="descending"><a class="govuk-link" href="?sort=preparedness&amp;order=descending">Preparedness</a><br><span class="app-hint">Preventing a disease from arriving and responding if it does</span></th>
+            <th scope="col" class="govuk-table__header" data-key="disease">Disease</th>
+            <th scope="col" class="govuk-table__header" data-key="priority" data-scale="priority" aria-label="Priority"><span data-title>Priority</span><br><span class="app-hint" id="hint-priority" aria-hidden="true">Score out of 60</span></th>
+            <th scope="col" class="govuk-table__header" data-key="risk" data-scale="risk" aria-label="Risk of incursion"><a class="govuk-link" href="risk.html" aria-describedby="hint-risk">Risk of incursion<span class="govuk-visually-hidden">, about this measure</span></a><br><span class="app-hint" id="hint-risk" aria-hidden="true">Chance of arriving in the UK</span></th>
+            <th scope="col" class="govuk-table__header" data-key="impact" data-scale="impact" aria-label="Impact"><a class="govuk-link" href="impact.html" aria-describedby="hint-impact">Impact<span class="govuk-visually-hidden">, about this measure</span></a><br><span class="app-hint" id="hint-impact" aria-hidden="true">Harm caused if it arrives</span></th>
+            <th scope="col" class="govuk-table__header" data-key="preparedness" data-scale="preparedness" aria-label="Preparedness"><a class="govuk-link" href="preparedness.html" aria-describedby="hint-preparedness">Preparedness<span class="govuk-visually-hidden">, about this measure</span></a><br><span class="app-hint" id="hint-preparedness" aria-hidden="true">Preventing a disease from arriving and responding if it does</span></th>
           </tr>
         </thead>
         <tbody class="govuk-table__body">
 
           <tr class="govuk-table__row" data-rank="1">
-            <th scope="row" class="govuk-table__header" data-sort-value="Sprouting hoof disease">Sprouting hoof disease<br><a class="govuk-link app-more-row" href="not-in-test.html?page=disease&amp;disease=sprouting-hoof-disease">More details<span class="govuk-visually-hidden"> about Sprouting hoof disease, which is the highest priority</span></a></th>
+            <th scope="row" class="govuk-table__header" data-sort-value="African swine fever">African swine fever<br><a class="govuk-link app-more-row" href="disease-african-swine-fever.html">More details<span class="govuk-visually-hidden"> about African swine fever, which is the highest priority</span></a></th>
             <td class="govuk-table__cell app-priority" data-label="Priority" data-sort-value="45"><span class="app-band app-band--act">Highest priority</span><br><span class="app-priority__detail">Score 45</span></td>
-            <td class="govuk-table__cell" data-label="Risk of incursion" data-sort-value="6"><span class="app-score">6</span></td>
+            <td class="govuk-table__cell" data-label="Risk of incursion" data-sort-value="6"><span class="app-score">6</span><strong class="govuk-tag govuk-tag--blue app-risk-changed">Changed</strong></td>
             <td class="govuk-table__cell" data-label="Impact" data-sort-value="4"><span class="app-score">4</span></td>
             <td class="govuk-table__cell" data-label="Preparedness" data-sort-value="5"><span class="app-score">5</span></td>
           </tr>
 
           <tr class="govuk-table__row" data-rank="2">
-            <th scope="row" class="govuk-table__header" data-sort-value="Himalayan Dragon Pox">Himalayan Dragon Pox<br><a class="govuk-link app-more-row" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">More details<span class="govuk-visually-hidden"> about Himalayan Dragon Pox</span></a></th>
+            <th scope="row" class="govuk-table__header" data-sort-value="Highly pathogenic avian influenza (HPAI)">Highly pathogenic avian influenza (HPAI)<br><a class="govuk-link app-more-row" href="disease.html?disease=hpai">More details<span class="govuk-visually-hidden"> about Highly pathogenic avian influenza (HPAI)</span></a></th>
             <td class="govuk-table__cell app-priority" data-label="Priority" data-sort-value="27"><span class="app-band app-band--prioritise">High priority</span><br><span class="app-priority__detail">Score 27</span></td>
             <td class="govuk-table__cell" data-label="Risk of incursion" data-sort-value="4"><span class="app-score">4</span></td>
             <td class="govuk-table__cell" data-label="Impact" data-sort-value="4"><span class="app-score">4</span></td>
@@ -103,7 +105,7 @@
           </tr>
 
           <tr class="govuk-table__row" data-rank="3">
-            <th scope="row" class="govuk-table__header" data-sort-value="Rainbow tail disease">Rainbow tail disease<br><a class="govuk-link app-more-row" href="not-in-test.html?page=disease&amp;disease=rainbow-tail-disease">More details<span class="govuk-visually-hidden"> about Rainbow tail disease</span></a></th>
+            <th scope="row" class="govuk-table__header" data-sort-value="Foot and mouth disease">Foot and mouth disease<br><a class="govuk-link app-more-row" href="disease.html?disease=foot-and-mouth-disease">More details<span class="govuk-visually-hidden"> about Foot and mouth disease</span></a></th>
             <td class="govuk-table__cell app-priority" data-label="Priority" data-sort-value="24"><span class="app-band app-band--prioritise">High priority</span><br><span class="app-priority__detail">Score 24</span></td>
             <td class="govuk-table__cell" data-label="Risk of incursion" data-sort-value="3"><span class="app-score">3</span></td>
             <td class="govuk-table__cell" data-label="Impact" data-sort-value="5"><span class="app-score">5</span></td>
@@ -111,7 +113,7 @@
           </tr>
 
           <tr class="govuk-table__row" data-rank="4">
-            <th scope="row" class="govuk-table__header" data-sort-value="Fuzzy fox flu">Fuzzy fox flu<br><a class="govuk-link app-more-row" href="not-in-test.html?page=disease&amp;disease=fuzzy-fox-flu">More details<span class="govuk-visually-hidden"> about Fuzzy fox flu</span></a></th>
+            <th scope="row" class="govuk-table__header" data-sort-value="African horse sickness">African horse sickness<br><a class="govuk-link app-more-row" href="disease.html?disease=african-horse-sickness">More details<span class="govuk-visually-hidden"> about African horse sickness</span></a></th>
             <td class="govuk-table__cell app-priority" data-label="Priority" data-sort-value="14"><span class="app-band app-band--monitor">Medium priority</span><br><span class="app-priority__detail">Score 14</span></td>
             <td class="govuk-table__cell" data-label="Risk of incursion" data-sort-value="5"><span class="app-score">5</span></td>
             <td class="govuk-table__cell" data-label="Impact" data-sort-value="2"><span class="app-score">2</span></td>
@@ -119,7 +121,7 @@
           </tr>
 
           <tr class="govuk-table__row" data-rank="5">
-            <th scope="row" class="govuk-table__header" data-sort-value="Wing wobble">Wing wobble<br><a class="govuk-link app-more-row" href="not-in-test.html?page=disease&amp;disease=wing-wobble">More details<span class="govuk-visually-hidden"> about Wing wobble</span></a></th>
+            <th scope="row" class="govuk-table__header" data-sort-value="Bluetongue virus">Bluetongue virus<br><a class="govuk-link app-more-row" href="disease.html?disease=bluetongue-virus">More details<span class="govuk-visually-hidden"> about Bluetongue virus</span></a></th>
             <td class="govuk-table__cell app-priority" data-label="Priority" data-sort-value="2"><span class="app-band app-band--maintain">Low priority</span><br><span class="app-priority__detail">Score 2</span></td>
             <td class="govuk-table__cell" data-label="Risk of incursion" data-sort-value="1"><span class="app-score">1</span></td>
             <td class="govuk-table__cell" data-label="Impact" data-sort-value="2"><span class="app-score">2</span></td>
@@ -129,14 +131,6 @@
         </tbody>
       </table>
       </div>
-
-      <h2 class="govuk-heading-m app-section-heading">What the priority levels mean</h2>
-      <ul class="app-key">
-        <li><span class="app-band app-band--act">Highest priority</span> Score of 30 or more.</li>
-        <li><span class="app-band app-band--prioritise">High priority</span> Score of 20 to 29.</li>
-        <li><span class="app-band app-band--monitor">Medium priority</span> Score of 8 to 19.</li>
-        <li><span class="app-band app-band--maintain">Low priority</span> Score of 1 to 7.</li>
-      </ul>
     </div>
 
     <!-- ===== Cards view ===== -->
@@ -150,12 +144,12 @@
         </div>
         <ul class="app-cards app-cards--three">
           <li class="app-card app-card--act">
-            <h4 class="govuk-heading-m">Sprouting hoof disease</h4>
+            <h4 class="govuk-heading-m">African swine fever</h4>
             <p class="govuk-body app-card__meta">Priority score 45 out of 60</p>
             <p class="govuk-body app-card__why">A very high risk of arriving, and the impact would be major. We are not at all prepared.</p>
-            <a class="govuk-link app-more-summary" href="not-in-test.html?page=disease&amp;disease=sprouting-hoof-disease">More details<span class="govuk-visually-hidden"> about Sprouting hoof disease, which is the highest priority</span></a>
+            <a class="govuk-link app-more-summary" href="disease-african-swine-fever.html">More details<span class="govuk-visually-hidden"> about African swine fever, which is the highest priority</span></a>
             <dl>
-              <div><dt class="govuk-body-s">Risk of incursion</dt><dd><span class="app-score">6</span></dd></div>
+              <div><dt class="govuk-body-s">Risk of incursion</dt><dd><span class="app-score">6</span><strong class="govuk-tag govuk-tag--blue app-risk-changed">Changed</strong></dd></div>
               <div><dt class="govuk-body-s">Impact</dt><dd><span class="app-score">4</span></dd></div>
               <div><dt class="govuk-body-s">Preparedness</dt><dd><span class="app-score">5</span></dd></div>
             </dl>
@@ -170,10 +164,10 @@
         </div>
         <ul class="app-cards app-cards--three">
           <li class="app-card app-card--prioritise">
-            <h4 class="govuk-heading-m">Himalayan Dragon Pox</h4>
+            <h4 class="govuk-heading-m">Highly pathogenic avian influenza (HPAI)</h4>
             <p class="govuk-body app-card__meta">Priority score 27 out of 60</p>
             <p class="govuk-body app-card__why">A medium risk of arriving and a major impact. We are only slightly prepared.</p>
-            <a class="govuk-link app-more-summary" href="not-in-test.html?page=disease&amp;disease=himalayan-dragon-pox">More details<span class="govuk-visually-hidden"> about Himalayan Dragon Pox</span></a>
+            <a class="govuk-link app-more-summary" href="disease.html?disease=hpai">More details<span class="govuk-visually-hidden"> about Highly pathogenic avian influenza (HPAI)</span></a>
             <dl>
               <div><dt class="govuk-body-s">Risk of incursion</dt><dd><span class="app-score">4</span></dd></div>
               <div><dt class="govuk-body-s">Impact</dt><dd><span class="app-score">4</span></dd></div>
@@ -181,10 +175,10 @@
             </dl>
           </li>
           <li class="app-card app-card--prioritise">
-            <h4 class="govuk-heading-m">Rainbow tail disease</h4>
+            <h4 class="govuk-heading-m">Foot and mouth disease</h4>
             <p class="govuk-body app-card__meta">Priority score 24 out of 60</p>
             <p class="govuk-body app-card__why">A low risk of arriving, but the impact would be severe. We are moderately prepared.</p>
-            <a class="govuk-link app-more-summary" href="not-in-test.html?page=disease&amp;disease=rainbow-tail-disease">More details<span class="govuk-visually-hidden"> about Rainbow tail disease</span></a>
+            <a class="govuk-link app-more-summary" href="disease.html?disease=foot-and-mouth-disease">More details<span class="govuk-visually-hidden"> about Foot and mouth disease</span></a>
             <dl>
               <div><dt class="govuk-body-s">Risk of incursion</dt><dd><span class="app-score">3</span></dd></div>
               <div><dt class="govuk-body-s">Impact</dt><dd><span class="app-score">5</span></dd></div>
@@ -201,10 +195,10 @@
         </div>
         <ul class="app-cards app-cards--three">
           <li class="app-card app-card--monitor">
-            <h4 class="govuk-heading-m">Fuzzy fox flu</h4>
+            <h4 class="govuk-heading-m">African horse sickness</h4>
             <p class="govuk-body app-card__meta">Priority score 14 out of 60</p>
             <p class="govuk-body app-card__why">A high risk of arriving, but the impact would be minor and we are largely prepared.</p>
-            <a class="govuk-link app-more-summary" href="not-in-test.html?page=disease&amp;disease=fuzzy-fox-flu">More details<span class="govuk-visually-hidden"> about Fuzzy fox flu</span></a>
+            <a class="govuk-link app-more-summary" href="disease.html?disease=african-horse-sickness">More details<span class="govuk-visually-hidden"> about African horse sickness</span></a>
             <dl>
               <div><dt class="govuk-body-s">Risk of incursion</dt><dd><span class="app-score">5</span></dd></div>
               <div><dt class="govuk-body-s">Impact</dt><dd><span class="app-score">2</span></dd></div>
@@ -221,10 +215,10 @@
         </div>
         <ul class="app-cards app-cards--three">
           <li class="app-card app-card--maintain">
-            <h4 class="govuk-heading-m">Wing wobble</h4>
+            <h4 class="govuk-heading-m">Bluetongue virus</h4>
             <p class="govuk-body app-card__meta">Priority score 2 out of 60</p>
             <p class="govuk-body app-card__why">A negligible risk of arriving, with a minor impact, and we are totally prepared.</p>
-            <a class="govuk-link app-more-summary" href="not-in-test.html?page=disease&amp;disease=wing-wobble">More details<span class="govuk-visually-hidden"> about Wing wobble</span></a>
+            <a class="govuk-link app-more-summary" href="disease.html?disease=bluetongue-virus">More details<span class="govuk-visually-hidden"> about Bluetongue virus</span></a>
             <dl>
               <div><dt class="govuk-body-s">Risk of incursion</dt><dd><span class="app-score">1</span></dd></div>
               <div><dt class="govuk-body-s">Impact</dt><dd><span class="app-score">2</span></dd></div>
@@ -233,49 +227,6 @@
           </li>
         </ul>
       </section>
-    </div>
-
-    <div class="govuk-grid-row app-section">
-      <div class="govuk-grid-column-two-thirds">
-        <h2 class="govuk-heading-m">What the three measures mean</h2>
-        <p class="govuk-body">Risk of incursion is rated on six levels, and impact and preparedness on five. The cards and table only show the levels that apply to these diseases, so the whole scale is here. Preparedness brings together control measures and response options.</p>
-        <ul class="app-levels">
-          <li>
-            <span class="app-levels__name">Risk of incursion</span><br>
-            <span class="app-levels__order">Chance of arriving in the UK. Lowest first</span><br>
-            <span class="app-levels__tags">
-              <strong class="govuk-tag app-level-tag app-level-tag--1">Negligible</strong>
-              <strong class="govuk-tag app-level-tag app-level-tag--2">Very low</strong>
-              <strong class="govuk-tag app-level-tag app-level-tag--3">Low</strong>
-              <strong class="govuk-tag app-level-tag app-level-tag--mid">Medium</strong>
-              <strong class="govuk-tag app-level-tag app-level-tag--4">High</strong>
-              <strong class="govuk-tag app-level-tag app-level-tag--5">Very high</strong>
-            </span>
-          </li>
-          <li>
-            <span class="app-levels__name">Impact</span><br>
-            <span class="app-levels__order">Harm caused if it arrives. Lowest first</span><br>
-            <span class="app-levels__tags">
-              <strong class="govuk-tag app-level-tag app-level-tag--1">Insignificant</strong>
-              <strong class="govuk-tag app-level-tag app-level-tag--2">Minor</strong>
-              <strong class="govuk-tag app-level-tag app-level-tag--3">Significant</strong>
-              <strong class="govuk-tag app-level-tag app-level-tag--4">Major</strong>
-              <strong class="govuk-tag app-level-tag app-level-tag--5">Severe</strong>
-            </span>
-          </li>
-          <li>
-            <span class="app-levels__name">Preparedness</span><br>
-            <span class="app-levels__order">How ready we are to prevent a disease from arriving and to respond if it does. Most prepared first</span><br>
-            <span class="app-levels__tags">
-              <strong class="govuk-tag app-level-tag app-level-tag--1">Totally prepared</strong>
-              <strong class="govuk-tag app-level-tag app-level-tag--2">Largely prepared</strong>
-              <strong class="govuk-tag app-level-tag app-level-tag--3">Moderately prepared</strong>
-              <strong class="govuk-tag app-level-tag app-level-tag--4">Slightly prepared</strong>
-              <strong class="govuk-tag app-level-tag app-level-tag--5">Not at all prepared</strong>
-            </span>
-          </li>
-        </ul>
-      </div>
     </div>
 
     <div class="govuk-grid-row app-section">
@@ -333,5 +284,7 @@
 
 <script src="priority.js"></script>
 <script src="score-labels.js"></script>
+<script src="scale-tips.js"></script>
+<script src="preparedness-breakdown.js"></script>
 </body>
 </html>

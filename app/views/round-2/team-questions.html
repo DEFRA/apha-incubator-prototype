@@ -1,0 +1,54 @@
+{% extends "layouts/design.html" %}
+
+{% set pageName = "Questions for the team" %}
+{% set activeNav = "round-2" %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/">Home</a></li>
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/round-2">Round 2</a></li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Questions for the team</li>
+  </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <h1 class="govuk-heading-xl">Questions for the team</h1>
+    <p class="govuk-body-l">What we need from the team before or during round 2. None of these has been answered yet.</p>
+    <p class="govuk-body">Questions for participants are on <a class="govuk-link" href="/round-2/research-questions">open questions for research</a>.</p>
+
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-table__caption--m">What we need from the team</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">#</th>
+          <th scope="col" class="govuk-table__header">Area</th>
+          <th scope="col" class="govuk-table__header">What we need</th>
+          <th scope="col" class="govuk-table__header">Who</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row"><td class="govuk-table__cell">1</td><th scope="row" class="govuk-table__header">Status labels</th><td class="govuk-table__cell">Are &ldquo;complete&rdquo; and &ldquo;still to do&rdquo; the right words? Are the six risk levels and five impact levels the right scales? Once people can see the scale beside each title, does any label still need rewording?</td><td class="govuk-table__cell">Christina, Tess, preparedness lead</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">2</td><th scope="row" class="govuk-table__header">The two preparedness groups</th><td class="govuk-table__cell">&ldquo;Stopping it arriving&rdquo; and &ldquo;Responding if it arrives&rdquo; are placeholders. Do we agree names, or show one combined measure only? Which of the ten actions belong to which group?</td><td class="govuk-table__cell">Team, preparedness lead</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">3</td><th scope="row" class="govuk-table__header">The ten actions</th><td class="govuk-table__cell">What are the ten preparedness actions? The &ldquo;What are these actions?&rdquo; link goes to a plain prompt page for now. We need the list before a later round can show it.</td><td class="govuk-table__cell">Preparedness lead</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">4</td><th scope="row" class="govuk-table__header">Priority score wording</th><td class="govuk-table__cell">Is the &ldquo;i&rdquo; wording plain enough (risk multiplied by impact, made larger the less prepared we are), and are the score ranges right to show?</td><td class="govuk-table__cell">Christina, Tess</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">5</td><th scope="row" class="govuk-table__header">Warning cut-off</th><td class="govuk-table__cell">&ldquo;Still to do&rdquo; is highlighted light red when fewer than half the actions are complete. Is 50% right, and is it applied per group, as now, or to the overall total? The percentage version uses the same rule.</td><td class="govuk-table__cell">Team</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">6</td><th scope="row" class="govuk-table__header">Detail page content</th><td class="govuk-table__cell">The African swine fever pages use invented content. Who provides real content, and is it needed before the next session? &ldquo;Current policy or guidance&rdquo; on the disease page is still &ldquo;Content to come&rdquo;.</td><td class="govuk-table__cell">Christina, Tess</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">7</td><th scope="row" class="govuk-table__header">Source of the risk rating</th><td class="govuk-table__cell">Will the source of a risk rating always be the IDM team? If not, the evidence area must name different sources. The &ldquo;Veterinary Risk Group&rdquo; placeholder on the risk page should match the answer. Also: where did &ldquo;When the rating was assigned&rdquo; come from, as it isn&rsquo;t in the research debrief&rsquo;s risk list?</td><td class="govuk-table__cell">Team</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">8</td><th scope="row" class="govuk-table__header">Table and cards</th><td class="govuk-table__cell">Both are kept. We now plan to give each task one view. Do we also test a toggle between them, or one view per participant?</td><td class="govuk-table__cell">Christina, Tess</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">9</td><th scope="row" class="govuk-table__header">Minimum on the front page</th><td class="govuk-table__cell">Nothing is added without research to support it. Is there anything in v2 the team thinks should come off the front page?</td><td class="govuk-table__cell">Team</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">10</td><th scope="row" class="govuk-table__header">Participants</th><td class="govuk-table__cell">Are the people named in the meeting notes the same as those in the debrief? Who should the next round recruit, given the earlier results weren&rsquo;t a clean comparison?</td><td class="govuk-table__cell">Tess</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">11</td><th scope="row" class="govuk-table__header">Ideas only in the debrief</th><td class="govuk-table__cell">Gap-closure timescales, a link to the preparedness indices, early signs, and a governance forum. Do we test any of them?</td><td class="govuk-table__cell">Team</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">12</td><th scope="row" class="govuk-table__header">Alerts and change history</th><td class="govuk-table__cell">Parked. Tess is emailing participants to ask whether they need to be told about changes, and which. Nothing more is built until we hear back.</td><td class="govuk-table__cell">Tess</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">13</td><th scope="row" class="govuk-table__header">Screen reader testing</th><td class="govuk-table__cell">Do screen reader users understand the linked headings, the &ldquo;i&rdquo; buttons and the hidden table summary? Test with VoiceOver or NVDA, using accessibility research support if needed.</td><td class="govuk-table__cell">Christina, Tess</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">14</td><th scope="row" class="govuk-table__header">Preparedness breakdown by default</th><td class="govuk-table__cell">Parked. Show both groups under the status without opening &ldquo;What makes up this status&rdquo;? It works visually but makes the table much taller. Revisit once the two groups are firm and shown to help.</td><td class="govuk-table__cell">Christina, preparedness lead</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">15</td><th scope="row" class="govuk-table__header">Wording on the risk page</th><td class="govuk-table__cell">&ldquo;Changes to this rating&rdquo; and &ldquo;How this could change&rdquo; are close in wording. Rename the second (for example &ldquo;What could change this rating&rdquo;)? Should &ldquo;What very high means&rdquo; also sit behind the &ldquo;i&rdquo;?</td><td class="govuk-table__cell">Christina</td></tr>
+        <tr class="govuk-table__row"><td class="govuk-table__cell">16</td><th scope="row" class="govuk-table__header">Sharing the hosted prototype</th><td class="govuk-table__cell">Check who can open the hosted site before pushing. The prototype uses real disease names with invented ratings, and the debrief material it draws on is marked official-sensitive.</td><td class="govuk-table__cell">Christina, Tess</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

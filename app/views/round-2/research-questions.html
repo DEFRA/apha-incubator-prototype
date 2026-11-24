@@ -1,0 +1,92 @@
+{% extends "layouts/design.html" %}
+
+{% set pageName = "Open questions for research" %}
+{% set activeNav = "round-2" %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/">Home</a></li>
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/round-2">Round 2</a></li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Open questions for research</li>
+  </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <strong class="govuk-tag govuk-tag--purple govuk-!-margin-bottom-3">For user research</strong>
+    <h1 class="govuk-heading-xl">Open questions for research</h1>
+    <p class="govuk-body-l">Questions the round 2 design choices have raised that research needs to answer. This is the first pass and it will grow.</p>
+    <p class="govuk-body">What to put in front of participants is on <a class="govuk-link" href="/round-2/things-to-test">things to test</a>. Questions for the team, not for participants, are on <a class="govuk-link" href="/round-2/team-questions">questions for the team</a>.</p>
+
+    <h2 class="govuk-heading-l">Reading preparedness</h2>
+    <ol class="govuk-list govuk-list--number">
+      <li>Do people read &ldquo;x of 10 actions complete&rdquo; and &ldquo;y actions still to do&rdquo; the right way round? In round 1 most people read the earlier wording the opposite way. We don&rsquo;t yet know whether the new wording fixes the misreading or just changes it.</li>
+      <li>Does &ldquo;not at all prepared&rdquo; ever apply in practice? Does &ldquo;totally prepared&rdquo;? One person said there is always some preparing, even by chance.</li>
+      <li>Which reads more clearly, a count or a percentage? Does either lead people to assume the actions are equal in effort or importance? (They are not weighted, and they vary in complexity.)</li>
+      <li>Is &ldquo;action ready&rdquo; understood as &ldquo;actions in place&rdquo;, or as &ldquo;ready to take action&rdquo;? The wording suggested in the meeting is ambiguous.</li>
+      <li>Do people want to see what the ten actions are, and where would they expect to find them?</li>
+      <li>Is it helpful to see the two parts of preparedness on the front page at all? The names &ldquo;Stopping it arriving&rdquo; and &ldquo;Responding if it arrives&rdquo; are placeholders.</li>
+    </ol>
+
+    <h2 class="govuk-heading-l">Reading the page</h2>
+    <ol class="govuk-list govuk-list--number" start="7">
+      <li>Can people pick out the highest priority disease, and say why?</li>
+      <li>Do the &ldquo;i&rdquo; buttons get used, and does seeing the levels in order help? The key at the foot of the page was missed in round 1 and is still there, so we can compare.</li>
+      <li>Do people understand what the priority score means from its &ldquo;i&rdquo;? The one-sentence explanation was written by the design team and is not checked against the real model.</li>
+      <li>Do people expect the column headings to be links, and where do they expect them to go?</li>
+    </ol>
+
+    <h2 class="govuk-heading-l">Detail pages and expectations</h2>
+    <ol class="govuk-list govuk-list--number" start="11">
+      <li>Can people say why the African swine fever risk rating is very high, using the risk page?</li>
+      <li>What do people expect to see under Impact and Preparedness for a disease?</li>
+      <li>What do people expect on a page for risk, impact or preparedness across all diseases, and do they need one at all?</li>
+      <li>Does the risk page answer the questions people have, using only the confirmed topics? What is missing, inside a card or as a whole card?</li>
+      <li>Is the disease page summary enough, or do people click through to the risk page? Does the summary repeat too much of it?</li>
+    </ol>
+
+    <h2 class="govuk-heading-l">Change</h2>
+    <ol class="govuk-list govuk-list--number" start="16">
+      <li>Can people tell what changed on African swine fever, and when and why? Do they find the &ldquo;Changed&rdquo; tag and the &ldquo;Changes to this rating&rdquo; table without help?</li>
+      <li>Which changes would people want to know about, and how? Waiting on Tess&rsquo;s follow-up email to participants. This is a separate question from whether people can read a change, so keep the two apart in the session.</li>
+      <li>Which measures do people want changes shown for: risk only, or impact and preparedness too? Risk moves most, impact rarely, and preparedness may change so often it overwhelms.</li>
+      <li>What makes a change trusted: who made the call, what it is based on, when it was reviewed, and whether it will last?</li>
+      <li>Is a history of changes really needed, and for how long: the last change, the last 12 months, or since the rating began? Do people open it unprompted? The example table has three invented changes, so check it doesn&rsquo;t lead people to expect that many.</li>
+      <li>Do people ask how big a preparedness gap is and how long it would take to close, without being prompted? Raised in round 1 but held back from the design, so listen for it.</li>
+    </ol>
+
+    <h2 class="govuk-heading-l">Views and layout</h2>
+    <ol class="govuk-list govuk-list--number" start="22">
+      <li>Does the assigned view (table or cards) change how well people complete the same task?</li>
+      <li>Is the table better for the overall picture and the cards better once more detail is added?</li>
+      <li>Do people need to sort or filter, and if so, by what?</li>
+    </ol>
+
+    <h2 class="govuk-heading-l">Naming and accessibility</h2>
+    <ol class="govuk-list govuk-list--number" start="25">
+      <li>How would people describe the product to a colleague? What would they call it? &ldquo;Dashboard&rdquo; may set the wrong expectations, and &ldquo;tool&rdquo; may suggest more than the service does. Ask at the end, before showing any names.</li>
+      <li>Do screen reader users understand the linked headings, the &ldquo;i&rdquo; buttons and the hidden table summary? Are &ldquo;By risk&rdquo; in the navigation and the &ldquo;Risk of incursion&rdquo; heading link confused? Nothing has been tested with a real screen reader yet.</li>
+    </ol>
+
+    <h2 class="govuk-heading-l">Notes for the researcher</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>The ratings are invented. If anyone questions them, say so. A realistic spread of statuses may teach us more than matching round 1, so don&rsquo;t worry if people try to correct the figures.</li>
+      <li>On the percentage version, ask what they think it measures, and whether they expect some actions to count for more than others (weighting).</li>
+      <li>The impact, preparedness and cross-disease pages are plain &ldquo;What would you expect to see here?&rdquo; prompts. Prompt with the topic list below only if someone is stuck.</li>
+      <li>The African swine fever pages are the only ones with content. Everything on them, including the assessing group, is invented.</li>
+    </ul>
+
+    <h3 class="govuk-heading-m">What people expected in round 1</h3>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>The disease:</strong> species, whether it spreads to people, how it spreads, current policy or guidance, when it was last reviewed.</li>
+      <li><strong>Risk:</strong> what each level means with a time frame, source and evidence, whether a change is fast and lasting, how close the outbreak is.</li>
+      <li><strong>Impact:</strong> human health, trade and economy (with a scale), effect on operations and staff, which model or report it came from.</li>
+      <li><strong>Preparedness:</strong> which areas fall short and by how much, what each counted item is, how old each item is, a link to the preparedness indices, and capacity such as &ldquo;have I got enough people&rdquo;.</li>
+    </ul>
+    <p class="govuk-body">Answers to the round 2 prompt pages go here as sessions happen.</p>
+  </div>
+</div>
+{% endblock %}

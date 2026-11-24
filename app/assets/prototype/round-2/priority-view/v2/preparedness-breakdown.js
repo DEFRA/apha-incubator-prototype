@@ -8,12 +8,15 @@
 
   // Items in place, out of 10, for each area, per disease.
   var data = {
-    'sprouting-hoof-disease': [1, 2],
-    'himalayan-dragon-pox': [3, 4],
-    'rainbow-tail-disease': [5, 6],
-    'fuzzy-fox-flu': [8, 7],
-    'wing-wobble': [10, 10]
+    'african-swine-fever': [1, 2],
+    'hpai': [3, 4],
+    'foot-and-mouth-disease': [5, 6],
+    'african-horse-sickness': [8, 7],
+    'bluetongue-virus': [10, 10]
   }
+
+  // Alternative for testing: add ?preparedness=percentage to the priority view address to show percentages instead of counts.
+  var PERCENT = new URLSearchParams(window.location.search).get('preparedness') === 'percentage'
 
   function build(slug, name) {
     var counts = data[slug]
@@ -25,26 +28,42 @@
       var left = TOTAL - done
       // Under half in place is flagged. Exactly half is not.
       var flag = done < TOTAL / 2
-      html += '<div class="app-done"><p class="app-done__name">' + AREA_NAMES[i] + '</p>' +
-        '<p class="app-done__line"><strong>' + done + ' of ' + TOTAL + '</strong> in place</p>' +
+      var pct = Math.round(done / TOTAL * 100)
+      if (PERCENT) {
+        html += '<div class="app-done"><p class="app-done__name">' + AREA_NAMES[i] + '</p>' +
+          '<p class="app-done__line"><strong>' + pct + '%</strong> of actions complete</p>' +
+          '<div class="app-done__bar app-done__bar--pct" aria-hidden="true"><span style="width:' + pct + '%"></span></div>' +
+          '<p class="app-done__line"><strong class="app-todo' + (flag ? ' app-todo--more' : '') + '">' + (100 - pct) + '% still to do</strong></p></div>'
+        return
+      }      html += '<div class="app-done"><p class="app-done__name">' + AREA_NAMES[i] + '</p>' +
+        '<p class="app-done__line"><strong>' + done + ' of ' + TOTAL + '</strong> actions complete</p>' +
         '<div class="app-done__bar" aria-hidden="true">'
       for (var n = 0; n < TOTAL; n++) html += '<span class="' + (n < done ? 'app-done__on' : '') + '"></span>'
-      html += '</div><p class="app-done__line"><strong class="app-todo' + (flag ? ' app-todo--more' : '') + '">' + left + ' still to do</strong></p></div>'
+      html += '</div><p class="app-done__line"><strong class="app-todo' + (flag ? ' app-todo--more' : '') + '">' + left + ' actions still to do</strong></p></div>'
     })
+    html += '<p class="govuk-body app-breakdown__link"><a class="govuk-link" href="preparedness.html">What are these actions?<span class="govuk-visually-hidden"> for ' + name + '</span></a></p>'
     details.innerHTML = html + '</div>'
     return details
   }
 
+  // Most links carry ?disease=slug. The African swine fever link goes to its own page, so use the page name.
+  function slugOf(link) {
+    var fromQuery = new URLSearchParams(link.search).get('disease')
+    if (fromQuery) return fromQuery
+    var m = link.pathname.match(/disease-([a-z-]+)\.html$/)
+    return m ? m[1] : null
+  }
+
   document.querySelectorAll('#priority-table tbody tr').forEach(function (row) {
     var link = row.querySelector('th a')
-    var slug = new URLSearchParams(link.search).get('disease')
+    var slug = slugOf(link)
     var cell = row.querySelector('td[data-label="Preparedness"]')
     var details = build(slug, row.querySelector('th').getAttribute('data-sort-value'))
     if (cell && details) cell.appendChild(details)
   })
 
   document.querySelectorAll('.app-card').forEach(function (card) {
-    var slug = new URLSearchParams(card.querySelector('.app-more-summary').search).get('disease')
+    var slug = slugOf(card.querySelector('.app-more-summary'))
     var item = Array.prototype.filter.call(card.querySelectorAll('dl > div'), function (d) {
       return d.querySelector('dt').firstChild.textContent.trim() === 'Preparedness'
     })[0]

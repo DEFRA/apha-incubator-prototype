@@ -34,14 +34,16 @@
       '<li><span class="app-band app-band--maintain">Low priority</span> 1 to 7</li></ul>' +
       '<p class="app-toggletip__text">The full working is at the foot of the page.</p>'
   }
+  // Definitions are invented for the illustrative African swine fever page. Only the on-page tip shows them.
+  scales.risk.definitions = ['Incursion is so unlikely it can be discounted.', 'Incursion is very unlikely.', 'Incursion is unlikely.', 'Incursion is possible.', 'Incursion is likely.', 'Incursion is expected.']
   var byTitle = { 'risk of incursion': 'risk', impact: 'impact', preparedness: 'preparedness' }
   var open = null
 
-  function content(scale) {
+  function content(scale, withDefinitions) {
     if (scale.html) return scale.html
     var html = '<span class="app-toggletip__title">' + scale.title + ': ' + scale.order + '</span><ol class="app-toggletip__list">'
     scale.names.forEach(function (name, i) {
-      html += '<li><strong class="govuk-tag app-level-tag app-level-tag--' + scale.classes[i] + '">' + name + '</strong></li>'
+      html += '<li><strong class="govuk-tag app-level-tag app-level-tag--' + scale.classes[i] + '">' + name + '</strong>' + (withDefinitions ? '<span class="app-toggletip__def">' + scale.definitions[i] + '</span>' : '') + '</li>'
     })
     return html + '</ol>'
   }
@@ -65,7 +67,7 @@
     open = null
   }
 
-  function add(target, scale) {
+  function add(target, scale, withDefinitions) {
     var wrap = document.createElement('span')
     wrap.className = 'app-toggletip'
     var button = document.createElement('button')
@@ -86,7 +88,8 @@
       var wasOpen = open && open.button === button
       close()
       if (wasOpen) return
-      live.innerHTML = content(scale)
+      live.innerHTML = content(scale, withDefinitions)
+      live.classList.toggle('app-toggletip__live--wide', !!withDefinitions)
       place(button, live)
       button.setAttribute('aria-expanded', 'true')
       wrap.classList.add('app-toggletip--open')
@@ -112,6 +115,13 @@
   document.querySelectorAll('.app-card dt').forEach(function (dt) {
     var key = byTitle[dt.firstChild.textContent.trim().toLowerCase()]
     if (key) add(dt, scales[key])
+  })
+
+  // On a detail page, an element marked data-tip-scale gets a tip that also says what each level means.
+  document.querySelectorAll('[data-tip-scale]').forEach(function (target) {
+    var scale = scales[target.getAttribute('data-tip-scale')]
+    add(target, scale, !!scale.definitions)
+    target.querySelector('.app-toggletip__button').setAttribute('aria-label', 'What each ' + scale.title.toLowerCase() + ' level means')
   })
 
   window.addEventListener('resize', close)

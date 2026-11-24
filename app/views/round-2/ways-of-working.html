@@ -1,0 +1,40 @@
+{% extends "layouts/design.html" %}
+
+{% set pageName = "Ways of working this sprint" %}
+{% set activeNav = "round-2" %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/">Home</a></li>
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/round-2">Round 2</a></li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Ways of working this sprint</li>
+  </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">Ways of working this sprint</h1>
+    <p class="govuk-body-l">For information. How the round 2 design was iterated with an AI assistant (Copilot), and what to check when reading the results.</p>
+
+    <h2 class="govuk-heading-l">How it worked</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>Source material.</strong> The meeting notes and the research debrief were summarised by AI. Neither summary has been checked, so where they differ, the meeting notes were followed and the points are on <a class="govuk-link" href="/round-2/team-questions">questions for the team</a>.</li>
+      <li><strong>Small steps in one prototype.</strong> Changes before research went into one version (v2) rather than a new version for each, with round 1 v1.1 kept as the starting point. The next version, v2.1, follows the team&rsquo;s feedback.</li>
+      <li><strong>Sketches before building.</strong> Where there were options (for example how to show a change, or the preparedness label), they were drawn side by side first and one was chosen.</li>
+      <li><strong>Checking in the browser.</strong> Spacing, fonts, links and accessibility attributes were measured in the browser after each change, not assumed.</li>
+      <li><strong>A held list.</strong> Documentation was not updated after every change. Decisions, open questions and things to check were collected in one working list and written up once, at the end of the session. This page and the other round 2 pages came from that list.</li>
+    </ul>
+
+    <h2 class="govuk-heading-l">Things to keep in mind</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Content written by the assistant, such as the African swine fever risk wording, assessing group, distances and dates, is invented. It is marked illustrative.</li>
+      <li>Anything marked &ldquo;to confirm&rdquo; is built but not yet agreed by a person on the team.</li>
+      <li>Check the quotes and participant details against the research record before reusing them.</li>
+      <li>The working list and planning pages are kept outside the published prototype, because they draw on research material that is classified.</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}

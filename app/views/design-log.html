@@ -61,8 +61,8 @@
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <td class="govuk-table__cell"><a class="govuk-link" href="/round-2">Round 2: priority view iteration</a></td>
-          <td class="govuk-table__cell">v2.0, a copy of round 1 v1.1 to iterate from: <a class="govuk-link" href="/public/prototype/round-2/priority-view/v2.0/index.html?view=table">combined preparedness only</a>; the separate version is not kept</td>
-          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--blue">Starting point</strong></td>
+          <td class="govuk-table__cell"><a class="govuk-link" href="/public/prototype/round-2/priority-view/v2/index.html?view=table">v2</a>, from round 1 v1.1 with the changes after the research debrief: an &ldquo;i&rdquo; on each measure, linked headings, preparedness as one status with a breakdown (count or percentage), the real top five diseases with invented ratings, and African swine fever disease and risk pages showing a change. v2.1 follows the team&rsquo;s feedback</td>
+          <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">Draft for review</strong></td>
         </tr>
         <tr class="govuk-table__row">
           <td class="govuk-table__cell"><a class="govuk-link" href="/round-1/priority-view">Round 1: priority view design test</a></td>
@@ -355,7 +355,7 @@
 
     <h2 class="govuk-heading-l" id="round-2">Round 2: what led to the changes, and the options considered</h2>
     <p class="govuk-body">
-      Draft, 23 November 2026. These are the changes in <a class="govuk-link" href="/round-2">round 2</a> prototype v2.1 and what led to them, from the 20 November research debrief. They are not confirmed until the team has reviewed them.
+      Draft, 24 November 2026. These are the changes in <a class="govuk-link" href="/round-2">round 2</a> prototype v2, which goes from the tested round 1 v1.1, and what led to them, from the 20 November research debrief and the 24 November design session. They are not confirmed until the team has reviewed them. The full list is on <a class="govuk-link" href="/round-2/changes">what changed and why</a>.
     </p>
     <div class="govuk-inset-text">
       The debrief notes and slides were both written with AI and neither has been checked. Where they differ, the changes follow the meeting notes. Which participants said what is not yet confirmed.
@@ -383,7 +383,7 @@
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">A filled progress bar was read as progress</th>
           <td class="govuk-table__cell">A mostly filled red bar for &ldquo;9 of 10 need review&rdquo; looked nearly finished.</td>
-          <td class="govuk-table__cell">Count what is in place (&ldquo;4 of 10 in place&rdquo;) with a blue progress bar, and &ldquo;6 still to do&rdquo; under it. Red bars and pie charts were considered and dropped, because red inside the visual looked wrong.</td>
+          <td class="govuk-table__cell">Count the actions completed (&ldquo;4 of 10 actions complete&rdquo;) with a blue progress bar, and &ldquo;6 actions still to do&rdquo; under it, plus a link to what the actions are. A percentage version (<code>?preparedness=percentage</code>) is built to compare, with no numbers in brackets. Red bars and pie charts were considered and dropped, because red inside the visual looked wrong. Whether people expect a percentage to weight some actions more than others is a question for research.</td>
         </tr>
         <tr class="govuk-table__row">
           <th scope="row" class="govuk-table__header">Flagging where there is more still to do than done</th>
@@ -400,10 +400,30 @@
           <td class="govuk-table__cell">The score and its labels were not explained next to the measure.</td>
           <td class="govuk-table__cell">An &ldquo;i&rdquo; beside Priority says the score is out of 60, how it is made up in one sentence, and the label ranges. The wording needs checking against the real model.</td>
         </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Participants wanted to know what changed and why</th>
+          <td class="govuk-table__cell">Risk moves most, impact rarely, and preparedness may change so often it overwhelms. Whether people want to be told about changes is not yet known.</td>
+          <td class="govuk-table__cell">African swine fever&rsquo;s risk rating shows a blue &ldquo;Changed&rdquo; tag at the far right of the rating, with &ldquo;Was High until 3 November 2026&rdquo; on the disease page and a &ldquo;Changes to this rating&rdquo; table on the risk page. On the priority view the tag sits under the rating. Arrows were ruled out: an up arrow is bad news for risk but good news for preparedness. Alerts are parked. The options compared are in the design workings.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Not clear what people expect on detail pages</th>
+          <td class="govuk-table__cell">There was no proven need for a page for each measure, and impact and preparedness only had wish lists.</td>
+          <td class="govuk-table__cell">The cross-disease risk, impact and preparedness pages are plain &ldquo;What would you expect to see here?&rdquo; prompts. African swine fever has a disease page with a risk summary and a risk page of three cards (rating, where it comes from, how it could change) built only from confirmed topics. The other diseases link to a &ldquo;not part of this test&rdquo; page.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Screen reader users find tables hard</th>
+          <td class="govuk-table__cell">Nothing has been tested with a real screen reader.</td>
+          <td class="govuk-table__cell">A visually hidden summary before the table, linked with <code>aria-describedby</code>, to test with and without.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Realistic data for the test</th>
+          <td class="govuk-table__cell">Fictional disease names were less believable.</td>
+          <td class="govuk-table__cell">The real top five diseases with invented ratings, kept to the same shape as round 1 so results can be compared. &ldquo;Illustrative data&rdquo; shows on every page.</td>
+        </tr>
       </tbody>
     </table>
     <p class="govuk-body">
-      Parked until there is research: alerts and change history (waiting on follow-up questions to participants), gap-closure timescales, a link to the Preparedness Indices, early signs, and a governance forum. Questions still open for the team are listed in the round 2 team review document.
+      Parked until there is research: alerts and change history (waiting on follow-up questions to participants), gap-closure timescales, a link to the Preparedness Indices, early signs, and a governance forum. Questions for research, for the team and the next design steps are on the <a class="govuk-link" href="/round-2">round 2 page</a>.
     </p>
 
     <h2 class="govuk-heading-l" id="learnings">What we have learned from designing</h2>

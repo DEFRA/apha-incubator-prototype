@@ -1,0 +1,80 @@
+{% extends "layouts/design.html" %}
+
+{% set pageName = "Things to test" %}
+{% set activeNav = "round-2" %}
+
+{% block beforeContent %}
+<div class="govuk-breadcrumbs">
+  <ol class="govuk-breadcrumbs__list">
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/">Home</a></li>
+    <li class="govuk-breadcrumbs__list-item"><a class="govuk-breadcrumbs__link" href="/round-2">Round 2</a></li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Things to test</li>
+  </ol>
+</div>
+{% endblock %}
+
+{% block content %}
+{% set v = "/public/prototype/round-2/priority-view/v2/" %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <strong class="govuk-tag govuk-tag--purple govuk-!-margin-bottom-3">For user research</strong>
+    <h1 class="govuk-heading-xl">Things to test</h1>
+    <p class="govuk-body-l">What the round 2 prototype can show participants, with the link for each. The questions behind these are on <a class="govuk-link" href="/round-2/research-questions">open questions for research</a>.</p>
+
+    <h2 class="govuk-heading-l">Tasks the prototype can support</h2>
+    <p class="govuk-body">Round 1 had three tasks. Keeping them, with the new diseases, is the simplest way to stay comparable. Tess is drafting the scenarios. The prototype has an answer for each of these:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>Say what the page is telling you and which disease is the top priority.</li>
+      <li>Say what to prioritise preparing for, using the table.</li>
+      <li>Say how prepared we are for a disease, from the status and then the breakdown.</li>
+      <li>Say why the African swine fever risk is very high.</li>
+      <li>Say what changed on African swine fever.</li>
+      <li>Say what else they would expect under Impact and Preparedness.</li>
+    </ul>
+    <p class="govuk-body">Success measures to define with Tess: task completion; naming the highest priority disease; reading preparedness the right way round; saying why the risk is high; saying what changed.</p>
+
+    <h2 class="govuk-heading-l">Versions and variants to compare</h2>
+    <table class="govuk-table">
+      <caption class="govuk-table__caption govuk-visually-hidden">Variants to test</caption>
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">What to compare</th>
+          <th scope="col" class="govuk-table__header">Open it</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Preparedness as a count (default) against a percentage. Does either suggest the actions are equal in effort?</td>
+          <td class="govuk-table__cell"><a class="govuk-link" href="{{ v }}index.html?view=table">Count</a><br><a class="govuk-link" href="{{ v }}index.html?view=table&amp;preparedness=percentage">Percentage</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Table against cards for the same task</td>
+          <td class="govuk-table__cell"><a class="govuk-link" href="{{ v }}index.html?view=table">Table</a><br><a class="govuk-link" href="{{ v }}index.html?view=cards">Cards</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">The &ldquo;i&rdquo; beside each measure, against the key at the foot of the page (round 1 style, in v1.1)</td>
+          <td class="govuk-table__cell"><a class="govuk-link" href="{{ v }}index.html?view=table">v2</a><br><a class="govuk-link" href="/public/prototype/round-1/priority-view/v1.1/index.html?view=table">v1.1</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">African swine fever: can people find what changed, and why the risk is very high? Disease page, then the risk page.</td>
+          <td class="govuk-table__cell"><a class="govuk-link" href="{{ v }}disease-african-swine-fever.html">Disease page</a><br><a class="govuk-link" href="{{ v }}risk-african-swine-fever.html">Risk page</a></td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">What people expect to see: plain prompts, no content</td>
+          <td class="govuk-table__cell"><a class="govuk-link" href="{{ v }}risk.html">Risk</a><br><a class="govuk-link" href="{{ v }}impact.html">Impact</a><br><a class="govuk-link" href="{{ v }}preparedness.html">Preparedness</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 class="govuk-heading-l">Things to watch for</h2>
+    <ul class="govuk-list govuk-list--bullet">
+      <li><strong>One view per task.</strong> Ask participants to stay in the view they are given, and alternate which view comes first. Cards show by default on small screens, so test on a large screen. Locking the view is still to be built.</li>
+      <li><strong>Change versus alerts.</strong> We are testing whether people can read a change, not whether they want to be told about one.</li>
+      <li><strong>Grouping on the risk page.</strong> Ask about the three cards on the risk page (rating, where it comes from, how it could change): what is missing inside each, and is a whole card missing?</li>
+      <li><strong>Hidden table summary.</strong> A short summary is read by screen readers before the table. It is an assumption until tested, so compare with and without it in the screen reader sessions.</li>
+      <li><strong>Other diseases.</strong> Only African swine fever has detail pages. The other four link to a &ldquo;not part of this test&rdquo; page.</li>
+      <li><strong>Illustrative data.</strong> A bar at the top of every page says the disease names are real and the ratings are invented.</li>
+    </ul>
+  </div>
+</div>
+{% endblock %}
