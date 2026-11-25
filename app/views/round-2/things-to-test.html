@@ -60,6 +60,10 @@
           <td class="govuk-table__cell"><a class="govuk-link" href="{{ v }}disease-african-swine-fever.html">Disease page</a><br><a class="govuk-link" href="{{ v }}risk-african-swine-fever.html">Risk page</a></td>
         </tr>
         <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Another lens, off by default: source lines and case record links back to the case management system (placeholders). With and without: do people notice them, want to see where a figure comes from, and what would they expect to find? Best left to a later round if the case management system and the teams that manage it aren&rsquo;t signed off yet.</td>
+          <td class="govuk-table__cell"><a class="govuk-link" href="{{ v }}disease-african-swine-fever.html?source=none">Without (default)</a><br><a class="govuk-link" href="{{ v }}disease-african-swine-fever.html?source=case">With case management links</a></td>
+        </tr>
+        <tr class="govuk-table__row">
           <td class="govuk-table__cell">What people expect to see: plain prompts, no content</td>
           <td class="govuk-table__cell"><a class="govuk-link" href="{{ v }}risk.html">Risk</a><br><a class="govuk-link" href="{{ v }}impact.html">Impact</a><br><a class="govuk-link" href="{{ v }}preparedness.html">Preparedness</a></td>
         </tr>
@@ -73,6 +77,7 @@
       <li><strong>Grouping on the risk page.</strong> Ask about the three cards on the risk page (rating, where it comes from, how it could change): what is missing inside each, and is a whole card missing?</li>
       <li><strong>Hidden table summary.</strong> A short summary is read by screen readers before the table. It is an assumption until tested, so compare with and without it in the screen reader sessions.</li>
       <li><strong>Other diseases.</strong> Only African swine fever has detail pages. The other four link to a &ldquo;not part of this test&rdquo; page.</li>
+      <li><strong>Source links are an optional lens.</strong> They are off by default, so the main test assumes no case management access or reference. The links go to a stand-in page. Ask what people would expect to find there, and whether they would use it, rather than judging the link design.</li>
       <li><strong>Illustrative data.</strong> A bar at the top of every page says the disease names are real and the ratings are invented.</li>
     </ul>
   </div>

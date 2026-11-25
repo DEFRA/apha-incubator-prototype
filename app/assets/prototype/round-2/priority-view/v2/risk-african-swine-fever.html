@@ -47,11 +47,12 @@
               <th scope="col" class="govuk-table__header">Date</th>
               <th scope="col" class="govuk-table__header">Rating</th>
               <th scope="col" class="govuk-table__header">Reason</th>
+              <th scope="col" class="govuk-table__header app-case">Case record</th>
             </tr></thead>
             <tbody class="govuk-table__body">
-              <tr class="govuk-table__row"><td class="govuk-table__cell">3 November 2026</td><td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--5">Very high</strong></td><td class="govuk-table__cell">Outbreaks in wild boar moved closer to the UK</td></tr>
-              <tr class="govuk-table__row"><td class="govuk-table__cell">14 September 2026</td><td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--4">High</strong></td><td class="govuk-table__cell">Outbreaks reported in neighbouring countries</td></tr>
-              <tr class="govuk-table__row"><td class="govuk-table__cell">2 June 2026</td><td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--mid">Medium</strong></td><td class="govuk-table__cell">Routine annual review</td></tr>
+              <tr class="govuk-table__row"><td class="govuk-table__cell">3 November 2026</td><td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--5">Very high</strong></td><td class="govuk-table__cell">Outbreaks in wild boar moved closer to the UK</td><td class="govuk-table__cell app-case"><a class="govuk-link" href="source-record.html">CASE-0412<span class="govuk-visually-hidden"> in the case management system</span></a></td></tr>
+              <tr class="govuk-table__row"><td class="govuk-table__cell">14 September 2026</td><td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--4">High</strong></td><td class="govuk-table__cell">Outbreaks reported in neighbouring countries</td><td class="govuk-table__cell app-case"><a class="govuk-link" href="source-record.html">CASE-0377<span class="govuk-visually-hidden"> in the case management system</span></a></td></tr>
+              <tr class="govuk-table__row"><td class="govuk-table__cell">2 June 2026</td><td class="govuk-table__cell"><strong class="govuk-tag app-level-tag app-level-tag--mid">Medium</strong></td><td class="govuk-table__cell">Routine annual review</td><td class="govuk-table__cell app-case"><a class="govuk-link" href="source-record.html">CASE-0291<span class="govuk-visually-hidden"> in the case management system</span></a></td></tr>
             </tbody>
           </table>
         </div></div>
@@ -61,6 +62,7 @@
         <h2 class="app-panel__title" id="p-source">Where the rating comes from</h2>
         <dl class="app-panel__rows">
           <div class="app-panel__row"><dt>When the rating was assigned</dt><dd><p class="govuk-body">3 November 2026. Last reviewed on 17 November 2026.</p></dd></div>
+          <div class="app-panel__row app-case"><dt>Assessment record</dt><dd><p class="govuk-body"><a class="govuk-link" href="source-record.html">CASE-0412: risk assessment, 3 November 2026<span class="govuk-visually-hidden"> in the case management system</span></a></p></dd></div>
           <div class="app-panel__row"><dt>Source and evidence</dt><dd>
             <p class="govuk-body">Assessed by the Veterinary Risk Group (illustrative). Based on:</p>
             <ul class="govuk-list govuk-list--bullet">
@@ -79,10 +81,16 @@
         </dl>
       </section>
 
+      <div class="app-source app-case">
+        <p class="govuk-body-s"><strong>Source:</strong> case management system (placeholder). Last updated 21 November 2026. Owner: case management team.</p>
+        <p class="govuk-body-s"><a class="govuk-link" href="source-record.html">View the record in the case management system</a>, or raise a correction there.</p>
+      </div>
+
       <p class="govuk-body govuk-!-margin-top-6"><a class="govuk-link" href="disease-african-swine-fever.html">Back to African swine fever</a></p>
     </div></div>
   </main>
 </div>
 <script src="scale-tips.js"></script>
+<script src="source-lens.js"></script>
 </body>
 </html>

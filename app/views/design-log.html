@@ -21,7 +21,7 @@
       How the design has changed, what we have learned along the way, and where each version and round of testing is kept.
     </p>
     <p class="govuk-body">
-      All data is illustrative and the disease names are fictional. Last updated 23 November 2026.
+      All data is illustrative and the disease names are fictional. Last updated 25 November 2026.
     </p>
 
     <h2 class="govuk-heading-m">On this page</h2>
@@ -61,7 +61,7 @@
       <tbody class="govuk-table__body">
         <tr class="govuk-table__row">
           <td class="govuk-table__cell"><a class="govuk-link" href="/round-2">Round 2: priority view iteration</a></td>
-          <td class="govuk-table__cell"><a class="govuk-link" href="/public/prototype/round-2/priority-view/v2/index.html?view=table">v2</a>, from round 1 v1.1 with the changes after the research debrief: an &ldquo;i&rdquo; on each measure, linked headings, preparedness as one status with a breakdown (count or percentage), the real top five diseases with invented ratings, and African swine fever disease and risk pages showing a change. v2.1 follows the team&rsquo;s feedback</td>
+          <td class="govuk-table__cell"><a class="govuk-link" href="/public/prototype/round-2/priority-view/v2/index.html?view=table">v2</a>, from round 1 v1.1 with the changes after the research debrief: an &ldquo;i&rdquo; on each measure, linked headings, preparedness as one status with a breakdown (count or percentage), the real top five diseases with invented ratings, a calmer table (colour on priority only, top three diseases first), and African swine fever disease and risk pages showing a change. v2.1 follows the team&rsquo;s feedback</td>
           <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">Draft for review</strong></td>
         </tr>
         <tr class="govuk-table__row">
@@ -355,7 +355,7 @@
 
     <h2 class="govuk-heading-l" id="round-2">Round 2: what led to the changes, and the options considered</h2>
     <p class="govuk-body">
-      Draft, 24 November 2026. These are the changes in <a class="govuk-link" href="/round-2">round 2</a> prototype v2, which goes from the tested round 1 v1.1, and what led to them, from the 20 November research debrief and the 24 November design session. They are not confirmed until the team has reviewed them. The full list is on <a class="govuk-link" href="/round-2/changes">what changed and why</a>.
+      Draft, updated 25 November 2026. These are the changes in <a class="govuk-link" href="/round-2">round 2</a> prototype v2, which goes from the tested round 1 v1.1, and what led to them, from the 20 November research debrief and the 24 November design session. They are not confirmed until the team has reviewed them. The full list is on <a class="govuk-link" href="/round-2/changes">what changed and why</a>.
     </p>
     <div class="govuk-inset-text">
       The debrief notes and slides were both written with AI and neither has been checked. Where they differ, the changes follow the meeting notes. Which participants said what is not yet confirmed.
@@ -420,10 +420,25 @@
           <td class="govuk-table__cell">Fictional disease names were less believable.</td>
           <td class="govuk-table__cell">The real top five diseases with invented ratings, kept to the same shape as round 1 so results can be compared. &ldquo;Illustrative data&rdquo; shows on every page.</td>
         </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">The team said the table was visually overwhelming (25 November)</th>
+          <td class="govuk-table__cell">&ldquo;Don&rsquo;t know where to focus&rdquo;, which the team felt mirrored the problem the service is meant to fix. A comparison was built first, with colour on priority only, then every table suggestion together.</td>
+          <td class="govuk-table__cell">The table is now the calmer version: colour on priority only, plain words for levels, one line per cell, a larger disease name and the top three diseases with &ldquo;Show all&rdquo;. The grey hint lines and the score stay. Colour stays on the blue &ldquo;Changed&rdquo; tag, the red &ldquo;still to do&rdquo; inside the preparedness breakdown (more than half outstanding) and the blue progress bars. Cards and detail pages are unchanged. Hiding two of five diseases is to be checked against a &ldquo;find the top priority&rdquo; task.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">The case management system will hold the data behind this view</th>
+          <td class="govuk-table__cell">The other half of the team is building it. Linking back to it could show where a figure comes from, but bringing it into the front view before the system and its owning teams are signed off may be too early.</td>
+          <td class="govuk-table__cell">Source lines and case record links were built on the African swine fever pages as an optional lens, off by default, so the main test assumes no case management access. The questions about access, stable links, freshness, ownership and corrections are with the team.</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header">Stakeholders: tens of actions, and dependencies matter at the top level</th>
+          <td class="govuk-table__cell">A bar with a block per action stops working at tens of actions, and &ldquo;22 still to do&rdquo; hides which are blocked.</td>
+          <td class="govuk-table__cell">Four options sketched in the design workings (a &ldquo;waiting&rdquo; count, grouping by ready, waiting and complete, naming the action holding up the most, and a dependencies page). Not built. Held until preparedness is picked up, a few sprints away. The questions are recorded for research and the team.</td>
+        </tr>
       </tbody>
     </table>
     <p class="govuk-body">
-      Parked until there is research: alerts and change history (waiting on follow-up questions to participants), gap-closure timescales, a link to the Preparedness Indices, early signs, and a governance forum. Questions for research, for the team and the next design steps are on the <a class="govuk-link" href="/round-2">round 2 page</a>.
+      Parked until there is research: alerts and change history (waiting on follow-up questions to participants), gap-closure timescales, a link to the Preparedness Indices, early signs, a governance forum, and dependencies between preparedness actions. Questions for research, for the team and the next design steps are on the <a class="govuk-link" href="/round-2">round 2 page</a>.
     </p>
 
     <h2 class="govuk-heading-l" id="learnings">What we have learned from designing</h2>
